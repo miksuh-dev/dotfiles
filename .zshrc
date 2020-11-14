@@ -138,4 +138,4 @@ function extract() {
 export PATH="$PATH:/snap/bin"
 
 alias nano='vim'
-alias dotfiles='/usr/bin/git --git-dir=/home/miksuh/.dotfiles/ --work-tree=/home/miksuh'
+alias dotfiles='/usr/bin/git --git-dir=/home/$HOME/.dotfiles/ --work-tree=/home/$HOME'
