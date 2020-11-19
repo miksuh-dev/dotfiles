@@ -138,4 +138,5 @@ function extract() {
 export PATH="$PATH:/snap/bin"
 
 alias nano='vim'
-alias dotfiles='/usr/bin/git --git-dir=/home/$HOME/.dotfiles/ --work-tree=/home/$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias rickroll='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'

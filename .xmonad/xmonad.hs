@@ -344,7 +344,7 @@ myLogHook = return ()
 myStartupHook = do
     setWMName "LG3D"
     setDefaultCursor xC_left_ptr
-    spawnOnce "bash /home/miksuh/startup.sh"
+    spawn "bash /home/miksuh/startup.sh"
     -- spawnOnce "nitrogen --restore &"
     spawnOnce "compton &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 2 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
