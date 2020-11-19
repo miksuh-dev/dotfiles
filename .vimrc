@@ -1,6 +1,5 @@
 syntax on
 
-set guicursor=
 set relativenumber
 set nohlsearch
 set hidden
@@ -20,8 +19,6 @@ set incsearch
 set scrolloff=8
 set noshowmode
 
-set colorcolumn=80
-
 set clipboard=unnamedplus
 
 call plug#begin('~/.vim/plugged')
@@ -31,9 +28,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'leafgarland/typescript-vim'
     Plug 'vim-utils/vim-man'
     Plug 'mbbill/undotree'
+    Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
-set background=dark
+let g:codedark_conservative = 1
+set t_Co=256
+set t_ut=
+colorscheme codedark
+
 if executable('rg')
     let g:rgb_derive_root='true'
 endif
