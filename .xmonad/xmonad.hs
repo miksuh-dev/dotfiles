@@ -17,6 +17,9 @@ import Control.Monad (liftM2)
 import XMonad.Util.Cursor
 import XMonad.Hooks.SetWMName
 
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Config.Desktop
 
@@ -128,6 +131,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
 
+    , ((modm,            xK_m    ), sendMessage $ Toggle FULL)
+
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
 
@@ -137,8 +142,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
     
-    , ((modm,               xK_m ), sendMessage $ Toggle FULL) 
-
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
 
@@ -248,7 +251,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout =  (
+myLayout =  mkToggle (NOBORDERS ?? FULL ?? EOT)
+            $ (
             --    full ||| 
                 tiled ||| 
                 tabs -- |||
@@ -262,7 +266,7 @@ myLayout =  (
               $ ResizableTall nmaster delta ratio []
      
      tabs =   renamed [Replace "Tabs"] 
-              -- $ avoidStruts
+              $ avoidStruts
               $ noBorders(tabbed shrinkText myTabConfig)
               
               
