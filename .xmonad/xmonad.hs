@@ -113,10 +113,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenuf
-    , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'/home/miksuh/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
-    , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'/home/miksuh/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
+    , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
+    , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     
-    , ((modm,               xK_s     ), spawn "/home/miksuh/.config/rofi/scripts/search")
+    , ((modm,               xK_s     ), spawn "~/.config/rofi/scripts/search")
 
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
@@ -309,7 +309,14 @@ myManageHook = composeAll
     -- Moving windows
     , className =? "Mumble" --> doShift "1"
     , className =? "Rambox" --> doShift "1"
-    
+     -- , className =? "Terminator" --> doShift "2"
+    -- , className =? "robo3t" --> doShift "2"
+    , className =? "Code" --> doShift "3"
+    , className =? "Microsoft Teams - Preview" --> doShift "1"
+    , className =? "thunderbird" --> doShift "1"
+    , className =? "Mattermost" --> doShift "1"
+    , className =? "Rocket.Chat" --> doShift "1"
+
     -- Apply fullscreen
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
     
@@ -344,17 +351,12 @@ myLogHook = return ()
 myStartupHook = do
     setWMName "LG3D"
     setDefaultCursor xC_left_ptr
-    spawn "bash /home/miksuh/startup.sh"
-    -- spawnOnce "nitrogen --restore &"
+    spawn "bash ~/startup.sh"
     spawnOnce "compton &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 2 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
     spawnOnce "volumeicon &"
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
-    spawn "nitrogen --head=0 --set-zoom-fill /home/miksuh/Pictures/taustakuvat/aika.jpg"
-    spawn "nitrogen --head=1 --set-zoom-fill /home/miksuh/Pictures/taustakuvat/aika.jpg"
-    spawn "nitrogen --head=2 --set-zoom-fill /home/miksuh/Pictures/taustakuvat/aika.jpg"
-    
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -364,9 +366,9 @@ myStartupHook = do
 
 
 main = do
-    xmproc0 <- spawnPipe "xmobar -x 0 /home/miksuh/.config/xmobar/xmobarrc"
-    xmproc1 <- spawnPipe "xmobar -x 1 /home/miksuh/.config/xmobar/xmobarrc"
-    xmproc2 <- spawnPipe "xmobar -x 2 /home/miksuh/.config/xmobar/xmobarrc"
+    xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
+    xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc"
+    xmproc2 <- spawnPipe "xmobar -x 2 ~/.config/xmobar/xmobarrc"
     
 
     xmonad $ ewmh desktopConfig

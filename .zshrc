@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/miksuh/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 
 
@@ -70,7 +70,7 @@ DISABLE_UPDATE_PROMPT="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git sudo zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,15 +105,6 @@ LANGUAGE=en_US.UTF-8
 LANG=en_US.UTF-8
 
 
-#added_keys=`ssh-add -l`
-
-
-#if [ ! $(echo $added_keys | grep -o -e miksuh_debian) ]; then
-#    ssh-add -q "$HOME/.ssh/miksuh"
-#fi
-
-#alias miksuh='ssh miksuh'
-
 function extract() {
     if [ -f $1 ] ; then
         case $1 in
@@ -126,7 +117,7 @@ function extract() {
             *.tbz2) tar xjf $1 ;;
             *.tgz) tar xzf $1 ;;
             *.zip) unzip $1 ;;
-	    *.iso) 7z x $1 ;;
+	        *.iso) 7z x $1 ;;
             *.Z) uncompress $1 ;;
             *) echo "'$1' cannot be extracted via extract()" ;;
         esac
@@ -136,7 +127,10 @@ function extract() {
 }
 
 export PATH="$PATH:/snap/bin"
-
+alias npms="npm run start -- --host 172.20.0.1"
+alias ..='cd ..'
+alias ...='cd ../../'
 alias nano='vim'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias rickroll='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+[ -f ~/.secrets ] && source ~/.secrets
