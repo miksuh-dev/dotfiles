@@ -19,6 +19,7 @@ import XMonad.Hooks.SetWMName
 
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
+import XMonad.Layout.ThreeColumns
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Config.Desktop
@@ -255,6 +256,7 @@ myLayout =  mkToggle (NOBORDERS ?? FULL ?? EOT)
             $ (
             --    full ||| 
                 tiled ||| 
+                three |||
                 tabs -- |||
             --   full 
             )
@@ -265,10 +267,19 @@ myLayout =  mkToggle (NOBORDERS ?? FULL ?? EOT)
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ ResizableTall nmaster delta ratio []
      
+     three =  renamed [Replace "ThreeColumn"]
+               $ avoidStruts
+               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+               $ ThreeCol 1 (3/100) (1/2) 
+
+
      tabs =   renamed [Replace "Tabs"] 
               $ avoidStruts
               $ noBorders(tabbed shrinkText myTabConfig)
-              
+    
+    --three =     renamed [Replace "ThreeColumn"]
+    --            $ avoidStruts
+     --           $ ThreeCol 1 (3/100) (1/2) 
               
      -- full = renamed [Replace "Full"] 
      -- $ noBorders (Full)
