@@ -413,7 +413,7 @@ main = do
                         , ppTitle = xmobarColor  myppTitle "" . shorten 80     -- Title of active window in xmobar
                         , ppSep =  "<fc=#eeeeee> | </fc>"                     -- Separators in xmobar
                         , ppUrgent = xmobarColor  myppUrgent "" . wrap "!" "!"  -- Urgent workspace
-                        , ppOrder  = \(ws:l:t:ex) -> [ws]++ex++[t]
+                        , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         }
           }
 
