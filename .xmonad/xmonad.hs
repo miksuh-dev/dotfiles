@@ -17,9 +17,16 @@ import Control.Monad (liftM2)
 import XMonad.Util.Cursor
 import XMonad.Hooks.SetWMName
 
+import XMonad.Layout.TwoPane
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.ThreeColumns
+
+import XMonad.Actions.CycleWS
+import XMonad.Util.WorkspaceCompare
+
+import XMonad.Layout.PerWorkspace  ( onWorkspace )
+import XMonad.Layout.PerWorkspace
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Config.Desktop
@@ -45,6 +52,10 @@ import XMonad.Actions.UpdatePointer -- update mouse postion
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+
+import Control.Monad ( liftM2, unless )
+import Data.Maybe    ( isNothing, isJust )
+
 
 myTabConfig = def { activeColor = "#556064"
                   , inactiveColor = "#3b3b3b"
@@ -100,13 +111,32 @@ myppHiddenNoWindows = "#eeeeee"
 myppTitle = "#eeeeee"
 myppUrgent = "#DC322F"
 
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
-
+myWorkspaces = ["1","2","3","4","5","6","7","8","9", "10"]
 
 -- colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#111111"
 myFocusedBorderColor = "#400000"
+
+-- Helper function to first shift a window to another workspace and
+-- then follow it.
+shiftAndFollow :: WorkspaceId -> X()
+shiftAndFollow = liftM2 (>>) (windows . W.shift) (windows . W.greedyView)
+
+busyHiddenNotSpecial' :: [WorkspaceId] -> X (WindowSpace -> Bool)
+-- busyHiddenNotSpecial' ids = return (\ws -> (isJust . W.stack) ws
+--                                            && ((`notElem` ids) . W.tag) ws)
+busyHiddenNotSpecial' ids = do ne <- return (isJust . W.stack)                         -- busy
+                               hi <- do hs <- gets (map W.tag . W.hidden . windowset)  -- hidden
+                                        return (\ws -> W.tag ws `elem` hs)
+                               ns <- return ((`notElem` ids) . W.tag)                  -- not special
+                               return (\ws -> ne ws && hi ws && ns ws)
+
+hiddenEmptyWS :: X (WindowSpace -> Bool)
+hiddenEmptyWS = do em <- return (isNothing . W.stack)                      -- empty
+                   hi <- do hs <- gets (map W.tag . W.hidden . windowset)  -- hidden
+                            return (\ws -> W.tag ws `elem` hs)
+                   return (\ws -> em ws && hi ws)
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -120,29 +150,33 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     
-    , ((modm,               xK_s     ), spawn "~/.config/rofi/scripts/search")
+    -- , ((modm,               xK_s     ), spawn "~/.config/rofi/scripts/search")
 
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
 
 
     -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
-
+    , ((modm,            xK_d     ), kill)
+    
     , ((modm,            xK_m    ), sendMessage $ Toggle FULL)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
 
-    --  Reset the layouts on the current workspace to default
-    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    ----  Reset the layouts on the current workspace to default
+    , ((modm,                xK_t ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
-    
+   
+    -- Move focus to the previous window
+    , ((modm .|. shiftMask, xK_Tab   ), windows W.focusUp)
+
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
 
@@ -171,7 +205,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_l     ), sendMessage Expand)
 
     -- Push window back into tiling
-    , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+    , ((modm .|. shiftMask, xK_t     ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
     , ((modm              , xK_u ), sendMessage (IncMasterN 1))
@@ -185,19 +219,23 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Pcmanfm
     , ((modm .|. shiftMask , xK_BackSpace), spawn "pcmanfm")
     
-    
 
-    -- Toggle the status bar gap
-    -- Use this binding with avoidStruts from Hooks.ManageDocks.
-    -- See also the statusBar function from Hooks.DynamicLog.
-    --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    -- find next empty workspace
+    , ((modm,               xK_q), moveTo Next (WSIs hiddenEmptyWS))
+      -- find next busy workspace
+    , ((modm,               xK_s), moveTo Next HiddenNonEmptyWS)
+      -- find prev busy workspace
+    , ((modm,               xK_a), moveTo Prev HiddenNonEmptyWS)
+      -- shift to next empty workspace and follow
+    , ((modm .|. shiftMask, xK_q),
+       doTo Next (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
+
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_Escape     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm              , xK_Escape     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -209,7 +247,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-[1..9], Move client to workspace N
     --
     [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
 
@@ -220,7 +258,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0,1,2]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -255,8 +292,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout =  mkToggle (NOBORDERS ?? FULL ?? EOT)
             $ (
             --    full ||| 
-                tiled ||| 
+                tiled |||
                 three |||
+                two |||
                 tabs -- |||
             --   full 
             )
@@ -267,10 +305,16 @@ myLayout =  mkToggle (NOBORDERS ?? FULL ?? EOT)
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ ResizableTall nmaster delta ratio []
      
+     two =    renamed [Replace "TwoPane"]
+              $ avoidStruts
+              $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+              $ TwoPane (3/100) (1/2)
+
+
      three =  renamed [Replace "ThreeColumn"]
-               $ avoidStruts
-               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
-               $ ThreeCol 1 (3/100) (1/2) 
+              $ avoidStruts
+              $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+              $ ThreeCol 1 (3/100) (1/2) 
 
 
      tabs =   renamed [Replace "Tabs"] 
@@ -369,6 +413,7 @@ myStartupHook = do
     spawn "bash ~/startup.sh"
     spawnOnce "compton &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 2 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
+    spawnOnce "nm-applet &"
     spawnOnce "volumeicon &"
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
