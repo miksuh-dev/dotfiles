@@ -153,14 +153,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     -- , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     
-    -- , ((modm,               xK_s     ), spawn "~/.config/rofi/scripts/search")
+    , ((modm .|. shiftMask,               xK_f     ), spawn "~/.config/rofi/scripts/search")
 
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
 
 
     -- close focused window
-    --, ((modm .|. shiftMask, xK_c     ), kill)
+    , ((modm,                          xK_d     ), kill)
     , ((modm .|. shiftMask,            xK_d     ), kill)
     
      -- Rotate through the available layout algorithms
