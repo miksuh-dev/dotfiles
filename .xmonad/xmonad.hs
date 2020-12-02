@@ -7,7 +7,7 @@
 -- Normally, you'd only override those defaults you care about.
 --
 
-import XMonad
+import XMonad hiding ( (|||) )
 import Data.Monoid
 import System.Exit
 import XMonad.Layout.Tabbed
@@ -21,6 +21,9 @@ import XMonad.Layout.TwoPane
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.Grid
+
+import XMonad.Layout.LayoutCombinators
 
 import XMonad.Actions.CycleWS
 import XMonad.Util.WorkspaceCompare
@@ -148,7 +151,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
-    , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
+    -- , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     
     -- , ((modm,               xK_s     ), spawn "~/.config/rofi/scripts/search")
 
@@ -156,20 +159,18 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
 
 
-    -- launch gmrun
-    -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-
     -- close focused window
-    , ((modm .|. shiftMask, xK_c     ), kill)
-    -- , ((modm,            xK_d     ), kill)
+    --, ((modm .|. shiftMask, xK_c     ), kill)
+    , ((modm .|. shiftMask,            xK_d     ), kill)
     
-    , ((modm,            xK_m    ), sendMessage $ Toggle FULL)
-
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
+   
+    -- ToggleStruts 
+    , ((modm .|. shiftMask,     xK_space ), sendMessage ToggleStruts)
 
-    ----  Reset the layouts on the current workspace to default
-    , ((modm,                xK_t ), setLayout $ XMonad.layoutHook conf)
+    --  Reset the layouts on the current workspace to default
+    -- , ((modm,                xK_t ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
@@ -212,7 +213,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_i), sendMessage (IncMasterN (-1)))
-    
+
+
+    --------------------------------------------------------------------------------
+    ------------------------- Quick launch binds -----------------------------------
+    --------------------------------------------------------------------------------
+
     -- Print screen
     , ((0 .|. controlMask , xK_Print), spawn "flameshot gui")
     
@@ -230,8 +236,35 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Launch firefox
     , ((0,               0x1008FF18), spawn "firefox")
+   
+
+    --------------------------------------------------------------------------------
+    ------------------------- Layout binds -----------------------------------------
+    --------------------------------------------------------------------------------
+
+    -- Tile layout 
+    , ((modm,               xK_t), sendMessage $ JumpToLayout "Tile")   
+
+    -- Grid layout 
+    , ((modm,               xK_g), sendMessage $ JumpToLayout "Grid")   
+
+    -- Three column layout 
+    , ((modm,               xK_c), sendMessage $ JumpToLayout "ThreeColumn")   
+ 
+     -- Two pane layout 
+    , ((modm,               xK_p), sendMessage $ JumpToLayout "TwoPane")   
     
-    
+    -- Tabs layout 
+    , ((modm,               xK_b), sendMessage $ JumpToLayout "Tabs")   
+
+    -- Full layout 
+    , ((modm,               xK_m), sendMessage $ JumpToLayout "Full")   
+
+
+    --------------------------------------------------------------------------------
+    ------------------------- Quick workspace movement -----------------------------
+    --------------------------------------------------------------------------------
+
     -- find next empty workspace
     , ((modm,               xK_q), moveTo Next (WSIs hiddenEmptyWS))
       -- find next busy workspace
@@ -305,26 +338,26 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout =  mkToggle (NOBORDERS ?? FULL ?? EOT)
-            $ (
-            --    full ||| 
+myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
+            -- $ (
                 tiled |||
+                grid ||| 
                 three |||
                 two |||
-                tabs -- |||
-            --   full 
-            )
+                tabs |||
+                full 
+            -- )
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled =  renamed [Replace "Tile"] 
               $ avoidStruts
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ ResizableTall nmaster delta ratio []
-     
-     two =    renamed [Replace "TwoPane"]
+    
+     grid =   renamed [Replace "Grid"]
               $ avoidStruts
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
-              $ TwoPane (3/100) (1/2)
+              $ Grid
 
 
      three =  renamed [Replace "ThreeColumn"]
@@ -333,21 +366,25 @@ myLayout =  mkToggle (NOBORDERS ?? FULL ?? EOT)
               $ ThreeCol 1 (3/100) (1/2) 
 
 
+     two =    renamed [Replace "TwoPane"]
+              $ avoidStruts
+              $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+              $ TwoPane (3/100) (1/2)
+
+
      tabs =   renamed [Replace "Tabs"] 
               $ avoidStruts
               $ noBorders(tabbed shrinkText myTabConfig)
     
-    --three =     renamed [Replace "ThreeColumn"]
-    --            $ avoidStruts
-     --           $ ThreeCol 1 (3/100) (1/2) 
               
-     -- full = renamed [Replace "Full"] 
-     -- $ noBorders (Full)
+     full =   renamed [Replace "Full"] 
+              $ avoidStruts
+              $ noBorders (Full)
 
      -- The default number of windows in the master pane
      nmaster = 1
 
-     -- Default proportion of screen occupied by master paneö
+     -- Default proportion of screen occupied by master panel
      ratio   = 1/2
 
      -- Percent of screen to increment by when resizing panes
