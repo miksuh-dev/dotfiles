@@ -161,7 +161,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
-    , ((modm,            xK_d     ), kill)
+    -- , ((modm,            xK_d     ), kill)
     
     , ((modm,            xK_m    ), sendMessage $ Toggle FULL)
 
@@ -216,21 +216,37 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Print screen
     , ((0 .|. controlMask , xK_Print), spawn "flameshot gui")
     
-    -- Pcmanfm
+    -- Launch Pcmanfm
     , ((modm .|. shiftMask , xK_BackSpace), spawn "pcmanfm")
     
+    -- Launch qalculate 
+    , ((0,               0x1008FF1D), spawn "snap run qalculate")
 
+    -- Launch pcmanfm 
+    , ((0,               0x1008FF5D), spawn "pcmanfm")
+
+    -- Launch launch terminal 
+    , ((0,               0x1008FF19), spawn $ XMonad.terminal conf)
+
+    -- Launch firefox
+    , ((0,               0x1008FF18), spawn "firefox")
+    
+    
     -- find next empty workspace
     , ((modm,               xK_q), moveTo Next (WSIs hiddenEmptyWS))
       -- find next busy workspace
     , ((modm,               xK_s), moveTo Next HiddenNonEmptyWS)
       -- find prev busy workspace
-    , ((modm,               xK_a), moveTo Prev HiddenNonEmptyWS)
-      -- shift to next empty workspace and follow
+    , ((modm,               xK_a), moveTo Prev HiddenNonEmptyWS) 
+    -- shift to next workspace and follow 
+    , ((myModMask .|. shiftMask, xK_s), doTo Next HiddenWS getSortByIndex shiftAndFollow)
+    -- shift to prev workspace and follow 
+    , ((myModMask .|. shiftMask, xK_a), doTo Prev HiddenWS getSortByIndex shiftAndFollow)
+    -- shift to next empty workspace and follow
     , ((modm .|. shiftMask, xK_q),
        doTo Next (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
-
-
+    
+   
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_Escape     ), io (exitWith ExitSuccess))
 
