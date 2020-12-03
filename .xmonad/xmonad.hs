@@ -390,6 +390,12 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
 
+myLayoutPrinter :: String -> String
+-- myLayoutPrinter "Full" = "<icon=/home/miksuh/.xmonad/icons/full.xbm/>"
+-- myLayoutPrinter "Grid" = "<icon=/home/miksuh/.xmonad/icons/grid.xbm/>"
+-- myLayoutPrinter "TwoPane" = "<icon=/home/miksuh/.xmonad/icons/half.xbm/>"
+myLayoutPrinter x = x
+
 ------------------------------------------------------------------------
 -- Window rules:
 
@@ -514,6 +520,7 @@ main = do
                         , ppSep =  "<fc=#eeeeee> | </fc>"                     -- Separators in xmobar
                         , ppUrgent = xmobarColor  myppUrgent "" . wrap "!" "!"  -- Urgent workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+                        , ppLayout = xmobarColor myppHiddenNoWindows "" . myLayoutPrinter
                         }
           }
 
