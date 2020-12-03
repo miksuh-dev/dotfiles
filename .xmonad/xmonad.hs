@@ -287,7 +287,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_Escape     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
-    , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
+    , ((modm .|. shiftMask,       xK_plus ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
     ++
 
@@ -466,8 +466,10 @@ myStartupHook = do
     spawn "bash ~/startup.sh"
     spawnOnce "compton &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 2 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
-    spawnOnce "nm-applet &"
-    spawnOnce "volumeicon &"
+    -- spawnOnce "nm-applet &"
+    spawnOnce "wicd-client --tray &"
+    -- spawnOnce "volumeicon &"
+    spawnOnce "pasystray &"
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
 
