@@ -423,6 +423,7 @@ myManageHook = composeAll
     , className =? "MainThrd"       --> doFloat
     , title =? "plasma-desktop"     --> doIgnore
     , className =? "stalonetray"    --> doIgnore
+    , className =? "Firefox" --> doF W.focusDown
 
     -- Moving windows
     , className =? "Mumble" --> doShift "1"
