@@ -151,7 +151,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
-    -- , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
+    , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     
     , ((modm .|. shiftMask,               xK_f     ), spawn "~/.config/rofi/scripts/search")
 
@@ -252,7 +252,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_c), sendMessage $ JumpToLayout "ThreeColumn")   
  
      -- Two pane layout 
-    , ((modm,               xK_p), sendMessage $ JumpToLayout "TwoPane")   
+    , ((modm,               xK_n), sendMessage $ JumpToLayout "TwoPane")   
     
     -- Tabs layout 
     , ((modm,               xK_b), sendMessage $ JumpToLayout "Tabs")   
