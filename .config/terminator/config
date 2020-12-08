@@ -13,6 +13,8 @@
   always_split_with_profile = True
   title_font = Sans 10
 [keybindings]
+  split_horiz = <Primary>t
+  split_vert = <Primary><Shift>t
   copy = <Primary>c
   paste = <Primary>v
 [profiles]
