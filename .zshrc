@@ -128,7 +128,7 @@ function extract() {
 
 function qrcode() {curl qrenco.de/"$1"}
 
-export PATH="$PATH:/snap/bin"
+export PATH="$PATH:/snap/bin:/usr/sbin"
 alias npms="npm run start -- --host 172.20.0.1"
 alias ..='cd ..'
 alias ...='cd ../../'
