@@ -14,3 +14,4 @@ sudo apt install \
     nitrogen \
     xfce4-clipman-plugin \
     lxappearance \
+    pass \

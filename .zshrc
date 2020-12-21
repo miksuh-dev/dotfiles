@@ -105,6 +105,8 @@ LANGUAGE=en_US.UTF-8
 LANG=en_US.UTF-8
 
 
+MIKSUH_GPG='A4687FA1E3B2A145248933CFA7D35B275BBFD045'
+
 function extract() {
     if [ -f $1 ] ; then
         case $1 in
@@ -125,6 +127,18 @@ function extract() {
         echo "'$1' is not a valid file"
     fi
 }
+
+
+function encrypt() {
+        output=~/"${1}".$(date +%s).enc
+        gpg --encrypt --armor --output ${output} -r $MIKSUH_GPG "${1}" && echo "${1} -> ${output}"
+}
+
+function decrypt() {
+        output=$(echo "${1}" | rev | cut -c16- | rev)
+        gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
+}
+
 
 function qrcode() {curl qrenco.de/"$1"}
 
