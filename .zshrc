@@ -147,6 +147,7 @@ alias npms="npm run start -- --host 172.20.0.1"
 alias ..='cd ..'
 alias ...='cd ../../'
 alias nano='vim'
+alias calc='bc'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias rickroll='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 [ -f ~/.secrets ] && source ~/.secrets
