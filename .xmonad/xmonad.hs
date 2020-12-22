@@ -207,10 +207,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_t     ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
-    , ((modm              , xK_u ), sendMessage (IncMasterN 1))
+    , ((modm              , xK_i ), sendMessage (IncMasterN 1))
 
     -- Deincrement the number of windows in the master area
-    , ((modm              , xK_i), sendMessage (IncMasterN (-1)))
+    , ((modm              , xK_u), sendMessage (IncMasterN (-1)))
 
 
     --------------------------------------------------------------------------------
