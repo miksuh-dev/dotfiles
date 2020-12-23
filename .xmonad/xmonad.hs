@@ -488,31 +488,21 @@ myLogHook = return ()
 myStartupHook = do
     setWMName "LG3D"
     setDefaultCursor xC_left_ptr
-    spawn "bash ~/startup.sh"
+    spawn "bash ~/autorun.sh"
     spawnOnce "compton &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 2 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
-    -- spawnOnce "nm-applet &"
     spawnOnce "wicd-client --tray &"
-    -- spawnOnce "volumeicon &"
     spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
-
-------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
-
--- Run xmonad with the settings you specify. No need to modify this.
---
-
 
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
     xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc"
     xmproc2 <- spawnPipe "xmobar -x 2 ~/.config/xmobar/xmobarrc"
     
-
-    xmonad -- $ fullscreenSupport 
+    xmonad
            $ ewmh desktopConfig
         { manageHook =
             manageDocks 
