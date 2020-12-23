@@ -451,7 +451,7 @@ myManageHook = composeAll
     , className =? "Rambox" --> doShift "1"
      -- , className =? "Terminator" --> doShift "2"
     -- , className =? "robo3t" --> doShift "2"
-    , className =? "Code" --> doShift "3"
+    -- , className =? "Code" --> doShift "3"
     , className =? "Microsoft Teams - Preview" --> doShift "1"
     , className =? "thunderbird" --> doShift "1"
     , className =? "Mattermost" --> doShift "1"
@@ -515,7 +515,7 @@ main = do
             
         , startupHook        = myStartupHook
         , layoutHook         = avoidStruts $ myLayout
-        , handleEventHook    = def <+> fullscreenEventHook <+> docksEventHook
+        , handleEventHook    = myEventHook <+> fullscreenEventHook <+> docksEventHook
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
         , terminal           = myTerminal
