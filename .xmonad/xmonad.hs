@@ -22,7 +22,7 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Grid
-
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.LayoutCombinators
 
 import XMonad.Actions.CycleWS
@@ -37,7 +37,7 @@ import XMonad.Config.Desktop
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, additionalMouseBindings)
 import System.IO
-import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.EwmhDesktops(ewmh)
 import XMonad.Util.NamedScratchpad
 
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
@@ -45,6 +45,8 @@ import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers(isFullscreen, isDialog, doFullFloat)
+-- import XMonad.Hooks.EwmhDesktops
+
 import XMonad.Layout.SimpleDecoration (shrinkText)
 import XMonad.Layout.Spacing
 import XMonad.Layout.MultiToggle 
@@ -354,7 +356,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
-            -- $ (
+            -- avoidStruts $
+            -- smartBorders $ (
                 tiled |||
                 grid ||| 
                 three |||
@@ -464,7 +467,7 @@ myManageHook = composeAll
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 myEventHook = do
-    handleEventHook defaultConfig <+> fullscreenEventHook
+    handleEventHook defaultConfig -- <+> fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -509,7 +512,8 @@ main = do
     xmproc2 <- spawnPipe "xmobar -x 2 ~/.config/xmobar/xmobarrc"
     
 
-    xmonad $ ewmh desktopConfig
+    xmonad -- $ fullscreenSupport 
+           $ ewmh desktopConfig
         { manageHook =
             manageDocks 
             <+> myManageHook
@@ -517,8 +521,8 @@ main = do
             <+> doF W.swapDown
             
         , startupHook        = myStartupHook
-        , layoutHook         = myLayout
---      , handleEventHook    = myEventHook
+        , layoutHook         = avoidStruts $ myLayout
+        , handleEventHook    = def <+> fullscreenEventHook <+> docksEventHook
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
         , terminal           = myTerminal

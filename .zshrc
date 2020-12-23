@@ -130,7 +130,7 @@ function extract() {
 
 
 function encrypt() {
-        output=~/"${1}".$(date +%s).enc
+        output="${1}".$(date +%s).enc
         gpg --encrypt --armor --output ${output} -r $MIKSUH_GPG "${1}" && echo "${1} -> ${output}"
 }
 
