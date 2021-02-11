@@ -128,6 +128,9 @@ function extract() {
     fi
 }
 
+function cheat() {
+  curl -m 10 "http://cheat.sh/${1}" 2>/dev/null || printf '%s\n' "[ERROR] Something broke"
+}
 
 function encrypt() {
         output="${1}".$(date +%s).enc
@@ -142,8 +145,10 @@ function decrypt() {
 
 function qrcode() {curl qrenco.de/"$1"}
 
-export PATH="$PATH:/snap/bin:/usr/sbin"
-alias npms="npm run start -- --host 172.20.0.1"
+export PATH="$PATH:~/.npm-global:/bin/snap/bin:/usr/sbin"
+export NODE_OPTIONS=--max_old_space_size=4096
+
+alias npms="npm run start -- --host 172.19.0.1"
 alias ..='cd ..'
 alias ...='cd ../../'
 alias nano='vim'

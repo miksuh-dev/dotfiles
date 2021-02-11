@@ -90,7 +90,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 0
+myBorderWidth   = 1
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -121,7 +121,7 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9", "10"]
 -- colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#111111"
-myFocusedBorderColor = "#400000"
+myFocusedBorderColor = "#268bd2"
 
 -- Helper function to first shift a window to another workspace and
 -- then follow it.
@@ -212,10 +212,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_t     ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
-    , ((modm              , xK_i ), sendMessage (IncMasterN 1))
+    , ((modm              , xK_u ), sendMessage (IncMasterN 1))
 
     -- Deincrement the number of windows in the master area
-    , ((modm              , xK_u), sendMessage (IncMasterN (-1)))
+    , ((modm              , xK_i), sendMessage (IncMasterN (-1)))
 
 
     --------------------------------------------------------------------------------
@@ -325,7 +325,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0,1,2]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
@@ -493,7 +493,7 @@ myStartupHook = do
     setDefaultCursor xC_left_ptr
     spawn "bash ~/autorun.sh"
     spawnOnce "compton &"
-    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 2 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
+    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
     spawnOnce "wicd-client --tray &"
     spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
