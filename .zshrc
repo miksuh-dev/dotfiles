@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -146,8 +147,6 @@ export PATH="$PATH:/snap/bin:/usr/sbin"
 alias npms="npm run start -- --host 172.20.0.1"
 alias ..='cd ..'
 alias ...='cd ../../'
-alias nano='vim'
-alias calc='bc'
+alias vim='nvim'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias rickroll='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-[ -f ~/.secrets ] && source ~/.secrets
+[ -f $HOME/.secrets ] && source $HOME/.secrets

@@ -90,7 +90,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 0
+myBorderWidth   = 1
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -121,7 +121,7 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9", "10"]
 -- colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#111111"
-myFocusedBorderColor = "#400000"
+myFocusedBorderColor = "#00A2FF"
 
 -- Helper function to first shift a window to another workspace and
 -- then follow it.
@@ -149,12 +149,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    , ((modm .|. controlMask, xK_Return), spawn "/usr/local/bin/firefox")
-    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "/usr/local/bin/firefox-private")
+    , ((modm .|. controlMask, xK_Return), spawn "firefox")
+    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "firefox --private-window")
+ 
+    , ((modm, xK_p), spawn "scrcpy -S -w")
     
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
-    , ((modm,               xK_p     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     
     , ((modm .|. shiftMask,               xK_f     ), spawn "~/.config/rofi/scripts/search")
 
@@ -212,10 +213,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_t     ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
-    , ((modm              , xK_i ), sendMessage (IncMasterN 1))
+    , ((modm              , xK_u ), sendMessage (IncMasterN 1))
 
     -- Deincrement the number of windows in the master area
-    , ((modm              , xK_u), sendMessage (IncMasterN (-1)))
+    , ((modm              , xK_i), sendMessage (IncMasterN (-1)))
 
 
     --------------------------------------------------------------------------------
@@ -246,23 +247,23 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --------------------------------------------------------------------------------
 
     -- Tile layout 
-    , ((modm,               xK_t), sendMessage $ JumpToLayout "Tile")   
+    , ((modm,               xK_t), sendMessage $ JumpToLayout "Tile") 
 
     -- Grid layout 
-    , ((modm,               xK_g), sendMessage $ JumpToLayout "Grid")   
+    , ((modm,               xK_g), sendMessage $ JumpToLayout "Grid") 
 
     -- Three column layout 
-    , ((modm,               xK_c), sendMessage $ JumpToLayout "ThreeColumn")   
+    , ((modm,               xK_c), sendMessage $ JumpToLayout "ThreeColumn") 
  
      -- Two pane layout 
-    , ((modm,               xK_n), sendMessage $ JumpToLayout "TwoPane")   
+    , ((modm,               xK_n), sendMessage $ JumpToLayout "TwoPane") 
     
     -- Tabs layout 
-    , ((modm,               xK_b), sendMessage $ JumpToLayout "Tabs")   
+    , ((modm,               xK_v), sendMessage $ JumpToLayout "Tabs") 
 
     -- Full layout 
-    , ((modm,               xK_m), sendMessage $ JumpToLayout "Full")   
-
+    , ((modm,               xK_b), sendMessage $ JumpToLayout "Full") 
+    , ((modm,               xK_m), sendMessage $ JumpToLayout "Full") 
 
     --------------------------------------------------------------------------------
     ------------------------- Quick workspace movement -----------------------------
@@ -325,7 +326,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0,1,2]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
@@ -373,6 +374,7 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
      tiled =  renamed [Replace "Tile"] 
               $ avoidStruts
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+              $ smartBorders
               $ ResizableTall nmaster delta ratio []
     
      grid =   renamed [Replace "Grid"]
@@ -436,6 +438,7 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "flameshot"      --> doFloat
+    , className =? "scrcpy"         --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore 
     -- , className =? "Steam"          --> doFloat
@@ -470,7 +473,7 @@ myManageHook = composeAll
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 myEventHook = do
-    handleEventHook defaultConfig -- <+> fullscreenEventHook
+    handleEventHook def -- <+> fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -478,7 +481,7 @@ myEventHook = do
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = updatePointer (0.5, 0.5) (0, 0)
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -492,10 +495,17 @@ myStartupHook = do
     setWMName "LG3D"
     setDefaultCursor xC_left_ptr
     spawn "bash ~/autorun.sh"
-    spawnOnce "compton &"
-    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 2 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
-    spawnOnce "wicd-client --tray &"
+    -- spawnOnce "compton &"
+    spawnOnce "picom --config $HOME/.config/picom/picom.conf"
+    spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
+    spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
+    spawnOnce "xrandr --output DP-2 --mode 2560x1440 --rate 144 --primary"
+    spawnOnce "xrandr --output DP-0 --mode 2560x1440 --rate 144 --left-of DP-2"
+    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
+    -- spawnOnce "wicd-client --tray &"
+    -- spawnOnce "nitrogen --restore"
     spawnOnce "pasystray &"
+    spawnOnce "nm-applet &"
     spawnOnce "xfce4-clipman &"
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
@@ -535,7 +545,7 @@ main = do
                         , ppUrgent = xmobarColor  myppUrgent "" . wrap "!" "!"  -- Urgent workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         , ppLayout = xmobarColor myppHiddenNoWindows "" . myLayoutPrinter
-                        }
+                        } -- >> updatePointer (0.5, 0.5) (0, 0)
           }
 
 -- A structure containing your configuration settings, overriding

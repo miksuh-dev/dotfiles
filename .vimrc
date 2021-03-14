@@ -19,6 +19,9 @@ set incsearch
 set scrolloff=8
 set noshowmode
 
+set tabstop=2
+set shiftwidth=2
+
 set clipboard=unnamedplus
 
 call plug#begin('~/.vim/plugged')
@@ -42,6 +45,4 @@ endif
 
 let g:netrw_browse_split=2
 let g:netrw_winsize=2
-let g:python3_host_prog = expand('/usr/bin/python3.7')
-let g:python_host_prog = expand('/usr/bin/python2')
 set runtimepath^=~/.vim/bundle/ctrlp.vim

@@ -1,12 +1,10 @@
 #!/bin/bash
 
 xmodmap -e "keycode 49 = Scroll_Lock"
-xbindkeys &
+pkill xbindkeys; xbindkeys
 xset r rate 350 30
-dunst -config $HOME/.config/dunst/dunstrc &
 
-[ -f $HOME/custom_autorun.sh ] && bash $HOME/custom_autorun.sh
+[ -f $HOME/.custom-autorun/autorun_$(hostname).sh ] && sleep 3 && bash $HOME/.custom-autorun/autorun_$(hostname).sh
 
-nitrogen --head=0 --set-zoom-fill $HOME/Pictures/taustakuvat/aika.jpg
-nitrogen --head=1 --set-zoom-fill $HOME/Pictures/taustakuvat/aika.jpg
-nitrogen --head=2 --set-zoom-fill $HOME/Pictures/taustakuvat/aika.jpg
+for id in $(xinput list | grep 'Logitech G Pro' | grep pointer | cut -d '=' -f 2 | cut -f 1);do xinput set-prop $id "Coordinate Transformation Matrix" 1, 0, 0, 0, 1, 0, 0, 0, 1;xinput set-prop $id 'libinput Accel Speed' 0;done
+
