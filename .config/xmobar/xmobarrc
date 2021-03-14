@@ -8,7 +8,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %UnsafeStdinReader%} %date% {%cpu% | %memory% | %swap% "
+   , template = " %UnsafeStdinReader%}%date%{%cpu% | %memory% | %swap% | %battery%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -39,6 +39,15 @@ Config {
         --                     , "--high"     , "darkred"
                              ] 10
         , Run Swap [] 10
+	    , Run Battery [
+	    "-t", "<acstatus>: <left>% - <timeleft>",
+	    "--",
+	    --"-c", "charge_full",
+	    "-O", "AC",
+	    "-o", "Bat",
+	    "-h", "green",
+	    "-l", "red"
+	    ] 10
         , Run UnsafeStdinReader
         
         ]

@@ -17,6 +17,8 @@ import Control.Monad (liftM2)
 import XMonad.Util.Cursor
 import XMonad.Hooks.SetWMName
 
+import System.Posix.Unistd
+
 import XMonad.Layout.TwoPane
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
@@ -494,21 +496,24 @@ myLogHook = updatePointer (0.5, 0.5) (0, 0)
 myStartupHook = do
     setWMName "LG3D"
     setDefaultCursor xC_left_ptr
-    spawn "bash ~/autorun.sh"
-    -- spawnOnce "compton &"
+
     spawnOnce "picom --config $HOME/.config/picom/picom.conf"
     spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
+    spawnOnce "compton &"
+
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
-    spawnOnce "xrandr --output DP-2 --mode 2560x1440 --rate 144 --primary"
-    spawnOnce "xrandr --output DP-0 --mode 2560x1440 --rate 144 --left-of DP-2"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
-    -- spawnOnce "wicd-client --tray &"
-    -- spawnOnce "nitrogen --restore"
-    spawnOnce "pasystray &"
+    
     spawnOnce "nm-applet &"
+    spawnOnce "wicd-client --tray &"
+    
+    spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
+
+    spawn "bash ~/autorun.sh"
+
 
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
