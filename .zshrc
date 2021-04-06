@@ -146,7 +146,7 @@ function decrypt() {
 
 function qrcode() {curl qrenco.de/"$1"}
 
-export PATH="$PATH:~/.npm-global:/bin/snap/bin:/usr/sbin"
+export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/bin/snap/bin:/usr/sbin"
 export NODE_OPTIONS=--max_old_space_size=4096
 
 alias npms="npm run start -- --host 172.19.0.1"

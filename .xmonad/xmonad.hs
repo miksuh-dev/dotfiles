@@ -461,6 +461,7 @@ myManageHook = composeAll
     , className =? "thunderbird" --> doShift "1"
     , className =? "Mattermost" --> doShift "1"
     , className =? "Rocket.Chat" --> doShift "1"
+    , className =? "Steam" --> doShift "3"
 
     -- Apply fullscreen
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
@@ -501,6 +502,10 @@ myStartupHook = do
     spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
     spawnOnce "compton &"
 
+    spawnOnce "xrandr --output DP-0 --mode 2560x1440 --rate 144"
+    spawnOnce "xrandr --output DP-4 --mode 2560x1440 --rate 144 --primary"
+    spawnOnce "xrandr --output DP-2 --mode 2560x1440 --rate 144"
+
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
     
@@ -526,7 +531,7 @@ main = do
             manageDocks 
             <+> myManageHook
             <+> (isDialog --> doF W.shiftMaster)
-            <+> doF W.swapDown
+            -- <+> doF W.swapDown
             
         , startupHook        = myStartupHook
         , layoutHook         = avoidStruts $ myLayout
