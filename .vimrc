@@ -19,50 +19,94 @@ set undofile
 set incsearch
 set scrolloff=8
 set noshowmode
-
 set tabstop=2
 set shiftwidth=2
 
 set clipboard=unnamedplus
 
+let mapleader=' '
+
 call plug#begin('~/.vim/plugged')
-    Plug 'morhetz/gruvbox'
     Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-fugitive'
-    Plug 'leafgarland/typescript-vim'
+    " Plug 'leafgarland/typescript-vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'vim-utils/vim-man'
     Plug 'mbbill/undotree'
     Plug 'tomasiser/vim-code-dark'
+    Plug 'ThePrimeagen/vim-be-good'
     Plug 'nvin-lua/popup.nvim'
-    Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'pangloss/vim-javascript'
-    Plug 'leafgarland/typescript-vim'
-    Plug 'peitalin/vim-jsx-typescript'
-    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-    Plug 'jparise/vim-graphql'
+    " Plug 'pangloss/vim-javascript'
+    " Plug 'leafgarland/typescript-vim'
+    " Plug 'peitalin/vim-jsx-typescript'
+    Plug 'sheerun/vim-polyglot'
+    " Plug 'tyrannicaltoucan/vim-quantum'
+    "Plug 'mxw/vim-jsx'
+    " Plug 'yuezk/vim-js'
+    " Plug 'maxmellon/vim-jsx-pretty'
+    " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+    " Plug 'jparise/vim-graphql'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'preservim/nerdtree'
+    Plug 'tpope/vim-fugitive'
+    Plug 'vim-airline/vim-airline'
+    Plug 'stsewd/fzf-checkout.vim'
 call plug#end()
 
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-eslint',
-  \ 'coc-git',
   \ 'coc-html',
   \ 'coc-highlight',
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-tabnine',
   \ 'coc-tsserver',
+  \ 'coc-tslint',
+  \ 'coc-tslint-plugin',
   \ ]
 
 set hidden
 set cmdheight=2
 set updatetime=300
 
+" Colorizer
 lua require'colorizer'.setup()
+
+" NerdTree
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+
+" Hide help
+let NERDTreeMinimalUI=1
+
+" JS syntax
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+"Fugitive
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gs :G<CR>
+nmap <leader>gc :GBranches<CR>
+
+" FZF
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPS='--reverse'
+
+" Coc
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -186,25 +230,26 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <Leader>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <Leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <Leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <Leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <Leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <Leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 let g:codedark_conservative = 1
 set t_Co=256
 set t_ut=
+
 colorscheme codedark
 
 if executable('rg')
