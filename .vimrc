@@ -52,13 +52,13 @@ let g:coc_global_extensions = [
   \ 'coc-highlight',
   \ 'coc-json',
   \ 'coc-prettier',
-  \ 'coc-tabnine'
+  \ 'coc-tabnine',
+  \ 'coc-tsserver',
   \ ]
 
 set hidden
 set cmdheight=2
 set updatetime=300
-
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -73,6 +73,8 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+nnoremap <silent> K :call CocAction('doHover')<CR>
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -180,7 +182,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
