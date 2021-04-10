@@ -1,5 +1,6 @@
 syntax on
 
+set termguicolors
 set relativenumber
 set nohlsearch
 set hidden
@@ -42,6 +43,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
     Plug 'jparise/vim-graphql'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -59,6 +61,8 @@ let g:coc_global_extensions = [
 set hidden
 set cmdheight=2
 set updatetime=300
+
+lua require'colorizer'.setup()
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
