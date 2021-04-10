@@ -29,7 +29,6 @@ let mapleader=' '
 call plug#begin('~/.vim/plugged')
     Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-fugitive'
-    " Plug 'leafgarland/typescript-vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'vim-utils/vim-man'
@@ -39,19 +38,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvin-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    " Plug 'pangloss/vim-javascript'
-    " Plug 'leafgarland/typescript-vim'
-    " Plug 'peitalin/vim-jsx-typescript'
     Plug 'sheerun/vim-polyglot'
-    " Plug 'tyrannicaltoucan/vim-quantum'
-    "Plug 'mxw/vim-jsx'
-    " Plug 'yuezk/vim-js'
-    " Plug 'maxmellon/vim-jsx-pretty'
-    " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-    " Plug 'jparise/vim-graphql'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     Plug 'stsewd/fzf-checkout.vim'
@@ -68,6 +59,8 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-tslint',
   \ 'coc-tslint-plugin',
+  \ 'coc-pairs',
+  \ 'coc-snippets'
   \ ]
 
 set hidden
@@ -91,6 +84,25 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 
 " Hide help
 let NERDTreeMinimalUI=1
+let g:NERDTreeIgnore = ['^node_modules$']
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
 
 " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -251,6 +263,7 @@ set t_Co=256
 set t_ut=
 
 colorscheme codedark
+set background=dark
 
 if executable('rg')
     let g:rgb_derive_root='true'
