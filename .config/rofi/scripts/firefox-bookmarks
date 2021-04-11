@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+DB="/tmp/places.sqlite"
+QUERY="select b.title, p.url from moz_places as p, moz_bookmarks as b where p.id == b.fk order by p.frecency desc"
+BOOKMARKS=$(sqlite3 "${DB}" "${QUERY}")
+
+if [ -n "$BOOKMARKS" ] ; then
+
+    SELECTED=$( echo "$BOOKMARKS" | rofi -dmenu  --selected -p "bookmarks")
+
+    if [ -n "$BOOKMARKS" ] ; then
+        echo $SELECTED;
+        URL=$( echo "$SELECTED" | awk '{ print $NF }' FS='|')
+        if [ ! -z "$URL" ] ; then
+            firefox "${URL}" 2> /dev/null
+        fi
+    fi
+fi

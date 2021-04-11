@@ -51,8 +51,8 @@ import XMonad.Hooks.ManageHelpers(isFullscreen, isDialog, doFullFloat)
 
 import XMonad.Layout.SimpleDecoration (shrinkText)
 import XMonad.Layout.Spacing
-import XMonad.Layout.MultiToggle 
-import XMonad.Layout.MultiToggle.Instances 
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.ResizableTile
 
 import XMonad.Actions.UpdatePointer -- update mouse postion
@@ -76,7 +76,7 @@ myTabConfig = def { activeColor = "#556064"
                   , fontName = "xft:Bitstream Vera Sans Mono:size=8:bold:antialias=true"
                   }
 
-                  
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -125,6 +125,8 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9", "10"]
 myNormalBorderColor  = "#111111"
 myFocusedBorderColor = "#00A2FF"
 
+{-
+
 -- Helper function to first shift a window to another workspace and
 -- then follow it.
 shiftAndFollow :: WorkspaceId -> X()
@@ -143,6 +145,8 @@ hiddenEmptyWS = do em <- return (isNothing . W.stack)                      -- em
                             return (\ws -> W.tag ws `elem` hs)
                    return (\ws -> em ws && hi ws)
 
+-}
+
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -153,13 +157,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     , ((modm .|. controlMask, xK_Return), spawn "firefox")
     , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "firefox --private-window")
- 
+
     , ((modm, xK_p), spawn "scrcpy -S -w")
-    
+
     -- launch dmenuf
-    , ((modm,               xK_f     ), spawn "rofi -show run -modi ssh,run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
-    
-    , ((modm .|. shiftMask,               xK_f     ), spawn "~/.config/rofi/scripts/search")
+    , ((modm,               xK_f     ), spawn "rofi -show run -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
+    , ((modm,               xK_s     ), spawn "$HOME/.config/rofi/scripts/search")
+    , ((modm,               xK_a     ), spawn "$HOME/.config/rofi/scripts/firefox-bookmarks")
 
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
@@ -168,11 +172,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- close focused window
     , ((modm,                          xK_d     ), kill)
     , ((modm .|. shiftMask,            xK_d     ), kill)
-    
+
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
-   
-    -- ToggleStruts 
+
+    -- ToggleStruts
     , ((modm .|. shiftMask,     xK_space ), sendMessage ToggleStruts)
 
     --  Reset the layouts on the current workspace to default
@@ -180,7 +184,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
-   
+
     -- Move focus to the previous window
     , ((modm .|. shiftMask, xK_Tab   ), windows W.focusUp)
 
@@ -227,49 +231,52 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Print screen
     , ((0 .|. controlMask , xK_Print), spawn "flameshot gui")
-    
+
     -- Launch Pcmanfm
     , ((modm .|. shiftMask , xK_BackSpace), spawn "pcmanfm")
-    
-    -- Launch qalculate 
+
+    -- Launch qalculate
     , ((0,               0x1008FF1D), spawn "snap run qalculate")
 
-    -- Launch pcmanfm 
+    -- Launch pcmanfm
     , ((0,               0x1008FF5D), spawn "pcmanfm")
 
-    -- Launch launch terminal 
+    -- Launch launch terminal
     , ((0,               0x1008FF19), spawn $ XMonad.terminal conf)
 
     -- Launch firefox
     , ((0,               0x1008FF18), spawn "firefox")
-   
+
 
     --------------------------------------------------------------------------------
     ------------------------- Layout binds -----------------------------------------
     --------------------------------------------------------------------------------
 
-    -- Tile layout 
-    , ((modm,               xK_t), sendMessage $ JumpToLayout "Tile") 
+    -- Tile layout
+    , ((modm,               xK_t), sendMessage $ JumpToLayout "Tile")
 
-    -- Grid layout 
-    , ((modm,               xK_g), sendMessage $ JumpToLayout "Grid") 
+    -- Grid layout
+    , ((modm,               xK_g), sendMessage $ JumpToLayout "Grid")
 
-    -- Three column layout 
-    , ((modm,               xK_c), sendMessage $ JumpToLayout "ThreeColumn") 
- 
-     -- Two pane layout 
-    , ((modm,               xK_n), sendMessage $ JumpToLayout "TwoPane") 
-    
-    -- Tabs layout 
-    , ((modm,               xK_v), sendMessage $ JumpToLayout "Tabs") 
+    -- Three column layout
+    , ((modm,               xK_c), sendMessage $ JumpToLayout "ThreeColumn")
 
-    -- Full layout 
-    , ((modm,               xK_b), sendMessage $ JumpToLayout "Full") 
-    , ((modm,               xK_m), sendMessage $ JumpToLayout "Full") 
+     -- Two pane layout
+    , ((modm,               xK_n), sendMessage $ JumpToLayout "TwoPane")
+
+    -- Tabs layout
+    , ((modm,               xK_v), sendMessage $ JumpToLayout "Tabs")
+
+    -- Full layout
+    , ((modm,               xK_b), sendMessage $ JumpToLayout "Full")
+    , ((modm,               xK_m), sendMessage $ JumpToLayout "Full")
+
 
     --------------------------------------------------------------------------------
     ------------------------- Quick workspace movement -----------------------------
     --------------------------------------------------------------------------------
+
+    {-
 
     -- find prev empty workspace
     , ((modm,               xK_Down), moveTo Prev (WSIs hiddenEmptyWS))
@@ -296,13 +303,19 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_Right), moveTo Next HiddenNonEmptyWS)
 
 
-    -- shift to prev workspace and follow 
+    -- shift to prev workspace and follow
     , ((myModMask .|. shiftMask, xK_a), doTo Prev HiddenWS getSortByIndex shiftAndFollow)
     , ((myModMask .|. shiftMask, xK_Left), doTo Prev HiddenWS getSortByIndex shiftAndFollow)
-    -- shift to next workspace and follow 
-    , ((myModMask .|. shiftMask, xK_s), doTo Next HiddenWS getSortByIndex shiftAndFollow) 
+    -- shift to next workspace and follow
+    , ((myModMask .|. shiftMask, xK_s), doTo Next HiddenWS getSortByIndex shiftAndFollow)
     , ((myModMask .|. shiftMask, xK_Right), doTo Next HiddenWS getSortByIndex shiftAndFollow)
-   
+
+    -}
+
+    --------------------------------------------------------------------------------
+    --------------------------------- Custom  --------------------------------------
+    --------------------------------------------------------------------------------
+
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_Escape     ), io (exitWith ExitSuccess))
 
@@ -369,16 +382,16 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
                 three |||
                 two |||
                 tabs |||
-                full 
+                full
             -- )
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled =  renamed [Replace "Tile"] 
+     tiled =  renamed [Replace "Tile"]
               $ avoidStruts
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ smartBorders
               $ ResizableTall nmaster delta ratio []
-    
+
      grid =   renamed [Replace "Grid"]
               $ avoidStruts
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
@@ -388,7 +401,7 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
      three =  renamed [Replace "ThreeColumn"]
               $ avoidStruts
               $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
-              $ ThreeCol 1 (3/100) (1/2) 
+              $ ThreeCol 1 (3/100) (1/2)
 
 
      two =    renamed [Replace "TwoPane"]
@@ -397,12 +410,12 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
               $ TwoPane (3/100) (1/2)
 
 
-     tabs =   renamed [Replace "Tabs"] 
+     tabs =   renamed [Replace "Tabs"]
               $ avoidStruts
               $ noBorders(tabbed shrinkText myTabConfig)
-    
-              
-     full =   renamed [Replace "Full"] 
+
+
+     full =   renamed [Replace "Full"]
               $ avoidStruts
               $ noBorders (Full)
 
@@ -442,7 +455,7 @@ myManageHook = composeAll
     , className =? "flameshot"      --> doFloat
     , className =? "scrcpy"         --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore 
+    , resource  =? "kdesktop"       --> doIgnore
     -- , className =? "Steam"          --> doFloat
     -- , className =? "steam"          --> doFullFloat -- bigpicture-mode
     , className =? "Firefox" <&&> resource =? "Toolkit" --> doFloat -- firefox pip
@@ -465,7 +478,7 @@ myManageHook = composeAll
 
     -- Apply fullscreen
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
-    
+
 ------------------------------------------------------------------------
 -- Event handling
 
@@ -517,22 +530,22 @@ myStartupHook = do
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
 
-    spawn "bash ~/autorun.sh"
+    spawn "bash ~/Scripts/autorun.sh"
 
 
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
     xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc"
     xmproc2 <- spawnPipe "xmobar -x 2 ~/.config/xmobar/xmobarrc"
-    
+
     xmonad
            $ ewmh desktopConfig
         { manageHook =
-            manageDocks 
+            manageDocks
             <+> myManageHook
             <+> (isDialog --> doF W.shiftMaster)
             <+> doF W.swapDown
-            
+
         , startupHook        = myStartupHook
         , layoutHook         = avoidStruts $ myLayout
         , handleEventHook    = myEventHook <+> fullscreenEventHook <+> docksEventHook
@@ -544,7 +557,7 @@ main = do
         , mouseBindings      = myMouseBindings
         , normalBorderColor  = myNormalBorderColor
         , focusedBorderColor = myFocusedBorderColor
-        , logHook = dynamicLogWithPP xmobarPP  
+        , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x >> hPutStrLn xmproc2 x
                         , ppCurrent = xmobarColor myppCurrent "" . wrap "[" "]" -- Current workspace in xmobar
                         , ppVisible = xmobarColor myppVisible ""                -- Visible but not current workspace
@@ -580,7 +593,7 @@ defaults = def {
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-      
+
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,

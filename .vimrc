@@ -127,6 +127,16 @@ let g:rainbow_active = 1
 let g:rainbow_guifgs = ["#FFD700", "#DA70D6", "#87CEFA"]
 let g:rainbow_ctermfgs = ["DarkYellow", "Magenta", "LightBlue"]
 
+" Strip whitespaces on save
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
 " Coc
 
 " Use tab for trigger completion with characters ahead and navigate.
