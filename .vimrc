@@ -24,7 +24,7 @@ set shiftwidth=2
 
 set clipboard=unnamedplus
 
-let mapleader=' '
+let mapleader=','
 
 call plug#begin('~/.vim/plugged')
     Plug 'jremmen/vim-ripgrep'
@@ -43,9 +43,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'preservim/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'ryanoasis/vim-devicons'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     Plug 'stsewd/fzf-checkout.vim'
+    Plug 'frazrepo/vim-rainbow'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -82,9 +85,10 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 
-" Hide help
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeWinSize=30
+
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
@@ -117,6 +121,11 @@ nmap <leader>gc :GBranches<CR>
 " FZF
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPS='--reverse'
+
+" Rainbox brackets
+let g:rainbow_active = 1
+let g:rainbow_guifgs = ["#FFD700", "#DA70D6", "#87CEFA"]
+let g:rainbow_ctermfgs = ["DarkYellow", "Magenta", "LightBlue"]
 
 " Coc
 
