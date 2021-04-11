@@ -35,7 +35,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'mbbill/undotree'
     Plug 'tomasiser/vim-code-dark'
     Plug 'ThePrimeagen/vim-be-good'
-    Plug 'nvin-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'sheerun/vim-polyglot'
