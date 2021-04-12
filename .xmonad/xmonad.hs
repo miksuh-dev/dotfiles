@@ -513,6 +513,7 @@ myStartupHook = do
 
     spawnOnce "picom --config $HOME/.config/picom/picom.conf"
     spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
+    spawnOnce "lxpolkit &"
     spawnOnce "compton &"
 
     spawnOnce "xrandr --output DP-0 --mode 2560x1440 --rate 144"
