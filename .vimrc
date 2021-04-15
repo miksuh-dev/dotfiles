@@ -48,6 +48,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'stsewd/fzf-checkout.vim'
     Plug 'frazrepo/vim-rainbow'
+    Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -280,8 +281,7 @@ let g:codedark_conservative = 1
 set t_Co=256
 set t_ut=
 
-colorscheme codedark
-set background=dark
+colorscheme jellybeans
 
 if executable('rg')
     let g:rgb_derive_root='true'
@@ -290,3 +290,6 @@ endif
 let g:netrw_browse_split=2
 let g:netrw_winsize=2
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_python_provider = 0
