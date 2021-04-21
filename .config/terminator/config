@@ -11,15 +11,17 @@
   paste = <Primary>v
 [profiles]
   [[default]]
-    allow_bold = False
     background_color = "#111111"
     background_darkness = 0.85
     background_type = transparent
     cursor_color = "#aaaaaa"
+    font = Monospace 12
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden
     palette = "#073642:#00a2ff:#24dc65:#b58900:#268bd2:#d33682:#2aa198:#ffffff:#858585:#cb4b16:#586e75:#657b83:#839496:#f9f06b:#93a1a1:#ffffff"
+    use_system_font = False
+    use_theme_colors = True
 [layouts]
   [[default]]
     [[[window0]]]
