@@ -48,7 +48,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'stsewd/fzf-checkout.vim'
     Plug 'frazrepo/vim-rainbow'
-    Plug 'nanotech/jellybeans.vim'
+    Plug 'danilo-augusto/vim-afterglow'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -281,7 +281,8 @@ let g:codedark_conservative = 1
 set t_Co=256
 set t_ut=
 
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme afterglow
 
 if executable('rg')
     let g:rgb_derive_root='true'
