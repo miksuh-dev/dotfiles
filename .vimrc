@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'stsewd/fzf-checkout.vim'
     Plug 'frazrepo/vim-rainbow'
     Plug 'danilo-augusto/vim-afterglow'
+    Plug 'tpope/vim-surround'
 call plug#end()
 
 let g:coc_global_extensions = [
