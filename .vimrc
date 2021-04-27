@@ -39,6 +39,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tomasiser/vim-code-dark'
     Plug 'ThePrimeagen/vim-be-good'
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'sheerun/vim-polyglot'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -128,6 +129,12 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPS='--reverse'
 nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
+
+" Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " " Rainbox brackets
 " let g:rainbow_active = 1
