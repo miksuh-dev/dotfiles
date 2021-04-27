@@ -67,7 +67,8 @@ let g:coc_global_extensions = [
   \ 'coc-tslint',
   \ 'coc-tslint-plugin',
   \ 'coc-pairs',
-  \ 'coc-snippets'
+  \ 'coc-snippets',
+  \ 'coc-sh'
   \ ]
 
 set hidden
