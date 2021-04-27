@@ -22,6 +22,9 @@ set noshowmode
 set tabstop=2
 set shiftwidth=2
 
+set splitright
+set splitbelow
+
 set clipboard=unnamedplus
 
 let mapleader=','
@@ -122,11 +125,13 @@ nmap <leader>gc :GBranches<CR>
 " FZF
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPS='--reverse'
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-g> :GFiles<CR>
 
-" Rainbox brackets
-let g:rainbow_active = 1
-let g:rainbow_guifgs = ["#FFD700", "#DA70D6", "#87CEFA"]
-let g:rainbow_ctermfgs = ["DarkYellow", "Magenta", "LightBlue"]
+" " Rainbox brackets
+" let g:rainbow_active = 1
+" let g:rainbow_guifgs = ["#FFD700", "#DA70D6", "#87CEFA"]
+" let g:rainbow_ctermfgs = ["DarkYellow", "Magenta", "LightBlue"]
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
@@ -167,6 +172,16 @@ endif
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" In insert or command mode, move normally by using Ctrl
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -230,16 +245,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
