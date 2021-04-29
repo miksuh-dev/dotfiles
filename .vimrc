@@ -69,7 +69,7 @@ let g:coc_global_extensions = [
   \ ]
 
 set hidden
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 
 " NerdTree
@@ -82,30 +82,21 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
-nnoremap <leader>n :NERDTreeFocus<CR>
+function! NerdTreeMoveTo()
+    if filereadable(expand('%'))
+        NERDTreeFind
+    else
+        NERDTreeFocus
+    endif
+endfunction
+
+nnoremap <leader>n :call NerdTreeMoveTo()<CR>
+
 let g:NERDTreeWinPos = "left"
 
 let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize=30
-
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
@@ -116,8 +107,8 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 "Fugitive
-nmap <leader>gj :diffget //3<CR>
-nmap <leader>gf :diffget //2<CR>
+" nmap <leader>gj :diffget //3<CR>
+" nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gc :GBranches<CR>
 
@@ -195,9 +186,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -261,11 +249,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <Leader>d  :<C-u>CocList diagnostics<cr>
@@ -284,7 +267,6 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
-" colorscheme jellybeans
 colorscheme afterglow
 
 if executable('rg')
@@ -293,7 +275,6 @@ endif
 
 let g:netrw_browse_split=2
 let g:netrw_winsize=2
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_python_provider = 0
