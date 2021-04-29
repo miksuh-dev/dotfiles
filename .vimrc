@@ -32,7 +32,6 @@ let mapleader=','
 call plug#begin('~/.vim/plugged')
     Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-fugitive'
-    Plug 'vim-utils/vim-man'
     Plug 'ThePrimeagen/vim-be-good'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
@@ -45,6 +44,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     Plug 'stsewd/fzf-checkout.vim'
     Plug 'danilo-augusto/vim-afterglow'
     Plug 'tpope/vim-surround'
@@ -268,6 +268,7 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 colorscheme afterglow
+let g:airline_theme='murmur'
 
 if executable('rg')
     let g:rgb_derive_root='true'
