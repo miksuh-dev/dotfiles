@@ -126,6 +126,7 @@ nmap [h <Plug>(GitGutterPrevHunk)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tabs_label = ''
 let g:airline#extensions#tabline#buffers_label = ''
+let g:airline_section_y = ''
 let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
 let g:airline#extensions#tabline#fnamemod = ':t'
 
