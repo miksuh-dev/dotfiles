@@ -54,6 +54,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'danilo-augusto/vim-afterglow'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
+    Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -95,7 +96,6 @@ let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize=30
 
-
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
 function! IsNERDTreeOpen()
@@ -131,8 +131,6 @@ nmap <leader>gc :GBranches<CR>
 " FZF
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPS='--reverse'
-nnoremap <silent> <C-f> :Files<CR>
-nnoremap <silent> <C-g> :GFiles<CR>
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -140,10 +138,16 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" " Rainbox brackets
-" let g:rainbow_active = 1
-" let g:rainbow_guifgs = ["#FFD700", "#DA70D6", "#87CEFA"]
-" let g:rainbow_ctermfgs = ["DarkYellow", "Magenta", "LightBlue"]
+"Gitgutter
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+"Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#buffers_label = ''
+let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
