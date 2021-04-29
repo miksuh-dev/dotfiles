@@ -32,18 +32,13 @@ let mapleader=','
 call plug#begin('~/.vim/plugged')
     Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-fugitive'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'vim-utils/vim-man'
-    " Plug 'mbbill/undotree'
-    " Plug 'tomasiser/vim-code-dark'
     Plug 'ThePrimeagen/vim-be-good'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'sheerun/vim-polyglot'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'norcalli/nvim-colorizer.lua'
     Plug 'preservim/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -70,15 +65,12 @@ let g:coc_global_extensions = [
   \ 'coc-tslint-plugin',
   \ 'coc-pairs',
   \ 'coc-snippets',
-  \ 'coc-sh'
+  \ 'coc-sh',
   \ ]
 
 set hidden
 set cmdheight=2
 set updatetime=300
-
-" Colorizer
-lua require'colorizer'.setup()
 
 " NerdTree
 " Start NERDTree when Vim starts with a directory argument.
@@ -91,6 +83,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 nnoremap <leader>n :NERDTreeFocus<CR>
+let g:NERDTreeWinPos = "left"
 
 let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
@@ -127,10 +120,6 @@ nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gc :GBranches<CR>
-
-" FZF
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-let $FZF_DEFAULT_OPS='--reverse'
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -294,10 +283,6 @@ nnoremap <silent><nowait> <Leader>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
-
-let g:codedark_conservative = 1
-set t_Co=256
-set t_ut=
 
 " colorscheme jellybeans
 colorscheme afterglow
