@@ -128,13 +128,13 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 "Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tabs_label = ''
-let g:airline#extensions#tabline#buffers_label = ''
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#tabs_label = ''
+" let g:airline#extensions#tabline#buffers_label = ''
 let g:airline_section_y = ''
 let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
-let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
+" let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
@@ -179,6 +179,12 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+
+" Remap window resize to C-left ... C-right
+nnoremap <silent> <C-Left> :vertical resize +3<Cr>
+nnoremap <silent> <C-Right> :vertical resize -3<CR>
+nnoremap <silent> <C-Up> :resize +3
+nnoremap <silent> <C-Down> :resize -3<CR>
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
