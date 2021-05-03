@@ -51,6 +51,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'airblade/vim-gitgutter'
     Plug 'Ivo-Donchev/vim-react-goto-definition'
+    Plug 'unkiwii/vim-nerdtree-sync'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -79,15 +80,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
-function! NerdTreeMoveTo()
-    if filereadable(expand('%'))
-        NERDTreeFind
-    else
-        NERDTreeFocus
-    endif
-endfunction
-
-nnoremap <leader>n :call NerdTreeMoveTo()<CR>
+nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>N :NERDTreeToggle<CR>
 
 let g:NERDTreeWinPos = "left"
@@ -95,6 +88,7 @@ let g:NERDTreeWinPos = "left"
 let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize=30
+let g:nerdtree_sync_cursorline = 1
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
@@ -121,13 +115,13 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 "Airline
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#tabs_label = ''
-" let g:airline#extensions#tabline#buffers_label = ''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#buffers_label = ''
 let g:airline_section_y = ''
 let g:airline#extensions#hunks#enabled=0
-" let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
-" let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
@@ -215,13 +209,9 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Select all
+nnoremap <leader>a ggVG
 
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
