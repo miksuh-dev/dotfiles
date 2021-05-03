@@ -51,7 +51,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'airblade/vim-gitgutter'
     Plug 'Ivo-Donchev/vim-react-goto-definition'
-    Plug 'unkiwii/vim-nerdtree-sync'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -74,21 +73,24 @@ set hidden
 set cmdheight=1
 set updatetime=300
 
-" NerdTree
-" Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+function! NerdTreeToggleFind()
+    if exists("g:NERDTree") && g:NERDTree.IsOpen()
+        NERDTreeClose
+    elseif filereadable(expand('%'))
+        NERDTreeFind
+    else
+        NERDTree
+    endif
+endfunction
 
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>N :NERDTreeToggle<CR>
+nnoremap <leader>n :call NerdTreeToggleFind()<CR>
 
 let g:NERDTreeWinPos = "left"
 
 let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize=30
-let g:nerdtree_sync_cursorline = 1
+let NERDTreeQuitOnOpen = 1
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
