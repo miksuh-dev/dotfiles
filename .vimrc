@@ -174,6 +174,9 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" terminal
+nnoremap <Leader>tt  :split term://zsh <CR>
+
 " Remap window movement to C-h ... C-l
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
