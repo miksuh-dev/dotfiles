@@ -83,7 +83,18 @@ function! NerdTreeToggleFind()
     endif
 endfunction
 
+function! NerdTreeToggle()
+    if exists("g:NERDTree") && g:NERDTree.IsOpen()
+        NERDTreeClose
+    elseif filereadable(expand('%'))
+        NERDTreeFocus
+    else
+        NERDTree
+    endif
+endfunction
+
 nnoremap <leader>n :call NerdTreeToggleFind()<CR>
+nnoremap <leader>N :call NerdTreeToggle()<CR>
 
 let g:NERDTreeWinPos = "left"
 
