@@ -40,8 +40,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'preservim/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'ryanoasis/vim-devicons'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -71,11 +69,17 @@ let g:coc_global_extensions = [
 
 set hidden
 set cmdheight=1
-set updatetime=300
+set updatetime=50
 
-function! NerdTreeToggleFind()
+function! NerdTreeToggle()
     if exists("g:NERDTree") && g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
         NERDTreeClose
+    else
+        NERDTree
+    endif
+endfunction
+
+function! NerdTreeFind()
     elseif filereadable(expand('%'))
         NERDTreeFind
     else
@@ -83,8 +87,8 @@ function! NerdTreeToggleFind()
     endif
 endfunction
 
-nnoremap <leader>n :call NerdTreeToggleFind()<CR>
-nnoremap <leader>N :NERDTreeFocus<CR>
+nnoremap <leader>n :call NerdTreeToggle()<CR>
+nnoremap <leader>N :call NerdTreeFind()<CR>
 
 let g:NERDTreeWinPos = "left"
 
@@ -92,6 +96,7 @@ let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize=30
 let NERDTreeShowHidden=1
+let g:NERDTreeGitStatusConcealBrackets = 1
 
 " " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 " autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
