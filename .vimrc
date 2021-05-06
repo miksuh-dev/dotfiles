@@ -75,15 +75,15 @@ function! NerdTreeToggle()
     if exists("g:NERDTree") && g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
         NERDTreeClose
     else
-        NERDTree
+        NERDTreeFocus
     endif
 endfunction
 
 function! NerdTreeFind()
-    elseif filereadable(expand('%'))
+    if filereadable(expand('%'))
         NERDTreeFind
     else
-        NERDTree
+        NERDTreeFocus
     endif
 endfunction
 
