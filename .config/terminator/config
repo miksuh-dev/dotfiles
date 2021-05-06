@@ -1,27 +1,29 @@
 [global_config]
+  borderless = True
+  extra_styling = False
+  title_hide_sizetext = True
   title_transmit_bg_color = "#111111"
   title_receive_fg_color = "#8ff0a4"
   title_receive_bg_color = "#111111"
   title_inactive_fg_color = "#c0bfbc"
   title_inactive_bg_color = "#111111"
   inactive_color_offset = 1.0
-  title_font = Sans 16
+  title_use_system_font = False
+  title_font = Monospace 12
 [keybindings]
   copy = <Primary>c
   paste = <Primary>v
 [profiles]
   [[default]]
-    background_color = "#111111"
-    background_darkness = 0.85
-    background_type = transparent
+    background_color = "#1a1a1a"
+    background_darkness = 0.7
     cursor_color = "#aaaaaa"
     font = Monospace 12
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden
-    palette = "#073642:#00a2ff:#24dc65:#b58900:#268bd2:#d33682:#2aa198:#ffffff:#858585:#cb4b16:#586e75:#657b83:#839496:#f9f06b:#93a1a1:#ffffff"
+    palette = "#000000:#ee1111:#24ff00:#cdcd00:#0057ff:#cd00cd:#00cdcd:#e5e5e5:#7f7f7f:#ff0500:#35ff00:#faff00:#3f97ff:#ff00ff:#00ffff:#ffffff"
     use_system_font = False
-    use_theme_colors = True
 [layouts]
   [[default]]
     [[[window0]]]

@@ -74,7 +74,7 @@ set cmdheight=1
 set updatetime=300
 
 function! NerdTreeToggleFind()
-    if exists("g:NERDTree") && g:NERDTree.IsOpen()
+    if exists("g:NERDTree") && g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
         NERDTreeClose
     elseif filereadable(expand('%'))
         NERDTreeFind
@@ -83,29 +83,19 @@ function! NerdTreeToggleFind()
     endif
 endfunction
 
-function! NerdTreeToggle()
-    if exists("g:NERDTree") && g:NERDTree.IsOpen()
-        NERDTreeClose
-    elseif filereadable(expand('%'))
-        NERDTreeFocus
-    else
-        NERDTree
-    endif
-endfunction
-
 nnoremap <leader>n :call NerdTreeToggleFind()<CR>
-nnoremap <leader>N :call NerdTreeToggle()<CR>
+nnoremap <leader>N :NERDTreeFocus<CR>
 
 let g:NERDTreeWinPos = "left"
 
 let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize=30
-let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden=1
 
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -221,7 +211,7 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-vnoremap <leader>p "_dP
+vnoremap <leader>d "_d
 
 augroup mygroup
   autocmd!

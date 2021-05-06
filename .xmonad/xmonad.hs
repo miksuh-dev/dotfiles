@@ -121,28 +121,33 @@ myppUrgent = "#DC322F"
 myWorkspaces = ["1","2","3","4","5","6","7","8","9", "10"]
 
 -- colors for unfocused and focused windows, respectively.
+--
 myNormalBorderColor  = "#111111"
 myFocusedBorderColor = "#00A2FF"
 
--- -- Helper function to first shift a window to another workspace and
--- -- then follow it.
--- shiftAndFollow :: WorkspaceId -> X()
--- shiftAndFollow = liftM2 (>>) (windows . W.shift) (windows . W.greedyView)
+{-
 
--- busyHiddenNotSpecial' :: [WorkspaceId] -> X (WindowSpace -> Bool)
--- busyHiddenNotSpecial' ids = do ne <- return (isJust . W.stack)                         -- busy
---                                hi <- do hs <- gets (map W.tag . W.hidden . windowset)  -- hidden
---                                         return (\ws -> W.tag ws `elem` hs)
---                                ns <- return ((`notElem` ids) . W.tag)                  -- not special
---                                return (\ws -> ne ws && hi ws && ns ws)
+-- Helper function to first shift a window to another workspace and
+-- then follow it.
+shiftAndFollow :: WorkspaceId -> X()
+shiftAndFollow = liftM2 (>>) (windows . W.shift) (windows . W.greedyView)
 
--- hiddenEmptyWS :: X (WindowSpace -> Bool)
--- hiddenEmptyWS = do em <- return (isNothing . W.stack)                      -- empty
---                    hi <- do hs <- gets (map W.tag . W.hidden . windowset)  -- hidden
---                             return (\ws -> W.tag ws `elem` hs)
---                    return (\ws -> em ws && hi ws)
+busyHiddenNotSpecial' :: [WorkspaceId] -> X (WindowSpace -> Bool)
+busyHiddenNotSpecial' ids = do ne <- return (isJust . W.stack)                         -- busy
+                               hi <- do hs <- gets (map W.tag . W.hidden . windowset)  -- hidden
+                                        return (\ws -> W.tag ws `elem` hs)
+                               ns <- return ((`notElem` ids) . W.tag)                  -- not special
+                               return (\ws -> ne ws && hi ws && ns ws)
 
-------------------------------------------------------------------------
+hiddenEmptyWS :: X (WindowSpace -> Bool)
+hiddenEmptyWS = do em <- return (isNothing . W.stack)                      -- empty
+                   hi <- do hs <- gets (map W.tag . W.hidden . windowset)  -- hidden
+                            return (\ws -> W.tag ws `elem` hs)
+                   return (\ws -> em ws && hi ws)
+
+-}
+
+----------------------------------------------scrcpy -S -w--------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
@@ -153,7 +158,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_Return), spawn "firefox")
     , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "firefox --private-window")
 
-    , ((modm, xK_p), spawn "scrcpy -S -w")
+    , ((modm, xK_p), spawn "snap run scrcpy -S -w")
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
@@ -271,37 +276,41 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     ------------------------- Quick workspace movement -----------------------------
     --------------------------------------------------------------------------------
 
-    -- -- find prev empty workspace
-    -- , ((modm,               xK_Down), moveTo Prev (WSIs hiddenEmptyWS))
-    -- -- find next empty workspace
-    -- , ((modm,               xK_q), moveTo Next (WSIs hiddenEmptyWS))
-    -- , ((modm,               xK_Up), moveTo Next (WSIs hiddenEmptyWS))
+    {-
+
+    -- find prev empty workspace
+    , ((modm,               xK_Down), moveTo Prev (WSIs hiddenEmptyWS))
+    -- find next empty workspace
+    , ((modm,               xK_q), moveTo Next (WSIs hiddenEmptyWS))
+    , ((modm,               xK_Up), moveTo Next (WSIs hiddenEmptyWS))
 
 
-    -- -- shift to prev empty workspace and follow
-    -- , ((modm .|. shiftMask, xK_Down),
-    --    doTo Prev (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
-    -- -- shift to next empty workspace and follow
-    -- , ((modm .|. shiftMask, xK_q),
-    --    doTo Next (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
-    -- , ((modm .|. shiftMask, xK_Up),
-    --    doTo Next (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
+    -- shift to prev empty workspace and follow
+    , ((modm .|. shiftMask, xK_Down),
+       doTo Prev (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
+    -- shift to next empty workspace and follow
+    , ((modm .|. shiftMask, xK_q),
+       doTo Next (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
+    , ((modm .|. shiftMask, xK_Up),
+       doTo Next (WSIs hiddenEmptyWS) getSortByIndex shiftAndFollow)
 
 
-    -- -- find prev busy workspace
-    -- , ((modm,               xK_a), moveTo Prev HiddenNonEmptyWS)
-    -- , ((modm,               xK_Left), moveTo Prev HiddenNonEmptyWS)
-    -- -- find next busy workspace
-    -- , ((modm,               xK_s), moveTo Next HiddenNonEmptyWS)
-    -- , ((modm,               xK_Right), moveTo Next HiddenNonEmptyWS)
+    -- find prev busy workspace
+    , ((modm,               xK_a), moveTo Prev HiddenNonEmptyWS)
+    , ((modm,               xK_Left), moveTo Prev HiddenNonEmptyWS)
+    -- find next busy workspace
+    , ((modm,               xK_s), moveTo Next HiddenNonEmptyWS)
+    , ((modm,               xK_Right), moveTo Next HiddenNonEmptyWS)
 
 
-    -- -- shift to prev workspace and follow
-    -- , ((myModMask .|. shiftMask, xK_a), doTo Prev HiddenWS getSortByIndex shiftAndFollow)
-    -- , ((myModMask .|. shiftMask, xK_Left), doTo Prev HiddenWS getSortByIndex shiftAndFollow)
-    -- -- shift to next workspace and follow
-    -- , ((myModMask .|. shiftMask, xK_s), doTo Next HiddenWS getSortByIndex shiftAndFollow)
-    -- , ((myModMask .|. shiftMask, xK_Right), doTo Next HiddenWS getSortByIndex shiftAndFollow)
+    -- shift to prev workspace and follow
+    , ((myModMask .|. shiftMask, xK_a), doTo Prev HiddenWS getSortByIndex shiftAndFollow)
+    , ((myModMask .|. shiftMask, xK_Left), doTo Prev HiddenWS getSortByIndex shiftAndFollow)
+    -- shift to next workspace and follow
+    , ((myModMask .|. shiftMask, xK_s), doTo Next HiddenWS getSortByIndex shiftAndFollow)
+    , ((myModMask .|. shiftMask, xK_Right), doTo Next HiddenWS getSortByIndex shiftAndFollow)
+
+    -}
 
     --------------------------------------------------------------------------------
     --------------------------------- Custom  --------------------------------------
@@ -332,7 +341,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [2,0,1]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
@@ -456,7 +465,7 @@ myManageHook = composeAll
     -- , className =? "Firefox" --> doF W.focusDown
 
     -- Moving windows
-    , className =? "Mumble" --> doShift "1"
+    -- , className =? "Mumble" --> doShift "1"
     , className =? "Rambox" --> doShift "1"
      -- , className =? "Terminator" --> doShift "2"
     -- , className =? "robo3t" --> doShift "2"
@@ -515,7 +524,7 @@ myStartupHook = do
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
 
     spawnOnce "nm-applet &"
-    -- spawnOnce "wicd-client --tray &"
+    spawnOnce "wicd-client --tray &"
 
     spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
