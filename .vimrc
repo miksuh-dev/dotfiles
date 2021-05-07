@@ -216,7 +216,7 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-vnoremap <leader>d "_d
+nnoremap <leader>d "_d
 
 augroup mygroup
   autocmd!
@@ -259,7 +259,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <Leader>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <Leader>di  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <Leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
@@ -276,6 +276,7 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 colorscheme afterglow
+hi Normal guibg=NONE ctermbg=NONE
 let g:airline_theme='murmur'
 
 if executable('rg')
