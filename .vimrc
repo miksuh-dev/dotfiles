@@ -275,6 +275,18 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
+func! s:my_colors_setup() abort
+    " this is an example
+    hi Pmenu guibg=#353a3d gui=NONE
+    hi PmenuSel guibg=#6a747a gui=NONE
+    hi PmenuSbar guibg=#bcbcbc
+    hi PmenuThumb guibg=#585858
+endfunc
+
+augroup colorscheme_coc_setup | au!
+    au ColorScheme * call s:my_colors_setup()
+augroup END
+
 colorscheme afterglow
 hi Normal guibg=NONE ctermbg=NONE
 let g:airline_theme='murmur'
