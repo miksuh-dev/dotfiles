@@ -217,6 +217,7 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 nnoremap <leader>d "_d
+nnoremap <Space> @q
 
 augroup mygroup
   autocmd!
