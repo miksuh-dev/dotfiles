@@ -219,6 +219,9 @@ nmap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>d "_d
 nnoremap <Space> @q
 
+" 'edit alternate file' convenience mapping
+nnoremap <BS> <C-^>
+
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
