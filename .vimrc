@@ -110,6 +110,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 " nmap <leader>gj :diffget //3<CR>
 " nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
+nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gc :GBranches<CR>
 
 " Telescope
@@ -171,6 +172,21 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " terminal
 nnoremap <Leader>tt  :split term://zsh <CR>
+" Auto enter insert if in terminal and close window if terminal closes
+
+augroup terminal_settings
+  autocmd!
+
+  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
+
+  " Ignore various filetypes as those will close terminal automatically
+  " Ignore fzf, ranger, coc
+  autocmd TermClose term://*
+        \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
+        \   call nvim_input('<CR>')  |
+        \ endif
+augroup END
 
 " Remap window movement to C-h ... C-l
 nnoremap <C-J> <C-W>j
