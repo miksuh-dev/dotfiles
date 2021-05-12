@@ -49,6 +49,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'airblade/vim-gitgutter'
     Plug 'Ivo-Donchev/vim-react-goto-definition'
+    Plug 'SirVer/ultisnips'
+    Plug 'mlaursen/vim-react-snippets'
 call plug#end()
 
 let g:coc_global_extensions = [
