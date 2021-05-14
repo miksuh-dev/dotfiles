@@ -321,7 +321,7 @@ augroup END
 
 colorscheme afterglow
 hi Normal guibg=NONE ctermbg=NONE
-let g:airline_theme='murmur'
+let g:airline_theme='flatdark'
 
 if executable('rg')
     let g:rgb_derive_root='true'
