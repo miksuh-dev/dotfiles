@@ -523,7 +523,7 @@ myStartupHook = do
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
 
-    spawnOnce "nm-applet &"
+    -- spawnOnce "nm-applet &"
     spawnOnce "wicd-client --tray &"
 
     spawnOnce "pasystray &"
