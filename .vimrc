@@ -2,6 +2,7 @@ syntax on
 
 set termguicolors
 set relativenumber
+set cursorline
 set nohlsearch
 set hidden
 set noerrorbells
