@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ThePrimeagen/vim-be-good'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'sheerun/vim-polyglot'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -53,7 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'SirVer/ultisnips'
   Plug 'mlaursen/vim-react-snippets'
   Plug 'mattn/emmet-vim'
-  Plug 'https://github.com/adelarsq/vim-matchit'
+  Plug 'adelarsq/vim-matchit'
 call plug#end()
 
 let g:coc_global_extensions = [
