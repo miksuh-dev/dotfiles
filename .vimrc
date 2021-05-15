@@ -100,7 +100,7 @@ let g:NERDTreeWinPos = "left"
 
 let NERDTreeMinimalUI=1 " Hide help
 let g:NERDTreeIgnore = ['^node_modules$']
-let g:NERDTreeWinSize=27
+let g:NERDTreeWinSize=25
 let NERDTreeShowHidden=1
 let g:NERDTreeGitStatusConcealBrackets = 1
 
