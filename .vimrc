@@ -52,6 +52,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'Ivo-Donchev/vim-react-goto-definition'
     Plug 'SirVer/ultisnips'
     Plug 'mlaursen/vim-react-snippets'
+    Plug 'mattn/emmet-vim'
+    Plug 'https://github.com/adelarsq/vim-matchit'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -68,6 +70,7 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \ 'coc-snippets',
   \ 'coc-sh',
+  \ 'coc-emmet',
   \ ]
 
 set hidden
@@ -108,6 +111,14 @@ let g:NERDTreeGitStatusConcealBrackets = 1
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 " autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" emmet
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'quote_char': "",
+\      'extends' : 'jsx',
+\  },
+\}
 
 "Fugitive
 " nmap <leader>gj :diffget //3<CR>
