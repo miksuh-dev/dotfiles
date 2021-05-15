@@ -31,29 +31,29 @@ set clipboard=unnamedplus
 let mapleader=','
 
 call plug#begin('~/.vim/plugged')
-    Plug 'jremmen/vim-ripgrep'
-    Plug 'tpope/vim-fugitive'
-    Plug 'ThePrimeagen/vim-be-good'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'preservim/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'tpope/vim-fugitive'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'stsewd/fzf-checkout.vim'
-    Plug 'danilo-augusto/vim-afterglow'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-commentary'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'Ivo-Donchev/vim-react-goto-definition'
-    Plug 'SirVer/ultisnips'
-    Plug 'mlaursen/vim-react-snippets'
-    Plug 'mattn/emmet-vim'
-    Plug 'https://github.com/adelarsq/vim-matchit'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'tpope/vim-fugitive'
+  Plug 'ThePrimeagen/vim-be-good'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'tpope/vim-fugitive'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'stsewd/fzf-checkout.vim'
+  Plug 'danilo-augusto/vim-afterglow'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'Ivo-Donchev/vim-react-goto-definition'
+  Plug 'SirVer/ultisnips'
+  Plug 'mlaursen/vim-react-snippets'
+  Plug 'mattn/emmet-vim'
+  Plug 'https://github.com/adelarsq/vim-matchit'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -78,19 +78,21 @@ set cmdheight=1
 set updatetime=50
 
 function! NerdTreeToggle()
-    if exists("g:NERDTree") && g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
-        NERDTreeClose
-    else
-        NERDTreeFocus
+  if exists("g:NERDTree") && g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
+     if !(tabpagenr('$') == 1 && winnr('$') == 1)
+      NERDTreeClose
     endif
+  else
+    NERDTreeFocus
+  endif
 endfunction
 
 function! NerdTreeFind()
-    if filereadable(expand('%'))
-        NERDTreeFind
-    else
-        NERDTreeFocus
-    endif
+  if filereadable(expand('%'))
+    NERDTreeFind
+  else
+    NERDTreeFocus
+  endif
 endfunction
 
 nnoremap <leader>n :call NerdTreeToggle()<CR>
@@ -114,11 +116,11 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 
 " emmet
 let g:user_emmet_settings = {
-\  'javascript' : {
-\      'quote_char': "",
-\      'extends' : 'jsx',
-\  },
-\}
+  \  'javascript' : {
+  \     'quote_char': "",
+  \     'extends' : 'jsx',
+  \  },
+  \}
 
 "Fugitive
 " nmap <leader>gj :diffget //3<CR>
@@ -148,10 +150,10 @@ let g:airline#extensions#hunks#enabled=0
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
 endfun
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
@@ -160,9 +162,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -182,7 +184,7 @@ endif
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " terminal
 nnoremap <Leader>tt  :split term://zsh <CR>
@@ -197,9 +199,9 @@ augroup terminal_settings
   " Ignore various filetypes as those will close terminal automatically
   " Ignore fzf, ranger, coc
   autocmd TermClose term://*
-        \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
-        \   call nvim_input('<CR>')  |
-        \ endif
+    \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
+    \   call nvim_input('<CR>')  |
+    \ endif
 augroup END
 
 " Remap window movement to C-h ... C-l
@@ -320,15 +322,15 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 func! s:my_colors_setup() abort
-    " this is an example
-    hi Pmenu guibg=#353a3d gui=NONE
-    hi PmenuSel guibg=#6a747a gui=NONE
-    hi PmenuSbar guibg=#bcbcbc
-    hi PmenuThumb guibg=#585858
+  " this is an example
+  hi Pmenu guibg=#353a3d gui=NONE
+  hi PmenuSel guibg=#6a747a gui=NONE
+  hi PmenuSbar guibg=#bcbcbc
+  hi PmenuThumb guibg=#585858
 endfunc
 
 augroup colorscheme_coc_setup | au!
-    au ColorScheme * call s:my_colors_setup()
+  au ColorScheme * call s:my_colors_setup()
 augroup END
 
 colorscheme afterglow
@@ -336,7 +338,7 @@ hi Normal guibg=NONE ctermbg=NONE
 let g:airline_theme='flatdark'
 
 if executable('rg')
-    let g:rgb_derive_root='true'
+  let g:rgb_derive_root='true'
 endif
 
 let g:netrw_browse_split=2
