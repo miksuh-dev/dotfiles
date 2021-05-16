@@ -12,6 +12,7 @@
   "diagnostic.enableMessage": "jump",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": " █ "
+  "diagnostic.virtualTextPrefix": " █ ",
+  "diagnostic.virtualTextLines": 1
 }
 
