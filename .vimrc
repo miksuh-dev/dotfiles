@@ -107,10 +107,6 @@ let g:NERDTreeWinSize=25
 let NERDTreeShowHidden=1
 let g:NERDTreeGitStatusConcealBrackets = 1
 
-" " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-"     \ let buf=bufnr() | buffer# | execute 'normal! \<C-W>w' | execute 'buffer'.buf | endif
-
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 " autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
@@ -141,13 +137,8 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 "Airline
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#tabs_label = ''
-" let g:airline#extensions#tabline#buffers_label = ''
 let g:airline_section_y = ''
 let g:airline#extensions#hunks#enabled=0
-" let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
-" let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
@@ -189,8 +180,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " terminal
 nnoremap <Leader>tt  :split term://zsh <CR>
-" Auto enter insert if in terminal and close window if terminal closes
 
+" Auto enter insert if in terminal and close window if terminal closes
 augroup terminal_settings
   autocmd!
 
@@ -229,16 +220,6 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 noremap <silent>gf :call ReactGotoDef()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -257,6 +238,7 @@ vnoremap <leader>d "_d
 " without yanking it
 vnoremap <leader>p "_dP
 
+" quick macro
 nnoremap <Space> @q
 
 " 'edit alternate file' convenience mapping
@@ -275,17 +257,6 @@ nnoremap <leader>a ggVG
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
