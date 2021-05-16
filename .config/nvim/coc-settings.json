@@ -8,6 +8,10 @@
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true,
   "javascript.validate.enable": false,
-  "diagnostic.checkCurrentLine": true
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.enableMessage": "jump",
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": " █ "
 }
 

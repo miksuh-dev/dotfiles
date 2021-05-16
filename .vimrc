@@ -282,6 +282,9 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+" Show floating info diagnostic info
+nnoremap <silent> <leader>? :call CocAction('diagnosticInfo') <CR>
+
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <Leader>di  :<C-u>CocList diagnostics<cr>
