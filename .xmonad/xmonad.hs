@@ -158,7 +158,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_Return), spawn "firefox")
     , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "firefox --private-window")
 
-    , ((modm, xK_p), spawn "snap run scrcpy -S -w")
+    , ((modm, xK_p), spawn "scrcpy -S -w")
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
@@ -246,6 +246,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Launch firefox
     , ((0,               0x1008FF18), spawn "firefox")
+
+    --------------------------------------------------------------------------------
+    ------------------------------ Media -------------------------------------------
+    --------------------------------------------------------------------------------
+
+    -- Media previous
+    , ((0, 0x1008ff16), spawn "playerctl previous")
+
+    -- Media play
+    , ((0, 0x1008ff14), spawn "playerctl play")
+
+    -- Media stop
+    , ((0, 0x1008ff15), spawn "playerctl stop")
+
+    -- Media next
+    , ((0, 0x1008ff17), spawn "playerctl next")
 
 
     --------------------------------------------------------------------------------
@@ -341,7 +357,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [2,0,1]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
@@ -523,8 +539,8 @@ myStartupHook = do
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
 
-    -- spawnOnce "nm-applet &"
-    spawnOnce "wicd-client --tray &"
+    spawnOnce "nm-applet &"
+    -- spawnOnce "wicd-client --tray &"
 
     spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
@@ -535,7 +551,7 @@ myStartupHook = do
 
 
 main = do
-    xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
+    xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrcPrimary"
     xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc"
     xmproc2 <- spawnPipe "xmobar -x 2 ~/.config/xmobar/xmobarrc"
 
