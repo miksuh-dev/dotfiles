@@ -587,7 +587,7 @@ main = do
                         , ppUrgent = xmobarColor  myppUrgent "" . wrap "!" "!"  -- Urgent workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         , ppLayout = xmobarColor myppHiddenNoWindows "" . myLayoutPrinter
-                        } -- >> updatePointer (0.5, 0.5) (0, 0)
+                        }  >> updatePointer (0.5, 0.5) (0, 0)
           }
 
 -- A structure containing your configuration settings, overriding
