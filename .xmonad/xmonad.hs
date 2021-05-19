@@ -539,7 +539,7 @@ myStartupHook = do
     spawnOnce "xrandr --output DP-2 --mode 2560x1440 --rate 144"
 
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
-    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
+    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor primary --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
 
     spawnOnce "nm-applet &"
     -- spawnOnce "wicd-client --tray &"
