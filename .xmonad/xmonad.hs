@@ -63,6 +63,8 @@ import qualified Data.Map        as M
 import Control.Monad ( liftM2, unless )
 import Data.Maybe    ( isNothing, isJust )
 
+import XMonad.Actions.PhysicalScreens
+import Data.Default
 
 myTabConfig = def { activeColor = "#556064"
                   , inactiveColor = "#3b3b3b"
@@ -356,9 +358,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    [((modm .|. mask, key), f sc)
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        , (f, mask) <- [(viewScreen def, 0), (sendToScreen def, shiftMask)]]
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
