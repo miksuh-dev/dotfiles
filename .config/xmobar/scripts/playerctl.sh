@@ -10,9 +10,17 @@ if [ -x "$(command -v playerctl)" ]; then
 
         if [[ $artist == "" ]]
         then
-            echo -n "$title |"
+            text="$title"
         else
-            echo -n "$artist - $title |"
+            text="$artist - $title"
         fi
+
+
+        if [[ ${#text} -gt 48 ]] ; then
+            echo $text | cut -c1-45 | xargs -I{} echo -n "Playing: {}... |"
+        else
+            echo $text | xargs -I{} echo -n "Playing: {} |"
+        fi
+
     fi
 fi

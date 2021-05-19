@@ -8,7 +8,7 @@ Config {
       -- layout
       , sepChar =  "%"   -- delineator between plugin names and straight text
       , alignSep = "}{"  -- separator between left-right alignment
-      , template = " %UnsafeStdinReader%}%date% {%music% %cpu% | %memory% | %swap% | %battery%"
+      , template = " %UnsafeStdinReader%}%date% {%music% %cpu% | %memory% | %swap%%battery%"
 
       -- general behavior
       , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -23,7 +23,16 @@ Config {
           Run Cpu [] 10,
           Run Memory         [ "--template" ,"Mem: <usedratio>%" ] 10,
           Run Swap [] 10,
-          Run Battery [ ] 10,
+          Run Battery [
+             "--template" , "<acstatus>"
+                , "--" -- battery specific options
+                -- discharging status
+                , "-o"	, " | Batt: <left>% (<timeleft>)"
+                -- AC "on" status
+                , "-O"	, ""
+                -- charged status
+                , "-i"	, ""
+          ] 10,
           Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/playerctl.sh"] "music" 10,
           Run UnsafeStdinReader
       ]

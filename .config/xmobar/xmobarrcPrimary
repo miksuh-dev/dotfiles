@@ -1,0 +1,40 @@
+Config {
+
+   -- appearance
+      font =         "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"
+      , bgColor =      "#111111"
+      , fgColor =      "#eeeeee"
+      , position =     Top
+      -- layout
+      , sepChar =  "%"   -- delineator between plugin names and straight text
+      , alignSep = "}{"  -- separator between left-right alignment
+      , template = " %UnsafeStdinReader%}%date% {%music% %cpu% | %memory% | %swap%%battery%%trayerpad%"
+
+      -- general behavior
+      , lowerOnStart =     True    -- send to bottom of window stack on start
+      , hideOnStart =      False   -- start with window unmapped (hidden)
+      , allDesktops =      False   -- show on all desktops
+      , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
+      , pickBroadest =     False   -- choose widest display (multi-monitor)
+      , persistent =       True    -- enable/disable hiding (True = disabled)
+
+      , commands = [
+        Run Date           "<fc=#eeeeee>%A %d.%m.%Y %R</fc>" "date" 10,
+        Run Cpu [] 10,
+        Run Memory         [ "--template" ,"Mem: <usedratio>%" ] 10,
+        Run Swap [] 10,
+        Run Battery [
+           "--template" , "<acstatus>"
+              , "--" -- battery specific options
+              -- discharging status
+              , "-o"	, "| Batt: <left>% (<timeleft>)"
+              -- AC "on" status
+              , "-O"	, ""
+              -- charged status
+              , "-i"	, ""
+        ] 10,
+        Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/playerctl.sh"] "music" 10,
+        Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/trayer-padding-icon.sh"] "trayerpad" 10,
+        Run UnsafeStdinReader
+      ]
+}
