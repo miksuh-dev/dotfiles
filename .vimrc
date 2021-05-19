@@ -106,6 +106,7 @@ let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize=25
 let NERDTreeShowHidden=1
 let g:NERDTreeGitStatusConcealBrackets = 1
+let NERDTreeQuitOnOpen=1
 
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -234,6 +235,9 @@ nmap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
+nnoremap <leader>c "_c
+vnoremap <leader>c "_c
+
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
@@ -286,12 +290,8 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 nnoremap <silent> <leader>? :call CocAction('diagnosticInfo') <CR>
 
 " Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <Leader>di  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <Leader>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <Leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <Leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
