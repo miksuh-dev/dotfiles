@@ -46,7 +46,7 @@ import XMonad.Layout.Renamed (renamed, Rename(Replace))
 
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers(isFullscreen, isDialog, doFullFloat)
+import XMonad.Hooks.ManageHelpers
 -- import XMonad.Hooks.EwmhDesktops
 
 import XMonad.Layout.SimpleDecoration (shrinkText)
@@ -560,8 +560,14 @@ main = do
 
     xmonad
            $ ewmh desktopConfig
-        { manageHook =
-            manageDocks
+               { manageHook =
+                   composeOne
+            [ checkDock              -?> doIgnore -- equivalent to manageDocks
+            , isDialog               -?> doFloat
+            , className =? "Gimp"    -?> doFloat
+            , className =? "MPlayer" -?> doFloat
+            , return True -?> doF W.swapDown
+            ]
             <+> myManageHook
             <+> (isDialog --> doF W.shiftMaster)
 
