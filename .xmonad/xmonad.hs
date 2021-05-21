@@ -94,7 +94,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -160,7 +160,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_Return), spawn "firefox")
     , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "firefox --private-window")
 
-    , ((modm, xK_p), spawn "scrcpy -S -w")
+    , ((modm, xK_p), spawn "snap run scrcpy -S -w")
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
@@ -352,7 +352,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]] -- w.greedyView
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]] -- w.greedyView
     ++
 
     --
@@ -541,10 +541,10 @@ myStartupHook = do
     spawnOnce "xrandr --output DP-2 --mode 2560x1440 --rate 144"
 
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
-    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor primary --transparent true --alpha 0 --tint 0x111111  --height 18 --width 20 &"
+    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor primary --transparent true --alpha 0 --tint 0x111111  --height 18 --widthtype request &"
 
-    spawnOnce "nm-applet &"
-    -- spawnOnce "wicd-client --tray &"
+    -- spawnOnce "nm-applet &"
+    spawnOnce "wicd-client --tray &"
 
     spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
