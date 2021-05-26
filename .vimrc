@@ -205,7 +205,7 @@ nnoremap <C-H> <C-W>h
 " Remap window resize to C-left ... C-right
 nnoremap <silent> <C-Left> :vertical resize +3<Cr>
 nnoremap <silent> <C-Right> :vertical resize -3<CR>
-nnoremap <silent> <C-Up> :resize +3
+nnoremap <silent> <C-Up> :resize +3<CR>
 nnoremap <silent> <C-Down> :resize -3<CR>
 
 " Use `[g` and `]g` to navigate diagnostics
