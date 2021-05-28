@@ -160,7 +160,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_Return), spawn "firefox")
     , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "firefox --private-window")
 
-    , ((modm, xK_p), spawn "snap run scrcpy -S -w")
+    , ((modm, xK_p), spawn "scrcpy -S -w")
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
@@ -470,6 +470,7 @@ myLayoutPrinter x = x
 --
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
+    , className =? "Vlc"           --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "flameshot"      --> doFloat
     , className =? "scrcpy"         --> doFloat
@@ -543,10 +544,10 @@ myStartupHook = do
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor primary --transparent true --alpha 0 --tint 0x111111  --height 18 --widthtype request &"
 
-    -- spawnOnce "nm-applet &"
-    spawnOnce "wicd-client --tray &"
+    spawnOnce "nm-applet &"
+    -- spawnOnce "wicd-client --tray &"
 
-    spawnOnce "pasystray &"
+    -- spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
     spawnOnce "flameshot &"
     spawnOnce "xscreensaver -no-splash &"
