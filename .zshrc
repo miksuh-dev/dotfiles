@@ -151,8 +151,6 @@ export NODE_OPTIONS=--max_old_space_size=4096
 export EDITOR='vim'
 
 alias npms="npm run start -- --host 172.19.0.1"
-alias ..='cd ..'
-alias ...='cd ../../'
 alias vim='nvim'
 alias ssh="kitty +kitten ssh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
