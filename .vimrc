@@ -55,6 +55,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mlaursen/vim-react-snippets'
   Plug 'mattn/emmet-vim'
   Plug 'adelarsq/vim-matchit'
+  Plug 'vim-scripts/ReplaceWithRegister'
 call plug#end()
 
 let g:coc_global_extensions = [
