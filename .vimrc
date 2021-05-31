@@ -4,10 +4,11 @@ set clipboard=unnamedplus
 set cursorline
 set expandtab
 set hidden
+set hlsearch
 set incsearch
 set nobackup
 set noerrorbells
-set nohlsearch
+" set nohlsearch
 set noshowmode
 set noswapfile
 set nowrap
@@ -193,6 +194,9 @@ augroup terminal_settings
     \   call nvim_input('<CR>')  |
     \ endif
 augroup END
+
+"This unsets the 'last search pattern' register by hitting return
+nnoremap <CR> :noh<CR><CR>
 
 " Remap window movement to C-h ... C-l
 nnoremap <C-J> <C-W>j
