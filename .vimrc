@@ -1,77 +1,75 @@
 syntax on
 
-set termguicolors
-set relativenumber
+set clipboard=unnamedplus
 set cursorline
-set nohlsearch
-set hidden
-set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
 set expandtab
-set smartindent
-set nu
-set nowrap
-set smartcase
-set noswapfile
+set hidden
+set incsearch
 set nobackup
+set noerrorbells
+set nohlsearch
+set noshowmode
+set noswapfile
+set nowrap
+set nu
+set relativenumber
+set scrolloff=8
+set shiftwidth=2
+set shiftwidth=4
+set smartcase
+set smartindent
+set splitbelow
+set splitright
+set tabstop=2
+set tabstop=4 softtabstop=4
+set termguicolors
 set undodir=~/.vim/undodir
 set undofile
-set incsearch
-set scrolloff=8
-set noshowmode
-set tabstop=2
-set shiftwidth=2
-
-set splitright
-set splitbelow
-
-set clipboard=unnamedplus
 
 let mapleader=','
 
 call plug#begin('~/.vim/plugged')
-  Plug 'jremmen/vim-ripgrep'
-  Plug 'tpope/vim-fugitive'
-  Plug 'ThePrimeagen/vim-be-good'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'stsewd/fzf-checkout.vim'
-  Plug 'danilo-augusto/vim-afterglow'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-commentary'
-  Plug 'airblade/vim-gitgutter'
   Plug 'Ivo-Donchev/vim-react-goto-definition'
   Plug 'SirVer/ultisnips'
-  Plug 'mlaursen/vim-react-snippets'
-  Plug 'mattn/emmet-vim'
+  Plug 'ThePrimeagen/vim-be-good'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'adelarsq/vim-matchit'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'danilo-augusto/vim-afterglow'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'mattn/emmet-vim'
+  Plug 'mlaursen/vim-react-snippets'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'preservim/nerdtree'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'stsewd/fzf-checkout.vim'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'vim-scripts/ReplaceWithRegister'
 call plug#end()
 
 let g:coc_global_extensions = [
   \ 'coc-css',
+  \ 'coc-emmet',
   \ 'coc-eslint',
-  \ 'coc-html',
   \ 'coc-highlight',
+  \ 'coc-html',
   \ 'coc-json',
+  \ 'coc-pairs',
   \ 'coc-prettier',
+  \ 'coc-sh',
+  \ 'coc-snippets',
   \ 'coc-tabnine',
-  \ 'coc-tsserver',
   \ 'coc-tslint',
   \ 'coc-tslint-plugin',
-  \ 'coc-pairs',
-  \ 'coc-snippets',
-  \ 'coc-sh',
-  \ 'coc-emmet',
+  \ 'coc-tsserver',
   \ ]
 
 set hidden
