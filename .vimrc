@@ -42,7 +42,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'stsewd/fzf-checkout.vim'
@@ -121,8 +120,8 @@ let g:user_emmet_settings = {
   \}
 
 "Fugitive
-" nmap <leader>gj :diffget //3<CR>
-" nmap <leader>gf :diffget //2<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gj :diffget //3<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gc :GBranches<CR>
