@@ -16,7 +16,6 @@ set nu
 set relativenumber
 set scrolloff=8
 set shiftwidth=2
-set shiftwidth=4
 set smartcase
 set smartindent
 set splitbelow
