@@ -149,10 +149,12 @@ function qrcode() {curl qrenco.de/"$1"}
 export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin"
 export NODE_OPTIONS=--max_old_space_size=4096
 export EDITOR='vim'
+export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 
 alias npms="npm run start -- --host 172.19.0.1"
 alias vim='nvim'
 alias ssh="kitty +kitten ssh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias iOSremote='remotedebug_ios_webkit_adapter --port=9000'
 
 [ -f $HOME/.secrets ] && source $HOME/.secrets

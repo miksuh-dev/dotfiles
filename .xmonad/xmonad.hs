@@ -157,8 +157,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    , ((modm .|. controlMask, xK_Return), spawn "firefox")
-    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "firefox --private-window")
+    , ((modm .|. controlMask, xK_Return), spawn "x-www-browser")
+    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "x-www-browser --private-window")
 
     , ((modm, xK_p), spawn "scrcpy -S -w")
 
@@ -544,8 +544,8 @@ myStartupHook = do
     spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
     spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor primary --transparent true --alpha 0 --tint 0x111111  --height 18 --widthtype request &"
 
-    spawnOnce "nm-applet &"
-    -- spawnOnce "wicd-client --tray &"
+    -- spawnOnce "nm-applet &"
+    spawnOnce "wicd-client --tray &"
 
     -- spawnOnce "pasystray &"
     spawnOnce "xfce4-clipman &"
