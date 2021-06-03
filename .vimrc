@@ -8,7 +8,6 @@ set hlsearch
 set incsearch
 set nobackup
 set noerrorbells
-" set nohlsearch
 set noshowmode
 set noswapfile
 set nowrap
