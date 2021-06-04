@@ -124,10 +124,15 @@ nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gc :GBranches<CR>
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ layout_strategy = "vertical"})<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep({ layout_strategy = "vertical"})<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers({ layout_strategy = "vertical"})<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags({ layout_strategy = "vertical"})<cr>
 
 "Gitgutter
 nmap ]h <Plug>(GitGutterNextHunk)
