@@ -6,7 +6,7 @@ $HOME/Programs/FreeFileSync/fileserver_sync.sh &
 #xrandr --output DP-4 --mode 2560x1440 --panning 2560x1440+2560+0 --rate 144 --primary
 #xrandr --output DP-2 --mode 2560x1440 --panning 2560x1440+5120+0 --rate 144
 
-xrandr --output DP-4 --mode 2560x1440 --rate 144 --rotate -right
+xrandr --output DP-4 --mode 2560x1440 --rate 144 --rotate left
 xrandr --output DP-0 --mode 2560x1440 --right-of DP-4 --rate 144 --primary
 xrandr --output HDMI-0 --mode 2560x1440 --right-of DP-0 --rate 144
 
