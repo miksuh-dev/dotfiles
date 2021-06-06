@@ -15,4 +15,4 @@ xrandr --output DP-0 --mode 2560x1440  --pos 1440x560 --rate 144 --primary
 xrandr --output HDMI-0 --mode 2560x1440 --pos 4000x560 --rate 144
 
 # nitrogen --set-zoom-fill /home/miksuh/Pictures/taustakuvat/5120x1440/armenia_khustup_k13_annihilation_hayk-wallpaper-5120x1440.jpg
-/home/miksuh/Scripts/styli.sh -w 2560 -h 1440 -b bg-fill -s nature
+/home/miksuh/Scripts/styli.sh -w 2560 -h 2560 -b bg-fill -s nature
