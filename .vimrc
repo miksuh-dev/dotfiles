@@ -51,7 +51,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -124,15 +124,78 @@ nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gc :GBranches<CR>
 
 " Telescope
-" nnoremap <leader>ff <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-" nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <c-p> <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ layout_strategy = "vertical"})<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep({ layout_strategy = "vertical"})<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers({ layout_strategy = "vertical"})<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags({ layout_strategy = "vertical"})<cr>
+
+lua << EOF
+local actions = require('telescope.actions')
+
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+        ["<c-s>"] = actions.select_horizontal,
+        ["<c-o>"] = actions.select_vertical,
+        ["<c-q>"] = actions.send_to_qflist,
+      },
+    },
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_position = "bottom",
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "vertical",
+    layout_defaults = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+        preview_height = 40,
+      },
+      center = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 0.95,
+    preview_cutoff = 120,
+    results_height = 0.95,
+    results_width = 0.95,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+EOF
 
 "Gitgutter
 nmap ]h <Plug>(GitGutterNextHunk)
@@ -201,11 +264,44 @@ augroup END
 "This unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
+" Keep selection after indent
+vmap > >gv
+vmap < <gv
+
+" Make Y consistent with C and D
+nnoremap Y y$
+
 " Remap window movement to C-h ... C-l
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+
+nnoremap <C-q> :call ToggleQFList(1)<CR>
+nnoremap <leader>q :call ToggleQFList(0)<CR>
+
+let g:qf_l = 0
+let g:qf_g = 0
+
+fun! ToggleQFList(global)
+    if a:global
+        if g:qf_g == 1
+            let g:qf_g = 0
+            cclose
+        else
+            let g:qf_g = 1
+            copen
+        end
+    else
+        if g:qf_l == 1
+            let g:qf_l = 0
+            lclose
+        else
+            let g:qf_l = 1
+            lopen
+        end
+    endif
+endfun
 
 " Remap window resize to C-left ... C-right
 nnoremap <silent> <C-Left> :vertical resize +3<Cr>
@@ -262,9 +358,6 @@ augroup end
 
 " Select all
 nnoremap <leader>a ggVG
-
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
