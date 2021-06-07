@@ -17,4 +17,4 @@ sleep 1
 xrandr --output HDMI-0 --mode 2560x1440 --pos 4000x560 --rate 144
 
 # nitrogen --set-zoom-fill /home/miksuh/Pictures/taustakuvat/5120x1440/armenia_khustup_k13_annihilation_hayk-wallpaper-5120x1440.jpg
-/home/miksuh/Scripts/changeWallpaper.sh
+$HOME/Scripts/changeWallpaper.sh
