@@ -52,6 +52,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-dadbod'
+  Plug 'kristijanhusak/vim-dadbod-ui'
+  Plug 'kristijanhusak/vim-packager'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -129,6 +132,9 @@ nnoremap <c-p> <cmd>lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+"DB UI
+let g:db_ui_auto_execute_table_helpers = 1
 
 lua << EOF
 local actions = require('telescope.actions')

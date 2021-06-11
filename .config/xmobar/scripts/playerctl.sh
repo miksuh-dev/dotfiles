@@ -16,11 +16,13 @@ if [ -x "$(command -v playerctl)" ]; then
         fi
 
 
+        output="Playing: "
         if [[ ${#text} -gt 48 ]] ; then
-            echo $text | cut -c1-45 | xargs -I{} -0 echo -n "Playing: {}... |"
+            output+="$(echo $text | cut -c1-45)..."
         else
-            echo $text | xargs -I{} echo -n "Playing: {} |"
+            output+=$text
         fi
 
+        echo "${output} |"
     fi
 fi
