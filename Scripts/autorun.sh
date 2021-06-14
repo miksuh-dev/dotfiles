@@ -1,6 +1,5 @@
 #!/bin/bash
 
-xmodmap -e "keycode 49 = Scroll_Lock"
 pkill xbindkeys; xbindkeys
 xset r rate 350 30
 
