@@ -157,15 +157,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    , ((modm .|. controlMask, xK_Return), spawn "x-www-browser")
-    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "x-www-browser --private-window")
+    , ((modm .|. controlMask, xK_Return), spawn "$(which firefox-developer-edition)")
+    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "$(which firefox-developer-edition) --private-window")
 
-    , ((modm, xK_p), spawn "scrcpy -S -w")
+    , ((modm, xK_p), spawn "$(which scrcpy) -S -w")
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     , ((modm,               xK_s     ), spawn "$HOME/.config/rofi/scripts/search")
-    , ((modm,               xK_a     ), spawn "$HOME/.config/rofi/scripts/firefox-bookmarks")
 
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
@@ -476,20 +475,13 @@ myManageHook = composeAll
     , className =? "scrcpy"         --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
-    -- , className =? "Steam"          --> doFloat
-    -- , className =? "steam"          --> doFullFloat -- bigpicture-mode
     , className =? "Firefox" <&&> resource =? "Toolkit" --> doFloat -- firefox pip
     , className =? "MainThrd"       --> doFloat
     , title =? "plasma-desktop"     --> doIgnore
     , className =? "stalonetray"    --> doIgnore
-    -- , className =? "Firefox" --> doF W.focusDown
 
     -- Moving windows
-    -- , className =? "Mumble" --> doShift "1"
     , className =? "Rambox" --> doShift "1"
-     -- , className =? "Terminator" --> doShift "2"
-    -- , className =? "robo3t" --> doShift "2"
-    -- , className =? "Code" --> doShift "3"
     , className =? "Microsoft Teams - Preview" --> doShift "1"
     , className =? "thunderbird" --> doShift "1"
     , className =? "Mattermost" --> doShift "1"
@@ -531,29 +523,10 @@ myLogHook = updatePointer (0.5, 0.5) (0, 0)
 myStartupHook = do
     setWMName "LG3D"
     setDefaultCursor xC_left_ptr
+    spawnOnce "xsetroot -solid black"
 
-    spawnOnce "picom --config $HOME/.config/picom/picom.conf"
-    spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
-    spawnOnce "lxpolkit &"
-    spawnOnce "compton &"
-
-    spawnOnce "xrandr --output DP-0 --mode 2560x1440 --rate 144"
-    spawnOnce "xrandr --output DP-4 --mode 2560x1440 --rate 144 --primary"
-    spawnOnce "xrandr --output DP-2 --mode 2560x1440 --rate 144"
-
-    spawnOnce "dunst -config $HOME/.config/dunst/dunstrc &"
-    spawnOnce "trayer --edge top --align right --padding 10 --SetDockType true --SetPartialStrut true --expand true --monitor primary --transparent true --alpha 0 --tint 0x111111  --height 18 --widthtype request &"
-
-    -- spawnOnce "nm-applet &"
-    spawnOnce "wicd-client --tray &"
-
-    -- spawnOnce "pasystray &"
-    spawnOnce "xfce4-clipman &"
-    spawnOnce "flameshot &"
-    spawnOnce "xscreensaver -no-splash &"
-
+    spawnOnce "bash ~/Scripts/set-screens.sh"
     spawn "bash ~/Scripts/autorun.sh"
-
 
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrcPrimary"
