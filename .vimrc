@@ -55,6 +55,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-dadbod'
   Plug 'kristijanhusak/vim-dadbod-ui'
   Plug 'kristijanhusak/vim-packager'
+  Plug 'mhinz/vim-startify'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -119,6 +120,27 @@ let g:user_emmet_settings = {
   \  },
   \}
 
+" Startify
+ function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" same as above, but show untracked files, honouring .gitignore
+function! s:gitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+let g:startify_lists = [
+        \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+        \ { 'type': 'sessions',  'header': ['   Sessions']       },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+        \ { 'type': 'commands',  'header': ['   Commands']       },
+        \ ]
+
 "Fugitive
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
@@ -143,6 +165,10 @@ local actions = require('telescope.actions')
 
 require('telescope').setup{
   defaults = {
+    file_ignore_patterns = {
+      ".git/.*",
+      "node_modules/.*",
+    },
     mappings = {
       i = {
         ["<esc>"] = actions.close,
