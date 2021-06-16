@@ -73,6 +73,8 @@ let g:coc_global_extensions = [
   \ 'coc-tslint',
   \ 'coc-tslint-plugin',
   \ 'coc-tsserver',
+  \ 'coc-yank',
+  \ 'coc-markdownlint',
   \ ]
 
 set hidden
@@ -378,10 +380,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 nnoremap <silent> <leader>? :call CocAction('diagnosticInfo') <CR>
 
 " Mappings for CoCList
-" Manage extensions.
-nnoremap <silent><nowait> <Leader>e  :<C-u>CocList extensions<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <Leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <Leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
@@ -392,7 +390,6 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 func! s:my_colors_setup() abort
-  " this is an example
   hi Pmenu guibg=#353a3d gui=NONE
   hi PmenuSel guibg=#6a747a gui=NONE
   hi PmenuSbar guibg=#bcbcbc
