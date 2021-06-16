@@ -56,7 +56,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-dadbod'
   Plug 'kristijanhusak/vim-dadbod-ui'
   Plug 'kristijanhusak/vim-packager'
-  Plug 'mhinz/vim-startify'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -120,27 +119,6 @@ let g:user_emmet_settings = {
   \     'extends' : 'jsx',
   \  },
   \}
-
-" Startify
- function! s:gitModified()
-    let files = systemlist('git ls-files -m 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
-
-" same as above, but show untracked files, honouring .gitignore
-function! s:gitUntracked()
-    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
-
-let g:startify_lists = [
-        \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-        \ { 'type': 'sessions',  'header': ['   Sessions']       },
-        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-        \ { 'type': 'commands',  'header': ['   Commands']       },
-        \ ]
 
 "Fugitive
 nmap <leader>gf :diffget //2<CR>
@@ -276,24 +254,6 @@ endif
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
   \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" terminal
-nnoremap <Leader>tt  :split term://zsh <CR>
-
-" Auto enter insert if in terminal and close window if terminal closes
-augroup terminal_settings
-  autocmd!
-
-  autocmd BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
-
-  " Ignore various filetypes as those will close terminal automatically
-  " Ignore fzf, ranger, coc
-  autocmd TermClose term://*
-    \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
-    \   call nvim_input('<CR>')  |
-    \ endif
-augroup END
 
 "This unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
