@@ -1,16 +1,16 @@
 #!/usr/bin/bash
 
-HDMI0=$(xrandr | grep -q "HDMI-0 connected" ; echo $?)
-DP0=$(xrandr | grep -q "DP-0 connected" ; echo $?)
-DP4=$(xrandr | grep -q "DP-4 connected" ; echo $?)
-VGA0=$(xrandr | grep -q "VGA-0 connected" ; echo $?)
-LVDS0=$(xrandr | grep -q "LVDS-0 connected" ; echo $?)
+XRANDR_OUTPUT=$(xrandr)
 
-DP1=$(xrandr | grep -q "DP-1 connected" ; echo $?)
-DP11=$(xrandr | grep -q "DP-1-1 connected" ; echo $?)
-HDMI1=$(xrandr | grep -q "HDMI-1 connected" ; echo $?)
-EDPI1=$(xrandr | grep -q "DP-1-1 connected" ; echo $?)
-
+HDMI0=$(echo $XRANDR_OUTPUT | grep -q "HDMI-0 connected" ; echo $?)
+DP0=$(echo $XRANDR_OUTPUT | grep -q "DP-0 connected" ; echo $?)
+DP4=$(echo $XRANDR_OUTPUT | grep -q "DP-4 connected" ; echo $?)
+VGA0=$(echo $XRANDR_OUTPUT | grep -q "VGA-0 connected" ; echo $?)
+LVDS0=$(echo $XRANDR_OUTPUT | grep -q "LVDS-0 connected" ; echo $?)
+DP1=$(echo $XRANDR_OUTPUT | grep -q "DP-1 connected" ; echo $?)
+DP11=$(echo $XRANDR_OUTPUT | grep -q "DP-1-1 connected" ; echo $?)
+HDMI1=$(echo $XRANDR_OUTPUT | grep -q "HDMI-1 connected" ; echo $?)
+EDPI1=$(echo $XRANDR_OUTPUT | grep -q "DP-1-1 connected" ; echo $?)
 
 if [[ $DP4 -eq 0 && $DP0 -eq 0 && $HDMI0 -eq 0 ]]; then
   # Home - Main PC
