@@ -24,6 +24,7 @@ set tabstop=4 softtabstop=4
 set termguicolors
 set undodir=~/.vim/undodir
 set undofile
+set nowrapscan
 
 let mapleader=','
 
