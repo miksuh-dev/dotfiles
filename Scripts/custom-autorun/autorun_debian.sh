@@ -1,5 +1,5 @@
 #!/bin/bash
 
-/usr/bin/mattermost-desktop &
-/usr/bin/teams &
-/usr/bin/thunderbird &
+pidof mattermost-desktop >/dev/null || /usr/bin/mattermost-desktop &
+pidof teams >/dev/null || /usr/bin/teams &
+pidof thunderbird >/dev/null || /usr/bin/thunderbird &

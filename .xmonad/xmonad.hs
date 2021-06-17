@@ -157,8 +157,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    , ((modm .|. controlMask, xK_Return), spawn "$(which firefox-developer-edition)")
-    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "$(which firefox-developer-edition) --private-window")
+    , ((modm .|. controlMask, xK_Return), spawn "$(which firefox-developer-edition) || $(which firefox-dev)")
+    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "$(which firefox-developer-edition) --private-window || $(which firefox-dev) --private-window")
 
     , ((modm, xK_p), spawn "$(which scrcpy) -S -w")
 
@@ -215,6 +215,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Expand the master area
     , ((modm,               xK_l     ), sendMessage Expand)
+
+    -- Shrink the master area
+    , ((modm,               xK_z     ), sendMessage MirrorShrink)
+
+    -- Expand the master area
+    , ((modm,               xK_a     ), sendMessage MirrorExpand)
+
 
     -- Push window back into tiling
     , ((modm .|. shiftMask, xK_t     ), withFocused $ windows . W.sink)
