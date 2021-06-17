@@ -24,7 +24,7 @@ pidof trayer >/dev/null || trayer --edge top --align right --padding 10 --SetDoc
 if command -v nm-applet &> /dev/null; then
   pidof nm-applet >/dev/null || nm-applet &
 else
-  pidof wicd-client >/dev/null || wicd-client &
+  pgrep wicd-client >/dev/null || wicd-client &
 fi
 
 # Clipboard
