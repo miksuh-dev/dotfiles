@@ -149,7 +149,7 @@ hiddenEmptyWS = do em <- return (isNothing . W.stack)                      -- em
 
 -}
 
-----------------------------------------------scrcpy -S -w--------------------------
+-------------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
@@ -160,7 +160,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_Return), spawn "$(which firefox-developer-edition) || $(which firefox-dev)")
     , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "$(which firefox-developer-edition) --private-window || $(which firefox-dev) --private-window")
 
-    , ((modm, xK_p), spawn "$(which scrcpy) -S -w")
+    , ((modm, xK_p), spawn "~/Scripts/scrcpy.sh")
 
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
