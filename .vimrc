@@ -370,6 +370,9 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
+" Basic
+nnoremap c "_c
+
 " Show floating info diagnostic info
 nnoremap <silent> <leader>? :call CocAction('diagnosticInfo') <CR>
 
