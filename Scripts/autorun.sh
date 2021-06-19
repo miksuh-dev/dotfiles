@@ -18,4 +18,4 @@ for id in $(xinput list | grep 'Logitech G Pro' | grep pointer | cut -d '=' -f 2
 
 # Set screens in correct order
 $HOME/Scripts/set-screens.sh
-$HOME/Scripts/styli.sh -w 2560 -h 2560 -b bg-fill -s nature -n -m 3
+$HOME/Scripts/change-wallpaper.sh
