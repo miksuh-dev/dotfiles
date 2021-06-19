@@ -29,33 +29,44 @@ set nowrapscan
 let mapleader=','
 
 call plug#begin('~/.vim/plugged')
-  Plug 'Ivo-Donchev/vim-react-goto-definition'
-  Plug 'SirVer/ultisnips'
-  Plug 'ThePrimeagen/vim-be-good'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'adelarsq/vim-matchit'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'danilo-augusto/vim-afterglow'
-  Plug 'jremmen/vim-ripgrep'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'mattn/emmet-vim'
-  Plug 'mlaursen/vim-react-snippets'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Basic
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-unimpaired'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'preservim/nerdtree'
+  Plug 'adelarsq/vim-matchit'
+
+  " Syntax/language specific"
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'SirVer/ultisnips'
+  Plug 'mattn/emmet-vim'
   Plug 'sheerun/vim-polyglot'
-  Plug 'stsewd/fzf-checkout.vim'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
+  Plug 'mlaursen/vim-react-snippets'
+
+  " Navigation
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'jremmen/vim-ripgrep'
+
+
+  " Theme
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'tpope/vim-unimpaired'
+  Plug 'danilo-augusto/vim-afterglow'
+  Plug 'kyazdani42/nvim-web-devicons'
+
+  " Git
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+
+  "DB
   Plug 'tpope/vim-dadbod'
   Plug 'kristijanhusak/vim-dadbod-ui'
-  Plug 'kristijanhusak/vim-packager'
+
+  " Other
+  Plug 'ThePrimeagen/vim-be-good'
+
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -75,40 +86,15 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-yank',
   \ 'coc-markdownlint',
+  \ 'coc-explorer',
   \ ]
 
 set hidden
 set cmdheight=1
 set updatetime=50
 
-function! NerdTreeToggle()
-  if exists("g:NERDTree") && g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
-     if !(tabpagenr('$') == 1 && winnr('$') == 1)
-      NERDTreeClose
-    endif
-  else
-    NERDTreeFocus
-  endif
-endfunction
-
-function! NerdTreeFind()
-  if filereadable(expand('%'))
-    NERDTreeFind
-  else
-    NERDTreeFocus
-  endif
-endfunction
-
-nnoremap <leader>n :call NerdTreeToggle()<CR>
-nnoremap <leader>N :call NerdTreeFind()<CR>
-
-let g:NERDTreeWinPos = "left"
-
-let NERDTreeMinimalUI=1 " Hide help
-let g:NERDTreeIgnore = ['^node_modules$']
-let g:NERDTreeWinSize=25
-let NERDTreeShowHidden=1
-let g:NERDTreeGitStatusConcealBrackets = 1
+" coc-explorer
+:nnoremap <leader>n :CocCommand explorer<CR>
 
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -315,7 +301,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-noremap <silent>gf :call ReactGotoDef()<CR>
+nnoremap <silent>gf :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)

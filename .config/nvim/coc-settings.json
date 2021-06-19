@@ -13,6 +13,48 @@
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "█ ",
-  "diagnostic.virtualTextLines": 1
+  "diagnostic.virtualTextLines": 1,
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.keyMappings.global": {
+    "<2-LeftMouse>": false,
+    "t": false,
+    "<bs>": false,
+    "F": false,
+    "il": false,
+    "al": false,
+    "ii": false,
+    "ai": false,
+
+    "[d": false,
+    "]d": false,
+    "[D": false,
+    "]D": false,
+
+    "[c": false,
+    "]c": false,
+
+    "U": ["wait", "gotoParent"],
+    "<<": "gitUnstage",
+    ">>": "gitStage",
+    "cd": "cd",
+    "r": "refresh",
+    "f": "searchRecursive",
+    "R": "refresh",
+    "rn": "rename",
+
+    "<cr>": ["expandable?", "expand", "open"],
+
+    "[h": "markPrev:git",
+    "]h": "markNext:git",
+
+    "[g": "markPrev:diagnosticError:diagnosticWarning",
+    "]g": "markNext:diagnosticError:diagnosticWarning",
+    "[G": "markPrev:diagnosticError",
+    "]G": "markNext:diagnosticError"
+
+  }
 }
+
 
