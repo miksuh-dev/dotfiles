@@ -25,6 +25,7 @@ set termguicolors
 set undodir=~/.vim/undodir
 set undofile
 set nowrapscan
+set wrap linebreak nolist
 
 let mapleader=','
 
