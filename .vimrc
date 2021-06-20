@@ -94,7 +94,18 @@ set cmdheight=1
 set updatetime=50
 
 " coc-explorer
-:nnoremap <leader>n :CocCommand explorer<CR>
+let g:coc_explorer_global_presets = {
+\   'files': {
+\     'sources': [{'name': 'file', 'expand': v:true}]
+\    },
+\   'buffer': {
+\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\   },
+\ }
+
+:nnoremap <leader>n :CocCommand explorer --preset files<CR>
+:nnoremap <leader>b :CocCommand explorer --preset buffer<CR>
+
 
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
