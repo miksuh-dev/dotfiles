@@ -12,7 +12,7 @@ let s:cterm_termfg2   = 39   " Foreground for middle block
 let s:gui_termfg2     = '#F5F5F5'
 
 let s:cterm_normalbg  = 27   " Background for normal mode and file position blocks
-let s:gui_normalbg    = '#5F87FF'
+let s:gui_normalbg    = '#4682b4'
 let s:cterm_normalfg  = 15   " Foreground for normal mode and file position blocks
 let s:gui_normalfg    = '#FFFFFF'
 

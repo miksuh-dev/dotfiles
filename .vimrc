@@ -55,7 +55,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'danilo-augusto/vim-afterglow'
-  Plug 'kyazdani42/nvim-web-devicons'
 
   " Git
   Plug 'airblade/vim-gitgutter'
@@ -402,6 +401,9 @@ let g:airline_theme='flatdark'
 if executable('rg')
   let g:rgb_derive_root='true'
 endif
+
+highlight clear LineNr
+highlight clear SignColumn
 
 let g:netrw_browse_split=2
 let g:netrw_winsize=2
