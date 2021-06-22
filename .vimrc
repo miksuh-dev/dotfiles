@@ -102,8 +102,8 @@ let g:coc_explorer_global_presets = {
 \   },
 \ }
 
-:nnoremap <leader>n :CocCommand explorer --preset files<CR>
-:nnoremap <leader>b :CocCommand explorer --preset buffer<CR>
+nnoremap <leader>n :CocCommand explorer --preset files<CR>
+nnoremap <leader>b :CocCommand explorer --preset buffer<CR>
 
 
 " " JS syntax
