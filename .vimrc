@@ -25,7 +25,6 @@ set termguicolors
 set undodir=~/.vim/undodir
 set undofile
 set nowrapscan
-set wrap linebreak nolist
 
 let mapleader=','
 
@@ -393,6 +392,10 @@ endfunc
 augroup colorscheme_coc_setup | au!
   au ColorScheme * call s:my_colors_setup()
 augroup END
+
+" highlight clear LineNr
+" highlight LineNr guifg=#050505
+" highlight clear SignColumn
 
 colorscheme afterglow
 hi Normal guibg=NONE ctermbg=NONE
