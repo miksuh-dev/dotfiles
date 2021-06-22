@@ -269,32 +269,6 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
-nnoremap <C-q> :call ToggleQFList(1)<CR>
-nnoremap <leader>q :call ToggleQFList(0)<CR>
-
-let g:qf_l = 0
-let g:qf_g = 0
-
-fun! ToggleQFList(global)
-    if a:global
-        if g:qf_g == 1
-            let g:qf_g = 0
-            cclose
-        else
-            let g:qf_g = 1
-            copen
-        end
-    else
-        if g:qf_l == 1
-            let g:qf_l = 0
-            lclose
-        else
-            let g:qf_l = 1
-            lopen
-        end
-    endif
-endfun
-
 " Remap window resize to C-left ... C-right
 nnoremap <silent> <C-Left> :vertical resize +3<Cr>
 nnoremap <silent> <C-Right> :vertical resize -3<CR>
