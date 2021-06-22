@@ -239,7 +239,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-nnoremap <silent> K :call CocAction('doHover')<CR>
+nnoremap <leader>k :call CocAction('doHover')<CR>
 
 " Use <c-space> to trigger completion.
 if has('nvim')
