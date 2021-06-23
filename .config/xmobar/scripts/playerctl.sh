@@ -1,28 +1,28 @@
 #!/bin/bash
 
 if [ -x "$(command -v playerctl)" ]; then
-    playerstatus=$(playerctl status)
+    metadata=$(playerctl metadata --format "{{ status }};{{ artist }};{{ title }}")
 
-    if [[ $playerstatus == "Playing" ]]
-    then
-        artist=$(playerctl metadata artist)
-        title=$(playerctl metadata title)
+    IFS=';'
+    read -a array <<< "$metadata"
 
-        if [[ $artist == "" ]]
-        then
+    if [[ ${array[0]} == "Playing" ]]; then
+        artist=${array[1]}
+        title=${array[2]}
+
+        if [[ $artist == "" ]]; then
             text="$title"
         else
             text="$artist - $title"
         fi
 
-
-        output="Playing: "
-        if [[ ${#text} -gt 48 ]] ; then
-            output+="$(echo $text | cut -c1-45)..."
+        if [[ ${#text} -gt 45 ]] ; then
+            output="$(echo $text | cut -c1-43)..."
         else
-            output+=$text
+            output=$text
         fi
 
-        echo "${output} |"
+        echo "Playing: ${output} |"
+
     fi
 fi
