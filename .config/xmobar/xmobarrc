@@ -8,7 +8,7 @@ Config {
       -- layout
       , sepChar =  "%"   -- delineator between plugin names and straight text
       , alignSep = "}{"  -- separator between left-right alignment
-      , template = " %UnsafeStdinReader%} %date% {%music% %cpu% | %memory% | %swap%%battery%"
+      , template = " %UnsafeStdinReader%} %date% {%music% %volume% | %cpu% | %memory% | %swap%%battery%"
 
       -- general behavior
       , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -34,6 +34,7 @@ Config {
                 , "-i"	, ""
           ] 10,
           Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/playerctl.sh"] "music" 10,
+          Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/volume.sh"] "volume" 5,
           Run UnsafeStdinReader
       ]
 }
