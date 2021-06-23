@@ -108,7 +108,7 @@ nnoremap <leader>b :CocCommand explorer --preset buffer<CR>
 
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-" autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " emmet
 let g:user_emmet_settings = {
