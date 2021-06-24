@@ -271,9 +271,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Media next
     , ((0, 0x1008ff17), spawn "playerctl next")
 
-    , ((0, 0x1008ff13  ), spawn "pactl -- set-sink-volume 0 +3%")
+    , ((0, 0x1008ff11  ), spawn "pactl set-sink-volume @DEFAULT_SINK@ -3%")
 
-    , ((0, 0x1008ff11  ), spawn "pactl -- set-sink-volume 0 -3%")
+    , ((0, 0x1008ff13  ), spawn "pactl set-sink-volume @DEFAULT_SINK@ +3%")
+
     --------------------------------------------------------------------------------
     ------------------------- Layout binds -----------------------------------------
     --------------------------------------------------------------------------------
