@@ -71,7 +71,9 @@ DISABLE_UPDATE_PROMPT="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent git sudo zsh-autosuggestions)
+plugins=(ssh-agent git sudo zsh-autosuggestions zsh-vi-mode zsh-syntax-highlighting)
+
+ZVM_VI_HIGHLIGHT_BACKGROUND=#5a647e
 
 source $ZSH/oh-my-zsh.sh
 
