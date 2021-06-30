@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'adelarsq/vim-matchit'
+  Plug 'voldikss/vim-floaterm'
 
   " Syntax/language specific"
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -86,6 +87,7 @@ let g:coc_global_extensions = [
   \ 'coc-yank',
   \ 'coc-markdownlint',
   \ 'coc-explorer',
+  \ 'coc-db',
   \ ]
 
 set hidden
@@ -125,6 +127,9 @@ nmap <leader>gs :G<CR>
 nmap <leader>gb :Gblame<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gc :GBranches<CR>
+
+" FloatTerm
+nmap <leader>ft :FloatermNew --height=0.95 --width=0.95 --wintype=float --name=floaterm1<CR>
 
 " Telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
