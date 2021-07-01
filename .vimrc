@@ -141,6 +141,7 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "DB UI
 let g:db_ui_auto_execute_table_helpers = 1
+let g:db_ui_force_echo_notifications = 1
 
 lua << EOF
 local actions = require('telescope.actions')
