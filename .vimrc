@@ -37,6 +37,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/popup.nvim'
   Plug 'adelarsq/vim-matchit'
   Plug 'voldikss/vim-floaterm'
+  Plug 'tpope/vim-repeat'
 
   " Syntax/language specific"
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -216,6 +217,14 @@ EOF
 "Gitgutter
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
+
+omap ih <Plug>(GitGutterTextObjectInnerPending)
+omap ah <Plug>(GitGutterTextObjectOuterPending)
+xmap ih <Plug>(GitGutterTextObjectInnerVisual)
+xmap ah <Plug>(GitGutterTextObjectOuterVisual)
+
+" nmap ghs <Plug>(GitGutterStageHunk)
+" nmap ghu <Plug>(GitGutterUndoHunk)
 
 "Airline
 let g:airline_section_y = ''
