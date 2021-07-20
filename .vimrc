@@ -51,7 +51,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'jremmen/vim-ripgrep'
 
-
   " Theme
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -67,7 +66,6 @@ call plug#begin('~/.vim/plugged')
 
   " Other
   Plug 'ThePrimeagen/vim-be-good'
-
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -325,6 +323,9 @@ nnoremap <Space> @q
 
 " 'edit alternate file' convenience mapping
 nnoremap <BS> <C-^>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '>-2<CR>gv=gv
 
 augroup mygroup
   autocmd!
