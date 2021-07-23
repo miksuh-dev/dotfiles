@@ -5,7 +5,7 @@ sleep 3
 $HOME/Scripts/startup.sh
 
 # Increase key speed
-xset r rate 300 50
+xset r rate 400 50
 
 # Computer specific custom startup
 [ -f $HOME/Scripts/custom-autorun/autorun_$(hostname).sh ] && bash $HOME/Scripts/custom-autorun/autorun_$(hostname).sh
