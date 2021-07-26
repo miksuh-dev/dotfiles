@@ -21,7 +21,7 @@ Config {
       , commands = [
         Run Date           "<fc=#eeeeee>%A %d.%m.%Y %R</fc>" "date" 10,
         Run Cpu [] 10,
-        Run Memory         [ "--template" ,"Mem: <usedratio>%" ] 10,
+        Run Memory         [ "--template" ,"Mem: <usedratio>% " ] 10,
         Run Battery [
            "--template" , "<acstatus>"
               , "--" -- battery specific options
