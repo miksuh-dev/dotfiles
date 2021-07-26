@@ -40,7 +40,7 @@ elif [[ $EDPI1 -eq 0 && $HDMI1 -eq 0 && $DP11 -eq 0 ]]; then
   if [ "$HOSTNAME" = "debian" ]; then
     xrandr --output eDP-1 --mode 1920x1080 --primary
     xrandr --output HDMI-1 --mode 1920x1080 --right-of eDP-1
-    xrandr --output DP-1-1 --mode 1920x1080 --right-of HDMI-1 --rotate left
+    xrandr --output DP-1-1 --mode 1920x1080 --right-of HDMI-1
   fi
 elif [[ $EDPI1 -eq 0 ]]; then
   # Single screen - Work PC
