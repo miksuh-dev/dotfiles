@@ -45,7 +45,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'mlaursen/vim-react-snippets'
-  Plug 'lfilho/cosco.vim'
 
   " Navigation
   Plug 'nvim-telescope/telescope.nvim'
@@ -138,9 +137,6 @@ nnoremap <leader>fs <cmd>lua require('telescope.builtin').git_status()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-" Cosco
-autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
 
 "DB UI
 let g:db_ui_auto_execute_table_helpers = 1
