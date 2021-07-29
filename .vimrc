@@ -36,7 +36,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'adelarsq/vim-matchit'
-  Plug 'voldikss/vim-floaterm'
   Plug 'tpope/vim-repeat'
 
   " Syntax/language specific"
@@ -48,7 +47,7 @@ call plug#begin('~/.vim/plugged')
 
   " Navigation
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'jremmen/vim-ripgrep'
 
   " Theme
@@ -63,9 +62,6 @@ call plug#begin('~/.vim/plugged')
   "DB
   Plug 'tpope/vim-dadbod'
   Plug 'kristijanhusak/vim-dadbod-ui'
-
-  " Other
-  Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -126,9 +122,6 @@ nmap <leader>gs :G<CR>
 nmap <leader>gb :Gblame<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gc :GBranches<CR>
-
-" FloatTerm
-nmap <leader>ft :FloatermNew --height=0.95 --width=0.95 --wintype=float --name=floaterm1<CR>
 
 " Telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -252,8 +245,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-nnoremap <leader>k :call CocAction('doHover')<CR>
-
 " Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -288,10 +279,9 @@ nnoremap <silent> <C-Right> :vertical resize -3<CR>
 nnoremap <silent> <C-Up> :resize +3<CR>
 nnoremap <silent> <C-Down> :resize -3<CR>
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <Leader>k :call CocAction('diagnosticPrevious')<CR>
+nnoremap <Leader>j :call CocAction('diagnosticNext')<CR>
+
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -377,13 +367,13 @@ nnoremap <silent> <leader>? :call CocAction('diagnosticInfo') <CR>
 
 " Mappings for CoCList
 " Search workspace symbols.
-nnoremap <silent><nowait> <Leader>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent><nowait> <Leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <Leader>j  :<C-u>CocNext<CR>
+" nnoremap <silent><nowait> <Leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
+" nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
+" nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 func! s:my_colors_setup() abort
   hi Pmenu guibg=#353a3d gui=NONE
