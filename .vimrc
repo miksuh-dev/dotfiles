@@ -317,6 +317,17 @@ vnoremap <leader>d "_d
 nnoremap <leader>c "_c
 vnoremap <leader>c "_c
 
+" Keeping it centered
+noremap n nzzzv
+noremap N Nzzzv
+nnoremap J mzJ`z
+
+" Undo breakpoints
+inoremap , , <c-g>u
+inoremap . . <c-g>u
+inoremap ! ! <c-g>u
+inoremap ? ? <c-g>u
+
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
