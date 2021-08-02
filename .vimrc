@@ -223,6 +223,8 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 "Airline
 let g:airline_section_y = ''
 let g:airline#extensions#hunks#enabled=0
+let g:airline_highlighting_cache = 1
+let g:airline_experimental=1
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
