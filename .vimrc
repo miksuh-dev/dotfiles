@@ -206,6 +206,9 @@ require('telescope').setup{
 EOF
 
 "Gitgutter
+" Only run on save
+autocmd BufWritePost * GitGutter
+
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
