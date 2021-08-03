@@ -333,8 +333,8 @@ nnoremap <Space> @q
 nnoremap <BS> <C-^>
 
 " Jump longer
-noremap <Up> 5k
-noremap <Down> 5j
+noremap <Up> 3k
+noremap <Down> 3j
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
