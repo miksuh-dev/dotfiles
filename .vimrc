@@ -65,22 +65,17 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 let g:coc_global_extensions = [
-  \ 'coc-css',
-  \ 'coc-emmet',
   \ 'coc-eslint',
   \ 'coc-highlight',
   \ 'coc-html',
   \ 'coc-json',
   \ 'coc-pairs',
   \ 'coc-prettier',
-  \ 'coc-sh',
   \ 'coc-snippets',
   \ 'coc-tabnine',
-  \ 'coc-tslint',
   \ 'coc-tslint-plugin',
   \ 'coc-tsserver',
   \ 'coc-yank',
-  \ 'coc-markdownlint',
   \ 'coc-explorer',
   \ 'coc-db',
   \ ]
