@@ -342,6 +342,9 @@ nnoremap <BS> <C-^>
 noremap <Up> 3k
 noremap <Down> 3j
 
+noremap <C-Up> 5k
+noremap <c-Down> 5j
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
 
