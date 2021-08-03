@@ -65,22 +65,17 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 let g:coc_global_extensions = [
-  \ 'coc-css',
-  \ 'coc-emmet',
   \ 'coc-eslint',
   \ 'coc-highlight',
   \ 'coc-html',
   \ 'coc-json',
   \ 'coc-pairs',
   \ 'coc-prettier',
-  \ 'coc-sh',
   \ 'coc-snippets',
   \ 'coc-tabnine',
-  \ 'coc-tslint',
   \ 'coc-tslint-plugin',
   \ 'coc-tsserver',
   \ 'coc-yank',
-  \ 'coc-markdownlint',
   \ 'coc-explorer',
   \ 'coc-db',
   \ ]
@@ -206,6 +201,9 @@ require('telescope').setup{
 EOF
 
 "Gitgutter
+" Only run on save
+autocmd BufWritePost * GitGutter
+
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
@@ -220,6 +218,8 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 "Airline
 let g:airline_section_y = ''
 let g:airline#extensions#hunks#enabled=0
+let g:airline_highlighting_cache = 1
+let g:airline_experimental=1
 
 " Strip whitespaces on save
 function! <SID>StripTrailingWhitespaces()
@@ -337,6 +337,10 @@ nnoremap <Space> @q
 
 " 'edit alternate file' convenience mapping
 nnoremap <BS> <C-^>
+
+" Jump longer
+noremap <Up> 3k
+noremap <Down> 3j
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
