@@ -332,6 +332,10 @@ nnoremap <Space> @q
 " 'edit alternate file' convenience mapping
 nnoremap <BS> <C-^>
 
+" Jump longer
+noremap <Up> 5k
+noremap <Down> 5j
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
 
