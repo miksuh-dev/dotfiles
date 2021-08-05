@@ -37,12 +37,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/popup.nvim'
   Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-repeat'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+  Plug 'nvim-treesitter/playground'
 
   " Syntax/language specific"
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'SirVer/ultisnips'
   Plug 'mattn/emmet-vim'
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
   Plug 'mlaursen/vim-react-snippets'
 
   " Navigation
@@ -53,7 +55,7 @@ call plug#begin('~/.vim/plugged')
   " Theme
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'danilo-augusto/vim-afterglow'
+  Plug 'tanvirtin/monokai.nvim'
 
   " Git
   Plug 'airblade/vim-gitgutter'
@@ -130,9 +132,35 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 let g:db_ui_auto_execute_table_helpers = 1
 let g:db_ui_force_echo_notifications = 1
 
-lua << EOF
-local actions = require('telescope.actions')
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
 
+
+lua << EOF
 require('telescope').setup{
   defaults = {
     file_ignore_patterns = {
@@ -141,10 +169,11 @@ require('telescope').setup{
     },
     mappings = {
       i = {
-        ["<esc>"] = actions.close,
-        ["<c-s>"] = actions.select_horizontal,
-        ["<c-o>"] = actions.select_vertical,
-        ["<c-q>"] = actions.send_to_qflist,
+        ["<esc>"] = require("telescope.actions").close,
+        ["<c-s>"] = require("telescope.actions").select_horizontal,
+        ["<c-o>"] = require("telescope.actions").select_vertical,
+        ["<c-q>"] = require("telescope.actions").send_to_qflist,
+
       },
     },
     vimgrep_arguments = {
@@ -156,7 +185,6 @@ require('telescope').setup{
       '--column',
       '--smart-case'
     },
-    prompt_position = "bottom",
     prompt_prefix = "> ",
     selection_caret = "> ",
     entry_prefix = "  ",
@@ -164,31 +192,23 @@ require('telescope').setup{
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    layout_defaults = {
+    layout_config = {
       horizontal = {
         mirror = false,
       },
       vertical = {
-        mirror = false,
-        preview_height = 40,
-      },
-      center = {
         mirror = false,
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    shorten_path = true,
     winblend = 0,
-    width = 0.95,
-    preview_cutoff = 120,
-    results_height = 0.95,
-    results_width = 0.95,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
     color_devicons = true,
     use_less = true,
+    path_display = {},
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
@@ -396,8 +416,15 @@ augroup END
 " highlight LineNr guifg=#050505
 " highlight clear SignColumn
 
-let g:afterglow_blackout=1
-colorscheme afterglow
+" let g:afterglow_blackout=1
+" colorscheme afterglow
+colorscheme monokai
+
+
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 hi Normal guibg=NONE ctermbg=NONE
 let g:airline_theme='flatdark'
