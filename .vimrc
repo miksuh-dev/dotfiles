@@ -396,7 +396,9 @@ augroup END
 " highlight LineNr guifg=#050505
 " highlight clear SignColumn
 
+let g:afterglow_blackout=1
 colorscheme afterglow
+
 hi Normal guibg=NONE ctermbg=NONE
 let g:airline_theme='flatdark'
 
