@@ -420,6 +420,7 @@ augroup END
 " colorscheme afterglow
 colorscheme monokai
 
+hi Visual guifg=NONE guibg=#636c81 gui=none
 
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
