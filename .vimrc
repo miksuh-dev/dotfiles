@@ -420,7 +420,12 @@ augroup END
 " colorscheme afterglow
 colorscheme monokai
 
+
+" Visual line color
 hi Visual guifg=NONE guibg=#636c81 gui=none
+
+" Coc-Yank color
+hi HighlightedyankRegion cterm=bold gui=bold ctermbg=0 guibg=#636c81
 
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
