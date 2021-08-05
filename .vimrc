@@ -322,12 +322,6 @@ noremap n nzzzv
 noremap N Nzzzv
 nnoremap J mzJ`z
 
-" Undo breakpoints
-inoremap , , <c-g>u
-inoremap . . <c-g>u
-inoremap ! ! <c-g>u
-inoremap ? ? <c-g>u
-
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
@@ -339,11 +333,8 @@ nnoremap <Space> @q
 nnoremap <BS> <C-^>
 
 " Jump longer
-noremap <Up> 3k
-noremap <Down> 3j
-
-noremap <C-Up> 5k
-noremap <c-Down> 5j
+noremap <Up> 5k
+noremap <Down> 5j
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
