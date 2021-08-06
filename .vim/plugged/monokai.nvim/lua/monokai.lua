@@ -23,12 +23,10 @@ M.classic = {
     orange = '#fd971f',
     purple = '#ae81ff',
     red = '#e95678',
-    diff_add_fg = '#6a8f1f',
-    diff_add_bg = '#002800',
-    diff_remove_fg = '#4a0f23',
-    diff_remove_bg = '#3f0001',
+    diff_add_bg = '#038604',
+    diff_remove_bg ='#830000',
     diff_change_fg = '#7AA6DA',
-    diff_change_bg = '#537196',
+    diff_change_bg = '#3465a4',
     none = 'NONE'
 }
 
@@ -53,9 +51,7 @@ M.pro = {
     orange = '#FC9867',
     purple = '#AB9DF2',
     red = '#FD6883',
-    diff_add_fg = '#6A8F1F',
     diff_add_bg = '#002800',
-    diff_remove_fg = '#4A0F23',
     diff_remove_bg = '#3f0001',
     diff_change_fg = '#7AA6DA',
     diff_change_bg = '#537196',

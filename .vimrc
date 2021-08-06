@@ -47,6 +47,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   " Plug 'sheerun/vim-polyglot'
   Plug 'mlaursen/vim-react-snippets'
+  Plug 'tomarrell/vim-npr' "Resolve React absolute paths
 
   " Navigation
   Plug 'nvim-telescope/telescope.nvim'
