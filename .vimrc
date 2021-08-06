@@ -210,9 +210,13 @@ require('telescope').setup{
     layout_config = {
       horizontal = {
         mirror = false,
+        width = 0.95,
+        height = 0.9,
       },
       vertical = {
         mirror = false,
+        width = 0.95,
+        height = 0.9,
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
@@ -352,6 +356,13 @@ vnoremap <leader>d "_d
 nnoremap <leader>c "_c
 vnoremap <leader>c "_c
 
+nnoremap <leader>D "_D
+vnoremap <leader>D "_D
+
+nnoremap <leader>C "_C
+vnoremap <leader>C "_C
+
+
 " Keeping it centered
 noremap n nzzzv
 noremap N Nzzzv
@@ -395,10 +406,13 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
+
+" Quick save
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
