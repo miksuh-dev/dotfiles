@@ -40,9 +40,27 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'rhysd/clever-f.vim'
+
+  " Coc
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = [
+        \ 'coc-eslint',
+        \ 'coc-highlight',
+        \ 'coc-html',
+        \ 'coc-json',
+        \ 'coc-pairs',
+        \ 'coc-prettier',
+        \ 'coc-snippets',
+        \ 'coc-tabnine',
+        \ 'coc-tslint-plugin',
+        \ 'coc-tsserver',
+        \ 'coc-yank',
+        \ 'coc-explorer',
+        \ 'coc-db',
+        \ ]
 
   " Syntax/language specific"
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'SirVer/ultisnips'
   Plug 'mattn/emmet-vim'
   Plug 'mlaursen/vim-react-snippets'
@@ -51,7 +69,6 @@ call plug#begin('~/.vim/plugged')
   " Navigation
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'jremmen/vim-ripgrep'
-  Plug 'rhysd/clever-f.vim'
 
   " Theme
   Plug 'vim-airline/vim-airline'
@@ -66,22 +83,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-dadbod'
   Plug 'kristijanhusak/vim-dadbod-ui'
 call plug#end()
-
-let g:coc_global_extensions = [
-  \ 'coc-eslint',
-  \ 'coc-highlight',
-  \ 'coc-html',
-  \ 'coc-json',
-  \ 'coc-pairs',
-  \ 'coc-prettier',
-  \ 'coc-snippets',
-  \ 'coc-tabnine',
-  \ 'coc-tslint-plugin',
-  \ 'coc-tsserver',
-  \ 'coc-yank',
-  \ 'coc-explorer',
-  \ 'coc-db',
-  \ ]
 
 set hidden
 set cmdheight=1
