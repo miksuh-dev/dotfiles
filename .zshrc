@@ -158,5 +158,6 @@ alias ssh="kitty +kitten ssh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias iOSremote='remotedebug_ios_webkit_adapter --port=9000'
 alias DBUI="tmux rename-window "DBUI" && nvim -c ':DBUI'"
+alias t='tmux'
 
 [ -f $HOME/.secrets ] && source $HOME/.secrets
