@@ -45,13 +45,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'SirVer/ultisnips'
   Plug 'mattn/emmet-vim'
-  " Plug 'sheerun/vim-polyglot'
   Plug 'mlaursen/vim-react-snippets'
   Plug 'tomarrell/vim-npr' "Resolve React absolute paths
 
   " Navigation
   Plug 'nvim-telescope/telescope.nvim'
-  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'jremmen/vim-ripgrep'
 
   " Theme
@@ -139,7 +137,6 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -322,6 +319,8 @@ nnoremap <silent> <C-Down> :resize -3<CR>
 nnoremap <Leader>k :call CocAction('diagnosticPrevious')<CR>
 nnoremap <Leader>j :call CocAction('diagnosticNext')<CR>
 
+" Color picker
+nnoremap <silent> <leader>p :call CocAction('pickColor')<CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -431,8 +430,6 @@ nnoremap <silent> <leader>? :call CocAction('diagnosticInfo') <CR>
 " Resume latest coc list.
 " nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
-" let g:afterglow_blackout=1
-" colorscheme afterglow
 colorscheme monokai
 
 
