@@ -51,6 +51,7 @@ call plug#begin('~/.vim/plugged')
   " Navigation
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'jremmen/vim-ripgrep'
+  Plug 'rhysd/clever-f.vim'
 
   " Theme
   Plug 'vim-airline/vim-airline'
@@ -99,6 +100,9 @@ let g:coc_explorer_global_presets = {
 nnoremap <leader>n :CocCommand explorer --preset files<CR>
 nnoremap <leader>b :CocCommand explorer --preset buffer<CR>
 
+
+" clever-f
+let g:clever_f_across_no_line=1
 
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
