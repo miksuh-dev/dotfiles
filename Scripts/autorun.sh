@@ -12,6 +12,7 @@ $HOME/Scripts/startup.sh
 
 # Restart xbindkeys
 pkill xbindkeys; xbindkeys
+xmodmap ~/.Xmodmap
 
 # Keyboard repeat speed
 # xset r rate 350 30

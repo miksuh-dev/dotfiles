@@ -27,6 +27,7 @@ M.classic = {
     diff_remove_bg ='#830000',
     diff_change_fg = '#7AA6DA',
     diff_change_bg = '#3465a4',
+    diff_change_bg_text = '#11d8ff',
     none = 'NONE'
 }
 
@@ -55,6 +56,7 @@ M.pro = {
     diff_remove_bg = '#3f0001',
     diff_change_fg = '#7AA6DA',
     diff_change_bg = '#537196',
+    diff_change_bg_text = '#122e96',
     none = 'NONE'
 }
 
@@ -225,10 +227,10 @@ M.load_syntax = function(palette)
             bg = palette.diff_remove_bg,
         },
         DiffChange = {
-            fg = palette.diff_change_fg,
+            bg = palette.diff_change_bg,
         },
         DiffText = {
-            bg = palette.diff_change_bg,
+            bg = palette.diff_change_bg_text,
         },
         diffAdded = {
             fg = palette.green,
