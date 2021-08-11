@@ -15,7 +15,7 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "█ ",
   "diagnostic.virtualTextLines": 1,
-  "explorer.width": 27,
+  "explorer.width": 50,
   "explorer.icon.enableNerdfont": false,
   "explorer.file.showHiddenFiles": true,
   "explorer.keyMappings.global": {

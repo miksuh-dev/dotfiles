@@ -27,7 +27,7 @@ M.classic = {
     diff_remove_bg ='#830000',
     diff_change_fg = '#7AA6DA',
     diff_change_bg = '#3465a4',
-    diff_change_bg_text = '#11d8ff',
+    diff_change_bg_text = '#4895e6',
     none = 'NONE'
 }
 
