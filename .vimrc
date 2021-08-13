@@ -30,7 +30,6 @@ let mapleader=','
 
 call plug#begin('~/.vim/plugged')
   " Basic
-  Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
   Plug 'nvim-lua/plenary.nvim'
@@ -41,6 +40,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'rhysd/clever-f.vim'
+
+  " Comments "
+  Plug 'tpope/vim-commentary'
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
   " Coc
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -173,10 +176,11 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
-
+  context_commentstring = {
+    enable = true
+  }
 }
 EOF
-
 
 lua << EOF
 require('telescope').setup{
