@@ -39,7 +39,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  Plug 'rhysd/clever-f.vim'
 
   " Comments "
   Plug 'tpope/vim-commentary'
@@ -103,10 +102,6 @@ let g:coc_explorer_global_presets = {
 
 nnoremap <leader>n :CocCommand explorer --preset files<CR>
 nnoremap <leader>b :CocCommand explorer --preset buffer<CR>
-
-
-" clever-f
-let g:clever_f_across_no_line=1
 
 " " JS syntax
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
