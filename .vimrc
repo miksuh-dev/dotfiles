@@ -25,10 +25,12 @@ set termguicolors
 set undodir=~/.vim/undodir
 set undofile
 set nowrapscan
+set ignorecase
 
 let mapleader=','
 
 call plug#begin('~/.vim/plugged')
+
   " Basic
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
@@ -36,9 +38,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/popup.nvim'
   Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-repeat'
+  Plug 'windwp/nvim-autopairs'
+
+    " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'windwp/nvim-ts-autotag'
 
   " Comments "
   Plug 'tpope/vim-commentary'
@@ -51,7 +57,6 @@ call plug#begin('~/.vim/plugged')
         \ 'coc-highlight',
         \ 'coc-html',
         \ 'coc-json',
-        \ 'coc-pairs',
         \ 'coc-prettier',
         \ 'coc-snippets',
         \ 'coc-tabnine',
@@ -82,8 +87,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
 
   "DB
-  Plug 'tpope/vim-dadbod'
-  Plug 'kristijanhusak/vim-dadbod-ui'
+  " Plug 'tpope/vim-dadbod'
+  " Plug 'kristijanhusak/vim-dadbod-ui'
 call plug#end()
 
 set hidden
@@ -132,8 +137,13 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "DB UI
-let g:db_ui_auto_execute_table_helpers = 1
-let g:db_ui_force_echo_notifications = 1
+" let g:db_ui_auto_execute_table_helpers = 1
+" let g:db_ui_force_echo_notifications = 1
+
+lua <<EOF
+require('nvim-autopairs').setup{}
+EOF
+
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -173,6 +183,24 @@ require'nvim-treesitter.configs'.setup {
   },
   context_commentstring = {
     enable = true
+  },
+  autotag = {
+    enable = true,
+  },
+  ensure_installed = {
+    "tsx",
+    "php",
+    "json",
+    "html",
+    "scss",
+    "bash",
+    "css",
+    "haskell",
+    "javascript",
+    "lua",
+    "regex",
+    "typescript",
+    "yaml"
   }
 }
 EOF
@@ -336,6 +364,12 @@ nnoremap <silent>gf :lua require('telescope.builtin').grep_string { search = vim
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" Code action
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>ac  <Plug>(coc-codeaction)
+
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
@@ -397,9 +431,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Select all
-nnoremap <leader>a ggVG
-
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -410,13 +441,13 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-
 " Quick save
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
+
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
