@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source $HOME/.zsh/aliases/docker
+source $HOME/.zsh/aliases/tools
+source $HOME/.zsh/aliases/common
+
+

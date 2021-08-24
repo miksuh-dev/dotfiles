@@ -1,0 +1,8 @@
+#!/bin/bash
+
+alias iOSremote='remotedebug_ios_webkit_adapter --port=9000'
+alias DBUI="tmux rename-window "DBUI" && nvim -c ':DBUI'"
+alias t='tmux'
+alias npms="npm run start -- --host 172.19.0.1"
+alias vim='nvim'
+

@@ -73,9 +73,12 @@ DISABLE_UPDATE_PROMPT="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(ssh-agent git sudo zsh-autosuggestions zsh-vi-mode zsh-syntax-highlighting)
 
+
+
 ZVM_VI_HIGHLIGHT_BACKGROUND=#5a647e
 
 source $ZSH/oh-my-zsh.sh
+
 
 # User configuration
 
@@ -152,12 +155,5 @@ export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin"
 export NODE_OPTIONS=--max_old_space_size=4096
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 
-alias npms="npm run start -- --host 172.19.0.1"
-alias vim='nvim'
-alias ssh="kitty +kitten ssh"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias iOSremote='remotedebug_ios_webkit_adapter --port=9000'
-alias DBUI="tmux rename-window "DBUI" && nvim -c ':DBUI'"
-alias t='tmux'
-
+source $HOME/.zsh/load
 [ -f $HOME/.secrets ] && source $HOME/.secrets
