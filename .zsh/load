@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
-# Aliases
-source $HOME/.zsh/aliases/load
+for f in $HOME/.zsh/aliases/*; do source $f; done
+for f in $HOME/.zsh/functions/*; do source $f; done
 

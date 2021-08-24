@@ -2,6 +2,4 @@
 
 alias ssh="kitty +kitten ssh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-
 alias fa='alias | grep'
