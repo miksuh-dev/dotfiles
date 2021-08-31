@@ -66,6 +66,8 @@ import Data.Maybe    ( isNothing, isJust )
 import XMonad.Actions.PhysicalScreens
 import Data.Default
 
+import XMonad.Actions.GridSelect
+
 myTabConfig = def { activeColor = "#556064"
                   , inactiveColor = "#3b3b3b"
                   , urgentColor = "#FDF6E3"
@@ -165,6 +167,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenuf
     , ((modm,               xK_f     ), spawn "rofi -show run -m -4 -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     , ((modm,               xK_s     ), spawn "$HOME/.config/rofi/scripts/search")
+
+    , ((modm, xK_p), goToSelected defaultGSConfig)
 
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
