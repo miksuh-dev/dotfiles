@@ -137,27 +137,17 @@ myNavigation = makeXEventhandler $ shadowWithKeymap navKeyMap navDefaultHandler
  where navKeyMap = M.fromList [
           ((0,xK_Escape), cancel)
          ,((0,xK_Return), select)
+         ,((0,xK_slash) , substringSearch myNavigation)
          ,((0,xK_Left)  , move (-1,0)  >> myNavigation)
+         ,((0,xK_h)     , move (-1,0)  >> myNavigation)
          ,((0,xK_Right) , move (1,0)   >> myNavigation)
+         ,((0,xK_l)     , move (1,0)   >> myNavigation)
          ,((0,xK_Down)  , move (0,1)   >> myNavigation)
+         ,((0,xK_j)     , move (0,1)   >> myNavigation)
          ,((0,xK_Up)    , move (0,-1)  >> myNavigation)
-
-         ,((0,xK_8)      , setPos (0,-2) >> myNavigation)
-
-         ,((0,xK_u)      , setPos (-1,-1) >> myNavigation)
-         ,((0,xK_i)      , setPos (0,-1) >> myNavigation)
-         ,((0,xK_o)      , setPos (1,-1) >> myNavigation)
-
-         ,((0,xK_h)      , setPos (-2,0) >> myNavigation)
-         ,((0,xK_j)      , setPos (-1,0) >> myNavigation)
-         ,((0,xK_k)      , setPos (0,0) >> myNavigation)
-         ,((0,xK_l)      , setPos (1,0) >> myNavigation)
-         ,((0,xK_odiaeresis)      , setPos (2,0) >> myNavigation) -- ö
-
-         ,((0,xK_m)      , setPos (-1,1) >> myNavigation)
-         ,((0,xK_comma)      , setPos (0,1) >> myNavigation)
-         ,((0,xK_period)      , setPos (1,1) >> myNavigation)
-
+         ,((0,xK_k)     , move (0,-1)  >> myNavigation)
+         ,((0,xK_y)     , move (-1,-1) >> myNavigation)
+         ,((0,xK_space) , setPos (0,0) >> myNavigation)
          ]
        -- The navigation handler ignores unknown key symbols
        navDefaultHandler = const myNavigation
