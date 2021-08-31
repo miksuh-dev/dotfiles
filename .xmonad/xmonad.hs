@@ -198,6 +198,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       gs_font = "xft:Bitstream Vera Sans Mono:size=16:bold:antialias=true"
     })
 
+    , ((modm  .|. shiftMask, xK_p), bringSelected defaultGSConfig {
+      gs_cellheight = 100,
+      gs_cellwidth = 300,
+      gs_navigate = myNavigation,
+      gs_font = "xft:Bitstream Vera Sans Mono:size=16:bold:antialias=true"
+    })
+
+
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
 
