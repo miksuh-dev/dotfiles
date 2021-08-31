@@ -129,6 +129,39 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9", "10"]
 myNormalBorderColor  = "#111111"
 myFocusedBorderColor = "#1793d0"
 
+
+
+
+myNavigation :: TwoD a (Maybe a)
+myNavigation = makeXEventhandler $ shadowWithKeymap navKeyMap navDefaultHandler
+ where navKeyMap = M.fromList [
+          ((0,xK_Escape), cancel)
+         ,((0,xK_Return), select)
+         ,((0,xK_Left)  , move (-1,0)  >> myNavigation)
+         ,((0,xK_Right) , move (1,0)   >> myNavigation)
+         ,((0,xK_Down)  , move (0,1)   >> myNavigation)
+         ,((0,xK_Up)    , move (0,-1)  >> myNavigation)
+
+         ,((0,xK_8)      , setPos (0,-2) >> myNavigation)
+
+         ,((0,xK_u)      , setPos (-1,-1) >> myNavigation)
+         ,((0,xK_i)      , setPos (0,-1) >> myNavigation)
+         ,((0,xK_o)      , setPos (1,-1) >> myNavigation)
+
+         ,((0,xK_h)      , setPos (-2,0) >> myNavigation)
+         ,((0,xK_j)      , setPos (-1,0) >> myNavigation)
+         ,((0,xK_k)      , setPos (0,0) >> myNavigation)
+         ,((0,xK_l)      , setPos (1,0) >> myNavigation)
+         ,((0,xK_odiaeresis)      , setPos (2,0) >> myNavigation) -- ö
+
+         ,((0,xK_m)      , setPos (-1,1) >> myNavigation)
+         ,((0,xK_comma)      , setPos (0,1) >> myNavigation)
+         ,((0,xK_period)      , setPos (1,1) >> myNavigation)
+
+         ]
+       -- The navigation handler ignores unknown key symbols
+       navDefaultHandler = const myNavigation
+
 {-
 
 -- Helper function to first shift a window to another workspace and
@@ -168,7 +201,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_f     ), spawn "rofi -show run -m -4 -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
     , ((modm,               xK_s     ), spawn "$HOME/.config/rofi/scripts/search")
 
-    , ((modm, xK_p), goToSelected defaultGSConfig)
+    , ((modm, xK_p), goToSelected defaultGSConfig {
+      gs_cellheight = 100,
+      gs_cellwidth = 300,
+      gs_navigate = myNavigation,
+      gs_font = "xft:Bitstream Vera Sans Mono:size=16:bold:antialias=true"
+    })
 
     -- Xkill
     , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
