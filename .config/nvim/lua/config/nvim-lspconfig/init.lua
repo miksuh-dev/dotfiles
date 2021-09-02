@@ -25,9 +25,9 @@ local on_attach = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   -- if client.resolved_capabilities.document_formatting then
-  --  buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  -- kelseif client.resolved_capabilities.document_range_formatting then
-  -- buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  --   buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  -- elseif client.resolved_capabilities.document_range_formatting then
+  --   buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   -- end
 
 
@@ -86,7 +86,6 @@ local function setup_servers()
     local config = make_config()
 
     -- language specific config
-
     if server == "efm"  then
       local format_config = require('config.nvim-lspconfig.format')
       config.init_options = { documentFormatting = true, codeAction = true }
@@ -174,12 +173,6 @@ local function setup_servers()
         }
       }
     end
-    -- if server == "sourcekit" then
-    --  config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
-    --  end
-    -- if server == "clangd" then
-    --   config.filetypes = {"c", "cpp"}; -- we don't want objective-c and objective-cpp!
-    -- end
 
     nvim_lsp[server].setup(config)
   end

@@ -2,7 +2,7 @@ local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 -- default mappings
 vim.g.nvim_tree_bindings = {
   { key = {"<CR>", "e", "l"}, cb = tree_cb("edit") },
-  { key = "cd",    cb = tree_cb("cd") },
+  { key = "cd",                           cb = tree_cb("cd") },
   { key = "E",                            cb = tree_cb("vsplit") },
   { key = "s",                            cb = tree_cb("split") },
   { key = "t",                            cb = tree_cb("tabnew") },
@@ -74,7 +74,7 @@ vim.g.nvim_tree_window_picker_exclude = {
 }
 vim.g.nvim_tree_disable_default_keybindings = 1
 
-vim.api.nvim_exec([[ autocmd BufEnter NvimTree | execute 'normal R' ]], false)
+-- vim.api.nvim_exec([[ autocmd BufEnter NvimTree | execute 'normal R' ]], false)
 
 -- Dictionary of buffer option names mapped to a list of option values that
 -- indicates to the window picker that the buffer's window should not be
