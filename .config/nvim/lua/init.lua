@@ -1,0 +1,5 @@
+require('opts')
+require('plugins')
+require('theme.monokai').setup()
+require('highlight')
+require('bindings')
