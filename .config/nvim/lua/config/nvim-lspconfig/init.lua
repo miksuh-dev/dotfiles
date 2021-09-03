@@ -93,8 +93,8 @@ local function setup_servers()
       config.init_options = { documentFormatting = true, codeAction = true }
       config.root_dir = nvim_lsp.util.root_pattern({ '.git/', '.' })
       config.filetypes = vim.tbl_keys(format_config)
-      config.settings = { 
-        languages = format_config, 
+      config.settings = {
+        languages = format_config,
         rootMarkers = {
           ".eslintrc.cjs",
           ".eslintrc",
