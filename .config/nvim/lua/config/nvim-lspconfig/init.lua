@@ -62,27 +62,70 @@ local function make_config()
   }
 end
 
+local function hasValue( tbl, str )
+  local f = false
+  for i = 1, #tbl do
+    if type( tbl[i] ) == "table" then
+      f = hasValue( tbl[i], str )  --  return value from recursion
+      if f then break end  --  if it returned true, break out of loop
+    elseif tbl[i] == str then
+      return true
+    end
+  end
+  return f
+end
+
+local function install_missing()
+  local installed_servers = require'lspinstall'.installed_servers()
+
+  local required_servers = {
+    "efm",
+    "haskell",
+    "vim",
+    "html",
+    "dockerfile",
+    "css",
+    "graphql",
+    "php",
+    "typescript",
+    "json",
+    "bash",
+    "yaml",
+  }
+
+  local installed = false
+  for _, server in pairs(required_servers) do
+    if not hasValue(installed_servers, server) then
+      require'lspinstall'.install_server(server)
+      installed = true
+    end
+  end
+  return installed
+end
+
 -- lsp-install
 local function setup_servers()
   require'lspinstall'.setup()
 
   local nvim_lsp = require"lspconfig"
 
+  if install_missing() then return end
+
   -- get all installed servers
   local servers = require'lspinstall'.installed_servers()
   -- ... and add manually installed servers
-  table.insert(servers, "efm")
-  table.insert(servers, "haskell")
-  table.insert(servers, "vim")
-  table.insert(servers, "html")
-  table.insert(servers, "dockerfile")
-  table.insert(servers, "css")
-  table.insert(servers, "graphql")
-  table.insert(servers, "php")
-  table.insert(servers, "typescript")
-  table.insert(servers, "json")
-  table.insert(servers, "bash")
-  table.insert(servers, "yaml")
+  -- table.insert(servers, "efm")
+  -- table.insert(servers, "haskell")
+  -- table.insert(servers, "vim")
+  -- table.insert(servers, "html")
+  -- table.insert(servers, "dockerfile")
+  -- table.insert(servers, "css")
+  -- table.insert(servers, "graphql")
+  -- table.insert(servers, "php")
+  -- table.insert(servers, "typescript")
+  -- table.insert(servers, "json")
+  -- table.insert(servers, "bash")
+  -- table.insert(servers, "yaml")
 
   for _, server in pairs(servers) do
     local config = make_config()
