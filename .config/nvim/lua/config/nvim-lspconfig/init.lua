@@ -78,9 +78,11 @@ local function setup_servers()
   table.insert(servers, "dockerfile")
   table.insert(servers, "css")
   table.insert(servers, "graphql")
-  table.insert(servers, "haskell")
   table.insert(servers, "php")
   table.insert(servers, "typescript")
+  table.insert(servers, "json")
+  table.insert(servers, "bash")
+  table.insert(servers, "yaml")
 
   for _, server in pairs(servers) do
     local config = make_config()
@@ -91,11 +93,26 @@ local function setup_servers()
       config.init_options = { documentFormatting = true, codeAction = true }
       config.root_dir = nvim_lsp.util.root_pattern({ '.git/', '.' })
       config.filetypes = vim.tbl_keys(format_config)
-      config.settings = { languages = format_config }
+      config.settings = { 
+        languages = format_config, 
+        rootMarkers = {
+          ".eslintrc.cjs",
+          ".eslintrc",
+          ".eslintrc.json",
+          ".eslintrc.js",
+          ".prettierrc",
+          ".prettierrc.js",
+          ".prettierrc.json",
+          ".prettierrc.yml",
+          ".prettierrc.yaml",
+          ".prettier.config.js",
+          ".prettier.config.cjs",
+        },
+      }
     end
 
     if server == "typescript" then
-      config.root_dir = nvim_lsp.util.root_pattern("yarn.lock", "lerna.json", ".git")
+      config.root_dir = nvim_lsp.util.root_pattern("package.json", "yarn.lock", "lerna.json", ".git")
       config.on_attach = function(client, bufnr)
         -- disable tsserver formatting if you plan on formatting via null-ls
         client.resolved_capabilities.document_formatting = false
@@ -172,6 +189,10 @@ local function setup_servers()
           }
         }
       }
+    end
+
+    if server == "graphql" then
+      config.filetypes = { "graphql", "javascript" }
     end
 
     nvim_lsp[server].setup(config)

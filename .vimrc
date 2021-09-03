@@ -104,7 +104,7 @@ call plug#begin('~/.vim/plugged')
         \ 'coc-tsserver',
         \ 'coc-yank',
         \ 'coc-explorer',
-        \ 'coc-db',
+        \ 'coc-phpls'
         \ ]
 
   " Syntax/language specific"
@@ -164,7 +164,7 @@ let g:user_emmet_settings = {
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gs :G<CR>
-nmap <leader>gb :Gblame<CR>
+nmap <leader>gb :Git blame<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gc :GBranches<CR>
 
@@ -183,7 +183,6 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 lua <<EOF
 require('nvim-autopairs').setup{}
 EOF
-
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
