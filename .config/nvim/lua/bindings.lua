@@ -102,9 +102,9 @@ vim.api.nvim_set_keymap('v', '<Down>', '5j', { noremap = true})
 -- vim.api.nvim_set_keymap('n', 'J', [[ :m '>+1<CR>gv=gv" ]], { noremap = true })
 
 -- Quick save (insert, normal, visual)
-vim.api.nvim_set_keymap('n', '<C-S>', ':update<CR>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<C-S>', '<C-C>:update<CR>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:update<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<C-S>', '<C-C>:w<CR>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:w<CR>', { noremap = true })
 
 -- Quick increase/decrease
 vim.api.nvim_set_keymap('n', '-', '<C-x>', { noremap = true })
