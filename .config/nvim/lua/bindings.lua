@@ -25,6 +25,26 @@ vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin"
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<CR>', { noremap = true, silent = true})
 
+-- Lspsaga
+vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>lua require("lspsaga.codeaction").range_code_action()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>a', '<cmd>lua require("lspsaga.codeaction").range_code_action()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua require"lspsaga.provider".preview_definition()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', 'K', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>?', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<CR>', { noremap = true, silent = true }) 
+
 -- Clear highlights on space
 vim.api.nvim_set_keymap('n', '<CR>', ':noh<CR><CR>', { noremap = true, silent = true });
 
@@ -79,7 +99,7 @@ vim.api.nvim_set_keymap('n', '<Down>', '5j', { noremap = true})
 vim.api.nvim_set_keymap('v', '<Down>', '5j', { noremap = true})
 
 -- Set cursor position
-vim.api.nvim_set_keymap('n', 'J', [[ :m '>+1<CR>gv=gv" ]], { noremap = true })
+-- vim.api.nvim_set_keymap('n', 'J', [[ :m '>+1<CR>gv=gv" ]], { noremap = true })
 
 -- Quick save (insert, normal, visual)
 vim.api.nvim_set_keymap('n', '<C-S>', ':update<CR>', { noremap = true })

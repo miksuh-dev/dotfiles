@@ -29,6 +29,11 @@ return require('packer').startup(function(use)
   use { 'tzachar/compe-tabnine', run = './install.sh'  }
 
   use {
+    'glepnir/lspsaga.nvim',
+    config = function() require('config.lspsaga') end
+  }
+
+  use {
     'mattn/emmet-vim',
     config = function() require('config.emmet') end
   }

@@ -1,12 +1,12 @@
 return {
   -- Cache?
   -- lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT} --cache', CACHee
-  intCommand = './node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}',
+  lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT} --cache',
   -- lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = { '%f:%l:%c: %m' },
-  formatCommand = 'eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}',
+  formatCommand = 'eslint --fix-to-stdout --stdin --stdin-filename=${INPUT}',
   formatStdin = true,
 }
 
