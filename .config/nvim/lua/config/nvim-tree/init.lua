@@ -37,7 +37,7 @@ vim.g.nvim_tree_bindings = {
 
 -- Nvim Tree
 vim.g.nvim_tree_side = 'left' -- left by default
-vim.g.nvim_tree_width = 40 -- 30 by default, can be width_in_columns or 'width_in_percent%'
+vim.g.nvim_tree_width = 30 -- 30 by default, can be width_in_columns or 'width_in_percent%'
 vim.g.nvim_tree_ignore = {} -- empty by default
 vim.g.nvim_tree_gitignore = 0 -- 0 by default
 vim.g.nvim_tree_auto_open = 0 -- 0 by default, opens the tree when typing `vim $DIR` or `vim`

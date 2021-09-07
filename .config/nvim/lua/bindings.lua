@@ -109,3 +109,8 @@ vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:w<CR>', { noremap = true })
 -- Quick increase/decrease
 vim.api.nvim_set_keymap('n', '-', '<C-x>', { noremap = true })
 vim.api.nvim_set_keymap('n', '+', '<C-a>', { noremap = true })
+
+-- Quick format
+vim.api.nvim_set_keymap('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true })
+
+
