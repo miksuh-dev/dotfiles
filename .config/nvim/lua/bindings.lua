@@ -55,6 +55,10 @@ vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true })
 -- Consist y
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
 
+-- Tab navigation
+vim.api.nvim_set_keymap('n', 'H', ':TablineBufferPrevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'L', ':TablineBufferNext<CR>', { noremap = true, silent = true })
+
 -- Window movement
 vim.api.nvim_set_keymap('n', '<C-J>', '<C-W>j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-K>', '<C-W>k', { noremap = true, silent = true  })

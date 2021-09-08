@@ -83,6 +83,12 @@ return require('packer').startup(function(use)
     config = function() require('config.nvim-colorizer') end
   }
 
+  -- use {
+  --   'kdheepak/tabline.nvim',
+  --   config = function() require('config.tabline') end,
+  --   requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+  -- }
+
 end)
 
 
