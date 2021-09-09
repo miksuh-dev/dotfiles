@@ -110,50 +110,10 @@ LC_ALL=en_US.UTF-8
 LANGUAGE=en_US.UTF-8
 LANG=en_US.UTF-8
 
-
-MIKSUH_GPG='A4687FA1E3B2A145248933CFA7D35B275BBFD045'
-
-function extract() {
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2) tar xjf $1 ;;
-            *.tar.gz) tar xzf $1 ;;
-            *.bz2) bunzip2 $1 ;;
-            *.rar) rar x $1 ;;
-            *.gz) gunzip $1 ;;
-            *.tar) tar xf $1 ;;
-            *.tbz2) tar xjf $1 ;;
-            *.tgz) tar xzf $1 ;;
-            *.zip) unzip $1 ;;
-	        *.iso) 7z x $1 ;;
-            *.Z) uncompress $1 ;;
-            *) echo "'$1' cannot be extracted via extract()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
-
-function cheat() {
-  curl -m 10 "http://cheat.sh/${1}" 2>/dev/null || printf '%s\n' "[ERROR] Something broke"
-}
-
-function encrypt() {
-        output="${1}".$(date +%s).enc
-        gpg --encrypt --armor --output ${output} -r $MIKSUH_GPG "${1}" && echo "${1} -> ${output}"
-}
-
-function decrypt() {
-        output=$(echo "${1}" | rev | cut -c16- | rev)
-        gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
-}
-
-
-function qrcode() {curl qrenco.de/"$1"}
-
 export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin"
 export NODE_OPTIONS=--max_old_space_size=4096
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 
 source $HOME/.zsh/load
 [ -f $HOME/.secrets ] && source $HOME/.secrets
+
