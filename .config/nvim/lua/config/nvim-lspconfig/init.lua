@@ -31,7 +31,9 @@ local on_attach = function(client, bufnr)
   --   buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   -- end
 
-
+  if client.name ~= 'efm' then
+    client.resolved_capabilities.document_formatting = false
+  end
 
   -- Format on save is available
   if client.resolved_capabilities.document_formatting then
@@ -211,6 +213,8 @@ local function setup_servers()
         vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "qq", ":TSLspFixCurrent<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+
+        on_attach(client, bufnr);
       end
     end
 
@@ -232,22 +236,6 @@ local function setup_servers()
           }
         }
       }
-    end
-
-    if server == "html" then
-      config.on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        on_attach(client, bufnr);
-      end
-    end
-
-    if server == "json" then
-      config.on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        on_attach(client, bufnr);
-      end
     end
 
     -- if server == "graphql" then

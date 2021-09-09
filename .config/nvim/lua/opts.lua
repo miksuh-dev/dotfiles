@@ -56,3 +56,7 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
 
 
+vim.cmd([[
+  let g:sneak#s_next = 1
+]])
+

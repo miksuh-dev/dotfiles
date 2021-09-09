@@ -6,7 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd 'packadd packer.nvim'
 end
 
-return require('packer').startup(function(use)
+return require('packer').startup({ function(use)
   use { 'tpope/vim-surround' }
   use { 'tpope/vim-unimpaired' }
   use { 'nvim-lua/plenary.nvim' }
@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
   use { 'kabouzeid/nvim-lspinstall' }
   use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
   use { 'tzachar/compe-tabnine', run = './install.sh'  }
+  use { 'justinmk/vim-sneak' }
 
   use {
     'glepnir/lspsaga.nvim',
@@ -89,6 +90,8 @@ return require('packer').startup(function(use)
   --   requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
   -- }
 
-end)
+end, config={
+    max_jobs = 5
+  }})
 
 

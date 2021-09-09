@@ -38,10 +38,8 @@ vim.api.nvim_set_keymap('n', 'K', '<cmd>lua require("lspsaga.hover").render_hove
 vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev({ wrap = false })<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next({ wrap = false })<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>?', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<CR>', { noremap = true, silent = true }) 
 
@@ -105,10 +103,8 @@ vim.api.nvim_set_keymap('v', '<Down>', '5j', { noremap = true})
 -- Set cursor position
 -- vim.api.nvim_set_keymap('n', 'J', [[ :m '>+1<CR>gv=gv" ]], { noremap = true })
 
--- Quick save (insert, normal, visual)
-vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<C-S>', '<C-C>:w<CR>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:w<CR>', { noremap = true })
+-- Quick save
+vim.api.nvim_set_keymap('n', '<C-S>', ':update<CR>', { noremap = true })
 
 -- Quick increase/decrease
 vim.api.nvim_set_keymap('n', '-', '<C-x>', { noremap = true })
