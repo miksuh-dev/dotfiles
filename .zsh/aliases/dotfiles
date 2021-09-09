@@ -1,0 +1,67 @@
+#!/bin/bash
+
+alias dt='dotfiles'
+
+alias dta='dotfiles add'
+alias dtaa='dotfiles add --all'
+
+alias dtcmsg='dotfiles commit -m'
+alias dtco='dotfiles checkout'
+
+alias dtd='dotfiles diff'
+alias dtds='dotfiles diff --staged'
+
+alias dtl='dotfiles pull'
+
+alias dtlg='dotfiles log --stat'
+alias dtlgp='dotfiles log --stat -p'
+alias dtlgg='dotfiles log --graph'
+alias dtlgga='dotfiles log --graph --decorate --all'
+alias dtlgm='dotfiles log --graph --max-count=10'
+alias dtlo='dotfiles log --oneline --decorate'
+alias dtlog='dotfiles log --oneline --decorate --graph'
+alias dtloga='dotfiles log --oneline --decorate --graph --all'
+
+alias dtm='dotfiles merge'
+alias dtmom='dotfiles merge origin/$(git_main_branch)'
+alias dtmtl='dotfiles mergetool --no-prompt'
+alias dtmtlvim='dotfiles mergetool --no-prompt --tool=vimdiff'
+alias dtmum='dotfiles merge upstream/$(git_main_branch)'
+alias dtma='dotfiles merge --abort'
+
+alias dtp='dotfiles push'
+alias dtpd='dotfiles push --dry-run'
+alias dtpf='dotfiles push --force-with-lease'
+alias dtpr='dotfiles pull --rebase'
+alias dtpu='dotfiles push upstream'
+alias dtpv='dotfiles push -v'
+
+alias dtr='dotfiles remote'
+alias dtrh='dotfiles reset'
+alias dtrhh='dotfiles reset --hard'
+alias dtrm='dotfiles rm'
+alias dtrmc='dotfiles rm --cached'
+alias dtrup='dotfiles remote update'
+alias dtrv='dotfiles remote -v'
+
+alias dtsh='dotfiles show'
+alias dtst='dotfiles status'
+
+alias dtstaa='dotfiles stash apply'
+alias dtstc='dotfiles stash clear'
+alias dtstd='dotfiles stash drop'
+alias dtstl='dotfiles stash list'
+alias dtstp='dotfiles stash pop'
+alias dtsts='dotfiles stash show --text'
+alias dtstu='dotfiles --include-untracked'
+alias dtstall='dotfiles stash --all'
+alias dtsu='dotfiles submodule update'
+alias dtsw='dotfiles switch'
+alias dtswc='dotfiles switch -c'
+
+alias dtup='dotfiles pull --rebase'
+alias dtupv='dotfiles pull --rebase -v'
+alias dtupa='dotfiles pull --rebase --autostash'
+alias dtupav='dotfiles pull --rebase --autostash -v'
+alias dtlum='dotfiles pull upstream $(git_main_branch)'
+
