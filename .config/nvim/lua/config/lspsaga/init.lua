@@ -53,3 +53,19 @@ vim.cmd([[
   highlight default LspSagaDefPreviewBorder guifg=#b3deef guibg=NONE
 ]], false)
 
+vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>lua require("lspsaga.codeaction").range_code_action()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>a', '<cmd>lua require("lspsaga.codeaction").range_code_action()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua require"lspsaga.provider".preview_definition()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', 'K', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev({ wrap = false })<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next({ wrap = false })<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>?', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<CR>', { noremap = true, silent = true })

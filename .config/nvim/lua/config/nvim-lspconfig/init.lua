@@ -38,6 +38,8 @@ local on_attach = function(client, bufnr)
   -- Format on save is available
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+    buf_set_option('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true })
+    buf_set_option('v', '<leader>fo', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', { noremap = true })
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -254,6 +256,5 @@ end
 
 setup_servers()
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] =      
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = false })
-

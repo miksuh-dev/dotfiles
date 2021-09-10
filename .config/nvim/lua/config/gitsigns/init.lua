@@ -71,4 +71,3 @@ vim.cmd([[
   hi YellowSign guifg=#e6db74 ctermfg=214 gui=NONE cterm=NONE guibg=NONE
   hi GreenSign guifg=#a6e22e ctermfg=142 gui=NONE cterm=NONE guibg=NONE
 ]], false)
-

@@ -13,7 +13,6 @@ return require('packer').startup({ function(use)
   use { 'nvim-lua/popup.nvim' }
   use { 'adelarsq/vim-matchit' }
   use { 'tpope/vim-repeat' }
-  use { 'tpope/vim-fugitive' }
   use { 'nvim-treesitter/playground' }
   use { 'nvim-treesitter/nvim-treesitter-textobjects' }
   use { 'windwp/nvim-ts-autotag' }
@@ -28,6 +27,11 @@ return require('packer').startup({ function(use)
   use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
   use { 'tzachar/compe-tabnine', run = './install.sh'  }
   use { 'justinmk/vim-sneak' }
+
+  use {
+    'tpope/vim-fugitive',
+    config = function() require('config.fugitive') end
+  }
 
   use {
     'glepnir/lspsaga.nvim',
@@ -84,14 +88,6 @@ return require('packer').startup({ function(use)
     config = function() require('config.nvim-colorizer') end
   }
 
-  -- use {
-  --   'kdheepak/tabline.nvim',
-  --   config = function() require('config.tabline') end,
-  --   requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
-  -- }
-
 end, config={
     max_jobs = 5
-  }})
-
-
+}})

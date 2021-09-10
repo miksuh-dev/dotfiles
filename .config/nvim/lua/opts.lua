@@ -42,7 +42,7 @@ vim.o.ignorecase = true
 vim.o.termguicolors = true
 vim.o.clipboard='unnamedplus'
 
-vim.wo.signcolumn = 'yes' 
+vim.wo.signcolumn = 'yes'
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.cursorline = true
@@ -59,4 +59,3 @@ vim.g.loaded_python_provider = 0
 vim.cmd([[
   let g:sneak#s_next = 1
 ]])
-

@@ -128,3 +128,6 @@ vim.g.nvim_tree_icons = {
   }
 }
 
+-- NvimTree
+vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>N', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })

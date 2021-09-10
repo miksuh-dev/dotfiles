@@ -4,4 +4,3 @@ vim.g.user_emmet_settings = {
     extends = "jsx",
   },
 }
-
