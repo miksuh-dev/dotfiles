@@ -20,6 +20,36 @@ saga.init_lsp_saga({
   -- hint_sign = "",
   -- infor_sign = "✘",
   dianostic_header_icon = '',
-  code_action_icon = ''
+  definition_preview_icon = '',
+  code_action_icon = '',
+  rename_prompt_prefix = 'Rename:',
 })
+
+
+vim.cmd([[
+  highlight default LspSagaDiagnosticBorder guifg=#7739e3 guibg=NONE
+  highlight default LspSagaDiagnosticHeader guifg=#d8a657 guibg=NONE gui=bold
+  highlight default LspSagaDiagnosticTruncateLine guifg=#7739e3 guibg=NONE
+  highlight default LspDiagnosticsFloatingError guifg=#EC5f67 guibg=NONE
+  highlight default LspDiagnosticsFloatingWarn guifg=#d8a657 guibg=NONE
+  highlight default LspDiagnosticsFloatingInfor guifg=#6699cc guibg=NONE
+  highlight default LspDiagnosticsFloatingHint guifg=#56b6c2 guibg=NONE
+
+  highlight default LspSagaShTruncateLine guifg=black guibg=NONE
+  highlight default LspSagaDocTruncateLine guifg=black guibg=NONE
+  highlight default LspSagaCodeActionTitle guifg=#da8548 guibg=NONE gui=bold
+  highlight default LspSagaCodeActionTruncateLine guifg=black guibg=NONE
+
+  highlight default LspSagaCodeActionContent guifg=#98be65 guibg=NONE gui=bold
+
+  highlight default LspSagaRenamePromptPrefix guifg=#98be65 guibg=NONE
+
+  highlight default LspSagaRenameBorder guifg=#3bb6c4 guibg=NONE
+  highlight default LspSagaHoverBorder guifg=#80A0C2 guibg=NONE
+  highlight default LspSagaSignatureHelpBorder guifg=#98be65 guibg=NONE
+  highlight default LspSagaLspFinderBorder guifg=#51afef guibg=NONE
+  highlight default LspSagaCodeActionBorder guifg=#b3deef guibg=NONE
+  highlight default LspSagaAutoPreview guifg=#ECBE7B guibg=NONE
+  highlight default LspSagaDefPreviewBorder guifg=#b3deef guibg=NONE
+]], false)
 

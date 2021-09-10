@@ -21,4 +21,3 @@ vim.cmd([[
   augroup END
 ]], false)
 
-
