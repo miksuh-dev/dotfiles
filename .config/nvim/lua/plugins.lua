@@ -30,7 +30,7 @@ return require('packer').startup({ function(use)
 
   use {
     'tpope/vim-fugitive',
-    config = function() require('config.fugitive') end
+    config = function() require('config.vim-fugitive') end
   }
 
   use {
@@ -40,7 +40,7 @@ return require('packer').startup({ function(use)
 
   use {
     'mattn/emmet-vim',
-    config = function() require('config.emmet') end
+    config = function() require('config.emmet-vim') end
   }
 
   use {
