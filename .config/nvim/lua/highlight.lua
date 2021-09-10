@@ -9,6 +9,7 @@ vim.cmd([[
   highlight clear SignColumn
 ]])
 
+-- Visual selection
 vim.cmd([[
   hi Visual guifg=NONE guibg=#636c81 gui=NONE
 ]], false)
