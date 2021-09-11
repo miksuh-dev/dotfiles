@@ -26,7 +26,12 @@ return require('packer').startup({ function(use)
   use { 'kabouzeid/nvim-lspinstall' }
   use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
   use { 'tzachar/compe-tabnine', run = './install.sh'  }
-  use { 'justinmk/vim-sneak' }
+
+  use {
+    'phaazon/hop.nvim',
+    as = 'hop',
+    config = function() require('config.hop') end
+  }
 
   use {
     'tpope/vim-fugitive',
