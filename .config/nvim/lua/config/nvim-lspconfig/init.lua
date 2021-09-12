@@ -117,19 +117,6 @@ local function setup_servers()
 
   -- get all installed servers
   local servers = require'lspinstall'.installed_servers()
-  -- ... and add manually installed servers
-  -- table.insert(servers, "efm")
-  -- table.insert(servers, "haskell")
-  -- table.insert(servers, "vim")
-  -- table.insert(servers, "html")
-  -- table.insert(servers, "dockerfile")
-  -- table.insert(servers, "css")
-  -- table.insert(servers, "graphql")
-  -- table.insert(servers, "php")
-  -- table.insert(servers, "typescript")
-  -- table.insert(servers, "json")
-  -- table.insert(servers, "bash")
-  -- table.insert(servers, "yaml")
 
   for _, server in pairs(servers) do
     local config = make_config()
@@ -138,28 +125,46 @@ local function setup_servers()
     if server == "efm"  then
       local format_config = require('config.nvim-lspconfig.format')
       config.init_options = { documentFormatting = true, codeAction = true }
-      config.root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
+      config.root_dir = function(fname)
+        return nvim_lsp.util.root_pattern(
+          "package.json",
+          "tsconfig.json",
+          "jsconfig.json",
+          ".git"
+        )(fname) or vim.fn.getcwd()
+      end;
+
       config.filetypes = vim.tbl_keys(format_config)
-      config.settings = {
-        languages = format_config,
-        rootMarkers = {
-          ".eslintrc.cjs",
-          ".eslintrc",
-          ".eslintrc.json",
-          ".eslintrc.js",
-          ".prettierrc",
-          ".prettierrc.js",
-          ".prettierrc.json",
-          ".prettierrc.yml",
-          ".prettierrc.yaml",
-          ".prettier.config.js",
-          ".prettier.config.cjs",
-        },
-      }
+      -- config.settings = {
+      --   languages = format_config,
+      --   rootMarkers = {
+      --     ".eslintrc.cjs",
+      --     ".eslintrc",
+      --     ".eslintrc.json",
+      --     ".eslintrc.js",
+      --     ".prettierrc",
+      --     ".prettierrc.js",
+      --     ".prettierrc.json",
+      --     ".prettierrc.yml",
+      --     ".prettierrc.yaml",
+      --     ".prettier.config.js",
+      --     ".prettier.config.cjs",
+      --     vim.loop.cwd()
+      --   },
+      -- }
     end
 
     if server == "typescript" then
-      config.root_dir = nvim_lsp.util.root_pattern("package.json", "yarn.lock", "lerna.json", ".git")
+      -- config.root_dir = nvim_lsp.util.root_pattern("package.json", "yarn.lock", "lerna.json", ".git")
+      config.root_dir = function(fname)
+        return nvim_lsp.util.root_pattern(
+          "package.json",
+          "tsconfig.json",
+          "jsconfig.json",
+          ".git"
+        )(fname) or vim.fn.getcwd()
+      end;
+
       config.on_attach = function(client, bufnr)
         -- disable tsserver formatting if you plan on formatting via null-ls
         client.resolved_capabilities.document_formatting = false
