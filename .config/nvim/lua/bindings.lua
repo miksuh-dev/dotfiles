@@ -33,6 +33,14 @@ vim.api.nvim_set_keymap('v', '<leader>c', '"_c', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>C', '"_C', { noremap = true })
 vim.api.nvim_set_keymap('v', '<leader>C', '"_C', { noremap = true })
 
+vim.api.nvim_set_keymap('n', '<leader>x', '"_x', { noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>x', '"_x', { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<leader>X', '"_X', { noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>X', '"_X', { noremap = true })
+
+
+
 -- Keeping it centered
 vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { noremap = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { noremap = true })

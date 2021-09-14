@@ -135,27 +135,12 @@ local function setup_servers()
       end;
 
       config.filetypes = vim.tbl_keys(format_config)
-      -- config.settings = {
-      --   languages = format_config,
-      --   rootMarkers = {
-      --     ".eslintrc.cjs",
-      --     ".eslintrc",
-      --     ".eslintrc.json",
-      --     ".eslintrc.js",
-      --     ".prettierrc",
-      --     ".prettierrc.js",
-      --     ".prettierrc.json",
-      --     ".prettierrc.yml",
-      --     ".prettierrc.yaml",
-      --     ".prettier.config.js",
-      --     ".prettier.config.cjs",
-      --     vim.loop.cwd()
-      --   },
-      -- }
+      config.settings = {
+        languages = format_config,
+      }
     end
 
     if server == "typescript" then
-      -- config.root_dir = nvim_lsp.util.root_pattern("package.json", "yarn.lock", "lerna.json", ".git")
       config.root_dir = function(fname)
         return nvim_lsp.util.root_pattern(
           "package.json",
