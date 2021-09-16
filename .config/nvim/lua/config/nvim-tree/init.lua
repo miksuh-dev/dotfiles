@@ -30,7 +30,7 @@ vim.g.nvim_tree_bindings = {
   { key = "]c",                           cb = tree_cb("next_git_item") },
   { key = {"<BS>", "U"},                  cb = tree_cb("dir_up") },
   { key = "s",                            cb = tree_cb("system_open") },
-  { key = "q",                            cb = tree_cb("close") },
+  { key = {"q", ",n", ",N"},              cb = tree_cb("close") },
   { key = "?",                            cb = tree_cb("toggle_help") },
 }
 
@@ -40,8 +40,8 @@ vim.g.nvim_tree_side = 'left' -- left by default
 vim.g.nvim_tree_width = 30 -- 30 by default, can be width_in_columns or 'width_in_percent%'
 vim.g.nvim_tree_ignore = {'.git'} -- empty by default
 vim.g.nvim_tree_gitignore = 0 -- 0 by default
-vim.g.nvim_tree_auto_open = 0 -- 0 by default, opens the tree when typing `vim $DIR` or `vim`
-vim.g.nvim_tree_auto_close = 1 -- 0 by default, closes the tree when it's the last window
+vim.g.nvim_tree_auto_open = 1 -- 0 by default, opens the tree when typing `vim $DIR` or `vim`
+vim.g.nvim_tree_auto_close = 0 -- 0 by default, closes the tree when it's the last window
 vim.g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } -- empty by default, don't auto open tree on specific filetypes.
 vim.g.nvim_tree_quit_on_open = 0 -- 0 by default, closes the tree when you open a file
 vim.g.nvim_tree_follow = 0 -- 0 by default, this option allows the cursor to be updated when entering a buffer
@@ -121,13 +121,12 @@ vim.g.nvim_tree_icons = {
     error = "E",
     hint = 'H',
     info = 'I',
-    -- hint = "",
-    -- info = "",
-    -- warning = "",
-    -- error = "",
   }
 }
 
+-- Auto refresh on enter
+vim.cmd('autocmd BufEnter NERD_tree_* | execute "normal R"');
+
 -- NvimTree
-vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>N', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>N', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
