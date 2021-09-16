@@ -1,15 +1,13 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "bash",
-    "cmake",
     "comment",
+    "commonlisp",
     "css",
     "dockerfile",
-    "go",
     "graphql",
     "haskell",
     "html",
-    "java",
     "javascript",
     "json",
     "lua",
