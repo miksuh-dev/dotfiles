@@ -461,19 +461,19 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
 
      grid =   renamed [Replace "Grid"]
               $ avoidStruts
-              $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+              $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ Grid
 
 
      three =  renamed [Replace "ThreeColumn"]
               $ avoidStruts
-              $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+              $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ ThreeCol 1 (3/100) (1/2)
 
 
      two =    renamed [Replace "TwoPane"]
               $ avoidStruts
-              $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+              $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ TwoPane (3/100) (1/2)
 
 
