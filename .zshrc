@@ -6,7 +6,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -73,8 +72,6 @@ DISABLE_UPDATE_PROMPT="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(ssh-agent git sudo zsh-autosuggestions zsh-vi-mode zsh-syntax-highlighting)
 
-
-
 ZVM_VI_HIGHLIGHT_BACKGROUND=#5a647e
 
 source $ZSH/oh-my-zsh.sh
@@ -114,6 +111,5 @@ export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin"
 export NODE_OPTIONS=--max_old_space_size=4096
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 
-source $HOME/.zsh/load
 [ -f $HOME/.secrets ] && source $HOME/.secrets
 

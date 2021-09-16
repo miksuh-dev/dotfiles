@@ -3,5 +3,5 @@
 alias ssh="kitty +kitten ssh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias fa='alias | grep'
-alias vimconfig='cd $HOME/.config/nvim/lua && vim'
+alias vimconfig='cd $HOME/.config/nvim/lua && vim && cd - > /dev/null'
 alias cw='$HOME/Scripts/change-wallpaper.sh'
