@@ -26,7 +26,6 @@ return require('packer').startup({
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'kabouzeid/nvim-lspinstall' }
     use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
-    use { 'tzachar/compe-tabnine', run = './install.sh'  }
 
     use {
       'phaazon/hop.nvim',
@@ -60,8 +59,17 @@ return require('packer').startup({
     }
 
     use {
-      'hrsh7th/nvim-compe',
-      config = function() require('config.nvim-compe') end
+      "hrsh7th/nvim-cmp",
+      config = function() require('config.nvim-cmp') end,
+    }
+
+    use { "hrsh7th/cmp-buffer" }
+    use { "hrsh7th/cmp-nvim-lsp" }
+    use { "quangnguyen30192/cmp-nvim-ultisnips" }
+    use { "hrsh7th/cmp-calc" }
+    use { "tzachar/cmp-tabnine",
+      run = './install.sh',
+      config = function() require('config.cmp-tabnine') end,
     }
 
     use {
