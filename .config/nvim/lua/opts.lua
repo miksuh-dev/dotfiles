@@ -55,6 +55,12 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
 
+vim.cmd([[
+  if exists("loaded_matchit")
+    let b:match_ignorecase=0
+    let b:match_words = '<:>,' .  '<\@<=!--:-->,'.  '<\@<=?\k\+:?>,'.  '<\@<=\([^ \t>/]\+\)\%(\s\+[^>]*\%([^/]>\|$\)\|>\|$\):<\@<=/\1>,'.  '<\@<=\%([^ \t>/]\+\)\%(\s\+[^/>]*\|$\):/>'.  '\<if\>:\<else\>'
+  endif
+]])
 
 vim.cmd([[
   let g:sneak#s_next = 1

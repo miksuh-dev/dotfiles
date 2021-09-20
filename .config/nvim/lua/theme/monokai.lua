@@ -27,7 +27,6 @@ M.classic = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
-  none = 'NONE',
 }
 
 M.pro = {
@@ -55,7 +54,33 @@ M.pro = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
-  none = 'NONE',
+}
+
+M.soda = {
+  name = 'monokai_soda',
+  base1 = '#211F22',
+  base2 = '#26292C',
+  base3 = '#2E323C',
+  base4 = '#333842',
+  base5 = '#4d5154',
+  base6 = '#72696A',
+  base7 = '#B1B1B1',
+  border = '#A1B5B1',
+  brown = '#504945',
+  white = '#f6f6ec',
+  grey = '#72696A',
+  black = '#000000',
+  pink = '#f3005f',
+  green = '#97e023',
+  aqua = '#78DCE8',
+  yellow = ' #dfd561',
+  orange = '#fa8419',
+  purple = '#9c64fe',
+  red = '#f3005f',
+  diff_add = '#3d5213',
+  diff_remove = '#4a0f23',
+  diff_change = '#27406b',
+  diff_text = '#23324d',
 }
 
 M.highlight = function(group, color)
@@ -70,10 +95,10 @@ M.load_syntax = function(palette)
   return {
     Normal = {
       fg = palette.white,
+      bg = palette.base2,
     },
     NormalFloat = {
-      fg = palette.none,
-      bg = palette.base3,
+      bg = palette.base1,
     },
     Pmenu = {
       fg = palette.white,
@@ -92,20 +117,15 @@ M.load_syntax = function(palette)
       bg = palette.green,
     },
     PmenuSbar = {
-      fg = palette.none,
       bg = palette.base3,
     },
     Cursor = {
-      fg = palette.none,
-      bg = palette.none,
       style = 'reverse',
     },
     ColorColumn = {
-      fg = palette.none,
       bg = palette.base3,
     },
     CursorLine = {
-      fg = palette.none,
       bg = palette.base3,
     },
     NonText = {
@@ -131,29 +151,24 @@ M.load_syntax = function(palette)
     },
     MatchParen = {
       fg = palette.pink,
-      bg = palette.none,
     },
     Question = {
       fg = palette.yellow,
     },
     ModeMsg = {
       fg = palette.white,
-      bg = palette.none,
       style = 'bold',
     },
     MoreMsg = {
       fg = palette.white,
-      bg = palette.none,
       style = 'bold',
     },
     ErrorMsg = {
       fg = palette.red,
-      bg = palette.none,
       style = 'bold',
     },
     WarningMsg = {
       fg = palette.yellow,
-      bg = palette.none,
       style = 'bold',
     },
     VertSplit = {
@@ -167,43 +182,33 @@ M.load_syntax = function(palette)
       fg = palette.white,
       bg = palette.base2,
     },
-    Statusine = {
+    StatusLine = {
       fg = palette.base7,
       bg = palette.base2,
-      style = palette.none,
     },
     StatusLineNC = {
       fg = palette.grey,
       bg = palette.base2,
-      style = palette.none,
     },
-    Tabline = {
-      style = palette.none,
-    },
-    TabLineFill = {
-      style = palette.none,
-    },
+    Tabline = {},
+    TabLineFill = {},
     TabLineSel = {
       bg = palette.base4,
     },
     SpellBad = {
       fg = palette.red,
-      bg = palette.none,
       style = 'undercurl',
     },
     SpellCap = {
       fg = palette.purple,
-      bg = palette.none,
       style = 'undercurl',
     },
     SpellRare = {
       fg = palette.aqua,
-      bg = palette.none,
       style = 'undercurl',
     },
     SpellLocal = {
       fg = palette.pink,
-      bg = palette.none,
       style = 'undercurl',
     },
     SpecialKey = {
@@ -215,7 +220,6 @@ M.load_syntax = function(palette)
     },
     Directory = {
       fg = palette.aqua,
-      bg = palette.none,
     },
     DiffAdd = {
       bg = palette.diff_add,
@@ -278,6 +282,7 @@ M.load_syntax = function(palette)
     },
     Function = {
       fg = palette.green,
+      style = 'italic',
     },
     Statement = {
       fg = palette.pink,
@@ -290,6 +295,7 @@ M.load_syntax = function(palette)
     },
     Keyword = {
       fg = palette.pink,
+      style = 'italic',
     },
     PreProc = {
       fg = palette.green,
@@ -317,6 +323,7 @@ M.load_syntax = function(palette)
     },
     SpecialComment = {
       fg = palette.grey,
+      style = 'italic',
     },
     Tag = {
       fg = palette.orange,
@@ -326,14 +333,12 @@ M.load_syntax = function(palette)
     },
     Comment = {
       fg = palette.base6,
+      style = 'italic',
     },
     Underlined = {
-      fg = palette.none,
       style = 'underline',
     },
-    Ignore = {
-      fg = palette.none,
-    },
+    Ignore = {},
     Error = {
       fg = palette.red,
     },
@@ -343,34 +348,23 @@ M.load_syntax = function(palette)
     },
     EndOfBuffer = {
       fg = palette.base2,
-      bg = palette.none,
     },
     Conceal = {
       fg = palette.grey,
-      bg = palette.none,
     },
     vCursor = {
-      fg = palette.none,
-      bg = palette.none,
       style = 'reverse',
     },
     iCursor = {
-      fg = palette.none,
-      bg = palette.none,
       style = 'reverse',
     },
     lCursor = {
-      fg = palette.none,
-      bg = palette.none,
       style = 'reverse',
     },
     CursorIM = {
-      fg = palette.none,
-      bg = palette.none,
       style = 'reverse',
     },
     CursorColumn = {
-      fg = palette.none,
       bg = palette.base3,
     },
     Whitespace = {
@@ -422,11 +416,12 @@ M.load_plugin_syntax = function(palette)
     },
     TSComment = {
       fg = palette.base6,
-    },
-    TSConstructor = {
-      fg = palette.aqua,
+      style = 'italic',
     },
     TSConstant = {
+      fg = palette.aqua,
+    },
+    TSConstructor = {
       fg = palette.aqua,
     },
     TSConstBuiltin = {
@@ -443,18 +438,22 @@ M.load_plugin_syntax = function(palette)
     },
     TSFunction = {
       fg = palette.green,
+      style = 'italic',
     },
     TSFuncBuiltin = {
       fg = palette.aqua,
     },
     TSFuncMacro = {
       fg = palette.green,
+      style = 'italic',
     },
     TSKeyword = {
       fg = palette.pink,
+      style = 'italic',
     },
     TSKeywordFunction = {
       fg = palette.pink,
+      style = 'italic',
     },
     TSKeywordOperator = {
       fg = palette.pink,
@@ -464,6 +463,7 @@ M.load_plugin_syntax = function(palette)
     },
     TSMethod = {
       fg = palette.green,
+      style = 'italic',
     },
     TSNamespace = {
       fg = palette.purple,
@@ -584,7 +584,6 @@ M.load_plugin_syntax = function(palette)
     },
     NvimTreeSpecialFile = {
       fg = palette.white,
-      bg = palette.none,
       style = 'NONE',
     },
     TelescopeBorder = {
@@ -621,3 +620,4 @@ M.setup = function(palette)
 end
 
 return M
+
