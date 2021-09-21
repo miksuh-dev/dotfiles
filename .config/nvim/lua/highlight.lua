@@ -5,9 +5,11 @@ vim.cmd([[
   hi LineNr guibg=NONE ctermbg=NONE
   hi SignColumn guibg=NONE ctermbg=NONE
   hi EndOfBuffer guibg=NONE ctermbg=NONE
+  highlight FoldColumn  guibg=NONE ctermbg=NONE
   highlight clear LineNr
   highlight clear SignColumn
 ]])
+
 
 -- Visual selection
 vim.cmd([[
