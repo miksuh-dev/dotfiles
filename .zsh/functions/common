@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function nv() {
+function vim() {
   if [ "$TERM_PROGRAM" = tmux ]; then
     nvim "$@"
   else
