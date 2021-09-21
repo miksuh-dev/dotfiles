@@ -1,5 +1,13 @@
 #!/bin/bash
 
+function nv() {
+  if [ "$TERM_PROGRAM" = tmux ]; then
+    nvim "$@"
+  else
+    tmux new-session "nvim $@"
+  fi
+}
+
 function extract() {
   if [ -f $1 ] ; then
     case $1 in
