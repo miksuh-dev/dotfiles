@@ -1,10 +1,10 @@
 #!/bin/bash
 
 function vim() {
-  if [ "$TERM_PROGRAM" = tmux ]; then
-    nvim "$@"
-  else
+  if [ ! "$TMUX" ]; then
     tmux new-session "nvim $@"
+  else
+    nvim "$@"
   fi
 }
 

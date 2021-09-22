@@ -204,7 +204,7 @@ local function setup_servers()
         -- no default maps, so you may want to define some here
         local opts = { silent = true }
         vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "gc", ":TSLspFixCurrent<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "qf", ":TSLspFixCurrent<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
 
         on_attach(client, bufnr);
