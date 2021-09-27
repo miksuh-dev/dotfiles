@@ -39,11 +39,6 @@ return require('packer').startup({
     }
 
     use {
-      'glepnir/lspsaga.nvim',
-      config = function() require('config.lspsaga') end
-    }
-
-    use {
       'mattn/emmet-vim',
       config = function() require('config.emmet-vim') end
     }
