@@ -1,39 +1,3 @@
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-
-local list = {
-  { key = {"<CR>", "e", "l"},             cb = tree_cb("edit") },
-  { key = "cd",                           cb = tree_cb("cd") },
-  { key = "E",                            cb = tree_cb("vsplit") },
-  { key = "s",                            cb = tree_cb("split") },
-  { key = "t",                            cb = tree_cb("tabnew") },
-  { key = "<",                            cb = tree_cb("prev_sibling") },
-  { key = ">",                            cb = tree_cb("next_sibling") },
-  { key = "P",                            cb = tree_cb("parent_node") },
-  { key = "h",                            cb = tree_cb("close_node") },
-  { key = "<Tab>",                        cb = tree_cb("preview") },
-  { key = "K",                            cb = tree_cb("first_sibling") },
-  { key = "J",                            cb = tree_cb("last_sibling") },
-  { key = "I",                            cb = tree_cb("toggle_ignored") },
-  { key = "H",                            cb = tree_cb("toggle_dotfiles") },
-  { key = "R",                            cb = tree_cb("refresh") },
-  { key = "a",                            cb = tree_cb("create") },
-  { key = "X",                            cb = tree_cb("remove") },
-  { key = "rn",                           cb = tree_cb("rename") },
-  { key = "rN",                           cb = tree_cb("full_rename") },
-  { key = "dd",                           cb = tree_cb("cut") },
-  { key = "yy",                           cb = tree_cb("copy") },
-  { key = "p",                            cb = tree_cb("paste") },
-  { key = "yn",                           cb = tree_cb("copy_name") },
-  { key = "yp",                           cb = tree_cb("copy_path") },
-  { key = "yP",                           cb = tree_cb("copy_absolute_path") },
-  { key = "[c",                           cb = tree_cb("prev_git_item") },
-  { key = "]c",                           cb = tree_cb("next_git_item") },
-  { key = {"<BS>", "U"},                  cb = tree_cb("dir_up") },
-  { key = "s",                            cb = tree_cb("system_open") },
-  { key = {"q", ",n", ",N"},              cb = tree_cb("close") },
-  { key = "?",                            cb = tree_cb("toggle_help") },
-}
-
 
 -- -- local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 -- -- default mappings
@@ -170,6 +134,8 @@ vim.api.nvim_set_keymap('n', '<leader>N', ':NvimTreeFocus<CR>', { noremap = true
 
 
 -- following options are the default
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
 require'nvim-tree'.setup {
   -- disables netrw completely
   disable_netrw       = true,
@@ -218,9 +184,41 @@ require'nvim-tree'.setup {
     mappings = {
       -- custom only false will merge the list with the default mappings
       -- if true, it will only use your list to set the mappings
-      custom_only = false,
+      custom_only = true,
       -- list of mappings to set on the tree manually
-      -- list = list
+      list = {
+      { key = {"<CR>", "e", "l"},             cb = tree_cb("edit") },
+      { key = "cd",                           cb = tree_cb("cd") },
+      { key = "E",                            cb = tree_cb("vsplit") },
+      { key = "s",                            cb = tree_cb("split") },
+      { key = "t",                            cb = tree_cb("tabnew") },
+      { key = "<",                            cb = tree_cb("prev_sibling") },
+      { key = ">",                            cb = tree_cb("next_sibling") },
+      { key = "P",                            cb = tree_cb("parent_node") },
+      { key = "h",                            cb = tree_cb("close_node") },
+      { key = "<Tab>",                        cb = tree_cb("preview") },
+      { key = "K",                            cb = tree_cb("first_sibling") },
+      { key = "J",                            cb = tree_cb("last_sibling") },
+      { key = "I",                            cb = tree_cb("toggle_ignored") },
+      { key = "H",                            cb = tree_cb("toggle_dotfiles") },
+      { key = "R",                            cb = tree_cb("refresh") },
+      { key = "a",                            cb = tree_cb("create") },
+      { key = "X",                            cb = tree_cb("remove") },
+      { key = "rn",                           cb = tree_cb("rename") },
+      { key = "rN",                           cb = tree_cb("full_rename") },
+      { key = "dd",                           cb = tree_cb("cut") },
+      { key = "yy",                           cb = tree_cb("copy") },
+      { key = "p",                            cb = tree_cb("paste") },
+      { key = "yn",                           cb = tree_cb("copy_name") },
+      { key = "yp",                           cb = tree_cb("copy_path") },
+      { key = "yP",                           cb = tree_cb("copy_absolute_path") },
+      { key = "[c",                           cb = tree_cb("prev_git_item") },
+      { key = "]c",                           cb = tree_cb("next_git_item") },
+      { key = {"<BS>", "U"},                  cb = tree_cb("dir_up") },
+      { key = "s",                            cb = tree_cb("system_open") },
+      { key = {"q", ",n", ",N"},              cb = tree_cb("close") },
+      { key = "?",                            cb = tree_cb("toggle_help") },
+      }
     }
   }
 };
