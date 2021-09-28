@@ -26,6 +26,7 @@ set undodir=~/.vim/undodir
 set undofile
 set nowrapscan
 set ignorecase
+set nocompatible
 
 let mapleader=','
 
@@ -119,16 +120,10 @@ noremap <Down> 5j
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
 
-" Quick save
-noremap <C-S> :w<CR>
-vnoremap <C-S> <C-C>:w<CR>
-inoremap <C-S> <C-O>:w<CR>
-
 nnoremap + <C-a>
 nnoremap - <C-x>
 
-colorscheme slate
-set background=dark
+colorscheme torte
 
 " Visual line color
 "hi Visual guifg=NONE guibg=#636c81 gui=none
