@@ -57,9 +57,6 @@ vim.api.nvim_set_keymap('v', '<Up>', '5k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Down>', '5j', { noremap = true})
 vim.api.nvim_set_keymap('v', '<Down>', '5j', { noremap = true})
 
--- Quick save
-vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
-
 -- Quick increase/decrease
 vim.api.nvim_set_keymap('n', '-', '<C-x>', { noremap = true })
 vim.api.nvim_set_keymap('n', '+', '<C-a>', { noremap = true })
