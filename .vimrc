@@ -1,4 +1,3 @@
-syntax on
 
 set clipboard=unnamedplus
 set cursorline
@@ -28,28 +27,38 @@ set nowrapscan
 set ignorecase
 set nocompatible
 
-let mapleader=','
-
 set hidden
 set cmdheight=1
 set updatetime=50
 
-" Strip whitespaces on save
-function! <SID>StripTrailingWhitespaces()
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  call cursor(l, c)
-endfun
+if !has("compatible")
+  syntax on
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+  let mapleader=','
 
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+  " Strip whitespaces on save
+  function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+  endfun
+
+  autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+  endfunction
+
+  " Use K to show documentation in preview window.
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  colorscheme torte
+end
 
 "This unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
@@ -73,17 +82,6 @@ nnoremap <silent> <C-Right> :vertical resize -3<CR>
 nnoremap <silent> <C-Up> :resize +3<CR>
 nnoremap <silent> <C-Down> :resize -3<CR>
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
 " delete without yanking
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
@@ -96,7 +94,6 @@ vnoremap <leader>D "_D
 
 nnoremap <leader>C "_C
 vnoremap <leader>C "_C
-
 
 " Keeping it centered
 noremap n nzzzv
@@ -122,8 +119,6 @@ vnoremap K :m '>-2<CR>gv=gv
 
 nnoremap + <C-a>
 nnoremap - <C-x>
-
-colorscheme torte
 
 " Visual line color
 "hi Visual guifg=NONE guibg=#636c81 gui=none
