@@ -21,7 +21,6 @@ return require('packer').startup({
     use { 'JoosepAlviste/nvim-ts-context-commentstring' }
     use { 'SirVer/ultisnips' }
     use { 'mlaursen/vim-react-snippets' }
-    use { 'tomarrell/vim-npr' }
     use { 'jremmen/vim-ripgrep' }
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'kabouzeid/nvim-lspinstall' }
