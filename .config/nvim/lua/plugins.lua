@@ -61,7 +61,9 @@ return require('packer').startup({
     use { "hrsh7th/cmp-nvim-lsp" }
     use { "quangnguyen30192/cmp-nvim-ultisnips" }
     use { "hrsh7th/cmp-calc" }
-    use { "tzachar/cmp-tabnine",
+
+    use {
+      "tzachar/cmp-tabnine",
       run = './install.sh',
       config = function() require('config.cmp-tabnine') end,
     }
@@ -92,7 +94,8 @@ return require('packer').startup({
       config = function() require('config.gitsigns') end
     }
 
-    use { 'norcalli/nvim-colorizer.lua',
+    use {
+      'norcalli/nvim-colorizer.lua',
       config = function() require('config.nvim-colorizer') end
     }
 
