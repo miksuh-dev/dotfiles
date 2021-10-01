@@ -96,6 +96,7 @@ local function install_missing()
     "json",
     "bash",
     "yaml",
+    "lua"
   }
 
   local installed = false
