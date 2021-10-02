@@ -21,15 +21,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.diagnostic.goto_prev(({ wrap = false }))<CR>', opts)
   buf_set_keymap('n', '<leader>j', '<cmd>lua vim.lsp.diagnostic.goto_next({ wrap = false })<CR>', opts)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.code_action()<CR>', opts)
-  buf_set_keymap('v', '<leader>a', '<cmd>lua vim.lsp.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('v', '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
-  -- Set some keybinds conditional on server capabilities
-  -- if client.resolved_capabilities.document_formatting then
-  --   buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  -- elseif client.resolved_capabilities.document_range_formatting then
-  --   buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  -- end
 
   if client.name ~= 'efm' then
     client.resolved_capabilities.document_formatting = false
@@ -39,6 +33,9 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
     buf_set_keymap('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true })
+  end
+
+  if client.resolved_capabilities.document_range_formatting then
     buf_set_keymap('v', '<leader>fo', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', { noremap = true })
   end
 
