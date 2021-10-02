@@ -179,19 +179,7 @@ hiddenEmptyWS = do em <- return (isNothing . W.stack)                      -- em
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
-    -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-
-    , ((modm .|. controlMask, xK_Return), spawn "$(which firefox-developer-edition) || $(which firefox-dev)")
-    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "$(which firefox-developer-edition) --private-window || $(which firefox-dev) --private-window")
-
-    , ((modm, xK_p), spawn "~/Scripts/scrcpy.sh")
-
-    -- launch dmenuf
-    , ((modm,               xK_f     ), spawn "rofi -show run -m -4 -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
-    , ((modm,               xK_s     ), spawn "$HOME/.config/rofi/scripts/search")
-
-    , ((modm, xK_p), goToSelected defaultGSConfig {
+    [ ((modm, xK_p), goToSelected defaultGSConfig {
       gs_cellheight = 100,
       gs_cellwidth = 300,
       gs_navigate = myNavigation,
@@ -205,23 +193,17 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       gs_font = "xft:Bitstream Vera Sans Mono:size=16:bold:antialias=true"
     })
 
-
-    -- Xkill
-    , ((modm .|. shiftMask, xK_Escape     ), spawn "xkill")
-
-
     -- close focused window
     , ((modm,                          xK_d     ), kill)
-    , ((modm .|. shiftMask,            xK_d     ), kill)
+
+    -- Xkill
+    , ((modm .|. shiftMask, xK_d     ), spawn "xkill")
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
 
     -- ToggleStruts
     , ((modm .|. shiftMask,     xK_space ), sendMessage ToggleStruts)
-
-    --  Reset the layouts on the current workspace to default
-    -- , ((modm,                xK_t ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_q     ), refresh)
@@ -237,9 +219,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Move focus to the previous window
     , ((modm,               xK_k     ), windows W.focusUp  )
-
-    -- Move focus to the master window
-    -- , ((modm,               xK_m     ), windows W.focusMaster  )
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
@@ -262,7 +241,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Expand the master area
     , ((modm,               xK_a     ), sendMessage MirrorExpand)
 
-
     -- Push window back into tiling
     , ((modm .|. shiftMask, xK_t     ), withFocused $ windows . W.sink)
 
@@ -272,10 +250,24 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_i), sendMessage (IncMasterN (-1)))
 
-
     --------------------------------------------------------------------------------
     ------------------------- Quick launch binds -----------------------------------
     --------------------------------------------------------------------------------
+    
+    -- Terminal
+    , ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+
+    -- rofi
+    , ((modm,               xK_f), spawn "rofi -show run -m -4 -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
+
+    -- rofi (browser search)
+    , ((modm,               xK_s), spawn "$HOME/.config/rofi/scripts/search")
+    
+    -- Firefox
+    , ((modm .|. controlMask, xK_Return), spawn "$(which firefox-developer-edition) || $(which firefox-dev)")
+
+    -- Firefox private
+    , ((modm .|. controlMask .|. shiftMask, xK_Return), spawn "$(which firefox-developer-edition) --private-window || $(which firefox-dev) --private-window")
 
     -- Print screen
     , ((0 .|. controlMask , xK_Print), spawn "flameshot gui")
@@ -283,17 +275,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Launch Pcmanfm
     , ((modm .|. shiftMask , xK_BackSpace), spawn "pcmanfm")
 
-    -- Launch qalculate
-    , ((0,               0x1008FF1D), spawn "snap run qalculate")
-
-    -- Launch pcmanfm
-    , ((0,               0x1008FF5D), spawn "pcmanfm")
-
-    -- Launch launch terminal
-    , ((0,               0x1008FF19), spawn $ XMonad.terminal conf)
-
-    -- Launch firefox
-    , ((0,               0x1008FF18), spawn "firefox")
+    --  Scrcpy
+    , ((modm  .|. controlMask .|. shiftMask, xK_BackSpace), spawn "~/Scripts/scrcpy.sh")
 
     --------------------------------------------------------------------------------
     ------------------------------ Media -------------------------------------------

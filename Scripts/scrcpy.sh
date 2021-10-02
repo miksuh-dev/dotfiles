@@ -1,6 +1,8 @@
 #!/bin/bash
 if  ! pidof scrcpy ; then
-  scrcpy -S -w || snap run scrcpy -S -w
-else
-  echo no
+  if [ -x "$(command -v scrcpy)" ]; then
+    scrcpy -S -w
+  else
+    snap run scrcpy -S -w
+  fi
 fi
