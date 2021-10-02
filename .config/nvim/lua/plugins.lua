@@ -53,17 +53,18 @@ return require('packer').startup({
     }
 
     use {
-      "hrsh7th/nvim-cmp",
+      'hrsh7th/nvim-cmp',
       config = function() require('config.nvim-cmp') end,
     }
 
-    use { "hrsh7th/cmp-buffer" }
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "quangnguyen30192/cmp-nvim-ultisnips" }
-    use { "hrsh7th/cmp-calc" }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
+    use { 'quangnguyen30192/cmp-nvim-ultisnips' }
+    use { 'hrsh7th/cmp-calc' }
+    use { 'hrsh7th/cmp-path' }
 
     use {
-      "tzachar/cmp-tabnine",
+      'tzachar/cmp-tabnine',
       run = './install.sh',
       config = function() require('config.cmp-tabnine') end,
     }

@@ -76,6 +76,7 @@ cmp.setup {
         ultisnips = "[UltiSnips]",
         cmp_tabnine = "[Tabnine]",
         calc = "[Calc]",
+        path = "[Path]"
       })[entry.source.name]
       return vim_item
     end,
@@ -86,6 +87,7 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'cmp_tabnine' },
     { name = 'calc' },
+    { name = 'path' },
   }
 }
 
