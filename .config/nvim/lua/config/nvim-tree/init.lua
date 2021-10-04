@@ -1,3 +1,4 @@
+vim.g.nvim_tree_disable_window_picker = 1 -- 0 by default, will disable the window picker.
 vim.g.nvim_tree_window_picker_exclude = {
   filetype = {
     'notify',
