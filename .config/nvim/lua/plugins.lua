@@ -27,11 +27,6 @@ return require('packer').startup({
     use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
 
     use {
-      'ray-x/lsp_signature.nvim',
-      config = function() require('config.lsp_signature') end
-    }
-
-    use {
       'phaazon/hop.nvim',
       as = 'hop',
       config = function() require('config.hop') end
