@@ -27,6 +27,7 @@ M.classic = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
+  common_blue = '#4682b4'
 }
 
 M.pro = {
@@ -587,6 +588,9 @@ M.load_plugin_syntax = function(palette)
     CursorWord1 = {
       bg = palette.white,
       fg = palette.black,
+    },
+    NvimTreeFolderIcon = {
+      fg = palette.common_blue,
     },
     NvimTreeFolderName = {
       fg = palette.white,

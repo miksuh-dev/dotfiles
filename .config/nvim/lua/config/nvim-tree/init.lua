@@ -11,7 +11,7 @@ vim.g.nvim_tree_window_picker_exclude = {
   }
 }
 
-vim.g.nvim_tree_ignore = { '.git'  } -- empty by default
+vim.g.nvim_tree_ignore = {} -- empty by default
 vim.g.nvim_tree_special_files = { 'README.md', 'Makefile', 'MAKEFILE' } -- List of filenames that gets highlighted with NvimTreeSpecialFile
 vim.g.nvim_tree_show_icons = {
   git = 1,
@@ -60,9 +60,30 @@ vim.g.nvim_tree_icons = {
 -- Auto refresh on enter
 vim.cmd('autocmd BufEnter NERD_tree_* | execute "normal R"');
 
--- NvimTree
-vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>N', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
+
+-- TODO Change this to lua...
+vim.cmd([[
+  function! NvimTreeToggleFind()
+    if expand('%') == 'NvimTree'
+      :NvimTreeClose
+    elseif filereadable(expand('%'))
+      :NvimTreeFindFile
+    else
+      :NvimTreeFocus
+    endif
+  endfunction
+
+  function! NvimFocusClose()
+    if expand('%') == 'NvimTree'
+      :NvimTreeClose
+    else
+      :NvimTreeFocus
+    endif
+  endfunction
+
+  nnoremap <silent><leader>n :call NvimTreeToggleFind()<CR>
+  nnoremap <silent><leader>N :call NvimFocusClose()<CR>
+]])
 
 
 -- following options are the default
@@ -155,7 +176,7 @@ require'nvim-tree'.setup {
       { key = "]c",                           cb = tree_cb("next_git_item") },
       { key = {"<BS>", "U"},                  cb = tree_cb("dir_up") },
       { key = "s",                            cb = tree_cb("system_open") },
-      { key = {"q", ",n", ",N"},              cb = tree_cb("close") },
+      { key = "q",                            cb = tree_cb("close") },
       { key = "?",                            cb = tree_cb("toggle_help") },
       }
     }
