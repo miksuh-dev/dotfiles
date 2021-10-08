@@ -4,7 +4,7 @@
 local Colors = {
   white          = '#ffffff',
   darkestgreen   = '#005f00',
-  normalbg       = '#4682b4',
+  normalbg       = '#1793d0',
   darkestcyan    = '#005f5f',
   insertbg       = '#87AF5F',
   darkestblue    = '#005f87',

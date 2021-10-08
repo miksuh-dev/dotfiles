@@ -27,7 +27,7 @@ M.classic = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
-  common_blue = '#4682b4'
+  common_blue = '#1793d0'
 }
 
 M.pro = {
@@ -74,7 +74,7 @@ M.soda = {
   pink = '#f3005f',
   green = '#97e023',
   aqua = '#78DCE8',
-  yellow = ' #dfd561',
+  yellow = '#dfd561',
   orange = '#fa8419',
   purple = '#9c64fe',
   red = '#f3005f',

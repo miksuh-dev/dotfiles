@@ -43,10 +43,6 @@ require'lualine'.setup{
           error = "E",
           info = 'I',
           hint = 'H',
-          -- warning = ' ',
-          -- error = " ",
-          -- info = ' ',
-          -- hint = ' ',
         }
       },
     },
