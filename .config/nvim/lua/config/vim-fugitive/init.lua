@@ -3,4 +3,3 @@ vim.api.nvim_set_keymap('n', '<leader>gj', ':diffget //3<CR>', { noremap = true 
 vim.api.nvim_set_keymap('n', '<leader>gs', ':G<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', { noremap = true })
-

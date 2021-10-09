@@ -1,4 +1,3 @@
-
 -- Transparent
 vim.cmd([[
   hi Normal guibg=NONE ctermbg=NONE
@@ -10,16 +9,21 @@ vim.cmd([[
   highlight clear SignColumn
 ]])
 
-
 -- Visual selection
-vim.cmd([[
+vim.cmd(
+  [[
   hi Visual guifg=NONE guibg=#636c81 gui=NONE
-]], false)
+]],
+  false
+)
 
 -- Highlight yanked text
-vim.cmd([[
+vim.cmd(
+  [[
   augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
   augroup END
-]], false)
+]],
+  false
+)

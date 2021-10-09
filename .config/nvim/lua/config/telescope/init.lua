@@ -1,16 +1,15 @@
-require('telescope').setup{
+require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
-      ".git/.*",
-      "node_modules/.*",
+      '.git/.*',
+      'node_modules/.*',
     },
     mappings = {
       i = {
-        ["<esc>"] = require("telescope.actions").close,
-        ["<c-s>"] = require("telescope.actions").select_horizontal,
-        ["<c-o>"] = require("telescope.actions").select_vertical,
-        ["<c-q>"] = require("telescope.actions").send_to_qflist,
-
+        ['<esc>'] = require('telescope.actions').close,
+        ['<c-s>'] = require('telescope.actions').select_horizontal,
+        ['<c-o>'] = require('telescope.actions').select_vertical,
+        ['<c-q>'] = require('telescope.actions').send_to_qflist,
       },
     },
     vimgrep_arguments = {
@@ -20,15 +19,15 @@ require('telescope').setup{
       '--with-filename',
       '--line-number',
       '--column',
-      '--smart-case'
+      '--smart-case',
     },
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
+    prompt_prefix = '> ',
+    selection_caret = '> ',
+    entry_prefix = '  ',
+    initial_mode = 'insert',
+    selection_strategy = 'reset',
+    sorting_strategy = 'descending',
+    layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
         mirror = false,
@@ -41,8 +40,8 @@ require('telescope').setup{
         height = 0.9,
       },
     },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    file_sorter = require('telescope.sorters').get_fuzzy_file,
+    generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
@@ -50,20 +49,22 @@ require('telescope').setup{
     use_less = true,
     path_display = {},
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+    grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
     -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-  }
-}
+    buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
+  },
+})
+
+local cfg = { noremap = true, silent = true }
 
 -- Telescope
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-p>', '<cmd>lua require("telescope.builtin").git_files()<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>lua require("telescope.builtin").git_status()<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<CR>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>', cfg)
+vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<CR>', cfg)
+vim.api.nvim_set_keymap('n', '<c-p>', '<cmd>lua require("telescope.builtin").git_files()<CR>', cfg)
+vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>lua require("telescope.builtin").git_status()<CR>', cfg)
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>', cfg)
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>', cfg)
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<CR>', cfg)

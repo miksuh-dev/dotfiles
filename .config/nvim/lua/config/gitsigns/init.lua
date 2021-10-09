@@ -1,4 +1,4 @@
-require('gitsigns').setup {
+require('gitsigns').setup({
   signs = {
     add = { hl = 'GreenSign', text = '+', numhl = 'GitSignsAddNr' },
     change = { hl = 'YellowSign', text = '~', numhl = 'GitSignsChangeNr' },
@@ -6,16 +6,16 @@ require('gitsigns').setup {
     topdelete = { hl = 'RedSign', text = '-', numhl = 'GitSignsDeleteNr' },
     changedelete = { hl = 'YellowSign', text = '~', numhl = 'GitSignsChangeNr' },
   },
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+  numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   keymaps = {
     -- Default keymap options
     noremap = true,
 
-    ['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
-    ['n [h'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+    ['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'" },
+    ['n [h'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'" },
 
     ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
     ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
@@ -30,11 +30,11 @@ require('gitsigns').setup {
 
     -- Text objects
     ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
   },
   watch_gitdir = {
     interval = 1000,
-    follow_files = true
+    follow_files = true,
   },
   attach_to_untracked = true,
   current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
@@ -44,7 +44,7 @@ require('gitsigns').setup {
     delay = 1000,
   },
   current_line_blame_formatter_opts = {
-    relative_time = false
+    relative_time = false,
   },
   sign_priority = 6,
   update_debounce = 100,
@@ -56,18 +56,21 @@ require('gitsigns').setup {
     style = 'minimal',
     relative = 'cursor',
     row = 0,
-    col = 1
+    col = 1,
   },
   diff_opts = {
-    internal = true,  -- If vim.diff or luajit is present
+    internal = true, -- If vim.diff or luajit is present
   },
   yadm = {
-    enable = false
+    enable = false,
   },
-}
+})
 
-vim.cmd([[
+vim.cmd(
+  [[
   hi RedSign guifg=#cc241d ctermfg=124 gui=NONE cterm=NONE guibg=NONE
   hi YellowSign guifg=#e6db74 ctermfg=214 gui=NONE cterm=NONE guibg=NONE
   hi GreenSign guifg=#a6e22e ctermfg=142 gui=NONE cterm=NONE guibg=NONE
-]], false)
+]],
+  false
+)
