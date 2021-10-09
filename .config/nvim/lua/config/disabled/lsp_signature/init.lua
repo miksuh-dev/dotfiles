@@ -26,7 +26,7 @@ local cfg = {
   max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
   transpancy = 10, -- set this value if you want the floating windows to be transpant (100 fully transpant), nil to disable(default)
   handler_opts = {
-    border = 'none',   -- double, single, shadow, none
+    border = 'none', -- double, single, shadow, none
   },
 
   always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
