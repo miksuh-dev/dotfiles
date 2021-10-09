@@ -86,9 +86,7 @@ local function hasValue(tbl, str)
   return f
 end
 
-local function install_missing()
-  local installed_servers = require('lspinstall').installed_servers()
-
+local function install_missing(installed_servers)
   local required_servers = {
     'efm',
     'haskell',
@@ -119,14 +117,15 @@ end
 local function setup_servers()
   require('lspinstall').setup()
 
-  local nvim_lsp = require('lspconfig')
+  -- get all installed servers
+  local servers = require('lspinstall').installed_servers()
 
-  if install_missing() then
+  local installed = install_missing(servers)
+  if installed then
     return
   end
 
-  -- get all installed servers
-  local servers = require('lspinstall').installed_servers()
+  local nvim_lsp = require('lspconfig')
 
   for _, server in pairs(servers) do
     local config = make_config()
