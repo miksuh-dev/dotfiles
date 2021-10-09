@@ -1,106 +1,345 @@
-
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd 'packadd packer.nvim'
+  fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
+  vim.cmd('packadd packer.nvim')
 end
 
 return require('packer').startup({
   function(use)
-    use { 'tpope/vim-surround' }
-    use { 'tpope/vim-unimpaired' }
-    use { 'nvim-lua/plenary.nvim' }
-    use { 'nvim-lua/popup.nvim' }
-    use { 'adelarsq/vim-matchit' }
-    use { 'tpope/vim-repeat' }
-    use { 'nvim-treesitter/playground' }
-    use { 'nvim-treesitter/nvim-treesitter-textobjects' }
-    use { 'windwp/nvim-ts-autotag' }
-    use { 'tpope/vim-commentary' }
-    use { 'JoosepAlviste/nvim-ts-context-commentstring' }
-    use { 'SirVer/ultisnips' }
-    use { 'mlaursen/vim-react-snippets' }
-    use { 'jremmen/vim-ripgrep' }
-    use { 'kyazdani42/nvim-web-devicons' }
-    use { 'kabouzeid/nvim-lspinstall' }
-    use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Common -----------------------------------------------
+    ------------------------------------------------------------------------------------------------
 
-    use {
-      'phaazon/hop.nvim',
-      as = 'hop',
-      config = function() require('config.hop') end
-    }
+    -- use { 'jremmen/vim-ripgrep' } // Maybe needed?
 
-    use {
-      'tpope/vim-fugitive',
-      config = function() require('config.vim-fugitive') end
-    }
+    use({
+      'wbthomason/packer.nvim',
+      event = 'VimEnter',
+    })
 
-    use {
+    use({
+      'tpope/vim-repeat',
+      event = 'BufReadPre',
+    })
+
+    use({
+      'tpope/vim-surround',
+      keys = {
+        { 'n', 'yss' },
+        { 'x', 'S' },
+        { 'n', 'ys' },
+        { 'n', 'cs' },
+        { 'n', 'ds' },
+      },
+    })
+
+    use({
+      'tpope/vim-commentary',
+      keys = {
+        { 'v', 'gc' },
+        { 'n', 'gcc' },
+      },
+    })
+
+    use({
+      'adelarsq/vim-matchit',
+      keys = {
+        { 'n', '%' },
+      },
+    })
+
+    use({
+      'tpope/vim-unimpaired',
+      keys = {
+        { 'n', '[' },
+        { 'n', ']' },
+        { 'n', '{' },
+        { 'n', '}' },
+        { 'n', '<' },
+        { 'n', '>' },
+        { 'n', '=' },
+      },
+    })
+
+    use({
+      'nvim-lua/popup.nvim',
+      module = 'popup',
+    })
+
+    use({
+      'nvim-lua/plenary.nvim',
+      module = 'plenary',
+    })
+
+    use({
       'mattn/emmet-vim',
-      config = function() require('config.emmet-vim') end
-    }
+      keys = {
+        { 'i', '<C-Y>,' },
+      },
+      config = function()
+        require('config.emmet-vim')
+      end,
+    })
 
-    use {
+    use({
       'windwp/nvim-autopairs',
-      config = function() require('config.nvim-autopairs') end
-    }
+      after = 'nvim-cmp',
+      keys = {
+        { 'i', '"' },
+        { 'i', "'" },
+        { 'i', '`' },
+        { 'i', '(' },
+        { 'i', '[' },
+        { 'i', '{' },
+      },
+      config = function()
+        require('config.nvim-autopairs')
+      end,
+    })
 
-    use {
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- UI ---------------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+    use({
+      'kyazdani42/nvim-web-devicons',
+      module = 'nvim-web-devicons',
+    })
+
+    use({
+      'hoob3rt/lualine.nvim',
+      event = 'VimEnter',
+      config = function()
+        require('config.lualine')
+      end,
+    })
+
+    use({
+      'norcalli/nvim-colorizer.lua',
+      event = 'BufReadPre',
+      config = function()
+        require('config.nvim-colorizer')
+      end,
+    })
+
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Navigation -------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+    use({
+      'kyazdani42/nvim-tree.lua',
+      cmd = {
+        'NvimTreeClipboard',
+        'NvimTreeClose',
+        'NvimTreeFindFile',
+        'NvimTreeFocus',
+        'NvimTreeOpen',
+        'NvimTreeRefresh',
+        'NvimTreeResize',
+        'NvimTreeToggle',
+      },
+      keys = {
+        { 'n', '<leader>n' },
+        { 'n', '<leader>N' },
+      },
+      config = function()
+        require('config.nvim-tree')
+      end,
+    })
+
+    use({
+      'nvim-telescope/telescope.nvim',
+      cmd = { 'Telescope' },
+      module = 'telescope',
+      keys = {
+        { 'n', '<leader>ff' },
+        { 'n', '<leader>fd' },
+        { 'n', '<c-p>' },
+        { 'n', '<leader>fs' },
+        { 'n', '<leader>fg' },
+        { 'n', '<leader>fb' },
+        { 'n', '<leader>fh' },
+      },
+      config = function()
+        require('config.telescope')
+      end,
+    })
+
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Lsp --------------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+    use({
       'neovim/nvim-lspconfig',
-      config = function() require('config.nvim-lspconfig') end
-    }
+      event = 'BufReadPre',
+      cmd = { 'LspInfo', 'LspInstall', 'LspRestart', 'LspStart', 'LspStop', 'LspUninstall' },
+      config = function()
+        require('config.nvim-lspconfig')
+      end,
+    })
 
-    use {
+    use({
+      'jose-elias-alvarez/nvim-lsp-ts-utils',
+      module = 'nvim-lsp-ts-utils',
+      requires = 'nvim-lspconfig',
+    })
+
+    use({
+      'kabouzeid/nvim-lspinstall',
+      cmd = { 'LspInstall', 'LspUninstall' },
+      module = 'lspinstall',
+      requires = 'nvim-lspconfig',
+    })
+
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Cmp --------------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+    use({
       'hrsh7th/nvim-cmp',
-      config = function() require('config.nvim-cmp') end,
-    }
+      event = 'InsertEnter',
+      config = function()
+        require('config.nvim-cmp')
+      end,
+    })
 
-    use { 'hrsh7th/cmp-buffer' }
-    use { 'hrsh7th/cmp-nvim-lsp' }
-    use { 'quangnguyen30192/cmp-nvim-ultisnips' }
-    use { 'hrsh7th/cmp-calc' }
-    use { 'hrsh7th/cmp-path' }
+    use({
+      'hrsh7th/cmp-nvim-lsp',
+      module = 'cmp_nvim_lsp',
+      requires = {
+        'nvim-cmp',
+        'nvim-lspconfig',
+      },
+    })
 
-    use {
+    use({
+      'SirVer/ultisnips',
+      after = 'nvim-cmp',
+      method = 'UltiSnips',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'quangnguyen30192/cmp-nvim-ultisnips',
+      after = 'ultisnips',
+      requires = { 'nvim-cmp', 'ultisnips' },
+    })
+
+    use({
+      'mlaursen/vim-react-snippets',
+      ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+      requires = { 'nvim-cmp', 'ultisnips' },
+    })
+
+    use({
+      'hrsh7th/cmp-buffer',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'hrsh7th/cmp-calc',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'hrsh7th/cmp-path',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
       'tzachar/cmp-tabnine',
       run = './install.sh',
-      config = function() require('config.cmp-tabnine') end,
-    }
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+      config = function()
+        require('config.cmp-tabnine')
+      end,
+    })
 
-    use {
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Treesitter -------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+    use({
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
-      config = function() require('config.nvim-treesitter') end
-    }
+      event = 'BufRead',
+      module = 'nvim-treesitter',
+      config = function()
+        require('config.nvim-treesitter')
+      end,
+    })
 
-    use {
-      'nvim-telescope/telescope.nvim',
-      config = function() require('config.telescope') end
-    }
+    use({
+      'nvim-treesitter/playground',
+      cmd = 'TSPlaygroundToggle',
+      requires = 'nvim-treesitter',
+    })
 
-    use {
-      'kyazdani42/nvim-tree.lua',
-      config = function() require('config.nvim-tree') end
-    }
+    use({
+      'windwp/nvim-ts-autotag',
+      ft = require('config.nvim-ts-autotag.filetypes'),
+      requires = 'nvim-treesitter',
+      config = function()
+        require('config.nvim-ts-autotag')
+      end,
+    })
 
-    use {
-      'hoob3rt/lualine.nvim',
-      config = function() require('config.lualine') end
-    }
+    use({
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      after = 'nvim-treesitter',
+      requires = {
+        'nvim-treesitter',
+        'vim-commentary',
+      },
+    })
 
-    use {
+    ----------------------------------------------------------------------------
+    ------------------------------- Git ----------------------------------------
+    ----------------------------------------------------------------------------
+
+    use({
       'lewis6991/gitsigns.nvim',
-      config = function() require('config.gitsigns') end
-    }
+      cond = function()
+        return vim.fn.isdirectory('.git') ~= 0
+      end,
+      config = function()
+        require('config.gitsigns')
+      end,
+    })
 
-    use {
-      'norcalli/nvim-colorizer.lua',
-      config = function() require('config.nvim-colorizer') end
-    }
-
+    use({
+      'tpope/vim-fugitive',
+      cond = function()
+        return vim.fn.isdirectory('.git') ~= 0
+      end,
+      keys = {
+        { 'n', '<leader>gf' },
+        { 'n', '<leader>gj' },
+        { 'n', '<leader>gs' },
+        { 'n', '<leader>gb' },
+        { 'n', '<leader>gd' },
+      },
+      cmd = { 'G', 'Git' },
+      config = function()
+        require('config.vim-fugitive')
+      end,
+    })
   end,
   config = {
-    max_jobs = 5
-}})
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end,
+      prompt_border = 'single',
+    },
+    git = {
+      clone_timeout = 600,
+    },
+    max_jobs = 5,
+  },
+})

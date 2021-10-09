@@ -1,19 +1,17 @@
-local eslint = require('config.nvim-lspconfig.format.eslint');
-local prettier = require('config.nvim-lspconfig.format.prettier');
-
--- local luaformatter = { formatCommand = "lua-format -i", formatStdin = true }
--- local stylua = { formatCommand = 'stylua -s -', formatStdin = true }
+local eslint = require('config.nvim-lspconfig.format.formatter.eslint')
+local prettier = require('config.nvim-lspconfig.format.formatter.prettier')
+local stylua = require('config.nvim-lspconfig.format.formatter.stylua')
 
 return {
-    css = { prettier },
-    html = { prettier },
-    javascript = { prettier, eslint },
-    javascriptreact = { prettier, eslint },
-    json = { prettier },
-    lua = {},
-    markdown = { prettier },
-    scss = { prettier },
-    typescript = { prettier, eslint },
-    typescriptreact = { prettier, eslint },
-    yaml = { prettier },
+  css = { prettier },
+  html = { prettier },
+  javascript = { prettier, eslint },
+  javascriptreact = { prettier, eslint },
+  json = { prettier },
+  lua = { stylua },
+  markdown = { prettier },
+  scss = { prettier },
+  typescript = { prettier, eslint },
+  typescriptreact = { prettier, eslint },
+  yaml = { prettier },
 }

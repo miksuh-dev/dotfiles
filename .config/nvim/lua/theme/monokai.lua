@@ -1,5 +1,3 @@
-local vim = vim
-
 local M = {}
 
 M.classic = {
@@ -14,6 +12,7 @@ M.classic = {
   border = '#a1b5b1',
   brown = '#504945',
   white = '#f8f8f0',
+  darker_white = '#c9c9c3',
   grey = '#8F908A',
   black = '#000000',
   pink = '#f92672',
@@ -27,7 +26,7 @@ M.classic = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
-  common_blue = '#1793d0'
+  common_blue = '#1793d0',
 }
 
 M.pro = {
@@ -106,16 +105,17 @@ M.load_syntax = function(palette)
       bg = palette.base3,
     },
     PmenuSel = {
-      fg = palette.base4,
-      bg = palette.orange,
+      fg = palette.base3,
+      bg = palette.common_blue,
     },
     PmenuSelBold = {
-      fg = palette.base4,
-      bg = palette.orange,
+      fg = palette.base3,
+      bg = palette.common_blue,
+      style = 'bold',
     },
     PmenuThumb = {
       fg = palette.purple,
-      bg = palette.green,
+      bg = palette.common_blue,
     },
     PmenuSbar = {
       bg = palette.base3,
@@ -608,6 +608,24 @@ M.load_plugin_syntax = function(palette)
     TelescopePromptBorder = {
       fg = palette.border,
     },
+    CmpItemAbbr = {
+      fg = palette.base6,
+    },
+    CmpItemAbbrDeprecated = {
+      fg = palette.white,
+    },
+    CmpItemAbbrMatch = {
+      fg = palette.white,
+    },
+    CmpItemAbbrMatchFuzzy = {
+      fg = palette.white,
+    },
+    CmpItemKind = {
+      fg = palette.white,
+    },
+    CmpItemMenu = {
+      fg = palette.white,
+    },
   }
 end
 
@@ -636,4 +654,3 @@ M.setup = function(palette)
 end
 
 return M
-
