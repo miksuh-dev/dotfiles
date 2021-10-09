@@ -54,16 +54,3 @@ vim.g.netrw_winsize = 2
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
-
--- vim.opt.lazyredraw = true -- Remove this if render issues
-
-vim.cmd([[
-  if exists("loaded_matchit")
-    let b:match_ignorecase=0
-    let b:match_words = '<:>,' .  '<\@<=!--:-->,'.  '<\@<=?\k\+:?>,'.  '<\@<=\([^ \t>/]\+\)\%(\s\+[^>]*\%([^/]>\|$\)\|>\|$\):<\@<=/\1>,'.  '<\@<=\%([^ \t>/]\+\)\%(\s\+[^/>]*\|$\):/>'.  '\<if\>:\<else\>'
-  endif
-]])
-
-vim.cmd([[
-  let g:sneak#s_next = 1
-]])
