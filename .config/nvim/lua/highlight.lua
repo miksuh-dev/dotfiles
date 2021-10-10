@@ -1,9 +1,9 @@
 -- Transparent
 vim.cmd([[
-  hi Normal guibg=NONE ctermbg=NONE
-  hi LineNr guibg=NONE ctermbg=NONE
-  hi SignColumn guibg=NONE ctermbg=NONE
-  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight LineNr guibg=NONE ctermbg=NONE
+  highlight SignColumn guibg=NONE ctermbg=NONE
+  highlight EndOfBuffer guibg=NONE ctermbg=NONE
   highlight FoldColumn  guibg=NONE ctermbg=NONE
   highlight clear LineNr
   highlight clear SignColumn
@@ -11,7 +11,7 @@ vim.cmd([[
 
 -- Visual selection
 vim.cmd([[
-  hi Visual guifg=NONE guibg=#636c81 gui=NONE
+  highlight Visual guifg=NONE guibg=#636c81 gui=NONE
 ]])
 
 -- Highlight yanked text

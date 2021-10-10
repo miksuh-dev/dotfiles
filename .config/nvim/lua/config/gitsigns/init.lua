@@ -66,11 +66,8 @@ require('gitsigns').setup({
   },
 })
 
-vim.cmd(
-  [[
-  hi RedSign guifg=#cc241d ctermfg=124 gui=NONE cterm=NONE guibg=NONE
-  hi YellowSign guifg=#e6db74 ctermfg=214 gui=NONE cterm=NONE guibg=NONE
-  hi GreenSign guifg=#a6e22e ctermfg=142 gui=NONE cterm=NONE guibg=NONE
-]],
-  false
-)
+vim.cmd([[
+  highlight RedSign guifg=#cc241d ctermfg=124 gui=NONE cterm=NONE guibg=NONE
+  highlight YellowSign guifg=#e6db74 ctermfg=214 gui=NONE cterm=NONE guibg=NONE
+  highlight GreenSign guifg=#a6e22e ctermfg=142 gui=NONE cterm=NONE guibg=NONE
+]])
