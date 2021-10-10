@@ -45,6 +45,7 @@ return require('packer').startup({
       'tpope/vim-commentary',
       keys = {
         { 'v', 'gc' },
+        { 'n', 'gc' },
         { 'n', 'gcc' },
       },
     })
