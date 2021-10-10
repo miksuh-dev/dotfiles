@@ -10,20 +10,14 @@ vim.cmd([[
 ]])
 
 -- Visual selection
-vim.cmd(
-  [[
+vim.cmd([[
   hi Visual guifg=NONE guibg=#636c81 gui=NONE
-]],
-  false
-)
+]])
 
 -- Highlight yanked text
-vim.cmd(
-  [[
+vim.cmd([[
   augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
   augroup END
-]],
-  false
-)
+]])

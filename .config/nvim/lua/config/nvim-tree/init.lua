@@ -60,30 +60,6 @@ vim.g.nvim_tree_icons = {
 -- Auto refresh on enter
 vim.cmd('autocmd BufEnter NERD_tree_* | execute "normal R"')
 
--- TODO Change this to lua...
-vim.cmd([[
-  function! NvimTreeToggleFind()
-    if expand('%') == 'NvimTree'
-      :NvimTreeClose
-    elseif filereadable(expand('%'))
-      :NvimTreeFindFile
-    else
-      :NvimTreeFocus
-    endif
-  endfunction
-
-  function! NvimFocusClose()
-    if expand('%') == 'NvimTree'
-      :NvimTreeClose
-    else
-      :NvimTreeFocus
-    endif
-  endfunction
-
-  nnoremap <silent><leader>n :call NvimTreeToggleFind()<CR>
-  nnoremap <silent><leader>N :call NvimFocusClose()<CR>
-]])
-
 -- following options are the default
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
@@ -112,7 +88,15 @@ require('nvim-tree').setup({
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
   update_cwd = false,
   -- show lsp diagnostics in the signcolumn
-  lsp_diagnostics = true,
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = 'H',
+      info = 'I',
+      warning = 'W',
+      error = 'E',
+    },
+  },
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
   update_focused_file = {
     -- enables the feature
@@ -180,3 +164,35 @@ require('nvim-tree').setup({
     },
   },
 })
+
+local function is_file_readable(fname)
+  local stat = vim.loop.fs_stat(fname)
+  return stat and stat.type == 'file' and vim.loop.fs_access(fname, 'R')
+end
+
+function _G.NvimTreeToggleFind()
+  local nvimtree = require('nvim-tree')
+  local fn = vim.fn
+
+  if fn.expand('%') == 'NvimTree' then
+    nvimtree.close()
+  elseif is_file_readable(fn.expand('%')) then
+    nvimtree.find_file(true)
+  else
+    nvimtree.focus()
+  end
+end
+
+function _G.NvimFocusClose()
+  local nvimtree = require('nvim-tree')
+  local fn = vim.fn
+
+  if fn.expand('%') == 'NvimTree' then
+    nvimtree.close()
+  else
+    nvimtree.focus()
+  end
+end
+
+vim.api.nvim_set_keymap('n', '<leader>n', '<Cmd>lua NvimTreeToggleFind()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>N', '<Cmd>lua NvimFocusClose()<CR>', { noremap = true })
