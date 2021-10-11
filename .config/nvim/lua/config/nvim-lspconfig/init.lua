@@ -35,12 +35,12 @@ local on_attach = function(client, bufnr)
 
   -- Format on save is available
   if client.resolved_capabilities.document_formatting then
-    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
-    buf_set_keymap('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true })
+    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({ timeout_ms = 5000 })]])
+    buf_set_keymap('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting({ timeout_ms = 5000 })<CR>', { noremap = true })
   end
 
   if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap('v', '<leader>fo', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', { noremap = true })
+    buf_set_keymap('v', '<leader>fo', '<cmd>lua vim.lsp.buf.range_formatting({ timeout_ms = 5000 })<CR>', { noremap = true })
   end
 
   -- Set autocommands conditional on server_capabilities

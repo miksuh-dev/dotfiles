@@ -306,7 +306,7 @@ return require('packer').startup({
     use({
       'lewis6991/gitsigns.nvim',
       cond = function()
-        return vim.fn.isdirectory('.git') ~= 0
+        return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
       end,
       config = function()
         require('config.gitsigns')
@@ -316,15 +316,8 @@ return require('packer').startup({
     use({
       'tpope/vim-fugitive',
       cond = function()
-        return vim.fn.isdirectory('.git') ~= 0
+        return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
       end,
-      keys = {
-        { 'n', '<leader>gf' },
-        { 'n', '<leader>gj' },
-        { 'n', '<leader>gs' },
-        { 'n', '<leader>gb' },
-        { 'n', '<leader>gd' },
-      },
       cmd = { 'G', 'Git' },
       config = function()
         require('config.vim-fugitive')
