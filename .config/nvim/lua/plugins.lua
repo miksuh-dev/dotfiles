@@ -5,12 +5,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd('packadd packer.nvim')
 end
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--   augroup end
+-- ]])
 
 return require('packer').startup({
   function(use)
@@ -110,6 +110,7 @@ return require('packer').startup({
 
     use({
       'hoob3rt/lualine.nvim',
+      requires = 'kyazdani42/nvim-web-devicons',
       event = 'VimEnter',
       config = function()
         require('config.lualine')
@@ -161,6 +162,8 @@ return require('packer').startup({
         { 'n', '<leader>fg' },
         { 'n', '<leader>fb' },
         { 'n', '<leader>fh' },
+        { 'n', '<leader>fw' },
+        { 'n', '<leader>fW' },
       },
       config = function()
         require('config.telescope')
