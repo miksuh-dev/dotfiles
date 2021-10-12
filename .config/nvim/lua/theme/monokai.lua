@@ -532,7 +532,7 @@ M.load_plugin_syntax = function(palette)
     DiagnosticError = {
       fg = palette.red,
     },
-    DiagnosticWarning = {
+    DiagnosticWarn = {
       fg = palette.yellow,
     },
     DiagnosticInfo = {
