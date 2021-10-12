@@ -529,55 +529,43 @@ M.load_plugin_syntax = function(palette)
     dbui_tables = {
       fg = palette.white,
     },
-    LspDiagnosticsError = {
+    DiagnosticSignError = {
       fg = palette.red,
     },
-    LspDiagnosticsWarning = {
+    DiagnosticSignWarn = {
       fg = palette.yellow,
     },
-    LspDiagnosticsInformation = {
+    DiagnosticSignInfo = {
       fg = palette.white,
     },
-    LspDiagnosticsHint = {
+    DiagnosticSignHint = {
       fg = palette.aqua,
     },
-    LspDiagnosticsSignError = {
+    DiagnosticVirtualTextError = {
       fg = palette.red,
     },
-    LspDiagnosticsSignWarning = {
+    DiagnosticVirtualTextWarn = {
       fg = palette.yellow,
     },
-    LspDiagnosticsSignInformation = {
+    DiagnosticVirtualTextInfo = {
       fg = palette.white,
     },
-    LspDiagnosticsSignHint = {
+    DiagnosticVirtualTextHint = {
       fg = palette.aqua,
     },
-    LspDiagnosticsVirtualTextError = {
-      fg = palette.red,
-    },
-    LspDiagnosticsVirtualTextWarning = {
-      fg = palette.yellow,
-    },
-    LspDiagnosticsVirtualTextInformation = {
-      fg = palette.white,
-    },
-    LspDiagnosticsVirtualTextHint = {
-      fg = palette.aqua,
-    },
-    LspDiagnosticsUnderlineError = {
+    DiagnosticUnderlineError = {
       style = 'undercurl',
       sp = palette.red,
     },
-    LspDiagnosticsUnderlineWarning = {
+    DiagnosticUnderlineWarn = {
       style = 'undercurl',
       sp = palette.yellow,
     },
-    LspDiagnosticsUnderlineInformation = {
+    DiagnosticUnderlineInfo = {
       style = 'undercurl',
       sp = palette.white,
     },
-    LspDiagnosticsUnderlineHint = {
+    DiagnosticUnderlineHint = {
       style = 'undercurl',
       sp = palette.aqua,
     },
