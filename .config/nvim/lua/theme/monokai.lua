@@ -529,6 +529,18 @@ M.load_plugin_syntax = function(palette)
     dbui_tables = {
       fg = palette.white,
     },
+    DiagnosticError = {
+      fg = palette.red,
+    },
+    DiagnosticWarning = {
+      fg = palette.yellow,
+    },
+    DiagnosticInfo = {
+      fg = palette.white,
+    },
+    DiagnosticHint = {
+      fg = palette.aqua,
+    },
     DiagnosticSignError = {
       fg = palette.red,
     },
