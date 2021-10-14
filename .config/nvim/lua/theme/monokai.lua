@@ -26,7 +26,6 @@ M.classic = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
-  common_blue = '#1793d0',
 }
 
 M.pro = {
@@ -102,20 +101,21 @@ M.load_syntax = function(palette)
     },
     Pmenu = {
       fg = palette.white,
-      bg = palette.base3,
+      bg = palette.base2,
     },
     PmenuSel = {
-      fg = palette.base3,
-      bg = palette.common_blue,
+      fg = palette.aqua,
+      bg = palette.base5,
+      style = 'bold',
     },
     PmenuSelBold = {
-      fg = palette.base3,
-      bg = palette.common_blue,
+      fg = palette.aqua,
+      bg = palette.base5,
       style = 'bold',
     },
     PmenuThumb = {
       fg = palette.purple,
-      bg = palette.common_blue,
+      bg = palette.aqua,
     },
     PmenuSbar = {
       bg = palette.base3,
@@ -590,7 +590,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.black,
     },
     NvimTreeFolderIcon = {
-      fg = palette.common_blue,
+      fg = palette.aqua,
     },
     NvimTreeFolderName = {
       fg = palette.white,
@@ -611,9 +611,6 @@ M.load_plugin_syntax = function(palette)
     CmpItemAbbr = {
       fg = palette.base6,
     },
-    CmpItemAbbrDeprecated = {
-      fg = palette.white,
-    },
     CmpItemAbbrMatch = {
       fg = palette.white,
     },
@@ -624,6 +621,9 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     CmpItemMenu = {
+      fg = palette.white,
+    },
+    CmpItemAbbrDeprecated = {
       fg = palette.white,
     },
   }
