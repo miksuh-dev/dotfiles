@@ -173,7 +173,7 @@ M.load_syntax = function(palette)
       style = 'bold',
     },
     VertSplit = {
-      fg = palette.brown,
+      fg = palette.base3,
     },
     LineNr = {
       fg = palette.base5,
