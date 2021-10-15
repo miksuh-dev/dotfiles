@@ -42,12 +42,19 @@ return require('packer').startup({
     })
 
     use({
-      'tpope/vim-commentary',
+      'numToStr/Comment.nvim',
       keys = {
-        { 'v', 'gc' },
-        { 'n', 'gc' },
-        { 'n', 'gcc' },
+        'gc',
+        'gb',
       },
+      config = function ()
+        require('config.comment')
+      end,
+    })
+
+    use({
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      module = 'ts_context_commentstring'
     })
 
     use({
@@ -293,14 +300,6 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      after = 'nvim-treesitter',
-      requires = {
-        'nvim-treesitter',
-        'vim-commentary',
-      },
-    })
 
     ----------------------------------------------------------------------------
     ------------------------------- Git ----------------------------------------
