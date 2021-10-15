@@ -2,7 +2,7 @@ local opts = { noremap = true }
 local optsSilent = { noremap = true, silent = true }
 
 -- Clear highlights on space
-vim.api.nvim_set_keymap('n', '<CR>', ':noh<CR><CR>', opts)
+vim.api.nvim_set_keymap('n', '<CR>', ':noh<CR><CR>', optsSilent)
 
 -- Keep selection after indent
 vim.api.nvim_set_keymap('v', '>', '>gv', opts)

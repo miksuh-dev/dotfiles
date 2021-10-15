@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# if [ ! "$TMUX" ]; then
+#   tmux && exit 0
+# fi
+#
+

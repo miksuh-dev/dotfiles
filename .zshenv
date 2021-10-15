@@ -1,2 +1,2 @@
-source $HOME/.zsh/load
+source $HOME/.zsh/init
 . "$HOME/.cargo/env"
