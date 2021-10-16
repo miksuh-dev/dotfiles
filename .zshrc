@@ -72,7 +72,7 @@ DISABLE_UPDATE_PROMPT="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(ssh-agent git sudo zsh-autosuggestions zsh-vi-mode zsh-syntax-highlighting)
 
-ZVM_VI_HIGHLIGHT_BACKGROUND=#5a647e
+ZVM_VI_HIGHLIGHT_BACKGROUND=#4d5154
 
 source $ZSH/oh-my-zsh.sh
 

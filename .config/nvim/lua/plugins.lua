@@ -5,20 +5,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd('packadd packer.nvim')
 end
 
--- vim.cmd([[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
---   augroup end
--- ]])
-
 return require('packer').startup({
   function(use)
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
-
-    -- use { 'jremmen/vim-ripgrep' } // Maybe needed?
 
     use({
       'wbthomason/packer.nvim',
@@ -47,14 +38,14 @@ return require('packer').startup({
         'gc',
         'gb',
       },
-      config = function ()
+      config = function()
         require('config.comment')
       end,
     })
 
     use({
       'JoosepAlviste/nvim-ts-context-commentstring',
-      module = 'ts_context_commentstring'
+      module = 'ts_context_commentstring',
     })
 
     use({
@@ -299,7 +290,6 @@ return require('packer').startup({
         require('config.nvim-ts-autotag')
       end,
     })
-
 
     ----------------------------------------------------------------------------
     ------------------------------- Git ----------------------------------------

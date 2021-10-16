@@ -1,8 +1,13 @@
 #!/bin/bash
 
 function vim() {
+
   if [ ! "$TMUX" ]; then
-    tmux new-session "nvim $@"
+    if tmux has-session -t vim 2>/dev/null ; then
+      tmux new-session "nvim $@"
+    else
+      tmux new-session -s vim "nvim $@"
+    fi
   else
     nvim "$@"
   fi

@@ -12,7 +12,6 @@ M.classic = {
   border = '#a1b5b1',
   brown = '#504945',
   white = '#f8f8f0',
-  darker_white = '#c9c9c3',
   grey = '#8F908A',
   black = '#000000',
   pink = '#f92672',
@@ -26,6 +25,7 @@ M.classic = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
+  none = 'NONE',
 }
 
 M.pro = {
@@ -94,10 +94,10 @@ M.load_syntax = function(palette)
   return {
     Normal = {
       fg = palette.white,
-      bg = palette.base2,
+      bg = palette.none,
     },
     NormalFloat = {
-      bg = palette.base1,
+      bg = palette.base2,
     },
     Pmenu = {
       fg = palette.white,
@@ -105,12 +105,12 @@ M.load_syntax = function(palette)
     },
     PmenuSel = {
       fg = palette.aqua,
-      bg = palette.base5,
+      bg = palette.base4,
       style = 'bold',
     },
     PmenuSelBold = {
       fg = palette.aqua,
-      bg = palette.base5,
+      bg = palette.base4,
       style = 'bold',
     },
     PmenuThumb = {
@@ -127,13 +127,13 @@ M.load_syntax = function(palette)
       bg = palette.base3,
     },
     CursorLine = {
-      bg = palette.base3,
+      bg = palette.base4,
     },
     NonText = {
       fg = palette.base5,
     },
     Visual = {
-      bg = palette.base4,
+      bg = palette.base5,
     },
     VisualNOS = {
       bg = palette.base3,
@@ -148,7 +148,7 @@ M.load_syntax = function(palette)
     },
     CursorLineNr = {
       fg = palette.orange,
-      bg = palette.base2,
+      bg = palette.none,
     },
     MatchParen = {
       fg = palette.pink,
@@ -176,20 +176,20 @@ M.load_syntax = function(palette)
       fg = palette.base3,
     },
     LineNr = {
-      fg = palette.base5,
-      bg = palette.base2,
+      fg = palette.white,
+      bg = palette.none,
     },
     SignColumn = {
       fg = palette.white,
-      bg = palette.base2,
+      bg = palette.none,
     },
     StatusLine = {
       fg = palette.base7,
-      bg = palette.base2,
+      bg = palette.none,
     },
     StatusLineNC = {
       fg = palette.grey,
-      bg = palette.base2,
+      bg = palette.none,
     },
     Tabline = {},
     TabLineFill = {},
@@ -246,7 +246,7 @@ M.load_syntax = function(palette)
     },
     FoldColumn = {
       fg = palette.white,
-      bg = palette.black,
+      bg = palette.none,
     },
     Constant = {
       fg = palette.aqua,
@@ -349,6 +349,7 @@ M.load_syntax = function(palette)
     },
     EndOfBuffer = {
       fg = palette.base2,
+      bg = palette.none,
     },
     Conceal = {
       fg = palette.grey,
@@ -603,10 +604,10 @@ M.load_plugin_syntax = function(palette)
       style = 'NONE',
     },
     TelescopeBorder = {
-      fg = palette.border,
+      fg = palette.base7,
     },
     TelescopePromptBorder = {
-      fg = palette.border,
+      fg = palette.base7,
     },
     CmpItemAbbr = {
       fg = palette.base6,

@@ -18,24 +18,25 @@ local Colors = {
   gray5 = '#3f3f3f',
   gray7 = '#9e9e9e',
   gray10 = '#f0f0f0',
+  none = 'NONE',
 }
 -- LuaFormatter on
 return {
   normal = {
     a = { fg = Colors.white, bg = Colors.normalbg, gui = 'bold' },
     b = { fg = Colors.gray10, bg = Colors.gray2 },
-    c = { fg = Colors.gray7, bg = Colors.gray0 },
+    c = { fg = Colors.gray10, bg = Colors.gray0 },
   },
   insert = {
     a = { fg = Colors.white, bg = Colors.insertbg, gui = 'bold' },
     b = { fg = Colors.gray10, bg = Colors.gray2 },
-    c = { fg = Colors.gray7, bg = Colors.gray0 },
+    c = { fg = Colors.gray10, bg = Colors.gray0 },
   },
   visual = { a = { fg = Colors.white, bg = Colors.visualbg, gui = 'bold' } },
   replace = { a = { fg = Colors.white, bg = Colors.replacebg, gui = 'bold' } },
   inactive = {
-    a = { fg = Colors.gray1, bg = Colors.gray5, gui = 'bold' },
-    b = { fg = Colors.gray1, bg = Colors.gray5 },
-    c = { bg = Colors.gray1, fg = Colors.gray5 },
+    a = { fg = Colors.gray7, bg = Colors.gray5, gui = 'bold' },
+    b = { fg = Colors.gray7, bg = Colors.gray2 },
+    c = { fg = Colors.gray7, bg = Colors.gray0 },
   },
 }
