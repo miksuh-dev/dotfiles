@@ -104,18 +104,18 @@ M.load_syntax = function(palette)
       bg = palette.base2,
     },
     PmenuSel = {
-      fg = palette.aqua,
-      bg = palette.base4,
+      fg = palette.base4,
+      bg = palette.aqua,
       style = 'bold',
     },
     PmenuSelBold = {
-      fg = palette.aqua,
-      bg = palette.base4,
+      fg = palette.base4,
+      bg = palette.aqua,
       style = 'bold',
     },
     PmenuThumb = {
       fg = palette.purple,
-      bg = palette.aqua,
+      bg = palette.base6,
     },
     PmenuSbar = {
       bg = palette.base3,
@@ -602,6 +602,17 @@ M.load_plugin_syntax = function(palette)
     NvimTreeSpecialFile = {
       fg = palette.white,
       style = 'NONE',
+    },
+    TelescopeSelection = {
+      bg = palette.base5,
+      style = 'bold',
+    },
+    TelescopeNormal = {
+      fg = palette.white,
+      bg = palette.none,
+    },
+    TelescopeMatching = {
+      fg = palette.aqua,
     },
     TelescopeBorder = {
       fg = palette.base7,
