@@ -75,15 +75,21 @@ local on_attach = function(client, bufnr)
 end
 
 -- config that activates keymaps and enables snippet support
-local function make_config()
+local function make_config(nvim_lsp)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  local root_dir = function(fname)
+    return nvim_lsp.util.root_pattern('.git')(fname) or vim.fn.getcwd()
+  end
+
   return {
     -- enable snippet support
     capabilities = capabilities,
     -- map buffer local keybindings when the language server attaches
     on_attach = on_attach,
+    root_dir = root_dir,
   }
 end
 
@@ -105,7 +111,6 @@ end
 local function install_missing(installed_servers)
   local required_servers = {
     'efm',
-    'haskell',
     'vim',
     'html',
     'dockerfile',
@@ -144,7 +149,7 @@ local function setup_servers()
   local nvim_lsp = require('lspconfig')
 
   for _, server in pairs(servers) do
-    local config = make_config()
+    local config = make_config(nvim_lsp)
 
     -- language specific config
     if server == 'efm' then
