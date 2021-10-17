@@ -147,7 +147,7 @@ require('nvim-tree').setup({
       list = {
         { key = { '<CR>', 'e', 'l' }, cb = tree_cb('edit') },
         { key = 'cd', cb = tree_cb('cd') },
-        { key = 'E', cb = tree_cb('vsplit') },
+        { key = 'v', cb = tree_cb('vsplit') },
         { key = 's', cb = tree_cb('split') },
         { key = 't', cb = tree_cb('tabnew') },
         { key = '<', cb = tree_cb('prev_sibling') },
@@ -173,7 +173,6 @@ require('nvim-tree').setup({
         { key = '[c', cb = tree_cb('prev_git_item') },
         { key = ']c', cb = tree_cb('next_git_item') },
         { key = { '<BS>', 'U' }, cb = tree_cb('dir_up') },
-        { key = 's', cb = tree_cb('system_open') },
         { key = 'q', cb = tree_cb('close') },
         { key = '?', cb = tree_cb('toggle_help') },
       },
