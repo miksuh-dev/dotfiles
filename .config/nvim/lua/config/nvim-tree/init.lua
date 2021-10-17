@@ -1,4 +1,3 @@
-
 vim.g.nvim_tree_ignore = {} -- empty by default
 vim.g.nvim_tree_gitignore = 0 -- 1 by default
 vim.g.nvim_tree_quit_on_open = 0 --0 by default, closes the tree when you open a file
@@ -28,7 +27,6 @@ vim.g.nvim_tree_window_picker_exclude = {
     'terminal',
   },
 }
-
 
 vim.g.nvim_tree_special_files = { 'README.md', 'Makefile', 'MAKEFILE' } -- List of filenames that gets highlighted with NvimTreeSpecialFile
 vim.g.nvim_tree_show_icons = {
