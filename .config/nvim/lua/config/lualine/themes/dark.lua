@@ -1,6 +1,3 @@
--- Copyright (c) 2020-2021 miksuh
--- MIT license, see LICENSE for more details.
--- LuaFormatter off
 local Colors = {
   white = '#ffffff',
   darkestgreen = '#005f00',
@@ -20,7 +17,7 @@ local Colors = {
   gray10 = '#f0f0f0',
   none = 'NONE',
 }
--- LuaFormatter on
+
 return {
   normal = {
     a = { fg = Colors.white, bg = Colors.normalbg, gui = 'bold' },
