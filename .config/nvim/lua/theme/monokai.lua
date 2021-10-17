@@ -9,7 +9,7 @@ M.classic = {
   base5 = '#4d5154',
   base6 = '#9ca0a4',
   base7 = '#b1b1b1',
-  border = '#a1b5b1',
+  border = '#b1b1b1',
   brown = '#504945',
   white = '#f8f8f0',
   grey = '#8F908A',
@@ -98,6 +98,10 @@ M.load_syntax = function(palette)
       bg = palette.none,
     },
     NormalFloat = {
+      bg = palette.base2,
+    },
+    FloatBorder = {
+      fg = palette.border,
       bg = palette.base2,
     },
     Pmenu = {
@@ -617,10 +621,10 @@ M.load_plugin_syntax = function(palette)
       fg = palette.aqua,
     },
     TelescopeBorder = {
-      fg = palette.base7,
+      fg = palette.border,
     },
     TelescopePromptBorder = {
-      fg = palette.base7,
+      fg = palette.border,
     },
     CmpItemAbbr = {
       fg = palette.base6,

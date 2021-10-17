@@ -1,3 +1,58 @@
+local border = {
+  { '🭽', 'FloatBorder' },
+  { '▔', 'FloatBorder' },
+  { '🭾', 'FloatBorder' },
+  { '▕', 'FloatBorder' },
+  { '🭿', 'FloatBorder' },
+  { '▁', 'FloatBorder' },
+  { '🭼', 'FloatBorder' },
+  { '▏', 'FloatBorder' },
+}
+
+-- Globally set border for hover
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = border,
+})
+
+-- Globally set border for signatureHelp
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = border,
+})
+
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = {
+    source = 'always',
+  },
+  update_in_insert = false,
+})
+
+-- wrapper function to set border for diagnostics
+function _G.show_diagnostics()
+  vim.lsp.diagnostic.show_line_diagnostics({
+    border = border,
+  })
+end
+
+-- wrapper function to set go_to_prev
+function _G.go_to_prev()
+  vim.lsp.diagnostic.goto_prev({
+    wrap = false,
+    popup_opts = {
+      border = border,
+    },
+  })
+end
+
+-- wrapper function to set go_to_next
+function _G.go_to_next()
+  vim.lsp.diagnostic.goto_next({
+    wrap = false,
+    popup_opts = {
+      border = border,
+    },
+  })
+end
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -23,20 +78,13 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>?', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>', opts)
-  buf_set_keymap(
-    'n',
-    '<leader>k',
-    '<cmd>lua vim.lsp.diagnostic.goto_prev(({ wrap = false, popup_opts = { border = "single" } }))<CR>',
-    opts
-  )
-  buf_set_keymap(
-    'n',
-    '<leader>j',
-    '<cmd>lua vim.lsp.diagnostic.goto_next({ wrap = false, popup_opts = { border = "single" } })<CR>',
-    opts
-  )
+  buf_set_keymap('n', '<leader>?', '<cmd>lua show_diagnostics()<CR>', opts)
+
+  buf_set_keymap('n', '<leader>k', '<cmd>lua go_to_prev()<CR>', opts)
+  buf_set_keymap('n', '<leader>j', '<cmd>lua go_to_next()<CR>', opts)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+  -- todo move these inside if capabilities
   buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('v', '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
@@ -268,18 +316,3 @@ require('lspinstall').post_install_hook = function()
 end
 
 setup_servers()
-
-local border = 'single'
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = border,
-})
-
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = border,
-})
-
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    source = 'always',
-  },
-})
