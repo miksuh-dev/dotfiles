@@ -1,6 +1,6 @@
-local eslint = require('config.nvim-lspconfig.format.formatter.eslint')
-local prettier = require('config.nvim-lspconfig.format.formatter.prettier')
-local stylua = require('config.nvim-lspconfig.format.formatter.stylua')
+local eslint = require('plugin.nvim-lspconfig.efm.formatter.eslint')
+local prettier = require('plugin.nvim-lspconfig.efm.formatter.prettier')
+local stylua = require('plugin.nvim-lspconfig.efm.formatter.stylua')
 
 return {
   css = { prettier },
@@ -10,11 +10,11 @@ return {
   javascript = { prettier, eslint },
   ['javascript.jsx'] = { prettier, eslint },
   javascriptreact = { prettier, eslint },
-  json = { prettier },
-  lua = { stylua },
-  markdown = { prettier },
   typescript = { prettier, eslint },
   ['typescript.jsx'] = { prettier, eslint },
   typescriptreact = { prettier, eslint },
+  json = { prettier },
+  lua = { stylua },
+  markdown = { prettier },
   yaml = { prettier },
 }

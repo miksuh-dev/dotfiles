@@ -1,13 +1,4 @@
-local border = {
-  { '🭽', 'FloatBorder' },
-  { '▔', 'FloatBorder' },
-  { '🭾', 'FloatBorder' },
-  { '▕', 'FloatBorder' },
-  { '🭿', 'FloatBorder' },
-  { '▁', 'FloatBorder' },
-  { '🭼', 'FloatBorder' },
-  { '▏', 'FloatBorder' },
-}
+local border = require('common.border')
 
 -- Globally set border for hover
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -84,7 +75,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>j', '<cmd>lua go_to_next()<CR>', opts)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-  -- todo move these inside if capabilities
   buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('v', '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
@@ -201,16 +191,16 @@ local function setup_servers()
 
     -- language specific config
     if server == 'efm' then
-      local format_config = require('config.nvim-lspconfig.format')
+      local efm_config = require('plugin.nvim-lspconfig.efm')
       config.init_options = { documentFormatting = true, codeAction = true }
       config.root_dir = function(fname)
         return nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname)
           or vim.fn.getcwd()
       end
 
-      config.filetypes = vim.tbl_keys(format_config)
+      config.filetypes = vim.tbl_keys(efm_config)
       config.settings = {
-        languages = format_config,
+        languages = efm_config,
       }
     end
 

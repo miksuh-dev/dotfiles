@@ -39,7 +39,7 @@ return require('packer').startup({
         'gb',
       },
       config = function()
-        require('config.comment')
+        require('plugin.comment')
       end,
     })
 
@@ -77,7 +77,7 @@ return require('packer').startup({
         { 'i', '<C-Y>,' },
       },
       config = function()
-        require('config.emmet-vim')
+        require('plugin.emmet-vim')
       end,
     })
 
@@ -93,7 +93,7 @@ return require('packer').startup({
         { 'i', '{' },
       },
       config = function()
-        require('config.nvim-autopairs')
+        require('plugin.nvim-autopairs')
       end,
     })
 
@@ -111,7 +111,7 @@ return require('packer').startup({
       requires = 'kyazdani42/nvim-web-devicons',
       event = 'VimEnter',
       config = function()
-        require('config.lualine')
+        require('plugin.lualine')
       end,
     })
 
@@ -119,7 +119,7 @@ return require('packer').startup({
       'norcalli/nvim-colorizer.lua',
       event = 'BufReadPre',
       config = function()
-        require('config.nvim-colorizer')
+        require('plugin.nvim-colorizer')
       end,
     })
 
@@ -144,7 +144,7 @@ return require('packer').startup({
         { 'n', '<leader>N' },
       },
       config = function()
-        require('config.nvim-tree')
+        require('plugin.nvim-tree')
       end,
     })
 
@@ -164,7 +164,7 @@ return require('packer').startup({
         { 'n', '<leader>fW' },
       },
       config = function()
-        require('config.telescope')
+        require('plugin.telescope')
       end,
     })
 
@@ -177,7 +177,7 @@ return require('packer').startup({
       event = 'BufReadPre',
       cmd = { 'LspInfo', 'LspInstall', 'LspRestart', 'LspStart', 'LspStop', 'LspUninstall' },
       config = function()
-        require('config.nvim-lspconfig')
+        require('plugin.nvim-lspconfig')
       end,
     })
 
@@ -202,7 +202,7 @@ return require('packer').startup({
       'hrsh7th/nvim-cmp',
       event = 'InsertEnter',
       config = function()
-        require('config.nvim-cmp')
+        require('plugin.nvim-cmp')
       end,
     })
 
@@ -258,7 +258,7 @@ return require('packer').startup({
       after = 'nvim-cmp',
       requires = 'nvim-cmp',
       config = function()
-        require('config.cmp-tabnine')
+        require('plugin.cmp-tabnine')
       end,
     })
 
@@ -272,7 +272,7 @@ return require('packer').startup({
       event = 'BufRead',
       module = 'nvim-treesitter',
       config = function()
-        require('config.nvim-treesitter')
+        require('plugin.nvim-treesitter')
       end,
     })
 
@@ -284,10 +284,10 @@ return require('packer').startup({
 
     use({
       'windwp/nvim-ts-autotag',
-      ft = require('config.nvim-ts-autotag.filetypes'),
+      ft = require('plugin.nvim-ts-autotag.filetypes'),
       requires = 'nvim-treesitter',
       config = function()
-        require('config.nvim-ts-autotag')
+        require('plugin.nvim-ts-autotag')
       end,
     })
 
@@ -301,7 +301,7 @@ return require('packer').startup({
         return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
       end,
       config = function()
-        require('config.gitsigns')
+        require('plugin.gitsigns')
       end,
     })
 
@@ -312,7 +312,7 @@ return require('packer').startup({
       end,
       cmd = { 'G', 'Git' },
       config = function()
-        require('config.vim-fugitive')
+        require('plugin.vim-fugitive')
       end,
     })
   end,

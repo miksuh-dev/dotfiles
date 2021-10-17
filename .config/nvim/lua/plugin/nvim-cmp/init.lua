@@ -119,4 +119,7 @@ cmp.setup({
     { name = 'calc' },
     { name = 'path' },
   },
+  documentation = {
+    border = require('common.border'),
+  },
 })

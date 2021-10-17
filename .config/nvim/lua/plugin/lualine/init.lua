@@ -1,4 +1,4 @@
-local theme = require('config.lualine.themes.dark')
+local theme = require('plugin.lualine.theme.dark')
 
 require('lualine').setup({
   options = {

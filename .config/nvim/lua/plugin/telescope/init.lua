@@ -115,4 +115,4 @@ vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua help_tags<CR>', opts)
 vim.api.nvim_set_keymap('n', '<c-p>', '<Cmd>lua git_files_or_find_files()<CR>', opts)
 
 vim.api.nvim_set_keymap('n', '<leader>fw', '<cmd>lua find_word()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fW', '<cmd>lua find_word(1)<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>fW', '<cmd>lua find_word(true)<CR>', opts)
