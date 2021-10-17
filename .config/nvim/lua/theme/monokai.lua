@@ -14,6 +14,7 @@ M.classic = {
   white = '#f8f8f0',
   grey = '#8F908A',
   black = '#000000',
+  blue = '#1793d0',
   pink = '#f92672',
   green = '#a6e22e',
   aqua = '#66d9ef',
@@ -104,13 +105,13 @@ M.load_syntax = function(palette)
       bg = palette.base2,
     },
     PmenuSel = {
-      fg = palette.base4,
-      bg = palette.aqua,
+      fg = palette.white,
+      bg = palette.blue,
       style = 'bold',
     },
     PmenuSelBold = {
-      fg = palette.base4,
-      bg = palette.aqua,
+      fg = palette.white,
+      bg = palette.blue,
       style = 'bold',
     },
     PmenuThumb = {
@@ -591,7 +592,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.black,
     },
     NvimTreeFolderIcon = {
-      fg = palette.aqua,
+      fg = palette.blue,
     },
     NvimTreeFolderName = {
       fg = palette.white,
@@ -604,7 +605,8 @@ M.load_plugin_syntax = function(palette)
       style = 'NONE',
     },
     TelescopeSelection = {
-      bg = palette.base5,
+      fg = palette.white,
+      bg = palette.blue,
       style = 'bold',
     },
     TelescopeNormal = {
