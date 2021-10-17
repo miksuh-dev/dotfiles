@@ -9,6 +9,35 @@ local check_back_space = function()
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
+local kind_icons = {
+  Class = ' ',
+  Color = ' ',
+  Constant = ' ',
+  Constructor = ' ',
+  Enum = '了 ',
+  EnumMember = ' ',
+  Field = ' ',
+  File = ' ',
+  Folder = ' ',
+  Function = ' ',
+  Interface = 'ﰮ ',
+  Keyword = ' ',
+  Method = 'ƒ ',
+  Module = ' ',
+  Property = ' ',
+  Snippet = '﬌ ',
+  Struct = ' ',
+  Text = ' ',
+  Unit = ' ',
+  Value = ' ',
+  Variable = ' ',
+}
+
+local function getKind(kind)
+  local kind_icon = kind_icons[kind] or ''
+  return kind_icon .. kind
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -68,7 +97,8 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
-      -- set a name for each source
+      vim_item.kind = getKind(vim_item.kind)
+
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
