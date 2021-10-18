@@ -292,7 +292,7 @@ local function setup_servers()
 
     -- if server == 'graphql' then
     --   config.filetypes = { 'graphql', 'javascript' }
-    --   config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*')
+    --   config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
     -- end
 
     nvim_lsp[server].setup(config)

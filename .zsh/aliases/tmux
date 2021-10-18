@@ -1,5 +1,6 @@
 #!/bin/bash
 
+alias tmux='tmux -u'
 alias t='tmux'
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'

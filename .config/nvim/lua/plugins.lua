@@ -97,6 +97,18 @@ return require('packer').startup({
       end,
     })
 
+
+    use({
+      'editorconfig/editorconfig-vim',
+      config = function ()
+        require('plugin.editorconfig')
+      end,
+      cond = function()
+        local stat = vim.loop.fs_stat(vim.fn.getcwd() .. '/.editorconfig')
+        return (stat and stat.type) or false
+      end,
+    })
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
     ------------------------------------------------------------------------------------------------
