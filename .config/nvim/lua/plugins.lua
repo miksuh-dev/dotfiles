@@ -97,10 +97,9 @@ return require('packer').startup({
       end,
     })
 
-
     use({
       'editorconfig/editorconfig-vim',
-      config = function ()
+      config = function()
         require('plugin.editorconfig')
       end,
       cond = function()
