@@ -318,9 +318,16 @@ return require('packer').startup({
 
     use({
       'tpope/vim-fugitive',
-      cond = function()
-        return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
-      end,
+      -- cond = function()
+      --   return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
+      -- end,
+      keys = {
+        '<leader>gf',
+        '<leader>gj',
+        '<leader>gs',
+        '<leader>gb',
+        '<leader>gd',
+      },
       cmd = { 'G', 'Git' },
       config = function()
         require('plugin.vim-fugitive')
