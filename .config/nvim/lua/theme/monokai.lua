@@ -535,6 +535,94 @@ M.load_plugin_syntax = function(palette)
     dbui_tables = {
       fg = palette.white,
     },
+    lualine_y_diagnostics_error_normal = {
+      fg = palette.red,
+    },
+    lualine_y_diagnostics_warn_normal = {
+      fg = palette.yellow,
+    },
+    lualine_y_diagnostics_info_normal = {
+      fg = palette.white,
+    },
+    lualine_y_diagnostics_hint_normal = {
+      fg = palette.aqua,
+    },
+    lualine_y_diagnostics_error_0_normal = {
+      fg = palette.red,
+    },
+    lualine_y_diagnostics_warn_0_normal = {
+      fg = palette.yellow,
+    },
+    lualine_y_diagnostics_info_0_normal = {
+      fg = palette.white,
+    },
+    lualine_y_diagnostics_hint_0_normal = {
+      fg = palette.aqua,
+    },
+    LspDiagnosticsDefaultError = {
+      fg = palette.red,
+    },
+    LspDiagnosticsDefaultWarning = {
+      fg = palette.yellow,
+    },
+    LspDiagnosticsDefaultInformation = {
+      fg = palette.white,
+    },
+    LspDiagnosticsDefaultHint = {
+      fg = palette.aqua,
+    },
+    LspDiagnosticsError = {
+      fg = palette.red,
+    },
+    LspDiagnosticsWarning = {
+      fg = palette.yellow,
+    },
+    LspDiagnosticsInformation = {
+      fg = palette.white,
+    },
+    LspDiagnosticsHint = {
+      fg = palette.aqua,
+    },
+    LspDiagnosticsSignError = {
+      fg = palette.red,
+    },
+    LspDiagnosticsSignWarning = {
+      fg = palette.yellow,
+    },
+    LspDiagnosticsSignInformation = {
+      fg = palette.white,
+    },
+    LspDiagnosticsSignHint = {
+      fg = palette.aqua,
+    },
+    LspDiagnosticsVirtualTextError = {
+      fg = palette.red,
+    },
+    LspDiagnosticsVirtualTextWarning = {
+      fg = palette.yellow,
+    },
+    LspDiagnosticsVirtualTextInformation = {
+      fg = palette.white,
+    },
+    LspDiagnosticsVirtualTextHint = {
+      fg = palette.aqua,
+    },
+    LspDiagnosticsUnderlineError = {
+      style = 'undercurl',
+      sp = palette.red,
+    },
+    LspDiagnosticsUnderlineWarning = {
+      style = 'undercurl',
+      sp = palette.yellow,
+    },
+    LspDiagnosticsUnderlineInformation = {
+      style = 'undercurl',
+      sp = palette.white,
+    },
+    LspDiagnosticsUnderlineHint = {
+      style = 'undercurl',
+      sp = palette.aqua,
+    },
     DiagnosticError = {
       fg = palette.red,
     },
