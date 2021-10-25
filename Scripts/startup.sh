@@ -11,7 +11,7 @@ fi
 if command -v picom &> /dev/null; then
   pidof picom >/dev/null || picom --config $HOME/.config/picom/picom.conf --experimental-backends &
 else
-  pidof compton >/dev/null || compton &
+  pidof compton >/dev/null || compton --config $HOME/.config/compton/compton.conf &
 fi
 
 # Notifications
