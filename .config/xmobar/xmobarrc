@@ -1,3 +1,5 @@
+#!/usr/bin/env runhaskell
+
 Config {
 
    -- appearance
@@ -26,11 +28,11 @@ Config {
              "--template" , "<acstatus>"
                 , "--" -- battery specific options
                 -- discharging status
-                , "-o"	, " | Batt: <left>% (<timeleft>)"
+                , "-o", " | Batt: <left>% (<timeleft>)"
                 -- AC "on" status
-                , "-O"	, ""
+                , "-O", ""
                 -- charged status
-                , "-i"	, ""
+                , "-i", ""
           ] 10,
           Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/playerctl.sh"] "music" 10,
           Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/volume.sh"] "volume" 5,

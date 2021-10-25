@@ -13,7 +13,6 @@ import System.Exit
 import XMonad.Layout.Tabbed
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-import Control.Monad (liftM2)
 import XMonad.Util.Cursor
 import XMonad.Hooks.SetWMName
 
@@ -30,13 +29,11 @@ import XMonad.Layout.LayoutCombinators
 import XMonad.Actions.CycleWS
 import XMonad.Util.WorkspaceCompare
 
-import XMonad.Layout.PerWorkspace  ( onWorkspace )
 import XMonad.Layout.PerWorkspace
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Config.Desktop
 
-import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, additionalMouseBindings)
 import System.IO
 import XMonad.Hooks.EwmhDesktops(ewmh)
@@ -51,8 +48,6 @@ import XMonad.Hooks.ManageHelpers
 
 import XMonad.Layout.SimpleDecoration (shrinkText)
 import XMonad.Layout.Spacing
-import XMonad.Layout.MultiToggle
-import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.ResizableTile
 
 import XMonad.Actions.UpdatePointer -- update mouse postion
@@ -367,7 +362,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --------------------------------------------------------------------------------
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_Escape     ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_Escape     ), io exitSuccess)
 
     -- Restart xmonad
     , ((modm              , xK_Escape     ), spawn "xmonad --recompile; xmonad --restart")
@@ -398,18 +393,18 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 --
-myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
+myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 
     -- mod-button1, Set the window to floating mode and move by dragging
-    [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
-                                       >> windows W.shiftMaster))
+    [ ((modm, button1), \w -> focus w >> mouseMoveWindow w
+        >> windows W.shiftMaster)
 
     -- mod-button2, Raise the window to the top of the stack
-    , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
+    , ((modm, button2), \w -> focus w >> windows W.shiftMaster)
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
-                                       >> windows W.shiftMaster))
+    , ((modm, button3), \w -> focus w >> mouseResizeWindow w
+        >> windows W.shiftMaster)
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
@@ -445,7 +440,7 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
      grid =   renamed [Replace "Grid"]
               $ avoidStruts
               $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
-              $ Grid
+               Grid
 
 
      three =  renamed [Replace "ThreeColumn"]
@@ -467,7 +462,7 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
 
      full =   renamed [Replace "Full"]
               $ avoidStruts
-              $ noBorders (Full)
+              $ noBorders Full
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -579,7 +574,7 @@ main = do
             <+> (isDialog --> doF W.shiftMaster)
 
         , startupHook        = myStartupHook
-        , layoutHook         = avoidStruts $ myLayout
+        , layoutHook         = avoidStruts myLayout
         , handleEventHook    = myEventHook <+> fullscreenEventHook <+> docksEventHook
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
