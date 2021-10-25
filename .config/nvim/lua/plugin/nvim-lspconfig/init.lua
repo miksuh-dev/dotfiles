@@ -162,16 +162,32 @@ local function install_missing(installed_servers)
     'bash',
     'yaml',
     'lua',
+    'haskell',
   }
 
-  local installed = false
+  -- Check for missing servers that are listed in required_servers
+  local installed_server = false
   for _, server in pairs(required_servers) do
     if not hasValue(installed_servers, server) then
       require('lspinstall').install_server(server)
-      installed = true
+      print('Installing server: ' + server)
+
+      installed_server = true
     end
   end
-  return installed
+
+  -- Check for installed that are no longer listed in required_servers
+  local removed_server = false
+  for _, server in pairs(installed_servers) do
+    if not hasValue(required_servers, server) then
+      require('lspinstall').uninstall_server(server)
+      print('Removing server: ' + server)
+
+      removed_server = true
+    end
+  end
+
+  return installed_server or removed_server
 end
 
 -- lsp-install
@@ -181,8 +197,8 @@ local function setup_servers()
   -- get all installed servers
   local servers = require('lspinstall').installed_servers()
 
-  local installed = install_missing(servers)
-  if installed then
+  local installed_or_removed = install_missing(servers)
+  if installed_or_removed then
     return
   end
 
