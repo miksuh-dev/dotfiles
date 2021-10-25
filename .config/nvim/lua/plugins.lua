@@ -11,6 +11,10 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
+    -- TODO: Check these plugins:
+    -- https://github.com/tjdevries/astronauta.nvim (allows binding lua functions)
+    -- https://github.com/romainl/vim-qf (improves quickfix list)
+
     use({
       'wbthomason/packer.nvim',
       event = 'VimEnter',
