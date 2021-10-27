@@ -1,7 +1,7 @@
-local opts = { noremap = true }
+local nnoremap = vim.keymap.nnoremap
 
-vim.api.nvim_set_keymap('n', '<leader>gf', ':diffget //2<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>gj', ':diffget //3<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>gs', ':G<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', opts)
+nnoremap({ '<leader>gf', ':diffget //2<CR>' })
+nnoremap({ '<leader>gj', ':diffget //3<CR>' })
+nnoremap({ '<leader>gs', ':G<CR>', silent = true })
+nnoremap({ '<leader>gb', ':Git blame<CR>', silent = true })
+nnoremap({ '<leader>gd', ':Gvdiffsplit<CR>', silent = true })

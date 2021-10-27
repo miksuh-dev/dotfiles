@@ -1,5 +1,7 @@
 vim.cmd('syntax on')
 
+vim.g.mapleader = ','
+
 vim.o.expandtab = true
 vim.bo.expandtab = true
 
@@ -46,8 +48,6 @@ vim.wo.signcolumn = 'yes'
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.cursorline = true
-
-vim.g.mapleader = ','
 
 vim.g.netrw_browse_split = 2
 vim.g.netrw_winsize = 2

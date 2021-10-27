@@ -185,29 +185,34 @@ local function is_file_readable(fname)
   return stat and stat.type == 'file' and vim.loop.fs_access(fname, 'R')
 end
 
-function _G.NvimTreeToggleFind()
-  local nvimtree = require('nvim-tree')
-  local fn = vim.fn
+local nnoremap = vim.keymap.nnoremap
 
-  if fn.expand('%') == 'NvimTree' then
-    nvimtree.close()
-  elseif is_file_readable(fn.expand('%')) then
-    nvimtree.find_file(true)
-  else
-    nvimtree.focus()
-  end
-end
+nnoremap({
+  '<leader>n',
+  function()
+    local nvimtree = require('nvim-tree')
+    local fn = vim.fn
 
-function _G.NvimFocusClose()
-  local nvimtree = require('nvim-tree')
-  local fn = vim.fn
+    if fn.expand('%') == 'NvimTree' then
+      nvimtree.close()
+    elseif is_file_readable(fn.expand('%')) then
+      nvimtree.find_file(true)
+    else
+      nvimtree.focus()
+    end
+  end,
+})
 
-  if fn.expand('%') == 'NvimTree' then
-    nvimtree.close()
-  else
-    nvimtree.focus()
-  end
-end
+nnoremap({
+  '<leader>N',
+  function()
+    local nvimtree = require('nvim-tree')
+    local fn = vim.fn
 
-vim.api.nvim_set_keymap('n', '<leader>n', '<Cmd>lua NvimTreeToggleFind()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>N', '<Cmd>lua NvimFocusClose()<CR>', { noremap = true })
+    if fn.expand('%') == 'NvimTree' then
+      nvimtree.close()
+    else
+      nvimtree.focus()
+    end
+  end,
+})

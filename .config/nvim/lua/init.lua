@@ -1,5 +1,6 @@
+require('autocmd')
 require('opts')
 require('plugins')
+require('disabled')
 require('theme.monokai').setup()
-require('autocmd')
 require('bindings')

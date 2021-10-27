@@ -58,61 +58,85 @@ require('telescope').setup({
   },
 })
 
-function _G.find_files()
-  require('telescope.builtin').find_files()
-end
+local telescope = require('telescope.builtin')
+local nnoremap = vim.keymap.nnoremap
 
-function _G.workspace_diagnostics()
-  require('telescope.builtin').lsp_workspace_diagnostics()
-end
+nnoremap({
+  '<leader>ff',
+  function()
+    telescope.find_files()
+  end,
+  silent = true,
+})
 
-function _G.git_status()
-  if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
-    require('telescope.builtin').git_status()
-  else
-    print('Not a git directory')
-  end
-end
+nnoremap({
+  '<leader>fd',
+  function()
+    telescope.lsp_workspace_diagnostics()
+  end,
+  silent = true,
+})
 
-function _G.live_grep()
-  require('telescope.builtin').live_grep()
-end
+nnoremap({
+  '<leader>fs',
+  function()
+    if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
+      telescope.git_status()
+    else
+      print('Not a git directory')
+    end
+  end,
+  silent = true,
+})
 
-function _G.buffers()
-  require('telescope.builtin').buffers()
-end
+nnoremap({
+  '<leader>fg',
+  function()
+    telescope.live_grep()
+  end,
+  silent = true,
+})
 
-function _G.help_tags()
-  require('telescope.builtin').help_tags()
-end
+nnoremap({
+  '<leader>fb',
+  function()
+    telescope.buffers()
+  end,
+  silent = true,
+})
 
--- Use git_files if available else use find_files
-function _G.git_files_or_find_files()
-  if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
-    require('telescope.builtin').git_files()
-  else
-    find_files()
-  end
-end
+nnoremap({
+  '<leader>fh',
+  function()
+    telescope.help_tags()
+  end,
+  silent = true,
+})
 
-function _G.find_word(whole_word)
-  if whole_word then
-    require('telescope.builtin').grep_string({ search = vim.fn.expand('<cWORD>') })
-  else
-    require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })
-  end
-end
+nnoremap({
+  '<c-p>',
+  function()
+    if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
+      telescope.git_files()
+    else
+      telescope.find_files()
+    end
+  end,
+  silent = true,
+})
 
-local opts = { noremap = true, silent = true }
+nnoremap({
+  '<leader>fw',
+  function()
+    telescope.grep_string({ search = vim.fn.expand('<cword>') })
+  end,
+  silent = true,
+})
 
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua find_files()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>lua workspace_diagnostics()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>lua git_status()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua live_grep()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua buffers()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua help_tags<CR>', opts)
-
-vim.api.nvim_set_keymap('n', '<c-p>', '<Cmd>lua git_files_or_find_files()<CR>', opts)
-
-vim.api.nvim_set_keymap('n', '<leader>fw', '<cmd>lua find_word()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fW', '<cmd>lua find_word(true)<CR>', opts)
+nnoremap({
+  '<leader>fW',
+  function()
+    telescope.grep_string({ search = vim.fn.expand('<cWORD>') })
+  end,
+  silent = true,
+})
