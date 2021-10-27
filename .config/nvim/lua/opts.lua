@@ -38,7 +38,8 @@ vim.o.hidden = true
 vim.o.hlsearch = true
 vim.o.updatetime = 50
 vim.o.completeopt = 'menuone,noselect'
-vim.o.ignorecase = true
+-- vim.o.ignorecase = true
+vim.o.smartcase = true
 vim.o.termguicolors = true
 vim.o.clipboard = 'unnamedplus'
 
