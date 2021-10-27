@@ -63,11 +63,3 @@ vim.api.nvim_set_keymap('v', '<Down>', '5j', opts)
 -- Quick increase/decrease
 vim.api.nvim_set_keymap('n', '-', '<C-x>', opts)
 vim.api.nvim_set_keymap('n', '+', '<C-a>', opts)
-
-local nnoremap = vim.keymap.nnoremap
-nnoremap({
-  '<leader>i',
-  function()
-    print('Hello world, from lua')
-  end,
-})
