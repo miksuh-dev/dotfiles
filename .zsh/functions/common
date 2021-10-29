@@ -4,10 +4,10 @@ function vim() {
 
   if [ ! "$TMUX" ]; then
     if tmux has-session -t vim 2>/dev/null ; then
+      tmux new-session -s vim "nvim $@"
+    else
       tmux a -t vim
       tmux new-window -t vim "nvim $@"
-    else
-      tmux new-session -s vim "nvim $@"
     fi
   else
     session_name=$(tmux display-message -p "#S")
