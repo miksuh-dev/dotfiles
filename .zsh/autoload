@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# if [ ! "$TMUX" ]; then
-#   tmux && exit 0
-# fi
-#
+if [ ! "$TMUX" ]; then
+  tmux attach -t default || tmux new-session -s default && exit 0
+fi
 
