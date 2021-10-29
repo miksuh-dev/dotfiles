@@ -32,6 +32,13 @@ require('gitsigns').setup({
     ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
     ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
   },
+  -- TODO: fix this
+  -- on_attach = function (bufnr)
+  --   if vim.api.nvim_buf_get_name(bufnr):match('[package.json][package-lock.json]') then
+  --     return false
+  --   end
+  --   return true
+  -- end,
   watch_gitdir = {
     interval = 1000,
     follow_files = true,
