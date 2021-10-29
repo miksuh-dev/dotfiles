@@ -2,6 +2,9 @@
 
 default_session='default'
 
+# TODO: if default session doesn't exist and other sessions exist, attach to those sessions instead
+# (maybe test this kind of approach?)
+
 if [ ! "$TMUX" ]; then
   if ! tmux has-session -t $default_session 2>/dev/null ; then
     tmux new-session -s $default_session && exit 0
