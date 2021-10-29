@@ -1,6 +1,12 @@
 #!/bin/bash
 
+default_session='default'
+
 if [ ! "$TMUX" ]; then
-  tmux attach -t default || tmux new-session -s default && exit 0
+  if ! tmux has-session -t $default_session 2>/dev/null ; then
+    tmux new-session -s $default_session && exit 0
+  else
+    tmux attach -t $default_session && exit 0
+  fi
 fi
 
