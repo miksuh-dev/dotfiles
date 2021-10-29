@@ -11,12 +11,6 @@ vim.api.nvim_set_keymap('v', '<', '<gv', opts)
 -- Consist y
 vim.api.nvim_set_keymap('n', 'Y', 'y$', opts)
 
--- Window movement
-vim.api.nvim_set_keymap('n', '<C-J>', '<C-W>j', optsSilent)
-vim.api.nvim_set_keymap('n', '<C-K>', '<C-W>k', optsSilent)
-vim.api.nvim_set_keymap('n', '<C-L>', '<C-W>l', optsSilent)
-vim.api.nvim_set_keymap('n', '<C-H>', '<C-W>h', optsSilent)
-
 -- Window resize
 vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize +3<Cr>', optsSilent)
 vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize -3<CR>', optsSilent)

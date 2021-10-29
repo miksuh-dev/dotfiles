@@ -22,6 +22,13 @@ return require('packer').startup({
       'tjdevries/astronauta.nvim',
     })
 
+    use ({
+      'eggbean/vim-tmux-navigator-no-wrapping',
+      config = function ()
+        require('plugin/vim-tmux-navigator.load')
+      end
+    })
+
     use({
       'tpope/vim-repeat',
       event = 'BufReadPre',

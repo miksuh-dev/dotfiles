@@ -145,6 +145,7 @@ require('nvim-tree').setup({
       custom_only = true,
       -- list of mappings to set on the tree manually
       list = {
+        -- Fix <C-h> causing treesitter cursor to move
         { key = { '<CR>', 'e', 'l' }, cb = tree_cb('edit') },
         { key = 'cd', cb = tree_cb('cd') },
         { key = 'v', cb = tree_cb('vsplit') },

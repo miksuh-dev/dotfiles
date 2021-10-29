@@ -50,22 +50,23 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        if vim.fn['UltiSnips#CanExpandSnippet']() == 1 then
-          return vim.fn.feedkeys(t('<C-R>=UltiSnips#ExpandSnippet()<CR>'))
-        end
-
-        vim.fn.feedkeys(t('<C-n>'), 'n')
-      elseif check_back_space() then
-        vim.fn.feedkeys(t('<cr>'), 'n')
-      else
-        fallback()
-      end
-    end, {
-      'i',
-      's',
-    }),
+    -- Disabled because <C-Space> is already mapped to switch to last window
+    -- ['<C-Space>'] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     if vim.fn['UltiSnips#CanExpandSnippet']() == 1 then
+    --       return vim.fn.feedkeys(t('<C-R>=UltiSnips#ExpandSnippet()<CR>'))
+    --     end
+    --
+    --     vim.fn.feedkeys(t('<C-n>'), 'n')
+    --   elseif check_back_space() then
+    --     vim.fn.feedkeys(t('<cr>'), 'n')
+    --   else
+    --     fallback()
+    --   end
+    -- end, {
+    --   'i',
+    --   's',
+    -- }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if vim.fn.complete_info()['selected'] == -1 and vim.fn['UltiSnips#CanExpandSnippet']() == 1 then
         vim.fn.feedkeys(t('<C-R>=UltiSnips#ExpandSnippet()<CR>'))
