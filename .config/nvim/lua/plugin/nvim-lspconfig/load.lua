@@ -19,6 +19,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = false,
 })
 
+-- TODO Change these to nnoremap function binds
 -- wrapper function to set border for diagnostics
 function _G.show_diagnostics()
   vim.lsp.diagnostic.show_line_diagnostics({

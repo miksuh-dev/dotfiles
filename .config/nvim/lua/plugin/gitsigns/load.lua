@@ -1,3 +1,19 @@
+-- Disabled on files
+-- % = escape
+local ignored_files = {
+  'package.json',
+  'package%-lock.json',
+}
+
+local function is_ignored_file(buffname)
+  for _, file in ipairs(ignored_files) do
+    if string.match(buffname, file) then
+      return true
+    end
+  end
+  return false
+end
+
 require('gitsigns').setup({
   signs = {
     add = { hl = 'GreenSign', text = '+', numhl = 'GitSignsAddNr' },
@@ -32,13 +48,10 @@ require('gitsigns').setup({
     ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
     ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
   },
-  -- TODO: fix this
-  -- on_attach = function (bufnr)
-  --   if vim.api.nvim_buf_get_name(bufnr):match('[package.json][package-lock.json]') then
-  --     return false
-  --   end
-  --   return true
-  -- end,
+  on_attach = function(bufnr)
+    local buffname = vim.api.nvim_buf_get_name(bufnr)
+    return not is_ignored_file(buffname)
+  end,
   watch_gitdir = {
     interval = 1000,
     follow_files = true,
