@@ -8,26 +8,27 @@ function tmux-autosession() {
     return 1
   fi
 
-  if ! tmux has-session -t $session_name 2>/dev/null ; then
-    tmux new-session -s $session_name -d
-    created=true
-  fi
-
   if [ ! "$TMUX" ]; then
     tmux attach $session_name
-  else
-    current_session_name=$(tmux display-message -p "#S")
-    if [ ! "$current_session_name" = $session_name ]; then
-      current_window_name=$(tmux display-message -p "#I")
-      tmux switch -t $session_name
-      tmux move-window -s $current_session_name:$current_window_name -t $session_name
+    return 0
+  fi
 
+  current_session_name=$(tmux display-message -p "#S")
+  if [ ! "$current_session_name" = $session_name ]; then
+    if ! tmux has-session -t $session_name 2>/dev/null ; then
+      tmux new-session -s $session_name -d
+      created=true
+    fi
+
+    current_window_name=$(tmux display-message -p "#I")
+    tmux switch -t $session_name
+    tmux move-window -s $current_session_name:$current_window_name -t $session_name
+
+      # Kill extra window created when session was created (TODO: Find better solution)
       # TODO Find better solution
-      # Kill extra window created when session was created
       if [ "$created" = true ]; then
         tmux kill-window -t 1
       fi
-    fi
   fi
 }
 
