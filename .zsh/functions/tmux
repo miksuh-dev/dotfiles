@@ -24,11 +24,11 @@ function tmux-autosession() {
     tmux switch -t $session_name
     tmux move-window -s $current_session_name:$current_window_name -t $session_name
 
-      # Kill extra window created when session was created (TODO: Find better solution)
-      # TODO Find better solution
-      if [ "$created" = true ]; then
-        tmux kill-window -t 1
-      fi
+    # Kill extra window created when session was created (TODO: Find better solution)
+    # TODO Find better solution
+    if [ "$created" = true ]; then
+      tmux kill-window -t 1
+    fi
   fi
 }
 
