@@ -1,4 +1,7 @@
 local border = require('common.border')
+local nnoremap = vim.keymap.nnoremap
+local inoremap = vim.keymap.inoremap
+local vnoremap = vim.keymap.vnoremap
 
 -- Globally set border for hover
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -19,16 +22,14 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = false,
 })
 
--- TODO Change these to nnoremap function binds
--- wrapper function to set border for diagnostics
-function _G.show_diagnostics()
+local function show_diagnostics()
   vim.lsp.diagnostic.show_line_diagnostics({
     border = border,
   })
 end
 
 -- wrapper function to set go_to_prev
-function _G.go_to_prev()
+local function go_to_prev()
   vim.lsp.diagnostic.goto_prev({
     wrap = false,
     popup_opts = {
@@ -38,7 +39,7 @@ function _G.go_to_prev()
 end
 
 -- wrapper function to set go_to_next
-function _G.go_to_next()
+local function go_to_next()
   vim.lsp.diagnostic.goto_next({
     wrap = false,
     popup_opts = {
@@ -48,10 +49,6 @@ function _G.go_to_next()
 end
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -59,27 +56,35 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap = true, silent = true }
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'H', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>?', '<cmd>lua show_diagnostics()<CR>', opts)
+  nnoremap({ 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', silent = true })
+  nnoremap({ 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', silent = true })
+  nnoremap({ 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', silent = true })
+  nnoremap({ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', silent = true })
+  nnoremap({ 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', silent = true, buffer = true })
+  nnoremap({ 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', silent = true, buffer = true })
+  nnoremap({ 'H', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silent = true, buffer = true })
+  inoremap({ '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silent = true, buffer = true })
+  nnoremap({ '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', silent = true, buffer = true })
+  nnoremap({ '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', silent = true, buffer = true })
+  nnoremap({ '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', silent = true, buffer = true })
+  nnoremap({
+    '<leader>?',
+    show_diagnostics,
+    silent = true,
+    buffer = true,
+  })
 
-  buf_set_keymap('n', '<leader>k', '<cmd>lua go_to_prev()<CR>', opts)
-  buf_set_keymap('n', '<leader>j', '<cmd>lua go_to_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  nnoremap({
+    '<leader>k',
+    go_to_prev,
+    silent = true,
+    buffer = true,
+  })
+  nnoremap({ '<leader>j', go_to_next, silent = true, buffer = true })
+  nnoremap({ '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent = true, buffer = true })
 
-  buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('v', '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  nnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', silent = true, buffer = true })
+  vnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', silent = true, buffer = true })
 
   if client.name ~= 'efm' then
     client.resolved_capabilities.document_formatting = false
@@ -88,16 +93,24 @@ local on_attach = function(client, bufnr)
   -- Format on save is available
   if client.resolved_capabilities.document_formatting then
     vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({ timeout_ms = 5000 })]])
-    buf_set_keymap('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting({ timeout_ms = 5000 })<CR>', { noremap = true })
+    vnoremap({
+      '<leader>fo',
+      function()
+        vim.lsp.buf.formatting({ timeout_ms = 5000 })
+      end,
+      silent = true,
+      buffer = true,
+    })
   end
 
   if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap(
-      'v',
+    vnoremap({
       '<leader>fo',
-      '<cmd>lua vim.lsp.buf.range_formatting({ timeout_ms = 5000 })<CR>',
-      { noremap = true }
-    )
+      function()
+        vim.lsp.buf.range_formatting({ timeout_ms = 5000 })
+      end,
+      { noremap = true },
+    })
   end
 
   -- Set autocommands conditional on server_capabilities
