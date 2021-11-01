@@ -220,6 +220,7 @@ local function setup_servers()
 
   for _, server in pairs(servers) do
     local config = make_config(nvim_lsp)
+    -- TODO: package.json and other scehmas from https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/package.json
 
     -- language specific config
     if server == 'efm' then

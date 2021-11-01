@@ -668,6 +668,10 @@ M.load_plugin_syntax = function(palette)
     CmpItemAbbrDeprecated = {
       fg = palette.white,
     },
+    BiscuitColor = {
+      fg = palette.base7,
+      bg = palette.base4,
+    }
   }
 end
 
