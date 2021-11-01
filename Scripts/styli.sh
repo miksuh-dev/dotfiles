@@ -456,4 +456,4 @@ fi
 
 
 pywal_cmd
-r
+
