@@ -93,7 +93,7 @@ local on_attach = function(client, bufnr)
   -- Format on save is available
   if client.resolved_capabilities.document_formatting then
     vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({ timeout_ms = 5000 })]])
-    vnoremap({
+    nnoremap({
       '<leader>fo',
       function()
         vim.lsp.buf.formatting({ timeout_ms = 5000 })
