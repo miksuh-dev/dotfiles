@@ -109,7 +109,7 @@ local on_attach = function(client, bufnr)
       function()
         vim.lsp.buf.range_formatting({ timeout_ms = 5000 })
       end,
-      { noremap = true },
+      noremap = true,
     })
   end
 
