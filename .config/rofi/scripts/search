@@ -61,7 +61,8 @@ main() {
 
     if [[ -n "$query" ]]; then
       url=${URLS[$platform]}$query
-      xdg-open "$url"
+      # xdg-open "$url"
+      firefox --new-window "$url"
     else
       exit
     fi

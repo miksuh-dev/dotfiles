@@ -11,8 +11,8 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- TODO: Check these plugins:
-    -- https://github.com/romainl/vim-qf (improves quickfix list)
+    -- TODO: Check these out
+    -- https://github.com/ms-jpq/coq_nvim
 
     use({
       'wbthomason/packer.nvim',
@@ -22,11 +22,11 @@ return require('packer').startup({
       'tjdevries/astronauta.nvim',
     })
 
-    use ({
+    use({
       'eggbean/vim-tmux-navigator-no-wrapping',
-      config = function ()
+      config = function()
         require('plugin/vim-tmux-navigator.load')
-      end
+      end,
     })
 
     use({
