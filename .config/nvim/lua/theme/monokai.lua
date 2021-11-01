@@ -152,7 +152,7 @@ M.load_syntax = function(palette)
       bg = palette.yellow,
     },
     CursorLineNr = {
-      fg = palette.orange,
+      fg = palette.aqua,
       bg = palette.none,
     },
     MatchParen = {
@@ -181,7 +181,7 @@ M.load_syntax = function(palette)
       fg = palette.base3,
     },
     LineNr = {
-      fg = palette.white,
+      fg = palette.base6,
       bg = palette.none,
     },
     SignColumn = {
@@ -288,7 +288,8 @@ M.load_syntax = function(palette)
     },
     Function = {
       fg = palette.green,
-      style = 'italic',
+      -- style = 'italic',
+      style = 'bold',
     },
     Statement = {
       fg = palette.pink,
@@ -301,7 +302,8 @@ M.load_syntax = function(palette)
     },
     Keyword = {
       fg = palette.pink,
-      style = 'italic',
+      -- style = 'italic',
+      style = 'bold',
     },
     PreProc = {
       fg = palette.green,
@@ -445,22 +447,26 @@ M.load_plugin_syntax = function(palette)
     },
     TSFunction = {
       fg = palette.green,
-      style = 'italic',
+      -- style = 'italic',
+      style = 'bold',
     },
     TSFuncBuiltin = {
       fg = palette.aqua,
     },
     TSFuncMacro = {
       fg = palette.green,
-      style = 'italic',
+      -- style = 'italic',
+      style = 'bold',
     },
     TSKeyword = {
       fg = palette.pink,
-      style = 'italic',
+      -- style = 'italic',
+      style = 'bold',
     },
     TSKeywordFunction = {
       fg = palette.pink,
-      style = 'italic',
+      -- style = 'italic',
+      style = 'bold',
     },
     TSKeywordOperator = {
       fg = palette.pink,
@@ -470,7 +476,8 @@ M.load_plugin_syntax = function(palette)
     },
     TSMethod = {
       fg = palette.green,
-      style = 'italic',
+      -- style = 'italic',
+      style = 'bold',
     },
     TSNamespace = {
       fg = palette.purple,
