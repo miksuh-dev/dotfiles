@@ -670,8 +670,8 @@ M.load_plugin_syntax = function(palette)
     },
     BiscuitColor = {
       fg = palette.base7,
-      bg = palette.base4,
-    }
+      -- bg = palette.base4,
+    },
   }
 end
 
