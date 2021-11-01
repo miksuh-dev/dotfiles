@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+session_name=$1
+
+if [ -z "$session_name" ]; then
+  echo "Missing target session (usage: tmux-session-switch <target_session>"
+  exit 1
+fi
+
+current_session_name=$(tmux display-message -p "#S")
+if [ ! "$current_session_name" = $session_name ]; then
+  if ! tmux has-session -t $session_name 2>/dev/null ; then
+    tmux new-session -s $session_name -d
+  fi
+
+  tmux switch -t $session_name
+fi
