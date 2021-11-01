@@ -2,13 +2,13 @@
 
 sleep 3
 # Start up programs
-$HOME/Scripts/startup.sh
+$HOME/Scripts/autorun/start-programs.sh
 
 # Increase key speed
 # xset r rate 400 50
 
 # Computer specific custom startup
-[ -f $HOME/Scripts/custom-autorun/autorun_$(hostname).sh ] && bash $HOME/Scripts/custom-autorun/autorun_$(hostname).sh
+[ -f $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh ] && bash $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh
 
 # Restart xbindkeys
 pkill xbindkeys; xbindkeys

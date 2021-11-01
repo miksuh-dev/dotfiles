@@ -553,7 +553,7 @@ myStartupHook = do
     spawnOnce "xsetroot -solid black"
 
     spawnOnce "bash ~/Scripts/set-screens.sh"
-    spawn "bash ~/Scripts/autorun.sh"
+    spawn "bash ~/Scripts/autorun/autorun.sh"
 
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrcPrimary"
