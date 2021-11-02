@@ -3,5 +3,5 @@
 for f in $HOME/.zsh/functions/*; do source $f; done
 for f in $HOME/.zsh/aliases/*; do source $f; done
 
-$HOME/Scripts/tmux/automatic-session
+source $HOME/Scripts/tmux/automatic-session
 

@@ -3,7 +3,7 @@
 alias ssh="kitty +kitten ssh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias fa='alias | grep'
-alias vimconfig='cd $HOME/.config/nvim/lua && tmux-autosession config && nvim && cd - > /dev/null'
-alias dotconfig='cd $HOME/.dotedit && tmux-autosession config && nvim && cd - > /dev/null'
-alias vim='tmux-autosession nvim && nvim'
+alias vimconfig='cd $HOME/.config/nvim/lua && nvim && cd - > /dev/null'
+alias dotconfig='cd $HOME/.dotedit && nvim && cd - > /dev/null'
+alias vim='nvim'
 alias cw='$HOME/Scripts/change-wallpaper.sh'

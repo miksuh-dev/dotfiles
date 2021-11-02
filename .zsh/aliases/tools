@@ -2,5 +2,5 @@
 
 alias iOSremote='remotedebug_ios_webkit_adapter --port=9000'
 alias DBUI="tmux rename-window "DBUI" && nvim -c ':DBUI'"
-alias npms="tmux-autosession run && npm run start -- --host 172.19.0.1"
+alias npms="npm run start -- --host 172.19.0.1"
 alias robo3t="QT_FONT_DPI=128 snap run robo3t-snap && exit"

@@ -111,6 +111,7 @@ export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin:
 export NODE_OPTIONS=--max_old_space_size=4096
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export MANPAGER='nvim +Man!'
 
 [ -f $HOME/.secrets ] && source $HOME/.secrets
 
