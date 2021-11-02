@@ -3,6 +3,7 @@
 local ignored_files = {
   'package.json',
   'package%-lock.json',
+  'fugitive'
 }
 
 local function is_ignored_file(buffname)
