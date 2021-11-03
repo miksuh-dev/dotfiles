@@ -13,6 +13,20 @@ return require('packer').startup({
 
     -- TODO: Check these out
     -- https://github.com/ms-jpq/coq_nvim
+    -- https://github.com/nvim-lua/lsp-status.nvim
+    -- https://github.com/lukas-reineke/cmp-rg
+    -- https://github.com/andersevenrud/compe-tmux
+    -- https://github.com/gennaro-tedesco/nvim-peekup v better version (?)
+    -- https://github.com/tversteeg/registers.nvim
+    -- https://github.com/Pocco81/Catppuccino.nvim
+    -- https://github.com/lewis6991/spellsitter.nvim
+    -- https://github.com/noib3/cokeline.nvim
+    -- https://github.com/SmiteshP/nvim-gps
+    -- https://github.com/windwp/floatline.nvim/
+    -- https://github.com/michaelb/sniprun
+    -- https://github.com/monaqa/dial.nvim
+    -- https://github.com/haringsrob/nvim_context_vt
+    -- https://github.com/David-Kunz/jester
 
     use({
       'wbthomason/packer.nvim',
