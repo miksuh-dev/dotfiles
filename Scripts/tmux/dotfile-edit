@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+selected=$(find ~/.dotedit -mindepth 0 -maxdepth 2 | fzf)
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+nvim $selected && exit 0
