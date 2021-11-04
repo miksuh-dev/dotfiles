@@ -13,7 +13,6 @@ return require('packer').startup({
 
     -- TODO: Check these out
     -- https://github.com/ms-jpq/coq_nvim
-    -- https://github.com/Pocco81/Catppuccino.nvim
     -- https://github.com/michaelb/sniprun
     -- https://github.com/David-Kunz/jester
 
@@ -131,6 +130,11 @@ return require('packer').startup({
         { 'v', '"' },
         { 'n', '"' },
       },
+    })
+
+    use({
+      'David-Kunz/jester',
+      method = { 'jester' },
     })
 
     ------------------------------------------------------------------------------------------------
