@@ -229,6 +229,7 @@ usage(){
     [-r | --subreddit <subreddit>]
     [-l | --link <source>]
     [-p | --termcolor]
+    [-L | --lightwal]
     [-d | --directory]
     [-k | --kde]
     [-x | --xfce]
@@ -267,6 +268,14 @@ pywal_cmd() {
     if [ $pywal -eq 1 ]; then
         wal -c
         wal -i ${wallpaper} -n -q
+        if [ $TERM = alacritty ]; then
+            alacritty_change
+        fi
+    fi
+    
+    if [ $light -eq 1 ]; then
+        wal -c
+        wal -i ${wallpaper} -n -q -l
         if [ $TERM = alacritty ]; then
             alacritty_change
         fi
@@ -337,7 +346,7 @@ kde_cmd() {
     cp ${wallpaper} "${cachedir}/tmp.jpg"
     qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = \"org.kde.image\";d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");d.writeConfig(\"Image\", \"file:${cachedir}/tmp.jpg\")}"
     qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = \"org.kde.image\";d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");d.writeConfig(\"Image\", \"file:${wallpaper}\")}"
-    rm "${cachedir}/tmp.jpg"
+    sleep 5 && rm "${cachedir}/tmp.jpg"
 }
 
 xfce_cmd() {
@@ -390,6 +399,7 @@ feh_cmd() {
 }
 
 pywal=0
+light=0
 kde=false
 xfce=false
 gnome=false
@@ -397,7 +407,7 @@ nitrogen=false
 sway=false
 monitors=1
 
-PARSED_ARGUMENTS=$(getopt -a -n $0 -o h:w:s:l:b:r:a:c:d:m:pknxgy --long search:,height:,width:,fehbg:,fehopt:,artist:,subreddit:,directory:,monitors:,termcolor:,kde,nitrogen,xfce,gnome,sway -- "$@")
+PARSED_ARGUMENTS=$(getopt -a -n $0 -o h:w:s:l:b:r:a:c:d:m:pLknxgy --long search:,height:,width:,fehbg:,fehopt:,artist:,subreddit:,directory:,monitors:,termcolor:,lighwal:,kde,nitrogen,xfce,gnome,sway -- "$@")
 
 VALID_ARGUMENTS=$?
 if [ "$VALID_ARGUMENTS" != "0" ]; then
@@ -419,6 +429,7 @@ do
         -n | --nitrogen)  nitrogen=true ; shift ;;
         -d | --directory) dir=${2} ; shift 2 ;;
         -p | --termcolor) pywal=1 ; shift ;;
+        -L | --lightwal)  light=1 ; shift ;;
         -k | --kde)       kde=true ; shift ;;
         -x | --xfce)      xfce=true ; shift ;;
         -g | --gnome)     gnome=true ; shift ;;
@@ -456,4 +467,3 @@ fi
 
 
 pywal_cmd
-
