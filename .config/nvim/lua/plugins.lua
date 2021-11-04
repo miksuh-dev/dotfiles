@@ -16,6 +16,15 @@ return require('packer').startup({
     -- https://github.com/michaelb/sniprun
 
     use({
+      'michaelb/sniprun',
+      run = 'bash ./install.sh',
+      module = { 'sniprun' },
+      config = function()
+        require('plugin.sniprun.load')
+      end,
+    })
+
+    use({
       'wbthomason/packer.nvim',
     })
 
