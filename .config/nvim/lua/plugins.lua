@@ -14,7 +14,6 @@ return require('packer').startup({
     -- TODO: Check these out
     -- https://github.com/ms-jpq/coq_nvim
     -- https://github.com/michaelb/sniprun
-    -- https://github.com/David-Kunz/jester
 
     use({
       'wbthomason/packer.nvim',
@@ -134,7 +133,7 @@ return require('packer').startup({
 
     use({
       'David-Kunz/jester',
-      method = { 'jester' },
+      module = { 'jester' },
     })
 
     ------------------------------------------------------------------------------------------------
@@ -157,7 +156,7 @@ return require('packer').startup({
 
     use({
       'SmiteshP/nvim-gps',
-      method = { 'nvim-gps' },
+      module = { 'nvim-gps' },
       config = function()
         require('plugin.nvim-gps.load')
       end,
@@ -250,7 +249,7 @@ return require('packer').startup({
     use({
       'SirVer/ultisnips',
       after = 'nvim-cmp',
-      method = 'UltiSnips',
+      module = 'UltiSnips',
       requires = 'nvim-cmp',
     })
 
