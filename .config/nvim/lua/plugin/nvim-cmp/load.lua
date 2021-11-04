@@ -19,7 +19,7 @@ local kind_icons = {
   Field = ' ',
   File = ' ',
   Folder = ' ',
-  Function = ' ',
+  Function = 'ƒ ',
   Interface = 'ﰮ ',
   Keyword = ' ',
   Method = 'ƒ ',
@@ -107,6 +107,7 @@ cmp.setup({
         cmp_tabnine = '[Tabnine]',
         calc = '[Calc]',
         path = '[Path]',
+        tmux = '[Tmux]',
       })[entry.source.name]
       return vim_item
     end,
@@ -118,6 +119,7 @@ cmp.setup({
     { name = 'cmp_tabnine' },
     { name = 'calc' },
     { name = 'path' },
+    { name = 'tmux' },
   },
   documentation = {
     border = require('common.border'),

@@ -13,19 +13,8 @@ return require('packer').startup({
 
     -- TODO: Check these out
     -- https://github.com/ms-jpq/coq_nvim
-    -- https://github.com/nvim-lua/lsp-status.nvim
-    -- https://github.com/lukas-reineke/cmp-rg
-    -- https://github.com/andersevenrud/compe-tmux
-    -- https://github.com/gennaro-tedesco/nvim-peekup v better version (?)
-    -- https://github.com/tversteeg/registers.nvim
     -- https://github.com/Pocco81/Catppuccino.nvim
-    -- https://github.com/lewis6991/spellsitter.nvim
-    -- https://github.com/noib3/cokeline.nvim
-    -- https://github.com/SmiteshP/nvim-gps
-    -- https://github.com/windwp/floatline.nvim/
     -- https://github.com/michaelb/sniprun
-    -- https://github.com/monaqa/dial.nvim
-    -- https://github.com/haringsrob/nvim_context_vt
     -- https://github.com/David-Kunz/jester
 
     use({
@@ -135,6 +124,15 @@ return require('packer').startup({
       end,
     })
 
+    use({
+      'tversteeg/registers.nvim',
+      keys = {
+        { 'i', '<C-R>' },
+        { 'v', '"' },
+        { 'n', '"' },
+      },
+    })
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -150,6 +148,14 @@ return require('packer').startup({
       event = 'VimEnter',
       config = function()
         require('plugin.lualine.load')
+      end,
+    })
+
+    use({
+      'SmiteshP/nvim-gps',
+      method = { 'nvim-gps' },
+      config = function()
+        require('plugin.nvim-gps.load')
       end,
     })
 
@@ -184,10 +190,10 @@ return require('packer').startup({
 
     use({
       'ThePrimeagen/harpoon',
-      module={'harpoon'},
+      module = { 'harpoon' },
       config = function()
         require('plugin.harpoon.load')
-        end
+      end,
     })
 
     ------------------------------------------------------------------------------------------------
@@ -270,6 +276,13 @@ return require('packer').startup({
 
     use({
       'hrsh7th/cmp-path',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'andersevenrud/compe-tmux',
+      branch = 'cmp',
       after = 'nvim-cmp',
       requires = 'nvim-cmp',
     })
