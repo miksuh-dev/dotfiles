@@ -57,3 +57,9 @@ vim.api.nvim_set_keymap('v', '<Down>', '5j', opts)
 -- Quick increase/decrease
 vim.api.nvim_set_keymap('n', '-', '<C-x>', opts)
 vim.api.nvim_set_keymap('n', '+', '<C-a>', opts)
+
+-- TODO: Change this to lua
+vim.cmd([[
+  nnoremap <expr> ' "'" . nr2char(getchar()) . "zz"
+  nnoremap <expr> ` "`" . nr2char(getchar()) . "zz"
+]])
