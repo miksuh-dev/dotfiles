@@ -13,16 +13,6 @@ return require('packer').startup({
 
     -- TODO: Check these out
     -- https://github.com/ms-jpq/coq_nvim
-    -- https://github.com/michaelb/sniprun
-
-    use({
-      'michaelb/sniprun',
-      run = 'bash ./install.sh',
-      module = { 'sniprun' },
-      config = function()
-        require('plugin.sniprun.load')
-      end,
-    })
 
     use({
       'wbthomason/packer.nvim',
