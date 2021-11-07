@@ -19,6 +19,7 @@ require('nvim-treesitter.configs').setup({
     'typescript',
     'vim',
     'yaml',
+    'vue',
   },
   highlight = {
     enable = true, -- false will disable the whole extension

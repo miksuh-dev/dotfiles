@@ -17,4 +17,5 @@ return {
   lua = { stylua },
   markdown = { prettier },
   yaml = { prettier },
+  vue = { eslint, prettier },
 }

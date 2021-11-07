@@ -177,6 +177,7 @@ local function install_missing(installed_servers)
     'yaml',
     'lua',
     'haskell',
+    'vue',
   }
 
   -- Check for missing servers that are listed in required_servers
@@ -321,6 +322,10 @@ local function setup_servers()
           },
         },
       }
+    end
+
+    if server == 'vue' then
+      config.root_dir = nvim_lsp.util.root_pattern('tsconfig.json', 'package.json')
     end
 
     -- if server == 'graphql' then
