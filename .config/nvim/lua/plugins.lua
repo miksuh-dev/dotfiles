@@ -14,6 +14,8 @@ return require('packer').startup({
     -- TODO: Check these out
     -- https://github.com/ms-jpq/coq_nvim
 
+
+
     use({
       'wbthomason/packer.nvim',
     })
@@ -327,6 +329,16 @@ return require('packer').startup({
         require('plugin.nvim-ts-autotag.load')
       end,
     })
+
+    use ({
+      "lukas-reineke/indent-blankline.nvim",
+      requires = 'nvim-treesitter',
+      after = 'nvim-treesitter',
+      config = function()
+        require('plugin.indent-blankline.load')
+      end
+    })
+
 
     ----------------------------------------------------------------------------
     ------------------------------- Git ----------------------------------------
