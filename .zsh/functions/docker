@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function dkX() {
+  container=$1
+
+  if [ -z "$container" ]; then
+    echo "Missing target container (usage: dkX <target_container>"
+    return 1
+  fi
+
+  docker stop $container && docker container rm $container
+}
