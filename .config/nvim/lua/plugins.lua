@@ -291,15 +291,15 @@ return require('packer').startup({
       requires = 'nvim-cmp',
     })
 
-    use({
-      'tzachar/cmp-tabnine',
-      run = './install.sh',
-      after = 'nvim-cmp',
-      requires = 'nvim-cmp',
-      config = function()
-        require('plugin.cmp-tabnine.load')
-      end,
-    })
+    -- use({
+    --   'tzachar/cmp-tabnine',
+    --   run = './install.sh',
+    --   after = 'nvim-cmp',
+    --   requires = 'nvim-cmp',
+    --   config = function()
+    --     require('plugin.cmp-tabnine.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
