@@ -679,6 +679,18 @@ M.load_plugin_syntax = function(palette)
       fg = palette.base7,
       -- bg = palette.base4,
     },
+    NotificationInfo = {
+      fg = palette.white,
+      bg = palette.base2,
+    },
+    NotificationError = {
+      fg = palette.red,
+      bg = palette.base2,
+    },
+    NotificationWarning = {
+      fg = palette.yellow,
+      bg = palette.base2,
+    },
   }
 end
 

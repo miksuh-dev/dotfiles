@@ -120,6 +120,7 @@ cmp.setup({
     { name = 'calc' },
     { name = 'path' },
     { name = 'tmux' },
+    { name = 'vim_dadbod_completion' },
   },
   documentation = {
     border = require('common.border'),

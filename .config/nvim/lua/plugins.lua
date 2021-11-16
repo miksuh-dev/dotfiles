@@ -14,8 +14,6 @@ return require('packer').startup({
     -- TODO: Check these out
     -- https://github.com/ms-jpq/coq_nvim
 
-
-
     use({
       'wbthomason/packer.nvim',
     })
@@ -291,6 +289,12 @@ return require('packer').startup({
       requires = 'nvim-cmp',
     })
 
+    use({
+      'kristijanhusak/vim-dadbod-completion',
+      requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+      after = 'vim-dadbod',
+    })
+
     -- use({
     --   'tzachar/cmp-tabnine',
     --   run = './install.sh',
@@ -330,15 +334,43 @@ return require('packer').startup({
       end,
     })
 
-    use ({
-      "lukas-reineke/indent-blankline.nvim",
+    use({
+      'lukas-reineke/indent-blankline.nvim',
       requires = 'nvim-treesitter',
       after = 'nvim-treesitter',
       config = function()
         require('plugin.indent-blankline.load')
-      end
+      end,
     })
 
+    ----------------------------------------------------------------------------
+    -------------------------------- DB ----------------------------------------
+    ----------------------------------------------------------------------------
+
+    use({
+      'tpope/vim-dadbod',
+      cmd = 'DB',
+      after = 'vim-dadbod-ui',
+    })
+
+    use({
+      'kristijanhusak/vim-dadbod-ui',
+      requires = 'vim-dadbod',
+      config = function()
+        require('plugin.vim-dadbod-ui.load')
+      end,
+      keys = {
+        '<leader>du',
+      },
+      cmd = {
+        'DBUI',
+        'DBUIAddConnection',
+        'DBUIFindBuffer',
+        'DBUILastQueryInfo',
+        'DBUIRenameBuffer',
+        'DBUIToggle',
+      },
+    })
 
     ----------------------------------------------------------------------------
     ------------------------------- Git ----------------------------------------
