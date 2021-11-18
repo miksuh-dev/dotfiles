@@ -32,3 +32,9 @@ vim.g.db_ui_icons = {
 
 nnoremap({ '<leader>du', ':DBUI<CR>', silent = true })
 
+vim.cmd[[
+  autocmd FileType dbui nmap <buffer> rn <Plug>(DBUI_RenameLine)
+
+  autocmd FileType dbout nmap <buffer> gd <Plug>(DBUI_JumpToForeignKey)
+]]
+

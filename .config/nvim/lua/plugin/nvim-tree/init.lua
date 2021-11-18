@@ -5,6 +5,7 @@ end
 
 local nnoremap = vim.keymap.nnoremap
 
+-- TODO use same bind instead with dadbod-ui if currently opeen
 nnoremap({
   '<leader>n',
   function()
