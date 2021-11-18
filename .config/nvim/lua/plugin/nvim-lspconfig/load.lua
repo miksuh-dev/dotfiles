@@ -281,6 +281,9 @@ local function setup_servers()
           formatter = 'prettier',
           formatter_config_fallback = nil,
 
+          auto_inlay_hints = true,
+          inlay_hints_highlight = "Comment",
+
           -- update imports on file move
           update_imports_on_move = false,
           require_confirmation_on_move = false,

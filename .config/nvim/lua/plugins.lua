@@ -291,8 +291,8 @@ return require('packer').startup({
 
     use({
       'kristijanhusak/vim-dadbod-completion',
+      after = 'nvim-cmp',
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
-      after = 'vim-dadbod',
     })
 
     -- use({

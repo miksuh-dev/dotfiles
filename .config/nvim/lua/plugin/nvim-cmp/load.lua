@@ -108,6 +108,7 @@ cmp.setup({
         calc = '[Calc]',
         path = '[Path]',
         tmux = '[Tmux]',
+        ['vim-dadbod-completion'] = '[DB]',
       })[entry.source.name]
       return vim_item
     end,
@@ -120,7 +121,7 @@ cmp.setup({
     { name = 'calc' },
     { name = 'path' },
     { name = 'tmux' },
-    { name = 'vim_dadbod_completion' },
+    { name = 'vim-dadbod-completion' },
   },
   documentation = {
     border = require('common.border'),

@@ -119,7 +119,7 @@ LC_ALL=en_US.UTF-8
 LANGUAGE=en_US.UTF-8
 LANG=en_US.UTF-8
 
-export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin:$HOME/.local/share/gem/ruby/3.0.0/bin"
+export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin"
 export NODE_OPTIONS=--max_old_space_size=4096
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
