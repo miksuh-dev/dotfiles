@@ -32,8 +32,22 @@ vim.g.db_ui_icons = {
 
 nnoremap({ '<leader>du', ':DBUI<CR>', silent = true })
 
+
+-- TODO Set all rest of mappings and then disable default ones
 vim.cmd[[
+  autocmd FileType dbui nmap <buffer> X <Plug>(DBUI_DeleteLine)
+  autocmd FileType dbui nmap <buffer> a <Plug>(DBUI_AddConnection)
+  autocmd FileType dbui nmap <buffer> R <Plug>(DBUI_Redraw)
   autocmd FileType dbui nmap <buffer> rn <Plug>(DBUI_RenameLine)
+
+  autocmd FileType dbui nmap <buffer> J <Plug>(DBUI_GotoFirstSibling)
+  autocmd FileType dbui nmap <buffer> K <Plug>(DBUI_GotoLastSibling)
+
+  autocmd FileType dbui nmap <buffer> < <Plug>(DBUI_GotoPrevSibling)
+  autocmd FileType dbui nmap <buffer> > <Plug>(DBUI_GotoNextSibling)
+
+  autocmd FileType dbui nmap <buffer> P <Plug>(DBUI_GotoParentNode)
+  autocmd FileType dbui nmap <buffer> P <Plug>(DBUI_GotoParentNode)
 
   autocmd FileType dbout nmap <buffer> gd <Plug>(DBUI_JumpToForeignKey)
 ]]
