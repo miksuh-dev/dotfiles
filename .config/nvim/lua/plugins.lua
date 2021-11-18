@@ -217,6 +217,8 @@ return require('packer').startup({
       requires = 'nvim-lspconfig',
     })
 
+
+    -- TODO: Replace with https://github.com/williamboman/nvim-lsp-installer
     use({
       'kabouzeid/nvim-lspinstall',
       cmd = { 'LspInstall', 'LspUninstall' },
