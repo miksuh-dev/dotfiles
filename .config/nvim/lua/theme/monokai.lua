@@ -691,6 +691,11 @@ M.load_plugin_syntax = function(palette)
       fg = palette.yellow,
       bg = palette.base2,
     },
+    LspSignatureActiveParameter = {
+      style = 'bold',
+      fg = palette.aqua,
+      bg = palette.none,
+    }
   }
 end
 
