@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+session_name='DB'
+window_name='DBUI'
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $HOME
+    tmux new-window -n $window_name -t $session_name: 'nvim -c DBUI'
+    tmux kill-window -t 1
+    return 0
+fi
+
+if ! tmux has-session -t=$session_name 2> /dev/null; then
+    tmux new-session -ds $session_name -c $HOME 
+    tmux new-window -n $window_name -t $session_name: 'nvim -c DBUI'
+fi
+
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t=$session_name
+else
+    tmux switch-client -t=$session_name
+fi
