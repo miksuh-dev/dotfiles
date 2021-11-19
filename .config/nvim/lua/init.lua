@@ -5,7 +5,6 @@ require('plugins')
 
 require('plugin.telescope')
 require('plugin.nvim-tree')
-require('plugin.harpoon')
 require('plugin.jester')
 
 require('disabled')

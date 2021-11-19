@@ -190,14 +190,6 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'ThePrimeagen/harpoon',
-      module = { 'harpoon' },
-      config = function()
-        require('plugin.harpoon.load')
-      end,
-    })
-
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Lsp --------------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -296,16 +288,6 @@ return require('packer').startup({
       after = 'nvim-cmp',
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
     })
-
-    -- use({
-    --   'tzachar/cmp-tabnine',
-    --   run = './install.sh',
-    --   after = 'nvim-cmp',
-    --   requires = 'nvim-cmp',
-    --   config = function()
-    --     require('plugin.cmp-tabnine.load')
-    --   end,
-    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
