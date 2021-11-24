@@ -145,6 +145,9 @@ local function make_config(nvim_lsp)
     -- map buffer local keybindings when the language server attaches
     on_attach = on_attach,
     root_dir = root_dir,
+    flags = {
+      debounce_text_changes = 150,
+    }
   }
 end
 
