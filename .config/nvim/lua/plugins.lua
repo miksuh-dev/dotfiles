@@ -197,7 +197,7 @@ return require('packer').startup({
     use({
       'neovim/nvim-lspconfig',
       event = 'BufReadPre',
-      cmd = { 'LspInfo', 'LspInstall', 'LspRestart', 'LspStart', 'LspStop', 'LspUninstall' },
+      cmd = { 'LspInfo', 'LspRestart', 'LspStart', 'LspStop' },
       config = function()
         require('plugin.nvim-lspconfig.load')
       end,
@@ -209,13 +209,18 @@ return require('packer').startup({
       requires = 'nvim-lspconfig',
     })
 
-
-    -- TODO: Replace with https://github.com/williamboman/nvim-lsp-installer
     use({
-      'kabouzeid/nvim-lspinstall',
-      cmd = { 'LspInstall', 'LspUninstall' },
-      module = 'lspinstall',
+      'williamboman/nvim-lsp-installer',
+      module = 'nvim-lsp-installer',
       requires = 'nvim-lspconfig',
+      cmd = {
+        'LspInstallInfo',
+        'LspInstall',
+        'LspUninstall',
+        'LspUninstallAll',
+        'LspInstallLog',
+        'LspPrintInstalled',
+      },
     })
 
     ------------------------------------------------------------------------------------------------

@@ -3,6 +3,16 @@ local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 local vnoremap = vim.keymap.vnoremap
 
+require('nvim-lsp-installer').settings({
+  ui = {
+    icons = {
+      server_installed = '✓',
+      server_pending = '➜',
+      server_uninstalled = '✗',
+    },
+  },
+})
+
 -- Globally set border for hover
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = border,
@@ -147,207 +157,143 @@ local function make_config(nvim_lsp)
     root_dir = root_dir,
     flags = {
       debounce_text_changes = 150,
-    }
+    },
   }
 end
 
-local function hasValue(tbl, str)
-  local f = false
-  for i = 1, #tbl do
-    if type(tbl[i]) == 'table' then
-      f = hasValue(tbl[i], str) --  return value from recursion
-      if f then
-        break
-      end --  if it returned true, break out of loop
-    elseif tbl[i] == str then
-      return true
-    end
-  end
-  return f
-end
-
-local function install_missing(installed_servers)
-  local required_servers = {
-    'efm',
-    'vim',
-    'html',
-    'dockerfile',
-    'css',
-    'graphql',
-    'php',
-    'typescript',
-    'json',
-    'bash',
-    'yaml',
-    'lua',
-    'haskell',
-    'vue',
-  }
-
-  -- Check for missing servers that are listed in required_servers
-  local installed_server = false
-  for _, server in pairs(required_servers) do
-    if not hasValue(installed_servers, server) then
-      require('lspinstall').install_server(server)
-      print('Installing server: ' + server)
-
-      installed_server = true
-    end
-  end
-
-  -- Check for installed that are no longer listed in required_servers
-  local removed_server = false
-  for _, server in pairs(installed_servers) do
-    if not hasValue(required_servers, server) then
-      require('lspinstall').uninstall_server(server)
-      print('Removing server: ' + server)
-
-      removed_server = true
-    end
-  end
-
-  return installed_server or removed_server
-end
-
--- lsp-install
 local function setup_servers()
-  require('lspinstall').setup()
-
-  -- get all installed servers
-  local servers = require('lspinstall').installed_servers()
-
-  local installed_or_removed = install_missing(servers)
-  if installed_or_removed then
-    return
-  end
-
   local nvim_lsp = require('lspconfig')
+  local lsp_installer_servers = require('nvim-lsp-installer.servers')
 
-  for _, server in pairs(servers) do
-    local config = make_config(nvim_lsp)
-    -- TODO: package.json and other scehmas from https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/package.json
+  local required_servers = require('plugin.nvim-lspconfig.required_servers')
+  for _, server in pairs(required_servers) do
+    local server_available, requested_server = lsp_installer_servers.get_server(server)
+    if server_available then
+      requested_server:on_ready(function()
+        local config = make_config(nvim_lsp)
+        --   -- TODO: package.json and other scehmas from https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/package.json
+        --
+        -- language specific config
+        if server == 'efm' then
+          local efm_config = require('plugin.nvim-lspconfig.efm')
+          config.init_options = { documentFormatting = true, codeAction = true }
+          config.root_dir = function(fname)
+            return nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname)
+              or vim.fn.getcwd()
+          end
 
-    -- language specific config
-    if server == 'efm' then
-      local efm_config = require('plugin.nvim-lspconfig.efm')
-      config.init_options = { documentFormatting = true, codeAction = true }
-      config.root_dir = function(fname)
-        return nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname)
-          or vim.fn.getcwd()
-      end
+          config.filetypes = vim.tbl_keys(efm_config)
+          config.settings = {
+            languages = efm_config,
+          }
+        end
 
-      config.filetypes = vim.tbl_keys(efm_config)
-      config.settings = {
-        languages = efm_config,
-      }
-    end
+        if server == 'typescript' then
+          config.root_dir = function(fname)
+            return nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname)
+              or vim.fn.getcwd()
+          end
 
-    if server == 'typescript' then
-      config.root_dir = function(fname)
-        return nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname)
-          or vim.fn.getcwd()
-      end
+          config.on_attach = function(client, bufnr)
+            -- disable tsserver formatting if you plan on formatting via null-ls
+            client.resolved_capabilities.document_formatting = false
+            client.resolved_capabilities.document_range_formatting = false
 
-      config.on_attach = function(client, bufnr)
-        -- disable tsserver formatting if you plan on formatting via null-ls
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+            local ts_utils = require('nvim-lsp-ts-utils')
 
-        local ts_utils = require('nvim-lsp-ts-utils')
+            -- defaults
+            ts_utils.setup({
+              debug = false,
+              disable_commands = false,
+              enable_import_on_completion = false,
 
-        -- defaults
-        ts_utils.setup({
-          debug = false,
-          disable_commands = false,
-          enable_import_on_completion = false,
+              -- import all
+              import_all_timeout = 5000, -- ms
+              import_all_priorities = {
+                buffers = 4, -- loaded buffer names
+                buffer_content = 3, -- loaded buffer content
+                local_files = 2, -- git files or files with relative path markers
+                same_file = 1, -- add to existing import statement
+              },
+              import_all_scan_buffers = 100,
+              import_all_select_source = false,
 
-          -- import all
-          import_all_timeout = 5000, -- ms
-          import_all_priorities = {
-            buffers = 4, -- loaded buffer names
-            buffer_content = 3, -- loaded buffer content
-            local_files = 2, -- git files or files with relative path markers
-            same_file = 1, -- add to existing import statement
-          },
-          import_all_scan_buffers = 100,
-          import_all_select_source = false,
+              -- eslint
+              eslint_enable_code_actions = true,
+              eslint_enable_disable_comments = true,
+              eslint_bin = 'eslint',
+              eslint_config_fallback = nil,
+              eslint_enable_diagnostics = false,
+              eslint_show_rule_id = false,
 
-          -- eslint
-          eslint_enable_code_actions = true,
-          eslint_enable_disable_comments = true,
-          eslint_bin = 'eslint',
-          eslint_config_fallback = nil,
-          eslint_enable_diagnostics = false,
-          eslint_show_rule_id = false,
+              -- formatting
+              enable_formatting = false,
+              formatter = 'prettier',
+              formatter_config_fallback = nil,
 
-          -- formatting
-          enable_formatting = false,
-          formatter = 'prettier',
-          formatter_config_fallback = nil,
+              auto_inlay_hints = true,
+              inlay_hints_highlight = 'Comment',
 
-          auto_inlay_hints = true,
-          inlay_hints_highlight = "Comment",
+              -- update imports on file move
+              update_imports_on_move = false,
+              require_confirmation_on_move = false,
+              watch_dir = nil,
 
-          -- update imports on file move
-          update_imports_on_move = false,
-          require_confirmation_on_move = false,
-          watch_dir = nil,
+              -- filter diagnostics
+              filter_out_diagnostics_by_severity = {},
+              filter_out_diagnostics_by_code = {},
+            })
 
-          -- filter diagnostics
-          filter_out_diagnostics_by_severity = {},
-          filter_out_diagnostics_by_code = {},
-        })
+            -- required to fix code action ranges and filter diagnostics
+            ts_utils.setup_client(client)
 
-        -- required to fix code action ranges and filter diagnostics
-        ts_utils.setup_client(client)
+            -- no default maps, so you may want to define some here
+            local opts = { silent = true }
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'qf', ':TSLspFixCurrent<CR>', opts)
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspImportAll<CR>', opts)
 
-        -- no default maps, so you may want to define some here
-        local opts = { silent = true }
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'qf', ':TSLspFixCurrent<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspImportAll<CR>', opts)
+            on_attach(client, bufnr)
+          end
+        end
 
-        on_attach(client, bufnr)
-      end
-    end
-
-    if server == 'lua' then
-      config.settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          runtime = {
-            version = 'LuaJIT',
-            path = vim.split(package.path, ';'),
-          },
-          workspace = {
-            library = {
-              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-              [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        if server == 'sumneko_lua' then
+          config.settings = {
+            Lua = {
+              diagnostics = {
+                globals = { 'vim' },
+              },
+              runtime = {
+                version = 'LuaJIT',
+                path = vim.split(package.path, ';'),
+              },
+              workspace = {
+                library = {
+                  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                },
+              },
             },
-          },
-        },
-      }
+          }
+        end
+
+        if server == 'vuels' then
+          config.root_dir = nvim_lsp.util.root_pattern('tsconfig.json', 'package.json')
+        end
+
+        if server == 'graphql' then
+          config.filetypes = { 'graphql', 'javascript' }
+          config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
+        end
+
+        requested_server:setup(config)
+      end)
+      if not requested_server:is_installed() then
+        -- Queue the server to be installed
+        requested_server:install()
+      end
     end
-
-    if server == 'vue' then
-      config.root_dir = nvim_lsp.util.root_pattern('tsconfig.json', 'package.json')
-    end
-
-    -- if server == 'graphql' then
-    --   config.filetypes = { 'graphql', 'javascript' }
-    --   config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
-    -- end
-
-    nvim_lsp[server].setup(config)
   end
-end
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require('lspinstall').post_install_hook = function()
-  setup_servers() -- reload installed servers
-  vim.cmd('bufdo e') -- this triggers the FileType autocmd that starts the server
 end
 
 setup_servers()
