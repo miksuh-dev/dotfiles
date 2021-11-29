@@ -1,10 +1,9 @@
 return {
   'efm', -- EFM
-  'viml', -- Vim
   'html', -- HTML
   'dockerls', --Docker
   'cssls', --CSS
-  'graphql', --GraphQl
+  'graphql', --GraphQL
   'intelephense', --PHP
   'tsserver', --Typescript
   'jsonls', --Json

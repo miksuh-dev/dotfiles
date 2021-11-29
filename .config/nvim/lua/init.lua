@@ -2,6 +2,7 @@ require('autocmd')
 require('opts')
 
 require('plugins')
+require('globals')
 
 require('plugin.telescope')
 require('plugin.nvim-tree')

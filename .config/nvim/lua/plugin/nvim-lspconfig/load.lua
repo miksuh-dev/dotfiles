@@ -3,6 +3,16 @@ local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 local vnoremap = vim.keymap.vnoremap
 
+local function has_value(table, value)
+  for _, v in ipairs(table) do
+    if v == value then
+      return true
+    end
+  end
+
+  return false
+end
+
 require('nvim-lsp-installer').settings({
   ui = {
     icons = {
@@ -163,17 +173,15 @@ end
 
 local function setup_servers()
   local nvim_lsp = require('lspconfig')
-  local lsp_installer_servers = require('nvim-lsp-installer.servers')
-
+  local lsp_installer_servers = require('nvim-lsp-installer')
   local required_servers = require('plugin.nvim-lspconfig.required_servers')
+
   for _, server in pairs(required_servers) do
     local server_available, requested_server = lsp_installer_servers.get_server(server)
     if server_available then
       requested_server:on_ready(function()
         local config = make_config(nvim_lsp)
-        --   -- TODO: package.json and other scehmas from https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/package.json
-        --
-        -- language specific config
+
         if server == 'efm' then
           local efm_config = require('plugin.nvim-lspconfig.efm')
           config.init_options = { documentFormatting = true, codeAction = true }
@@ -276,11 +284,21 @@ local function setup_servers()
             },
           }
         end
+        local schemas = require('plugin.nvim-lspconfig.json_schemas')
+
+        if server == 'jsonls' then
+          config.settings = {
+            json = {
+              schemas = schemas,
+            },
+          }
+        end
 
         if server == 'vuels' then
           config.root_dir = nvim_lsp.util.root_pattern('tsconfig.json', 'package.json')
         end
 
+        -- TODO: Fix this for javascript files
         -- if server == 'graphql' then
         --   config.filetypes = { 'graphql', 'javascript' }
         --   config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
@@ -289,7 +307,6 @@ local function setup_servers()
         requested_server:setup(config)
       end)
       if not requested_server:is_installed() then
-        -- Queue the server to be installed
         requested_server:install()
       end
     end
