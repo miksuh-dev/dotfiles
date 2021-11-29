@@ -695,7 +695,7 @@ M.load_plugin_syntax = function(palette)
       style = 'bold',
       fg = palette.aqua,
       bg = palette.none,
-    }
+    },
   }
 end
 
