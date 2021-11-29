@@ -31,12 +31,13 @@ require('telescope').setup({
     layout_config = {
       horizontal = {
         mirror = false,
-        width = 0.95,
+        width = 0.96,
         height = 0.9,
+        preview_width = 0.50,
       },
       vertical = {
         mirror = false,
-        width = 0.95,
+        width = 0.96,
         height = 0.9,
       },
     },
