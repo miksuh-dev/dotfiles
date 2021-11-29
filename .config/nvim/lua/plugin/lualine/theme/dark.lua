@@ -1,3 +1,7 @@
+-- local main_color = dofile('/home/miksuh/.config/colors/main')
+-- local file = require('common.file')
+-- local main_color = file.read(os.getenv('HOME') .. '/.config/colors/main')
+
 local Colors = {
   white = '#ffffff',
   darkestgreen = '#005f00',
