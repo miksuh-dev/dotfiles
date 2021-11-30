@@ -96,7 +96,7 @@ return require('packer').startup({
 
     use({
       'windwp/nvim-autopairs',
-      after = 'nvim-cmp',
+      -- after = 'nvim-cmp',
       keys = {
         { 'i', '"' },
         { 'i', "'" },
@@ -105,6 +105,7 @@ return require('packer').startup({
         { 'i', '[' },
         { 'i', '{' },
       },
+      module = 'nvim-autopairs',
       config = function()
         require('plugin.nvim-autopairs.load')
       end,
@@ -224,76 +225,101 @@ return require('packer').startup({
     })
 
     ------------------------------------------------------------------------------------------------
-    ----------------------------------------- Cmp --------------------------------------------------
+    ----------------------------------------- Coq --------------------------------------------------
     ------------------------------------------------------------------------------------------------
-
     use({
-      'hrsh7th/nvim-cmp',
-      event = 'InsertEnter',
+      'ms-jpq/coq_nvim',
+      branch = 'coq',
+      -- module = 'coq',
+      -- event = 'InsertEnter',
       config = function()
-        require('plugin.nvim-cmp.load')
+        require('plugin.coq.load')
       end,
     })
 
     use({
-      'hrsh7th/cmp-nvim-lsp',
-      module = 'cmp_nvim_lsp',
-      requires = {
-        'nvim-cmp',
-        'nvim-lspconfig',
-      },
+      'ms-jpq/coq.artifacts',
+      branch = 'artifacts',
+      requires = 'coq_nvim',
     })
 
     use({
-      'SirVer/ultisnips',
-      after = 'nvim-cmp',
-      module = 'UltiSnips',
-      requires = 'nvim-cmp',
+      'ms-jpq/coq.thirdparty',
+      branch = '3p',
+      requires = 'coq_nvim',
     })
 
-    use({
-      'quangnguyen30192/cmp-nvim-ultisnips',
-      after = 'ultisnips',
-      requires = { 'nvim-cmp', 'ultisnips' },
-    })
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Cmp --------------------------------------------------
+    ------------------------------------------------------------------------------------------------
 
-    use({
-      'mlaursen/vim-react-snippets',
-      ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-      requires = { 'nvim-cmp', 'ultisnips' },
-    })
+    -- use({
+    --   'hrsh7th/nvim-cmp',
+    --   event = 'InsertEnter',
+    --   config = function()
+    --     require('plugin.nvim-cmp.load')
+    --   end,
+    -- })
+    --
+    -- use({
+    --   'hrsh7th/cmp-nvim-lsp',
+    --   module = 'cmp_nvim_lsp',
+    --   requires = {
+    --     'nvim-cmp',
+    --     'nvim-lspconfig',
+    --   },
+    -- })
+    --
+    -- use({
+    --   'SirVer/ultisnips',
+    --   after = 'nvim-cmp',
+    --   module = 'UltiSnips',
+    --   requires = 'nvim-cmp',
+    -- })
+    --
+    -- use({
+    --   'quangnguyen30192/cmp-nvim-ultisnips',
+    --   after = 'ultisnips',
+    --   requires = { 'nvim-cmp', 'ultisnips' },
+    -- })
+    --
+    -- use({
+    --   'mlaursen/vim-react-snippets',
+    --   ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+    --   requires = { 'nvim-cmp', 'ultisnips' },
+    -- })
+    --
+    -- use({
+    --   'hrsh7th/cmp-buffer',
+    --   after = 'nvim-cmp',
+    --   requires = 'nvim-cmp',
+    -- })
+    --
+    -- use({
+    --   'hrsh7th/cmp-calc',
+    --   after = 'nvim-cmp',
+    --   requires = 'nvim-cmp',
+    -- })
+    --
+    -- use({
+    --   'hrsh7th/cmp-path',
+    --   after = 'nvim-cmp',
+    --   requires = 'nvim-cmp',
+    -- })
+    --
+    -- use({
+    --   'andersevenrud/compe-tmux',
+    --   branch = 'cmp',
+    --   after = 'nvim-cmp',
+    --   requires = 'nvim-cmp',
+    -- })
 
-    use({
-      'hrsh7th/cmp-buffer',
-      after = 'nvim-cmp',
-      requires = 'nvim-cmp',
-    })
-
-    use({
-      'hrsh7th/cmp-calc',
-      after = 'nvim-cmp',
-      requires = 'nvim-cmp',
-    })
-
-    use({
-      'hrsh7th/cmp-path',
-      after = 'nvim-cmp',
-      requires = 'nvim-cmp',
-    })
-
-    use({
-      'andersevenrud/compe-tmux',
-      branch = 'cmp',
-      after = 'nvim-cmp',
-      requires = 'nvim-cmp',
-    })
-
-    use({
-      'kristijanhusak/vim-dadbod-completion',
-      after = 'nvim-cmp',
-      requires = { 'nvim-cmp', 'vim-dadbod-ui' },
-    })
-
+    -- use({
+    --   'kristijanhusak/vim-dadbod-completion',
+    --   after = 'nvim-cmp',
+    --   requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+    -- })
+    --
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
     ------------------------------------------------------------------------------------------------
