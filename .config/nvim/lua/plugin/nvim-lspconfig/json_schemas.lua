@@ -32,4 +32,9 @@ return {
     fileMatch = { '.stylelintrc', '.stylelintrc.json', 'stylelint.config.json' },
     url = 'http://json.schemastore.org/stylelintrc',
   },
+  {
+    description = 'JSON schema for NPM package.json files',
+    fileMatch = { 'package.json', },
+    url = 'http://json.schemastore.org/package',
+  },
 }
