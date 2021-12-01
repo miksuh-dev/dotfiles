@@ -1,5 +1,10 @@
 local npairs = require('nvim-autopairs')
 
+require('coq_3p')({
+  { src = 'nvimlua', short_name = 'nLUA' },
+  { src = 'bc', short_name = 'MATH', precision = 6 },
+})
+
 npairs.setup({ map_bs = false })
 
 vim.api.nvim_set_keymap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
