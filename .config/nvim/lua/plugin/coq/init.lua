@@ -7,4 +7,6 @@ vim.g.coq_settings = {
   ['keymap.jump_to_mark'] = '<C-e>',
   ['display.preview.positions'] = { east = 1, south = 2, north = 3, west = 4 },
   ['keymap.pre_select'] = true,
+  ['display.pum.source_context'] = { '[', ']' },
+  ['display.icons.mode'] = 'none',
 }

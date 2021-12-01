@@ -247,6 +247,9 @@ return require('packer').startup({
       'ms-jpq/coq.thirdparty',
       branch = '3p',
       requires = 'coq_nvim',
+      config = function()
+        require('plugin.coq.3p.load')
+      end,
     })
 
     ------------------------------------------------------------------------------------------------
