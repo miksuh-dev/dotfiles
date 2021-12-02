@@ -67,7 +67,7 @@ vim.g.coq_settings = {
       enabled = true,
       short_name = 'TS',
       search_context = 333,
-      slow_threshold = 0.1,
+      slow_threshold = 1.0,
       path_sep = ' ⇊',
     },
     buffers = {
