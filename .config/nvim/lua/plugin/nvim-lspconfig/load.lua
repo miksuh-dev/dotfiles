@@ -288,11 +288,10 @@ local function setup_servers()
           config.root_dir = nvim_lsp.util.root_pattern('tsconfig.json', 'package.json')
         end
 
-        -- TODO: Fix this for javascript files
-        -- if server == 'graphql' then
-        --   config.filetypes = { 'graphql', 'javascript' }
-        --   config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
-        -- end
+        if server == 'graphql' then
+          config.filetypes = { 'graphql', 'javascript', 'typescriptreact', 'javascriptreact' }
+          config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
+        end
 
         requested_server:setup(config)
       end)

@@ -11,9 +11,6 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- TODO: Check these out
-    -- https://github.com/ripxorip/aerojump.nvim
-
     use({
       'wbthomason/packer.nvim',
     })
@@ -253,7 +250,6 @@ return require('packer').startup({
       },
     })
 
-    -- TODO: Find how to add own snippets
     use({
       'SirVer/ultisnips',
       after = 'nvim-cmp',
@@ -307,9 +303,7 @@ return require('packer').startup({
     use({
       'davidsierradz/cmp-conventionalcommits',
       after = 'nvim-cmp',
-      requires = {
-        'nvim-cmp',
-      },
+      requires = 'nvim-cmp',
     })
 
     ------------------------------------------------------------------------------------------------
