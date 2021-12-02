@@ -48,7 +48,10 @@ cmp.setup({
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -102,28 +105,33 @@ cmp.setup({
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
-        nvim_lua = '[Lua]',
+        nvim_lua = '[NvimLua]',
         ultisnips = '[UltiSnips]',
         cmp_tabnine = '[Tabnine]',
         calc = '[Calc]',
         path = '[Path]',
         tmux = '[Tmux]',
+        conventionalcommits = '[CC]',
         ['vim-dadbod-completion'] = '[DB]',
       })[entry.source.name]
       return vim_item
     end,
   },
   sources = {
-    { name = 'nvim_lsp' },
     { name = 'ultisnips' },
+    { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'cmp_tabnine' },
+    { name = 'tmux' },
     { name = 'calc' },
     { name = 'path' },
-    { name = 'tmux' },
+    { name = 'conventionalcommits' },
     { name = 'vim-dadbod-completion' },
   },
   documentation = {
     border = require('common.border'),
+  },
+  experimental = {
+    ghost_text = true,
   },
 })

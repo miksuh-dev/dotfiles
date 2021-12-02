@@ -12,8 +12,6 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
 
     -- TODO: Check these out
-    -- https://github.com/romgrk/barbar.nvim
-    -- https://github.com/kevinhwang91/nvim-bqf
     -- https://github.com/ripxorip/aerojump.nvim
 
     use({
@@ -172,6 +170,14 @@ return require('packer').startup({
       end,
     })
 
+    use({
+      'kevinhwang91/nvim-bqf',
+      ft = 'qf',
+      config = function()
+        require('plugin.nvim-bqf.load')
+      end,
+    })
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Navigation -------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -296,6 +302,14 @@ return require('packer').startup({
       'kristijanhusak/vim-dadbod-completion',
       after = 'nvim-cmp',
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+    })
+
+    use({
+      'davidsierradz/cmp-conventionalcommits',
+      after = 'nvim-cmp',
+      requires = {
+        'nvim-cmp',
+      },
     })
 
     ------------------------------------------------------------------------------------------------

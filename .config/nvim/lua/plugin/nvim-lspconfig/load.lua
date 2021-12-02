@@ -3,16 +3,6 @@ local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 local vnoremap = vim.keymap.vnoremap
 
-local function has_value(table, value)
-  for _, v in ipairs(table) do
-    if v == value then
-      return true
-    end
-  end
-
-  return false
-end
-
 require('nvim-lsp-installer').settings({
   ui = {
     icons = {
@@ -102,7 +92,7 @@ local on_attach = function(client, bufnr)
     buffer = true,
   })
   nnoremap({ '<leader>j', go_to_next, silent = true, buffer = true })
-  nnoremap({ '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent = true, buffer = true })
+  nnoremap({ '<leader>J', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent = true, buffer = true })
 
   nnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', silent = true, buffer = true })
   vnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', silent = true, buffer = true })
