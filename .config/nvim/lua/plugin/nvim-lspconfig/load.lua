@@ -152,7 +152,7 @@ end
 -- config that activates keymaps and enables snippet support
 local function make_config(nvim_lsp)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   local root_dir = function(fname)
@@ -175,8 +175,6 @@ local function setup_servers()
   local nvim_lsp = require('lspconfig')
   local lsp_installer_servers = require('nvim-lsp-installer')
   local required_servers = require('plugin.nvim-lspconfig.required_servers')
-
-  local coq = require('coq') -- add this
 
   for _, server in pairs(required_servers) do
     local server_available, requested_server = lsp_installer_servers.get_server(server)
@@ -306,7 +304,7 @@ local function setup_servers()
         --   config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
         -- end
 
-        requested_server:setup(coq.lsp_ensure_capabilities(config))
+        requested_server:setup(config)
       end)
       if not requested_server:is_installed() then
         requested_server:install()

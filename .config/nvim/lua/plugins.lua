@@ -12,7 +12,9 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
 
     -- TODO: Check these out
-    -- https://github.com/ms-jpq/coq_nvim
+    -- https://github.com/romgrk/barbar.nvim
+    -- https://github.com/kevinhwang91/nvim-bqf
+    -- https://github.com/ripxorip/aerojump.nvim
 
     use({
       'wbthomason/packer.nvim',
@@ -225,102 +227,77 @@ return require('packer').startup({
     })
 
     ------------------------------------------------------------------------------------------------
-    ----------------------------------------- Coq --------------------------------------------------
+    ----------------------------------------- Cmp --------------------------------------------------
     ------------------------------------------------------------------------------------------------
+
     use({
-      'ms-jpq/coq_nvim',
-      branch = 'coq',
-      -- module = 'coq',
-      -- event = 'InsertEnter',
+      'hrsh7th/nvim-cmp',
+      event = 'InsertEnter',
       config = function()
-        require('plugin.coq.load')
+        require('plugin.nvim-cmp.load')
       end,
     })
 
     use({
-      'ms-jpq/coq.artifacts',
-      branch = 'artifacts',
-      requires = 'coq_nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      module = 'cmp_nvim_lsp',
+      requires = {
+        'nvim-cmp',
+        'nvim-lspconfig',
+      },
+    })
+
+    -- TODO: Find how to add own snippets
+    use({
+      'SirVer/ultisnips',
+      after = 'nvim-cmp',
+      module = 'UltiSnips',
+      requires = 'nvim-cmp',
     })
 
     use({
-      'ms-jpq/coq.thirdparty',
-      branch = '3p',
-      module = 'coq_3p',
-      requires = 'coq_nvim',
+      'quangnguyen30192/cmp-nvim-ultisnips',
+      after = 'ultisnips',
+      requires = { 'nvim-cmp', 'ultisnips' },
     })
 
-    ------------------------------------------------------------------------------------------------
-    ----------------------------------------- Cmp --------------------------------------------------
-    ------------------------------------------------------------------------------------------------
+    use({
+      'mlaursen/vim-react-snippets',
+      ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+      requires = { 'nvim-cmp', 'ultisnips' },
+    })
 
-    -- use({
-    --   'hrsh7th/nvim-cmp',
-    --   event = 'InsertEnter',
-    --   config = function()
-    --     require('plugin.nvim-cmp.load')
-    --   end,
-    -- })
-    --
-    -- use({
-    --   'hrsh7th/cmp-nvim-lsp',
-    --   module = 'cmp_nvim_lsp',
-    --   requires = {
-    --     'nvim-cmp',
-    --     'nvim-lspconfig',
-    --   },
-    -- })
-    --
-    -- use({
-    --   'SirVer/ultisnips',
-    --   after = 'nvim-cmp',
-    --   module = 'UltiSnips',
-    --   requires = 'nvim-cmp',
-    -- })
-    --
-    -- use({
-    --   'quangnguyen30192/cmp-nvim-ultisnips',
-    --   after = 'ultisnips',
-    --   requires = { 'nvim-cmp', 'ultisnips' },
-    -- })
-    --
-    -- use({
-    --   'mlaursen/vim-react-snippets',
-    --   ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-    --   requires = { 'nvim-cmp', 'ultisnips' },
-    -- })
-    --
-    -- use({
-    --   'hrsh7th/cmp-buffer',
-    --   after = 'nvim-cmp',
-    --   requires = 'nvim-cmp',
-    -- })
-    --
-    -- use({
-    --   'hrsh7th/cmp-calc',
-    --   after = 'nvim-cmp',
-    --   requires = 'nvim-cmp',
-    -- })
-    --
-    -- use({
-    --   'hrsh7th/cmp-path',
-    --   after = 'nvim-cmp',
-    --   requires = 'nvim-cmp',
-    -- })
-    --
-    -- use({
-    --   'andersevenrud/compe-tmux',
-    --   branch = 'cmp',
-    --   after = 'nvim-cmp',
-    --   requires = 'nvim-cmp',
-    -- })
+    use({
+      'hrsh7th/cmp-buffer',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
 
-    -- use({
-    --   'kristijanhusak/vim-dadbod-completion',
-    --   after = 'nvim-cmp',
-    --   requires = { 'nvim-cmp', 'vim-dadbod-ui' },
-    -- })
-    --
+    use({
+      'hrsh7th/cmp-calc',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'hrsh7th/cmp-path',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'andersevenrud/compe-tmux',
+      branch = 'cmp',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'kristijanhusak/vim-dadbod-completion',
+      after = 'nvim-cmp',
+      requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+    })
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -427,3 +404,30 @@ return require('packer').startup({
     max_jobs = 5,
   },
 })
+
+------------------------------------------------------------------------------------------------
+----------------------------------------- Old unused --------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+-- use({
+--   'ms-jpq/coq_nvim',
+--   branch = 'coq',
+--   -- module = 'coq',
+--   -- event = 'InsertEnter',
+--   config = function()
+--     require('plugin.coq.load')
+--   end,
+-- })
+--
+-- use({
+--   'ms-jpq/coq.artifacts',
+--   branch = 'artifacts',
+--   requires = 'coq_nvim',
+-- })
+--
+-- use({
+--   'ms-jpq/coq.thirdparty',
+--   branch = '3p',
+--   module = 'coq_3p',
+--   requires = 'coq_nvim',
+-- })
