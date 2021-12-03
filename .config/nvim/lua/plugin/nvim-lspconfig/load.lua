@@ -276,6 +276,8 @@ local function setup_servers()
         end
         local schemas = require('plugin.nvim-lspconfig.json_schemas')
 
+
+        -- TODO use this isntead: https://github.com/b0o/SchemaStore.nvim
         if server == 'jsonls' then
           config.settings = {
             json = {
@@ -289,6 +291,7 @@ local function setup_servers()
         end
 
         if server == 'graphql' then
+          config.autostart = false
           config.filetypes = { 'graphql', 'javascript', 'typescriptreact', 'javascriptreact' }
           config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.conf')
         end
