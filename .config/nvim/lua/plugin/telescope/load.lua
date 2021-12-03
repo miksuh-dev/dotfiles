@@ -27,12 +27,12 @@ require('telescope').setup({
     initial_mode = 'insert',
     selection_strategy = 'reset',
     sorting_strategy = 'descending',
-    layout_strategy = 'horizontal',
+    layout_strategy = 'flex',
     layout_config = {
       horizontal = {
         mirror = false,
         width = 0.96,
-        height = 0.9,
+        height = 0.93,
         preview_width = 0.50,
       },
       vertical = {
