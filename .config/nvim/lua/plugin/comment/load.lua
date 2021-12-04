@@ -1,3 +1,29 @@
+local function has_value(table, value)
+  for _, val in ipairs(table) do
+    if value == val then
+      return true
+    end
+  end
+
+  return false
+end
+
+local ts_context_languages = {
+  'javascript',
+  'typescript',
+  'tsx',
+  'css',
+  'scss',
+  'php',
+  'html',
+  'svelte',
+  'vue',
+  'handlebars',
+  'glimmer',
+  'graphql',
+  'lua',
+}
+
 require('Comment').setup({
   ---Add a space b/w comment and the line
   ---@type boolean
@@ -43,13 +69,30 @@ require('Comment').setup({
 
   ---Pre-hook, called before commenting the line
   ---@type function|nil
-  pre_hook = function()
-    return require('ts_context_commentstring.internal').calculate_commentstring()
+  pre_hook = function(ctx)
+    -- Only calculate commentstring for ts_context supported filetypes
+    if has_value(ts_context_languages, vim.bo.filetype) then
+      local U = require('Comment.utils')
+
+      -- Detemine whether to use linewise or blockwise commentstring
+      local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
+
+      -- Determine the location where to calculate commentstring from
+      local location = nil
+      if ctx.ctype == U.ctype.block then
+        location = require('ts_context_commentstring.utils').get_cursor_location()
+      elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
+        location = require('ts_context_commentstring.utils').get_visual_start_location()
+      end
+
+      return require('ts_context_commentstring.internal').calculate_commentstring({
+        key = type,
+        location = location,
+      })
+    end
   end,
 
   ---Post-hook, called after commenting is done
-
   ---@type function|nil
-
   post_hook = nil,
 })
