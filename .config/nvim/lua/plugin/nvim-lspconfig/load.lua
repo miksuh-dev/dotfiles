@@ -161,6 +161,9 @@ local function make_config(nvim_lsp)
   }
 end
 
+-- TODO: https://github.com/williamboman/nvim-lsp-installer
+-- try eslint server server
+
 local function setup_servers()
   local nvim_lsp = require('lspconfig')
   local lsp_installer_servers = require('nvim-lsp-installer')
@@ -274,14 +277,11 @@ local function setup_servers()
             },
           }
         end
-        local schemas = require('plugin.nvim-lspconfig.json_schemas')
 
-
-        -- TODO use this isntead: https://github.com/b0o/SchemaStore.nvim
         if server == 'jsonls' then
           config.settings = {
             json = {
-              schemas = schemas,
+              schemas = require('schemastore').json.schemas(),
             },
           }
         end

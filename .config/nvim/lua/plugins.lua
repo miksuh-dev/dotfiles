@@ -93,7 +93,6 @@ return require('packer').startup({
 
     use({
       'windwp/nvim-autopairs',
-      -- after = 'nvim-cmp',
       keys = {
         { 'i', '"' },
         { 'i', "'" },
@@ -227,6 +226,11 @@ return require('packer').startup({
         'LspInstallLog',
         'LspPrintInstalled',
       },
+    })
+
+    use({
+      'b0o/schemastore.nvim',
+      method = 'schemastore',
     })
 
     ------------------------------------------------------------------------------------------------
