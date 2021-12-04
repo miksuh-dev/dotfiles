@@ -70,8 +70,18 @@ local on_attach = function(client, bufnr)
   nnoremap({ 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', silent = true })
   nnoremap({ 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', silent = true })
   nnoremap({ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', silent = true })
+
   nnoremap({ 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', silent = true, buffer = true })
-  nnoremap({ 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', silent = true, buffer = true })
+
+  nnoremap({
+    'gr',
+    function()
+      require('telescope.builtin').lsp_references()
+    end,
+    silent = true,
+    buffer = true,
+  })
+
   nnoremap({ 'H', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silent = true, buffer = true })
   nnoremap({ '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silent = true, buffer = true })
   inoremap({ '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silent = true, buffer = true })
@@ -94,8 +104,25 @@ local on_attach = function(client, bufnr)
   nnoremap({ '<leader>j', go_to_next, silent = true, buffer = true })
   nnoremap({ '<leader>J', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent = true, buffer = true })
 
-  nnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', silent = true, buffer = true })
+  nnoremap({
+    '<leader>a',
+    function()
+      require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor())
+    end,
+    silent = true,
+    buffer = true,
+  })
+
   vnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', silent = true, buffer = true })
+  -- TODO: Fix this
+  -- vnoremap({
+  --   '<leader>a',
+  --   function()
+  --     require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_cursor())
+  --   end,
+  --   silent = true,
+  --   buffer = true,
+  -- })
 
   if client.name ~= 'efm' then
     client.resolved_capabilities.document_formatting = false
@@ -121,6 +148,7 @@ local on_attach = function(client, bufnr)
         vim.lsp.buf.range_formatting({ timeout_ms = 5000 })
       end,
       noremap = true,
+      buffer = true,
     })
   end
 
@@ -161,9 +189,6 @@ local function make_config(nvim_lsp)
   }
 end
 
--- TODO: https://github.com/williamboman/nvim-lsp-installer
--- try eslint server server
-
 local function setup_servers()
   local nvim_lsp = require('lspconfig')
   local lsp_installer_servers = require('nvim-lsp-installer')
@@ -186,6 +211,12 @@ local function setup_servers()
           config.filetypes = vim.tbl_keys(efm_config)
           config.settings = {
             languages = efm_config,
+          }
+        end
+
+        if server == 'eslint' then
+          config.settings = {
+            format = { enable = false },
           }
         end
 
@@ -220,8 +251,8 @@ local function setup_servers()
               import_all_select_source = false,
 
               -- eslint
-              eslint_enable_code_actions = true,
-              eslint_enable_disable_comments = true,
+              eslint_enable_code_actions = false,
+              eslint_enable_disable_comments = false,
               eslint_bin = 'eslint',
               eslint_config_fallback = nil,
               eslint_enable_diagnostics = false,
