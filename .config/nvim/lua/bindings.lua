@@ -1,3 +1,5 @@
+local nnoremap = vim.keymap.nnoremap
+
 local opts = { noremap = true }
 local optsSilent = { noremap = true, silent = true }
 
@@ -57,6 +59,17 @@ vim.api.nvim_set_keymap('v', '<Down>', '5j', opts)
 -- Quick increase/decrease
 vim.api.nvim_set_keymap('n', '-', '<C-x>', opts)
 vim.api.nvim_set_keymap('n', '+', '<C-a>', opts)
+
+-- Source lua file
+nnoremap({
+  '<leader>so',
+  function()
+    if vim.bo.filetype == 'lua' then
+      vim.cmd(':luafile %')
+    end
+  end,
+  silent = true,
+})
 
 -- TODO: Change this to lua
 vim.cmd([[
