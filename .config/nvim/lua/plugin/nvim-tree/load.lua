@@ -100,7 +100,7 @@ require('nvim-tree').setup({
     auto_open = true,
   },
   -- hijack the cursor in the tree to put it at the start of the filename
-  hijack_cursor = false,
+  hijack_cursor = true,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
   update_cwd = false,
   -- show lsp diagnostics in the signcolumn

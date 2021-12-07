@@ -178,11 +178,11 @@ return require('packer').startup({
       'stevearc/dressing.nvim',
       method = {
         'vim.ui.select',
-        'vim.ui.input'
+        'vim.ui.input',
       },
-      config = function ()
+      config = function()
         require('plugin.dressing.load')
-      end
+      end,
     })
 
     ------------------------------------------------------------------------------------------------
