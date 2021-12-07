@@ -67,11 +67,34 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   nnoremap({ 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', silent = true })
-  nnoremap({ 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', silent = true })
-  nnoremap({ 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', silent = true })
-  nnoremap({ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', silent = true })
+  nnoremap({
+    'gd',
+    function()
+      require('telescope.builtin').lsp_definitions()
+    end,
+    silent = true,
+    buffer = true,
+  })
 
-  nnoremap({ 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', silent = true, buffer = true })
+  nnoremap({ 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', silent = true })
+
+  nnoremap({
+    'gi',
+    function()
+      require('telescope.builtin').lsp_implementations()
+    end,
+    silent = true,
+    buffer = true,
+  })
+
+  nnoremap({
+    'gt',
+    function()
+      require('telescope.builtin').lsp_type_definitions()
+    end,
+    silent = true,
+    buffer = true,
+  })
 
   nnoremap({
     'gr',
