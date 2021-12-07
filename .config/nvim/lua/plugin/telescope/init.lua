@@ -1,3 +1,4 @@
+local util = require('common.util')
 local nnoremap = vim.keymap.nnoremap
 
 nnoremap({
@@ -57,7 +58,7 @@ nnoremap({
 nnoremap({
   '<c-p>',
   function()
-    if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
+    if util.is_directory(vim.fn.getcwd() .. '/.git') then
       require('telescope.builtin').git_files()
     else
       require('telescope.builtin').find_files()

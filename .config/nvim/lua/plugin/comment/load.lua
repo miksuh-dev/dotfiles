@@ -1,12 +1,4 @@
-local function has_value(table, value)
-  for _, val in ipairs(table) do
-    if value == val then
-      return true
-    end
-  end
-
-  return false
-end
+local util = require('common.util')
 
 local ts_context_languages = {
   'javascript',
@@ -71,7 +63,7 @@ require('Comment').setup({
   ---@type function|nil
   pre_hook = function(ctx)
     -- Only calculate commentstring for ts_context supported filetypes
-    if has_value(ts_context_languages, vim.bo.filetype) then
+    if util.has_value(ts_context_languages, vim.bo.filetype) then
       local U = require('Comment.utils')
 
       -- Detemine whether to use linewise or blockwise commentstring

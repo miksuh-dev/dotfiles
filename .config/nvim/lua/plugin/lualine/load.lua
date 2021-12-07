@@ -33,22 +33,10 @@ require('lualine').setup({
       'filetype',
     },
     lualine_y = {
-      -- {
-      --   'diff',
-      --  color_added = "#a7e22e", -- changes diff's removed foreground color
-      --  color_modified = "#e6db74", -- changes diff's modified foreground color
-      --  color_removed = "#cc241d", -- changes diff's added foreground color
-      -- },
       {
         'diagnostics',
         sources = { 'nvim_lsp' },
         sections = { 'error', 'warn', 'info', 'hint' },
-        -- diagnostics_color = {
-        --   error = { '#e95678' },
-        --   warn = { '#e6db74' },
-        --   info = { '#f8f8f0' },
-        --   hint = { '#66d9ef' },
-        -- },
         symbols = {
           warn = 'W',
           error = 'E',
@@ -74,22 +62,10 @@ require('lualine').setup({
       'filetype',
     },
     lualine_y = {
-      -- {
-      --   'diff',
-      --  color_added = "#a7e22e", -- changes diff's removed foreground color
-      --  color_modified = "#e6db74", -- changes diff's modified foreground color
-      --  color_removed = "#cc241d", -- changes diff's added foreground color
-      -- },
       {
         'diagnostics',
         sources = { 'nvim_lsp' },
         sections = { 'error', 'warn', 'info', 'hint' },
-        -- diagnostics_color = {
-        --   error = { '#e95678' },
-        --   warn = { '#e6db74' },
-        --   info = { '#f8f8f0' },
-        --   hint = { '#66d9ef' },
-        -- },
         symbols = {
           warn = 'W',
           error = 'E',

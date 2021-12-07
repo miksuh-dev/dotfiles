@@ -1,4 +1,4 @@
-local eslint = require('plugin.nvim-lspconfig.efm.formatter.eslint')
+-- local eslint = require('plugin.nvim-lspconfig.efm.formatter.eslint')
 local prettier = require('plugin.nvim-lspconfig.efm.formatter.prettier')
 local stylua = require('plugin.nvim-lspconfig.efm.formatter.stylua')
 
@@ -7,46 +7,15 @@ return {
   scss = { prettier },
   graphql = { prettier },
   html = { prettier },
-  javascript = {
-    prettier, --[[ eslint ]]
-  },
-  ['javascript.jsx'] = {
-    prettier, --[[ eslint ]]
-  },
-  javascriptreact = {
-    prettier, --[[ eslint ]]
-  },
-  typescript = {
-    prettier, --[[ eslint ]]
-  },
-  ['typescript.jsx'] = {
-    prettier, --[[ eslint ]]
-  },
-  typescriptreact = {
-    prettier, --[[ eslint ]]
-  },
+  javascript = { prettier },
+  ['javascript.jsx'] = { prettier },
+  javascriptreact = { prettier },
+  typescript = { prettier },
+  ['typescript.jsx'] = { prettier },
+  typescriptreact = { prettier },
   json = { prettier },
   lua = { stylua },
   markdown = { prettier },
   yaml = { prettier },
-  vue = { eslint, prettier },
+  vue = { prettier },
 }
-
--- return {
---   css = { prettier },
---   scss = { prettier },
---   graphql = { prettier },
---   html = { prettier },
---   javascript = { prettier, eslint },
---   ['javascript.jsx'] = { prettier, eslint },
---   javascriptreact = { prettier, eslint },
---   typescript = { prettier, eslint },
---   ['typescript.jsx'] = { prettier, eslint },
---   typescriptreact = { prettier, eslint },
---   json = { prettier },
---   lua = { stylua },
---   markdown = { prettier },
---   yaml = { prettier },
---   vue = { eslint, prettier },
--- }
---

@@ -3,14 +3,14 @@ local border = require('common.border')
 require('dressing').setup({
   input = {
     -- Default prompt string
-    default_prompt = "> ",
+    default_prompt = '> ',
 
     -- When true, <Esc> will close the modal
     insert_only = true,
 
     -- These are passed to nvim_open_win
-    anchor = "SW",
-    relative = "cursor",
+    anchor = 'SW',
+    relative = 'cursor',
     row = 0,
     col = 0,
     border = border,
@@ -25,12 +25,12 @@ require('dressing').setup({
   },
   select = {
     -- Priority list of preferred vim.select implementations
-    backend = { "telescope", "fzf", "builtin", "nui" },
+    backend = { 'telescope', 'fzf', 'builtin', 'nui' },
 
     -- Options for telescope selector
     telescope = {
       -- can be 'dropdown', 'cursor', or 'ivy'
-      theme = "cursor",
+      theme = 'cursor',
     },
 
     -- Options for fzf selector
@@ -43,9 +43,9 @@ require('dressing').setup({
 
     -- Options for nui Menu
     nui = {
-      position = "50%",
+      position = '50%',
       size = nil,
-      relative = "editor",
+      relative = 'editor',
       border = border,
       max_width = 80,
       max_height = 40,
@@ -54,8 +54,8 @@ require('dressing').setup({
     -- Options for built-in selector
     builtin = {
       -- These are passed to nvim_open_win
-      anchor = "NW",
-      relative = "cursor",
+      anchor = 'NW',
+      relative = 'cursor',
       row = 0,
       col = 0,
       border = border,

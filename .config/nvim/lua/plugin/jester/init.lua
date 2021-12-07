@@ -46,30 +46,3 @@ nnoremap({
   end,
   silent = true,
 })
-
--- -- Debug nearest test(s) under the cursor
--- nnoremap({
---   '<leader>tdd',
---   function()
---     require('jester').debug(config)
---   end,
---   silent = true,
--- })
---
--- -- Debug current file
--- nnoremap({
---   '<leader>tdf',
---   function()
---     require('jester').debug_file(config)
---   end,
---   silent = true,
--- })
---
--- -- Debug last test(s)
--- nnoremap({
---   '<leader>tdl',
---   function()
---     require('jester').debug_last()
---   end,
---   silent = true,
--- })

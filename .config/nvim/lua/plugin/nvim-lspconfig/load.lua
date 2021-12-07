@@ -1,4 +1,5 @@
 local border = require('common.border')
+
 local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 local vnoremap = vim.keymap.vnoremap
@@ -127,7 +128,7 @@ local on_attach = function(client, bufnr)
   nnoremap({ '<leader>j', go_to_next, silent = true, buffer = true })
   nnoremap({ '<leader>J', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent = true, buffer = true })
 
-  nnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', silent = true, buffer = true, })
+  nnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', silent = true, buffer = true })
   vnoremap({ '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', silent = true, buffer = true })
 
   if client.name ~= 'efm' then
@@ -329,8 +330,11 @@ local function setup_servers()
 
         if server == 'graphql' then
           config.autostart = false
-          config.filetypes = { 'graphql', 'javascript', 'typescriptreact', 'javascriptreact' }
-          config.root_dir = nvim_lsp.util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.config.*')
+
+          config.filetypes = { 'graphql', 'javascript' }
+          config.root_dir = function(fname)
+            return nvim_lsp.util.root_pattern('graphql.config.json')(fname) or vim.fn.getcwd()
+          end
         end
 
         requested_server:setup(config)

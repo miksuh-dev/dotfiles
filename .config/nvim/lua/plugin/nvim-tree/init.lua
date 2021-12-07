@@ -1,7 +1,4 @@
-local function is_file_readable(fname)
-  local stat = vim.loop.fs_stat(fname)
-  return stat and stat.type == 'file' and vim.loop.fs_access(fname, 'R')
-end
+local util = require('common.util')
 
 local function in_db_ui(filetype)
   return filetype == 'sql' or filetype == 'dbout'
@@ -21,7 +18,7 @@ nnoremap({
       vim.cmd(':DBUIToggle')
     elseif in_db_ui(filetype) then
       vim.cmd(':DBUI')
-    elseif is_file_readable(fn.expand('%')) then
+    elseif util.is_file(fn.expand('%')) then
       require('nvim-tree').find_file(true)
     else
       require('nvim-tree').focus()
