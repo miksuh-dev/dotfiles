@@ -9,6 +9,7 @@ VGA0=$(echo $XRANDR_OUTPUT | grep -q "VGA-0 connected" ; echo $?)
 LVDS0=$(echo $XRANDR_OUTPUT | grep -q "LVDS-0 connected" ; echo $?)
 DP1=$(echo $XRANDR_OUTPUT | grep -q "DP-1 connected" ; echo $?)
 DP11=$(echo $XRANDR_OUTPUT | grep -q "DP-1-1 connected" ; echo $?)
+DP13=$(echo $XRANDR_OUTPUT | grep -q "DP-1-3 connected" ; echo $?)
 DP131=$(echo $XRANDR_OUTPUT | grep -q "DP-1-3-1 connected" ; echo $?)
 DP132=$(echo $XRANDR_OUTPUT | grep -q "DP-1-3-2 connected" ; echo $?)
 DP12=$(echo $XRANDR_OUTPUT | grep -q "DP-1-2 connected" ; echo $?)
@@ -37,7 +38,7 @@ elif [[ $HDMI1 -eq 0 && $DP131 -eq 0 && $DP132 -eq 0 && $EDP1 -eq 0 ]]; then
     xrandr --output DP-1-3-1 --mode 2560x1440  --pos 1440x560 --rate 60 --primary
     xrandr --output DP-1-3-2 --mode 2560x1440 --pos 4000x560 --rate 60
   fi
-elif [[ $EDPI1 -eq 0 && $HDMI1 -eq 0 && $DP131 -eq 0 ]]; then
+elif [[ $EDPI1 -eq 0 && $HDMI1 -eq 0 && $DP13 -eq 0 ]]; then
   # Work screens - Work PC
   if [ "$HOSTNAME" = "debian" ]; then
     xrandr --output eDP-1 --mode 1920x1080 --primary
