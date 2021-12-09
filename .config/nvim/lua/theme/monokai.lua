@@ -675,6 +675,69 @@ M.load_plugin_syntax = function(palette)
     CmpItemAbbrDeprecated = {
       fg = palette.white,
     },
+    CmpItemKindClass = {
+      fg = palette.aqua,
+    },
+    CmpItemKindColor = {
+      fg = palette.orange,
+    },
+    CmpItemKindConstant = {
+      fg = palette.aqua,
+    },
+    CmpItemKindConstructor = {
+      fg = palette.aqua,
+    },
+    CmpItemKindEnum = {
+      fg = palette.aqua,
+    },
+    CmpItemKindEnumMember = {
+      ff = palette.white,
+    },
+    CmpItemKindField = {
+      ff = palette.white,
+    },
+    CmpItemKindFile = {
+      fg = palette.blue,
+    },
+    CmpItemKindFolder = {
+      fg = palette.blue,
+    },
+    CmpItemKindFunction = {
+      fg = palette.green,
+    },
+    CmpItemKindInterface = {
+      fg = palette.pink,
+    },
+    CmpItemKindKeyword = {
+      fg = palette.pink,
+    },
+    CmpItemKindMethod = {
+      fg = palette.green,
+    },
+    CmpItemKindModule = {
+      fg = palette.green,
+    },
+    CmpItemKindProperty = {
+      fg = palette.white,
+    },
+    CmpItemKindSnippet = {
+      fg = palette.yellow,
+    },
+    CmpItemKindStruct = {
+      fg = palette.aqua,
+    },
+    CmpItemKindText = {
+      fg = palette.white,
+    },
+    CmpItemKindUnit = {
+      fg = palette.white,
+    },
+    CmpItemKindValue = {
+      fg = palette.white,
+    },
+    CmpItemKinsdVariable = {
+      fg = palette.red,
+    },
     BiscuitColor = {
       fg = palette.base7,
       -- bg = palette.base4,
@@ -698,7 +761,7 @@ M.load_plugin_syntax = function(palette)
     },
     IndentBlanklineSpaceChar = {
       fg = palette.white,
-    }
+    },
   }
 end
 
