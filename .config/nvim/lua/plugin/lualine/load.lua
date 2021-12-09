@@ -12,8 +12,8 @@ require('lualine').setup({
   options = {
     icons_enabled = true,
     theme = theme,
-    component_separators = { '|', '|' },
-    section_separators = { '', '' },
+    component_separators = '',
+    section_separators = '',
     disabled_filetypes = { 'NvimTree' },
   },
   sections = {
@@ -22,6 +22,7 @@ require('lualine').setup({
     lualine_c = {
       {
         'filename',
+        file_status = true,
         path = 1,
       },
       {
@@ -54,7 +55,11 @@ require('lualine').setup({
     lualine_c = {
       {
         'filename',
+        file_status = true,
         path = 1,
+      },
+      {
+        get_gps,
       },
     },
     lualine_x = {
