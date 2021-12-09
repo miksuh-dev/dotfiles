@@ -4,14 +4,10 @@
 
 local Colors = {
   white = '#ffffff',
-  darkestgreen = '#005f00',
   normalbg = '#1793d0',
-  darkestcyan = '#005f5f',
-  insertbg = '#87AF5F',
-  darkestblue = '#005f87',
-  darkred = '#870000',
-  replacebg = '#870000',
-  visualbg = '#ff8c00',
+  insertbg = '#a6e22e',
+  replacebg = '#e95678',
+  visualbg = '#fd971f',
   gray0 = '#1C1C1C',
   gray1 = '#262626',
   gray2 = '#272727',
