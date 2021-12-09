@@ -74,7 +74,7 @@ vim.g.nvim_tree_icons = {
 }
 
 -- Auto refresh on enter
-vim.cmd('autocmd BufEnter NERD_tree_* | execute "normal R"')
+vim.cmd('autocmd BufEnter NvimTree | execute "normal R"')
 
 -- following options are the default
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
