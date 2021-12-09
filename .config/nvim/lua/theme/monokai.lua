@@ -1,15 +1,26 @@
 local M = {}
 
+-- Base colors generated with:
+-- local util = require('common.util')
+--
+-- local base = '#171717'
+-- base2 = util.shade_color(base, 85),
+-- base3 = util.shade_color(base, 100),
+-- base4 = util.shade_color(base, 150),
+-- base5 = util.shade_color(base, 250),
+-- base6 = util.shade_color(base, 450),
+-- base7 = util.shade_color(base, 600),
+-- border = util.shade_color(base, 800),
+
 M.classic = {
   name = 'monokai',
-  base1 = '#272a30',
-  base2 = '#26292C',
-  base3 = '#2E323C',
-  base4 = '#333842',
-  base5 = '#4d5154',
-  base6 = '#9ca0a4',
-  base7 = '#b1b1b1',
-  border = '#b1b1b1',
+  base2 = '#2a2a2a',
+  base3 = '#2e2e2e',
+  base4 = '#393939',
+  base5 = '#505050',
+  base6 = '#7e7e7e',
+  base7 = '#a1a1a1',
+  border = '#cfcfcf',
   brown = '#504945',
   white = '#f8f8f0',
   grey = '#8F908A',
@@ -27,60 +38,6 @@ M.classic = {
   diff_change = '#27406b',
   diff_text = '#23324d',
   none = 'NONE',
-}
-
-M.pro = {
-  name = 'monokai_pro',
-  base1 = '#211F22',
-  base2 = '#26292C',
-  base3 = '#2E323C',
-  base4 = '#333842',
-  base5 = '#4d5154',
-  base6 = '#72696A',
-  base7 = '#B1B1B1',
-  border = '#A1B5B1',
-  brown = '#504945',
-  white = '#FFF1F3',
-  grey = '#72696A',
-  black = '#000000',
-  pink = '#FF6188',
-  green = '#A9DC76',
-  aqua = '#78DCE8',
-  yellow = '#FFD866',
-  orange = '#FC9867',
-  purple = '#AB9DF2',
-  red = '#FD6883',
-  diff_add = '#3d5213',
-  diff_remove = '#4a0f23',
-  diff_change = '#27406b',
-  diff_text = '#23324d',
-}
-
-M.soda = {
-  name = 'monokai_soda',
-  base1 = '#211F22',
-  base2 = '#26292C',
-  base3 = '#2E323C',
-  base4 = '#333842',
-  base5 = '#4d5154',
-  base6 = '#72696A',
-  base7 = '#B1B1B1',
-  border = '#A1B5B1',
-  brown = '#504945',
-  white = '#f6f6ec',
-  grey = '#72696A',
-  black = '#000000',
-  pink = '#f3005f',
-  green = '#97e023',
-  aqua = '#78DCE8',
-  yellow = '#dfd561',
-  orange = '#fa8419',
-  purple = '#9c64fe',
-  red = '#f3005f',
-  diff_add = '#3d5213',
-  diff_remove = '#4a0f23',
-  diff_change = '#27406b',
-  diff_text = '#23324d',
 }
 
 M.highlight = function(group, color)
@@ -120,7 +77,7 @@ M.load_syntax = function(palette)
     },
     PmenuThumb = {
       fg = palette.purple,
-      bg = palette.base6,
+      bg = palette.base7,
     },
     PmenuSbar = {
       bg = palette.base3,
@@ -142,6 +99,9 @@ M.load_syntax = function(palette)
     },
     VisualNOS = {
       bg = palette.base3,
+    },
+    YankVisual = {
+      bg = palette.base6,
     },
     Search = {
       fg = palette.base2,
@@ -181,7 +141,7 @@ M.load_syntax = function(palette)
       fg = palette.base3,
     },
     LineNr = {
-      fg = palette.base6,
+      fg = palette.base7,
       bg = palette.none,
     },
     SignColumn = {
@@ -340,7 +300,7 @@ M.load_syntax = function(palette)
       fg = palette.orange,
     },
     Comment = {
-      fg = palette.base6,
+      fg = palette.base7,
       style = 'italic',
     },
     Underlined = {
@@ -424,7 +384,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.green,
     },
     TSComment = {
-      fg = palette.base6,
+      fg = palette.base7,
       style = 'italic',
     },
     TSConstant = {
@@ -658,7 +618,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.border,
     },
     CmpItemAbbr = {
-      fg = palette.base6,
+      fg = palette.base7,
     },
     CmpItemAbbrMatch = {
       fg = palette.white,
@@ -737,10 +697,6 @@ M.load_plugin_syntax = function(palette)
     },
     CmpItemKinsdVariable = {
       fg = palette.white,
-    },
-    BiscuitColor = {
-      fg = palette.base7,
-      -- bg = palette.base4,
     },
     NotificationInfo = {
       fg = palette.white,
