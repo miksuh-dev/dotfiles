@@ -3,7 +3,7 @@
 -- local main_color = file.read(os.getenv('HOME') .. '/.config/colors/main')
 
 local Colors = {
-  white = '#ffffff',
+  white = '#f8f8f0',
   normalbg = '#1793d0',
   insertbg = '#a6e22e',
   replacebg = '#e95678',
@@ -23,11 +23,17 @@ return {
     a = { fg = Colors.white, bg = Colors.normalbg, gui = 'bold' },
     b = { fg = Colors.gray10, bg = Colors.none },
     c = { fg = Colors.gray10, bg = Colors.none },
+    x = { fg = Colors.gray10, bg = Colors.none },
+    y = { fg = Colors.gray10, bg = Colors.none },
+    z = { fg = Colors.gray10, bg = Colors.none },
   },
   insert = {
     a = { fg = Colors.white, bg = Colors.insertbg, gui = 'bold' },
     b = { fg = Colors.gray10, bg = Colors.none },
     c = { fg = Colors.gray10, bg = Colors.none },
+    x = { fg = Colors.gray10, bg = Colors.none },
+    y = { fg = Colors.gray10, bg = Colors.none },
+    z = { fg = Colors.gray10, bg = Colors.none },
   },
   visual = { a = { fg = Colors.white, bg = Colors.visualbg, gui = 'bold' } },
   replace = { a = { fg = Colors.white, bg = Colors.replacebg, gui = 'bold' } },
@@ -35,5 +41,8 @@ return {
     a = { fg = Colors.gray7, bg = Colors.gray5, gui = 'bold' },
     b = { fg = Colors.gray7, bg = Colors.none },
     c = { fg = Colors.gray7, bg = Colors.none },
+    x = { fg = Colors.gray10, bg = Colors.none },
+    y = { fg = Colors.gray10, bg = Colors.none },
+    z = { fg = Colors.gray10, bg = Colors.none },
   },
 }
