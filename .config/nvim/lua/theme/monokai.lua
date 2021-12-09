@@ -736,7 +736,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     CmpItemKinsdVariable = {
-      fg = palette.red,
+      fg = palette.white,
     },
     BiscuitColor = {
       fg = palette.base7,
