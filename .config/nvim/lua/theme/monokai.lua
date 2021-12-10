@@ -617,6 +617,9 @@ M.load_plugin_syntax = function(palette)
     TelescopePromptBorder = {
       fg = palette.border,
     },
+    TelescopePromptCounter = {
+      fg = palette.white,
+    },
     CmpItemAbbr = {
       fg = palette.base7,
     },

@@ -21,7 +21,7 @@ require('gitsigns').setup({
     change = { hl = 'BlueSign', text = '~', numhl = 'GitSignsChangeNr' },
     delete = { hl = 'RedSign', text = '-', numhl = 'GitSignsDeleteNr' },
     topdelete = { hl = 'RedSign', text = '-', numhl = 'GitSignsDeleteNr' },
-    changedelete = { hl = 'YellowSign', text = '~', numhl = 'GitSignsChangeNr' },
+    changedelete = { hl = 'BlueSign', text = '~', numhl = 'GitSignsChangeNr' },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`

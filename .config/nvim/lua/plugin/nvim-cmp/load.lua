@@ -102,12 +102,12 @@ cmp.setup({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[NvimLua]',
-        ultisnips = '[UltiSnips]',
+        ultisnips = '[Snippet]',
         cmp_tabnine = '[Tabnine]',
         calc = '[Calc]',
         path = '[Path]',
         tmux = '[Tmux]',
-        conventionalcommits = '[CC]',
+        conventionalcommits = '[Coco]',
         ['vim-dadbod-completion'] = '[DB]',
       })[entry.source.name]
       return vim_item
