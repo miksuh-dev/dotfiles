@@ -102,7 +102,7 @@ cmp.setup({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[NvimLua]',
-        ultisnips = '[Snippet]',
+        ultisnips = '[UltiSnips]',
         cmp_tabnine = '[Tabnine]',
         calc = '[Calc]',
         path = '[Path]',
