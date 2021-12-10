@@ -36,7 +36,7 @@ require('lualine').setup({
     lualine_y = {
       {
         'diagnostics',
-        sources = { 'nvim_lsp' },
+        sources = { 'nvim_diagnostic' },
         sections = { 'error', 'warn', 'info', 'hint' },
         symbols = {
           warn = 'W',
@@ -69,7 +69,7 @@ require('lualine').setup({
     lualine_y = {
       {
         'diagnostics',
-        sources = { 'nvim_lsp' },
+        sources = { 'nvim_diagnostic' },
         sections = { 'error', 'warn', 'info', 'hint' },
         symbols = {
           warn = 'W',
