@@ -54,18 +54,18 @@ local function to_rgb(color)
   return tonumber(color:sub(2, 3), 16), tonumber(color:sub(4, 5), 16), tonumber(color:sub(6), 16)
 end
 
-M.shade_color = function (color, percent)
+M.shade_color = function(color, percent)
   local r, g, b = to_rgb(color)
   if not r or not g or not b then
-    return "NONE"
+    return 'NONE'
   end
   r = math.floor(tonumber(r * (100 + percent) / 100))
   g = math.floor(tonumber(g * (100 + percent) / 100))
   b = math.floor(tonumber(b * (100 + percent) / 100))
   r, g, b = r < 255 and r or 255, g < 255 and g or 255, b < 255 and b or 255
 
-  r, g, b = string.format("%0x", r), string.format("%0x", g), string.format("%0x", b)
-  return "#" .. r .. g .. b
+  r, g, b = string.format('%0x', r), string.format('%0x', g), string.format('%0x', b)
+  return '#' .. r .. g .. b
 end
 
 return M
