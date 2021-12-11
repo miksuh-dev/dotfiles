@@ -718,6 +718,9 @@ M.load_plugin_syntax = function(palette)
       fg = palette.aqua,
       bg = palette.none,
     },
+    IndentBlanklineChar = {
+      fg = palette.base4,
+    },
     IndentBlanklineSpaceChar = {
       fg = palette.white,
     },
