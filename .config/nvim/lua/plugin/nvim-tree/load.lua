@@ -13,7 +13,7 @@ vim.g.nvim_tree_disable_window_picker = 1 -- 0 by default, will disable the wind
 vim.g.nvim_tree_icon_padding = ' ' -- one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 vim.g.nvim_tree_symlink_arrow = ' >> ' --  defaults to ' ➛ '. used as a separator between symlinks' source and target.
 vim.g.nvim_tree_respect_buf_cwd = 1 -- 0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
-vim.g.nvim_tree_create_in_closed_folder = 0 -- 1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
+vim.g.nvim_tree_create_in_closed_folder = 1 -- 1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 vim.g.nvim_tree_refresh_wait = 500 -- 1000 by default, control how often the tree can be refreshed, 1000 means the tree can be refresh once per 1000ms.
 
 vim.g.nvim_tree_window_picker_exclude = {
@@ -74,7 +74,7 @@ vim.g.nvim_tree_icons = {
 }
 
 -- Auto refresh on enter
-vim.cmd('autocmd BufEnter NvimTree | execute "normal R"')
+vim.cmd('autocmd BufEnter NvimTree | execute ":NvimTreeRefresh"')
 
 -- following options are the default
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
