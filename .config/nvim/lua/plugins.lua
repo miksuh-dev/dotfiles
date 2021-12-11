@@ -427,30 +427,3 @@ return require('packer').startup({
     max_jobs = 5,
   },
 })
-
-------------------------------------------------------------------------------------------------
------------------------------------------ Old unused --------------------------------------------------
-------------------------------------------------------------------------------------------------
-
--- use({
---   'ms-jpq/coq_nvim',
---   branch = 'coq',
---   -- module = 'coq',
---   -- event = 'InsertEnter',
---   config = function()
---     require('plugin.coq.load')
---   end,
--- })
---
--- use({
---   'ms-jpq/coq.artifacts',
---   branch = 'artifacts',
---   requires = 'coq_nvim',
--- })
---
--- use({
---   'ms-jpq/coq.thirdparty',
---   branch = '3p',
---   module = 'coq_3p',
---   requires = 'coq_nvim',
--- })
