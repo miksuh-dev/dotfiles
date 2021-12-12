@@ -93,7 +93,6 @@ M.expand = function(panel)
     local dbui = require('plugin.vim-dadbod-ui.config')
 
     if active_panels.nvimtree then
-      print('expand')
       return update_barbar(offset + dbui.width - 4, 'NvimTree / DBUI')
     end
 
