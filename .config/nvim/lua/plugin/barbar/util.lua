@@ -3,11 +3,11 @@ local tree_config = require('plugin.nvim-tree.config')
 local M = {}
 
 M.collapse = function()
-  require('bufferline.state').set_offset(0)
+  require('bufferline.state').set_offset(5)
 end
 
 M.expand = function()
-  require('bufferline.state').set_offset(tree_config.width + 1, tree_config.name)
+  require('bufferline.state').set_offset(tree_config.width + 5 + 1, tree_config.name)
 end
 
 M.conditional_collapse = function()
