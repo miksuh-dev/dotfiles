@@ -1,6 +1,8 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+-- TODO Fix barbar initial_offset being zero before first set
+
 -- Move to previous/next
 -- map('n', '<c-,>', ':BufferPrevious<CR>', opts)
 -- map('n', '<c-.>', ':BufferNext<CR>', opts)
@@ -73,8 +75,6 @@ vim.g.bufferline = {
   icon_custom_colors = false,
 
   -- Configure icons on the bufferline.
-  -- icon_separator_active = '',
-  -- icon_separator_inactive = '',
   icon_separator_active = '',
   icon_separator_inactive = '',
   icon_close_tab = '',

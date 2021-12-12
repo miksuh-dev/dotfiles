@@ -1,5 +1,4 @@
 local util = require('common.util')
-local barbar_util = require('plugin.barbar.util')
 
 local function in_db_ui(filetype)
   return filetype == 'sql' or filetype == 'dbout'
@@ -7,27 +6,27 @@ end
 
 local nnoremap = vim.keymap.nnoremap
 
--- TODO Fix collapse/expand with dadbod-ui
+-- TODO Make this clearer
 nnoremap({
   '<leader>n',
   function()
-    local fn = vim.fn
-    local filetype = vim.bo.filetype
-
-    if filetype == 'NvimTree' then
-      barbar_util.collapse()
-      require('nvim-tree').close()
-    elseif filetype == 'dbui' then
-      vim.cmd(':DBUIToggle')
-    elseif in_db_ui(filetype) then
-      vim.cmd(':DBUI')
-    elseif util.is_file(fn.expand('%')) then
-      barbar_util.expand()
-      require('nvim-tree').find_file(true)
-    else
-      barbar_util.expand()
-      require('nvim-tree').focus()
+    if vim.bo.filetype == 'NvimTree' then
+      return require('nvim-tree').close()
     end
+
+    if vim.bo.filetype == 'dbui' then
+      return vim.cmd(':DBUIToggle')
+    end
+
+    if in_db_ui(vim.bo.filetype) then
+      return vim.cmd(':DBUI')
+    end
+
+    if util.is_file(vim.fn.expand('%')) then
+      return require('nvim-tree').find_file(true)
+    end
+
+    return require('nvim-tree').focus()
   end,
 })
 
@@ -37,10 +36,12 @@ nnoremap({
     local filetype = vim.bo.filetype
 
     if filetype == 'NvimTree' then
-      barbar_util.collapse()
-      require('nvim-tree').close()
-    else
-      require('nvim-tree').focus()
+      return require('nvim-tree').close()
     end
+
+    return require('nvim-tree').focus()
   end,
 })
+
+vim.cmd("autocmd BufWinEnter NvimTree lua require('plugin.barbar.util').expand('nvimtree')")
+vim.cmd("autocmd BufWinLeave NvimTree lua require('plugin.barbar.util').collapse('nvimtree')")

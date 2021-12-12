@@ -737,69 +737,68 @@ M.load_plugin_syntax = function(palette)
       fg = palette.aqua,
     },
     BufferCurrentSign = {
-      -- fg = '#f8f8f0',
       fg = palette.none,
       bg = palette.none,
-      -- style = 'bold',,
     },
     BufferCurrentTarget = {
-      -- fg=red
       style = 'bold',
     },
     BufferVisible = {
-      -- fg = '#efefef',
       fg = palette.white,
       bg = palette.none,
-
-      -- bg = '#393939',
     },
     BufferVisibleIndex = {
-      -- fg = '#efefef',
-      -- bg = '#393939',
       fg = palette.white,
       bg = palette.none,
     },
     BufferVisibleMod = {
-      -- fg = '#e6db74',
-      -- bg = '#393939',
       fg = palette.white,
       bg = palette.none,
     },
     BufferVisibleSign = {
-      -- fg = '#efefef',
-      -- bg = '#393939',
-      -- fg = palette.white,
       fg = palette.white,
       bg = palette.none,
     },
     BufferVisibleTarget = {
-      -- fg=red,
-      bg = '#393939',
+      bg = palette.none,
       style = 'bold',
+    },
+    DevIconDefaultVisible = {
+      fg = palette.white,
+      bg = palette.none,
+    },
+    DevIconDefaultCurrent = {
+      fg = palette.white,
+      bg = palette.none,
     },
     BufferInactive = {
       fg = '#888888',
+      bg = palette.none,
     },
     BufferInactiveIndex = {
       fg = '#505050',
+      bg = palette.none,
     },
     BufferInactiveMod = {
       fg = '#e6db74',
+      bg = palette.none,
     },
     BufferInactiveSign = {
       fg = '#505050',
+      bg = palette.none,
     },
     BufferInactiveTarget = {
-      -- fg=red
+      bg = palette.none,
       style = 'bold',
-      fg = '#ffc0cb',
     },
     BufferTabpages = {
       fg = '#f8f8f0',
+      bg = palette.none,
       style = 'bold',
     },
     BufferTabpageFill = {
       fg = '#888888',
+      bg = palette.none,
     },
   }
 end

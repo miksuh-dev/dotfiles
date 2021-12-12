@@ -80,7 +80,7 @@ vim.cmd('autocmd BufEnter NvimTree | execute ":NvimTreeRefresh"')
 
 -- following options are the default
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
-local collapse_check = ':lua require("plugin.barbar.util").conditional_collapse()<CR>'
+-- local collapse_check = ':lua require("plugin.barbar.util").nvim_tree_conditional_collapse()<CR>'
 
 require('nvim-tree').setup({
   -- disables netrw completely
@@ -156,7 +156,8 @@ require('nvim-tree').setup({
         -- TODO: Fix <C-h> causing treesitter cursor to move
         {
           key = { '<CR>', 'e', 'l' },
-          cb = tree_cb('edit') .. collapse_check,
+          -- cb = tree_cb('edit') .. collapse_check,
+          cb = tree_cb('edit'),
         },
         { key = 'cd', cb = tree_cb('cd') },
         { key = 'v', cb = tree_cb('vsplit') },
@@ -187,7 +188,8 @@ require('nvim-tree').setup({
         { key = { '<BS>', 'U' }, cb = tree_cb('dir_up') },
         {
           key = 'q',
-          cb = tree_cb('close') .. collapse_check,
+          -- cb = tree_cb('close') .. collapse_check,
+          cb = tree_cb('close'),
         },
         { key = '?', cb = tree_cb('toggle_help') },
       },

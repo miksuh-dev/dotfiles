@@ -1,4 +1,4 @@
 return {
-  name = 'NvimTree',
+  title = 'NvimTree',
   width = 30,
 }

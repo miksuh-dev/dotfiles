@@ -1,7 +1,9 @@
+local config = require('plugin.vim-dadbod-ui.config')
+
 local nnoremap = vim.keymap.nnoremap
 
 vim.g.db_ui_use_nerd_fonts = true
-vim.g.db_ui_winwidth = 30
+vim.g.db_ui_winwidth = config.width
 
 vim.g.db_ui_icons = {
   expanded = {
