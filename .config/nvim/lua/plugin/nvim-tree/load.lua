@@ -1,3 +1,5 @@
+local config = require('plugin.nvim-tree.config')
+
 vim.g.nvim_tree_ignore = {} -- empty by default
 vim.g.nvim_tree_gitignore = 0 -- 1 by default
 vim.g.nvim_tree_quit_on_open = 1 --0 by default, closes the tree when you open a file
@@ -78,6 +80,7 @@ vim.cmd('autocmd BufEnter NvimTree | execute ":NvimTreeRefresh"')
 
 -- following options are the default
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
+local collapse_check = ':lua require("plugin.barbar.util").conditional_collapse()<CR>'
 
 require('nvim-tree').setup({
   -- disables netrw completely
@@ -139,7 +142,7 @@ require('nvim-tree').setup({
 
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = 30,
+    width = config.width,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
     -- if true the tree will resize itself after opening a file
@@ -150,8 +153,11 @@ require('nvim-tree').setup({
       custom_only = true,
       -- list of mappings to set on the tree manually
       list = {
-        -- Fix <C-h> causing treesitter cursor to move
-        { key = { '<CR>', 'e', 'l' }, cb = tree_cb('edit') },
+        -- TODO: Fix <C-h> causing treesitter cursor to move
+        {
+          key = { '<CR>', 'e', 'l' },
+          cb = tree_cb('edit') .. collapse_check,
+        },
         { key = 'cd', cb = tree_cb('cd') },
         { key = 'v', cb = tree_cb('vsplit') },
         { key = 's', cb = tree_cb('split') },
@@ -179,7 +185,10 @@ require('nvim-tree').setup({
         { key = '[c', cb = tree_cb('prev_git_item') },
         { key = ']c', cb = tree_cb('next_git_item') },
         { key = { '<BS>', 'U' }, cb = tree_cb('dir_up') },
-        { key = 'q', cb = tree_cb('close') },
+        {
+          key = 'q',
+          cb = tree_cb('close') .. collapse_check,
+        },
         { key = '?', cb = tree_cb('toggle_help') },
       },
     },
