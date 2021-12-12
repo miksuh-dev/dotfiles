@@ -434,24 +434,24 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
      -- default tiling algorithm partitions the screen into two panes
      tiled =  renamed [Replace "Tile"]
               $ avoidStruts
-              $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
+              -- $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ ResizableTall nmaster delta ratio []
 
      grid =   renamed [Replace "Grid"]
               $ avoidStruts
-              $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
+              -- $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
                Grid
 
 
      three =  renamed [Replace "ThreeColumn"]
               $ avoidStruts
-              $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
+              -- $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ ThreeCol 1 (3/100) (1/2)
 
 
      two =    renamed [Replace "TwoPane"]
               $ avoidStruts
-              $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
+              -- $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
               $ TwoPane (3/100) (1/2)
 
 
