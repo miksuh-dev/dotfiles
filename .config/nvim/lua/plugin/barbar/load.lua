@@ -9,8 +9,8 @@ local opts = { noremap = true, silent = true }
 -- Re-order to previous/next
 map('n', '<leader><', ':BufferMovePrevious<CR>', opts)
 map('n', '<leader>>', ' :BufferMoveNext<CR>', opts)
--- Goto buffer in position...
 
+-- Goto buffer in position...
 map('n', '<leader>1', ':lua require("plugin.barbar.util").move_to_buffer(1)<CR>', opts)
 map('n', '<leader>2', ':lua require("plugin.barbar.util").move_to_buffer(2)<CR>', opts)
 map('n', '<leader>3', ':lua require("plugin.barbar.util").move_to_buffer(3)<CR>', opts)
@@ -22,16 +22,6 @@ map('n', '<leader>8', ':lua require("plugin.barbar.util").move_to_buffer(8)<CR>'
 map('n', '<leader>9', ':lua require("plugin.barbar.util").move_to_buffer(9)<CR>', opts)
 map('n', '<leader>0', ':lua require("plugin.barbar.util").move_to_buffer(0)<CR>', opts)
 
--- map('n', '<leader>1', ':BufferGoto 1<CR>', opts)
--- map('n', '<leader>2', ':BufferGoto 2<CR>', opts)
--- map('n', '<leader>3', ':BufferGoto 3<CR>', opts)
--- map('n', '<leader>4', ':BufferGoto 4<CR>', opts)
--- map('n', '<leader>5', ':BufferGoto 5<CR>', opts)
--- map('n', '<leader>6', ':BufferGoto 6<CR>', opts)
--- map('n', '<leader>7', ':BufferGoto 7<CR>', opts)
--- map('n', '<leader>8', ':BufferGoto 8<CR>', opts)
--- map('n', '<leader>9', ':BufferGoto 9<CR>', opts)
--- map('n', '<leader>0', ':BufferLast<CR>', opts)
 -- Close buffer
 map('n', '<leader>bc', ':BufferClose<CR>', opts)
 -- Close commands

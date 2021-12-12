@@ -38,11 +38,7 @@ local function update_barbar(offset, title)
     return require('bufferline.state').set_offset(initial_offset)
   end
 
-  if title == nil then
-    title = ''
-  end
-
-  return require('bufferline.state').set_offset(offset + initial_offset, title)
+  return require('bufferline.state').set_offset(offset + initial_offset, title or '')
 end
 
 local M = {}

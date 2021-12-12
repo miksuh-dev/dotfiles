@@ -187,6 +187,8 @@ return require('packer').startup({
 
     use({
       'romgrk/barbar.nvim',
+      module = 'bufferline',
+      event = 'BufEnter',
       config = function()
         require('plugin.barbar.load')
       end,
