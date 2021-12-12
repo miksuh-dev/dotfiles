@@ -599,6 +599,9 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
       style = 'NONE',
     },
+    NvimTreeOpenedFile = {
+      fg = palette.aqua,
+    },
     TelescopeSelection = {
       fg = palette.white,
       bg = palette.blue,
@@ -723,6 +726,80 @@ M.load_plugin_syntax = function(palette)
     },
     IndentBlanklineSpaceChar = {
       fg = palette.white,
+    },
+    BufferCurrent = {
+      fg = palette.white,
+    },
+    BufferCurrentIndex = {
+      fg = palette.white,
+    },
+    BufferCurrentMod = {
+      fg = palette.aqua,
+    },
+    BufferCurrentSign = {
+      -- fg = '#f8f8f0',
+      fg = palette.none,
+      bg = palette.none,
+      -- style = 'bold',,
+    },
+    BufferCurrentTarget = {
+      -- fg=red
+      style = 'bold',
+    },
+    BufferVisible = {
+      -- fg = '#efefef',
+      fg = palette.white,
+      bg = palette.none,
+
+      -- bg = '#393939',
+    },
+    BufferVisibleIndex = {
+      -- fg = '#efefef',
+      -- bg = '#393939',
+      fg = palette.white,
+      bg = palette.none,
+    },
+    BufferVisibleMod = {
+      -- fg = '#e6db74',
+      -- bg = '#393939',
+      fg = palette.white,
+      bg = palette.none,
+    },
+    BufferVisibleSign = {
+      -- fg = '#efefef',
+      -- bg = '#393939',
+      -- fg = palette.white,
+      fg = palette.white,
+      bg = palette.none,
+    },
+    BufferVisibleTarget = {
+      -- fg=red,
+      bg = '#393939',
+      style = 'bold',
+    },
+    BufferInactive = {
+      fg = '#888888',
+    },
+    BufferInactiveIndex = {
+      fg = '#505050',
+    },
+    BufferInactiveMod = {
+      fg = '#e6db74',
+    },
+    BufferInactiveSign = {
+      fg = '#505050',
+    },
+    BufferInactiveTarget = {
+      -- fg=red
+      style = 'bold',
+      fg = '#ffc0cb',
+    },
+    BufferTabpages = {
+      fg = '#f8f8f0',
+      style = 'bold',
+    },
+    BufferTabpageFill = {
+      fg = '#888888',
     },
   }
 end
