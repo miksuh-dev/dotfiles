@@ -58,14 +58,13 @@ M.collapse = function(panel)
 
   if panel == 'nvimtree' then
     if active_panels.dbui then
-      -- TODO fix these magic numbers, and use initial_offset on calculations instead
-      return update_barbar(offset - nvimtree.width - 6, dbui.title)
+      return update_barbar(offset - nvimtree.width - 1, dbui.title)
     end
   end
 
   if panel == 'dbui' then
     if active_panels.nvimtree then
-      return update_barbar(offset - dbui.width - 6, nvimtree.title)
+      return update_barbar(offset - dbui.width - 1, nvimtree.title)
     end
   end
   return update_barbar(0)
@@ -79,20 +78,20 @@ M.expand = function(panel)
     local nvimtree = require('plugin.nvim-tree.config')
 
     if active_panels.dbui then
-      return update_barbar(offset + nvimtree.width - 4, 'NvimTree / DBUI')
+      return update_barbar(offset + nvimtree.width + 1, 'NvimTree / DBUI')
     end
 
-    return update_barbar(nvimtree.width + 1, nvimtree.title)
+    return update_barbar(nvimtree.width, nvimtree.title)
   end
 
   if panel == 'dbui' then
     local dbui = require('plugin.vim-dadbod-ui.config')
 
     if active_panels.nvimtree then
-      return update_barbar(offset + dbui.width - 4, 'NvimTree / DBUI')
+      return update_barbar(offset + dbui.width + 1, 'NvimTree / DBUI')
     end
 
-    return update_barbar(dbui.width + 1, dbui.title)
+    return update_barbar(dbui.width, dbui.title)
   end
 end
 

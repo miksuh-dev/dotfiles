@@ -55,4 +55,7 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
 
+-- TODO: Change this to lua
+vim.cmd('set fillchars+=vert:▎')
+
 vim.cmd('set guicursor=')
