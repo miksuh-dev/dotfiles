@@ -807,6 +807,9 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
       bg = palette.none,
     },
+    BqfPreviewBorder = {
+      fg = palette.border,
+    },
   }
 end
 
