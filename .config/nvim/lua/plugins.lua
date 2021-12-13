@@ -157,6 +157,7 @@ return require('packer').startup({
       end,
     })
 
+    -- TODO: Find better one (supporting virtual texts)
     use({
       'norcalli/nvim-colorizer.lua',
       event = 'BufReadPre',
@@ -170,17 +171,6 @@ return require('packer').startup({
       ft = 'qf',
       config = function()
         require('plugin.nvim-bqf.load')
-      end,
-    })
-
-    use({
-      'stevearc/dressing.nvim',
-      method = {
-        'vim.ui.select',
-        'vim.ui.input',
-      },
-      config = function()
-        require('plugin.dressing.load')
       end,
     })
 
