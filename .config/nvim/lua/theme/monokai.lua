@@ -728,19 +728,24 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     BufferCurrent = {
-      fg = palette.white,
+      fg = palette.current,
+      bg = palette.none,
     },
     BufferCurrentIndex = {
       fg = palette.white,
+      bg = palette.none,
     },
     BufferCurrentMod = {
       fg = palette.aqua,
+      bg = palette.none,
     },
     BufferCurrentSign = {
-      fg = palette.none,
+      fg = palette.white,
       bg = palette.none,
     },
     BufferCurrentTarget = {
+      fg = palette.aqua,
+      bg = palette.none,
       style = 'bold',
     },
     BufferVisible = {
@@ -752,7 +757,7 @@ M.load_plugin_syntax = function(palette)
       bg = palette.none,
     },
     BufferVisibleMod = {
-      fg = palette.white,
+      fg = palette.aqua,
       bg = palette.none,
     },
     BufferVisibleSign = {
@@ -760,8 +765,39 @@ M.load_plugin_syntax = function(palette)
       bg = palette.none,
     },
     BufferVisibleTarget = {
+      fg = palette.aqua,
       bg = palette.none,
       style = 'bold',
+    },
+    BufferInactive = {
+      fg = palette.base7,
+      bg = palette.none,
+    },
+    BufferInactiveIndex = {
+      fg = palette.base7,
+      bg = palette.none,
+    },
+    BufferInactiveMod = {
+      fg = palette.aqua,
+      bg = palette.none,
+    },
+    BufferInactiveSign = {
+      fg = palette.base7,
+      bg = palette.none,
+    },
+    BufferInactiveTarget = {
+      fg = palette.aqua,
+      bg = palette.none,
+      style = 'bold',
+    },
+    BufferTabpages = {
+      fg = palette.white,
+      bg = palette.none,
+      style = 'bold',
+    },
+    BufferTabpageFill = {
+      fg = palette.base7,
+      bg = palette.none,
     },
     DevIconDefaultVisible = {
       fg = palette.white,
@@ -769,35 +805,6 @@ M.load_plugin_syntax = function(palette)
     },
     DevIconDefaultCurrent = {
       fg = palette.white,
-      bg = palette.none,
-    },
-    BufferInactive = {
-      fg = '#888888',
-      bg = palette.none,
-    },
-    BufferInactiveIndex = {
-      fg = '#505050',
-      bg = palette.none,
-    },
-    BufferInactiveMod = {
-      fg = '#e6db74',
-      bg = palette.none,
-    },
-    BufferInactiveSign = {
-      fg = '#505050',
-      bg = palette.none,
-    },
-    BufferInactiveTarget = {
-      bg = palette.none,
-      style = 'bold',
-    },
-    BufferTabpages = {
-      fg = '#f8f8f0',
-      bg = palette.none,
-      style = 'bold',
-    },
-    BufferTabpageFill = {
-      fg = '#888888',
       bg = palette.none,
     },
   }
