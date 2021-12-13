@@ -46,7 +46,7 @@ vim.o.clipboard = 'unnamedplus'
 
 vim.wo.signcolumn = 'yes'
 vim.wo.number = true
-vim.wo.relativenumber = true
+-- vim.wo.relativenumber = true
 vim.wo.cursorline = true
 
 vim.g.netrw_browse_split = 2
@@ -54,6 +54,7 @@ vim.g.netrw_winsize = 2
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
+vim.g.lazyredraw = true
 
 -- TODO: Change this to lua
 vim.cmd('set fillchars+=vert:▎')
