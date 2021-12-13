@@ -56,7 +56,6 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.lazyredraw = true
 
--- TODO: Change this to lua
-vim.cmd('set fillchars+=vert:▎')
+vim.opt.fillchars = vim.opt.fillchars + 'vert:▎'
 
 vim.cmd('set guicursor=')
