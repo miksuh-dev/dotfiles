@@ -6,7 +6,7 @@ require('bqf').setup({
     auto_preview = true, -- enable preview in quickfix window automatically,
     border_chars = { '│', '│', '─', '─', '╭', '╮', '╰', '╯', '█' }, -- border and scroll bar chars, they respectively represent: vline, vline, hline, hline, ulcorner, urcorner, blcorner, brcorner, sbar,
     delay_syntax = 50, -- delay time, to do syntax for previewed buffer, unit is millisecond,
-    win_height = 20, -- the height of preview window for horizontal layout,
+    win_height = 100, -- the height of preview window for horizontal layout,
     win_vheight = 15, -- the height of preview window for vertical layout,
     wrap = false, -- wrap the line, `:h wrap` for detail,
     should_preview_cb = nil, -- a callback function to decide whether to preview while switching buffer, with a bufnr parameter,
