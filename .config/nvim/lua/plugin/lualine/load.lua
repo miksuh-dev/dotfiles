@@ -1,7 +1,7 @@
 local theme = require('plugin.lualine.theme.dark')
+local gps = require('nvim-gps')
 
 local function get_gps()
-  local gps = require('nvim-gps')
 
   if gps.is_available() then
     return gps.get_location()
