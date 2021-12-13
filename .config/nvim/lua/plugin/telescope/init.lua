@@ -82,3 +82,11 @@ nnoremap({
   end,
   silent = true,
 })
+
+nnoremap({
+  '<leader>hl',
+  function()
+    require('telescope.builtin').highlights()
+  end,
+  silent = true,
+})
