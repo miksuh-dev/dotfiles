@@ -71,7 +71,7 @@ local on_attach = function(client, bufnr)
   nnoremap({
     'gd',
     function()
-      require('telescope.builtin').lsp_definitions()
+      require('telescope.builtin').lsp_definitions({ file_ignore_patterns = {} })
     end,
     silent = true,
     buffer = true,
@@ -82,7 +82,7 @@ local on_attach = function(client, bufnr)
   nnoremap({
     'gi',
     function()
-      require('telescope.builtin').lsp_implementations()
+      require('telescope.builtin').lsp_implementations({ file_ignore_patterns = {} })
     end,
     silent = true,
     buffer = true,
@@ -91,7 +91,7 @@ local on_attach = function(client, bufnr)
   nnoremap({
     'gt',
     function()
-      require('telescope.builtin').lsp_type_definitions()
+      require('telescope.builtin').lsp_type_definitions({ file_ignore_patterns = {} })
     end,
     silent = true,
     buffer = true,
@@ -100,7 +100,7 @@ local on_attach = function(client, bufnr)
   nnoremap({
     'gr',
     function()
-      require('telescope.builtin').lsp_references()
+      require('telescope.builtin').lsp_references({ file_ignore_patterns = {} })
     end,
     silent = true,
     buffer = true,
