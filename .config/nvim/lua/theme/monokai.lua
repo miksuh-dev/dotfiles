@@ -666,7 +666,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.blue,
     },
     CmpItemKindFolder = {
-      fg = palette.blue,
+      fg = palette.yellow,
     },
     CmpItemKindFunction = {
       fg = palette.green,
