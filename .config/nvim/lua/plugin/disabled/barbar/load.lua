@@ -1,8 +1,6 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
--- TODO Fix barbar initial_offset being zero before first set
-
 -- Move to previous/next
 -- map('n', '<c-,>', ':BufferPrevious<CR>', opts)
 -- map('n', '<c-.>', ':BufferNext<CR>', opts)
@@ -97,3 +95,9 @@ vim.g.bufferline = {
   -- where X is the buffer number. But only a static string is accepted here.
   no_name_title = nil,
 }
+
+vim.cmd("autocmd BufWinEnter NvimTree lua require('plugin.barbar.util').expand('nvimtree')")
+vim.cmd("autocmd BufWinLeave NvimTree lua require('plugin.barbar.util').collapse('nvimtree')")
+
+vim.cmd("autocmd BufWinEnter dbui lua require('plugin.barbar.util').expand('dbui')")
+vim.cmd("autocmd BufWinLeave dbui lua require('plugin.barbar.util').collapse('dbui')")

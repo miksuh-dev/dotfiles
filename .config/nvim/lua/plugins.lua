@@ -1,7 +1,6 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
   vim.cmd('packadd packer.nvim')
 end
 
@@ -182,15 +181,6 @@ return require('packer').startup({
       },
       config = function()
         require('plugin.dressing.load')
-      end,
-    })
-
-    use({
-      'romgrk/barbar.nvim',
-      module = 'bufferline',
-      event = 'BufEnter',
-      config = function()
-        require('plugin.barbar.load')
       end,
     })
 
@@ -436,3 +426,16 @@ return require('packer').startup({
     max_jobs = 5,
   },
 })
+
+----------------------------------------------------------------------------
+------------------------------- Disabled ----------------------------------------
+----------------------------------------------------------------------------
+
+-- use({
+--   'romgrk/barbar.nvim',
+--   module = 'bufferline',
+--   event = 'BufEnter',
+--   config = function()
+--     require('plugin.barbar.load')
+--   end,
+-- })

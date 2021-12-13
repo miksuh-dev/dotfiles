@@ -6,7 +6,6 @@ end
 
 local nnoremap = vim.keymap.nnoremap
 
--- TODO Make this clearer
 nnoremap({
   '<leader>n',
   function()
@@ -42,6 +41,3 @@ nnoremap({
     return require('nvim-tree').focus()
   end,
 })
-
-vim.cmd("autocmd BufWinEnter NvimTree lua require('plugin.barbar.util').expand('nvimtree')")
-vim.cmd("autocmd BufWinLeave NvimTree lua require('plugin.barbar.util').collapse('nvimtree')")
