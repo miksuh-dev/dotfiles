@@ -10,6 +10,9 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
+    -- TODO Check these plugins
+    -- https://github.com/puremourning/vimspector
+
     use({
       'wbthomason/packer.nvim',
     })
