@@ -45,10 +45,10 @@ map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mzJ`z', opts)
 
 -- Quick macro
-map('n', '<Space>', '@q', opts)
+map('n', '<BS>', '@q', opts)
 
 -- Alternate file
-map('n', '<BS>', '<C-^>', opts)
+map('n', '<Space>', '<C-^>', opts)
 
 -- Jump longer
 map('n', '<Up>', '5k', opts)
