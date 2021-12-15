@@ -1,5 +1,3 @@
-local border = require('common.border')
-
 local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 local vnoremap = vim.keymap.vnoremap
@@ -16,12 +14,12 @@ require('nvim-lsp-installer').settings({
 
 -- Globally set border for hover
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = border,
+  border = require('common.border'),
 })
 
 -- Globally set border for signatureHelp
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = border,
+  border = require('common.border'),
 })
 
 -- TODO: Check if possible to update after changing buffer
@@ -35,7 +33,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
 
 local function show_diagnostics()
   vim.lsp.diagnostic.show_line_diagnostics({
-    border = border,
+    border = require('common.border'),
   })
 end
 
@@ -44,7 +42,7 @@ local function go_to_prev()
   vim.lsp.diagnostic.goto_prev({
     wrap = false,
     popup_opts = {
-      border = border,
+      border = require('common.border'),
     },
   })
 end
@@ -54,7 +52,7 @@ local function go_to_next()
   vim.lsp.diagnostic.goto_next({
     wrap = false,
     popup_opts = {
-      border = border,
+      border = require('common.border'),
     },
   })
 end
@@ -127,7 +125,6 @@ local on_attach = function(client, bufnr)
   })
   nnoremap({ '<leader>j', go_to_next, silent = true, buffer = true })
   nnoremap({ '<leader>J', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent = true, buffer = true })
-
 
   nnoremap({
     '<leader>a',
