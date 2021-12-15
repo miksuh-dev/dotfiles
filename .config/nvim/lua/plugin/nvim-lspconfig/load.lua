@@ -22,8 +22,6 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
   border = require('common.border'),
 })
 
--- TODO: Check if possible to update after changing buffer
--- (errors form import are not updated on buffer change before going to insert and back)
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = {
     source = 'always',
