@@ -2,9 +2,12 @@ local theme = require('plugin.lualine.theme.dark')
 local gps = require('nvim-gps')
 
 local function get_gps()
-
   if gps.is_available() then
-    return gps.get_location()
+    local location = gps.get_location()
+    if location ~= '' then
+      return '> ' .. location
+    end
+
   end
   return ''
 end
@@ -18,13 +21,21 @@ require('lualine').setup({
     disabled_filetypes = { 'NvimTree' },
   },
   sections = {
-    lualine_a = { 'mode' },
+    lualine_a = {
+      {
+        'mode',
+      }
+    },
     lualine_b = { 'branch' },
     lualine_c = {
       {
         'filename',
         file_status = true,
         path = 1,
+        padding = {
+          left = 1,
+          right = 0
+        }
       },
       {
         get_gps,
@@ -58,6 +69,10 @@ require('lualine').setup({
         'filename',
         file_status = true,
         path = 1,
+        padding = {
+          left = 1,
+          right = 0
+        }
       },
       {
         get_gps,
