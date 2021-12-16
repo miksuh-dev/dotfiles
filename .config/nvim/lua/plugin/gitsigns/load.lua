@@ -15,13 +15,14 @@ local function is_ignored_file(buffname)
   return false
 end
 
+-- TODO: Remove number column and only show one column (gitsigns, lsp diagnostics)
 require('gitsigns').setup({
   signs = {
-    add = { hl = 'GreenSign', text = '+', numhl = 'GitSignsAddNr' },
-    change = { hl = 'BlueSign', text = '~', numhl = 'GitSignsChangeNr' },
-    delete = { hl = 'RedSign', text = '-', numhl = 'GitSignsDeleteNr' },
-    topdelete = { hl = 'RedSign', text = '-', numhl = 'GitSignsDeleteNr' },
-    changedelete = { hl = 'BlueSign', text = '~', numhl = 'GitSignsChangeNr' },
+    add = { hl = 'GreenSign', text = '▍', numhl = 'GitSignsAddNr' },
+    change = { hl = 'BlueSign', text = '▍', numhl = 'GitSignsChangeNr' },
+    delete = { hl = 'RedSign', text = '▁', numhl = 'GitSignsDeleteNr' },
+    topdelete = { hl = 'RedSign', text = '▍', numhl = 'GitSignsDeleteNr' },
+    changedelete = { hl = 'BlueSign', text = '▍', numhl = 'GitSignsChangeNr' },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
