@@ -8,7 +8,7 @@ require('telescope').setup({
       i = {
         ['<esc>'] = require('telescope.actions').close,
         ['<c-s>'] = require('telescope.actions').select_horizontal,
-        ['<c-v>'] = require('telescope.actions').select_vertical,
+        ['<tab>'] = require('telescope.actions').select_vertical,
         ['<c-q>'] = require('telescope.actions').send_to_qflist,
       },
     },
