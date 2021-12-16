@@ -113,7 +113,7 @@ M.load_syntax = function(palette)
     },
     CursorLineNr = {
       fg = palette.aqua,
-      bg = palette.none,
+      bg = palette.base4,
     },
     MatchParen = {
       fg = palette.pink,
