@@ -32,9 +32,7 @@ nnoremap({
 nnoremap({
   '<leader>N',
   function()
-    local filetype = vim.bo.filetype
-
-    if filetype == 'NvimTree' then
+    if vim.bo.filetype == 'NvimTree' then
       return require('nvim-tree').close()
     end
 
