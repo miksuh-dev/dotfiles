@@ -28,6 +28,7 @@ local kind_icons = {
   Unit = ' ',
   Value = ' ',
   Variable = ' ',
+  Reference = ' ',
 }
 
 local function getKind(kind)
