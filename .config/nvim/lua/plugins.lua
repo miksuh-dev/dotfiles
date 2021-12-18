@@ -160,12 +160,12 @@ return require('packer').startup({
       end,
     })
 
-    -- TODO: Find better one (supporting virtual texts)
     use({
-      'norcalli/nvim-colorizer.lua',
+      'RRethy/vim-hexokinase',
+      run = 'make hexokinase',
       event = 'BufReadPre',
-      config = function()
-        require('plugin.nvim-colorizer.load')
+      setup = function()
+        require('plugin.hexokinase.load')
       end,
     })
 
