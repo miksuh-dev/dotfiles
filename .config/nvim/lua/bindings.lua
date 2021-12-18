@@ -65,6 +65,10 @@ map('n', '+', '<C-a>', opts)
 map('v', '<C-k>', ":m '<-2<CR>gv=gv", opts)
 map('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)
 
+-- Quickfix and location list toggle
+map('n', '<leader>q', ":lua require('common.list').toggle_quickfix_list()<CR>", optsSilent)
+map('n', '<leader>l', ":lua require('common.list').toggle_location_list()<CR>", optsSilent)
+
 -- Source lua file
 nnoremap({
   '<leader>so',
@@ -81,63 +85,4 @@ nnoremap({
 vim.cmd([[
   nnoremap <expr> ' "'" . nr2char(getchar()) . "zz"
   nnoremap <expr> ` "`" . nr2char(getchar()) . "zz"
-]])
-
--- TODO: Change this to lua
-vim.cmd([[
-  function! s:GetBufferList()
-    redir =>buflist
-    silent! ls
-    redir END
-    return buflist
-  endfunction
-
-  function! ToggleLocationList()
-    let curbufnr = winbufnr(0)
-    for bufnum in map(filter(split(s:GetBufferList(), '\n'), 'v:val =~ "Location List"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
-      if curbufnr == bufnum
-        lclose
-        return
-      endif
-    endfor
-
-    let winnr = winnr()
-    let prevwinnr = winnr("#")
-
-    let nextbufnr = winbufnr(winnr + 1)
-    try
-      lopen
-    catch /E776/
-        echohl ErrorMsg
-        echo "Location List is Empty."
-        echohl None
-        return
-    endtry
-    if winbufnr(0) == nextbufnr
-      lclose
-      if prevwinnr > winnr
-        let prevwinnr-=1
-      endif
-    else
-      if prevwinnr > winnr
-        let prevwinnr+=1
-      endif
-    endif
-    " restore previous window
-    exec prevwinnr."wincmd w"
-    exec winnr."wincmd w"
-  endfunction
-
-  function! ToggleQuickfixList()
-    for bufnum in map(filter(split(s:GetBufferList(), '\n'), 'v:val =~ "Quickfix List"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
-      if bufwinnr(bufnum) != -1
-        cclose
-        return
-      endif
-    endfor
-    copen
-  endfunction
-
-  nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
-  nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 ]])
