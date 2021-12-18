@@ -1,18 +1,43 @@
---- Disabled on files
---- % = escape
-local ignored_files = {
-  'package.json',
-  'package%-lock.json',
-  'fugitive',
-}
+local function is_ignored_file_name(bufnr)
+  --- % = escape
+  local ignored_files = {
+    'package.json',
+    'package%-lock.json',
+    'fugitive',
+  }
 
-local function is_ignored_file(buffname)
+  local buffname = vim.api.nvim_buf_get_name(bufnr)
   for _, file in ipairs(ignored_files) do
     if string.match(buffname, file) then
       return true
     end
   end
   return false
+end
+
+local function get_buffer_info(buffnr)
+  local active_buffers = vim.fn.getwininfo()
+
+  for _, item in pairs(active_buffers) do
+    if item.bufnr == buffnr then
+      return item
+    end
+  end
+end
+
+local function in_fugitive_diff(bufnr)
+  local buffer = get_buffer_info(bufnr)
+  local variables = buffer.variables
+
+  if variables.fugitive_diff_restore then
+    return variables.fugitive_diff_restore ~= ''
+  end
+
+  return false
+end
+
+local function is_ignored_file(bufnr)
+  return in_fugitive_diff(bufnr) or is_ignored_file_name(bufnr)
 end
 
 -- TODO: Remove number column and only show one column (gitsigns, lsp diagnostics)
@@ -51,8 +76,7 @@ require('gitsigns').setup({
     ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
   },
   on_attach = function(bufnr)
-    local buffname = vim.api.nvim_buf_get_name(bufnr)
-    return not is_ignored_file(buffname)
+    return not is_ignored_file(bufnr)
   end,
   watch_gitdir = {
     interval = 1000,
