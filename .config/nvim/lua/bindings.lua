@@ -81,8 +81,6 @@ nnoremap({
   silent = true,
 })
 
--- TODO: Change this to lua
-vim.cmd([[
-  nnoremap <expr> ' "'" . nr2char(getchar()) . "zz"
-  nnoremap <expr> ` "`" . nr2char(getchar()) . "zz"
-]])
+-- Auto center after mark jump
+map('n', "'", '"\'" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
+map('n', '`', '"`" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
