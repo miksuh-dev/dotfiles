@@ -237,12 +237,29 @@ return require('packer').startup({
     })
 
     ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Snippets --------------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+    use({
+      'rafamadriz/friendly-snippets',
+      event = 'InsertEnter',
+    })
+
+    use({
+      'L3MON4D3/LuaSnip',
+      after = 'friendly-snippets',
+      config = function()
+        require('plugin.luasnips.load')
+      end,
+    })
+
+    ------------------------------------------------------------------------------------------------
     ----------------------------------------- Cmp --------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
     use({
       'hrsh7th/nvim-cmp',
-      event = 'InsertEnter',
+      after = 'LuaSnip',
       config = function()
         require('plugin.nvim-cmp.load')
       end,
@@ -251,6 +268,7 @@ return require('packer').startup({
     use({
       'hrsh7th/cmp-nvim-lsp',
       module = 'cmp_nvim_lsp',
+      after = 'nvim-cmp',
       requires = {
         'nvim-cmp',
         'nvim-lspconfig',
@@ -258,22 +276,8 @@ return require('packer').startup({
     })
 
     use({
-      'SirVer/ultisnips',
+      'saadparwaiz1/cmp_luasnip',
       after = 'nvim-cmp',
-      module = 'UltiSnips',
-      requires = 'nvim-cmp',
-    })
-
-    use({
-      'quangnguyen30192/cmp-nvim-ultisnips',
-      after = 'ultisnips',
-      requires = { 'nvim-cmp', 'ultisnips' },
-    })
-
-    use({
-      'mlaursen/vim-react-snippets',
-      ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-      requires = { 'nvim-cmp', 'ultisnips' },
     })
 
     use({
