@@ -1,12 +1,7 @@
 local function is_ignored_file_name(bufnr)
-  --- % = escape
-  local ignored_files = {
-    'package.json',
-    'package%-lock.json',
-    'fugitive',
-  }
-
   local buffname = vim.api.nvim_buf_get_name(bufnr)
+  local ignored_files = require('plugin.gitsigns.ignored_files')
+
   for _, file in ipairs(ignored_files) do
     if string.match(buffname, file) then
       return true

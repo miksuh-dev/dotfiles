@@ -1,28 +1,5 @@
 require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    'bash',
-    'comment',
-    'commonlisp',
-    'css',
-    'dockerfile',
-    'graphql',
-    'haskell',
-    'html',
-    'javascript',
-    'json',
-    'jsdoc',
-    'lua',
-    'php',
-    'python',
-    'regex',
-    'scss',
-    'tsx',
-    'typescript',
-    'vim',
-    'yaml',
-    'vue',
-    'markdown'
-  },
+  ensure_installed = require('plugin.nvim-treesitter.languages'),
   highlight = {
     enable = true, -- false will disable the whole extension
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.

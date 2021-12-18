@@ -7,7 +7,6 @@ local function get_gps()
     if location ~= '' then
       return '> ' .. location
     end
-
   end
   return ''
 end
@@ -24,7 +23,7 @@ require('lualine').setup({
     lualine_a = {
       {
         'mode',
-      }
+      },
     },
     lualine_b = { 'branch' },
     lualine_c = {
@@ -34,8 +33,8 @@ require('lualine').setup({
         path = 1,
         padding = {
           left = 1,
-          right = 0
-        }
+          right = 0,
+        },
       },
       {
         get_gps,
@@ -71,8 +70,8 @@ require('lualine').setup({
         path = 1,
         padding = {
           left = 1,
-          right = 0
-        }
+          right = 0,
+        },
       },
       {
         get_gps,
