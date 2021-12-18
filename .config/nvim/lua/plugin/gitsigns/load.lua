@@ -40,7 +40,6 @@ local function is_ignored_file(bufnr)
   return in_fugitive_diff(bufnr) or is_ignored_file_name(bufnr)
 end
 
--- TODO: Remove number column and only show one column (gitsigns, lsp diagnostics)
 require('gitsigns').setup({
   signs = {
     add = { hl = 'GreenSign', text = '▍', numhl = 'GitSignsAddNr' },
