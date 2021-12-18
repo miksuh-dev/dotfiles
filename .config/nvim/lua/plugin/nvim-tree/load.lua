@@ -1,5 +1,3 @@
-local config = require('plugin.nvim-tree.config')
-
 vim.g.nvim_tree_ignore = {} -- empty by default
 vim.g.nvim_tree_gitignore = 0 -- 1 by default
 vim.g.nvim_tree_quit_on_open = 1 --0 by default, closes the tree when you open a file
@@ -142,7 +140,7 @@ require('nvim-tree').setup({
 
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = config.width,
+    width = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
     -- if true the tree will resize itself after opening a file
