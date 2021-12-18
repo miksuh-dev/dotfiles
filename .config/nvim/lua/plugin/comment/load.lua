@@ -1,5 +1,6 @@
 local util = require('common.util')
 
+-- Comment.nvim supported languages
 local ts_context_languages = {
   'javascript',
   'typescript',
