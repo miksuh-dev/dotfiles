@@ -127,6 +127,9 @@ return require('packer').startup({
         { 'v', '"' },
         { 'n', '"' },
       },
+      config = function()
+        require('plugin.registers.load')
+      end,
     })
 
     use({
