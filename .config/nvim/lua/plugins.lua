@@ -26,6 +26,13 @@ return require('packer').startup({
       config = function()
         require('plugin/vim-tmux-navigator.load')
       end,
+      keys = {
+        { 'n', '<C-H>' },
+        { 'n', '<C-J>' },
+        { 'n', '<C-K>' },
+        { 'n', '<C-L>' },
+        { 'n', '<C-Spaceh>' },
+      },
     })
 
     use({
@@ -236,7 +243,7 @@ return require('packer').startup({
 
     use({
       'b0o/schemastore.nvim',
-      method = 'schemastore',
+      module = 'schemastore',
     })
 
     ------------------------------------------------------------------------------------------------
