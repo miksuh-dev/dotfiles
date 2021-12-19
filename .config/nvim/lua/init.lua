@@ -11,3 +11,5 @@ require('plugin.nvim-tree')
 
 require('theme.monokai').setup()
 require('bindings')
+
+vim.cmd(':intro')
