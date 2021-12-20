@@ -207,7 +207,6 @@ M.load_syntax = function(palette)
     },
     Folded = {
       fg = palette.grey,
-      bg = palette.base3,
     },
     FoldColumn = {
       fg = palette.white,

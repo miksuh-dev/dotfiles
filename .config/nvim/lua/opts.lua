@@ -56,6 +56,4 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.lazyredraw = true
 
-vim.opt.fillchars = vim.opt.fillchars + 'vert:▎'
-
 vim.cmd('set guicursor=')
