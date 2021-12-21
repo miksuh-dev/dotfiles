@@ -45,8 +45,8 @@ vim.o.termguicolors = true
 vim.o.clipboard = 'unnamedplus'
 
 vim.wo.signcolumn = 'yes'
--- vim.wo.number = true
--- vim.wo.relativenumber = true
+vim.wo.number = true
+vim.wo.relativenumber = true
 vim.wo.cursorline = true
 
 vim.g.netrw_browse_split = 2
