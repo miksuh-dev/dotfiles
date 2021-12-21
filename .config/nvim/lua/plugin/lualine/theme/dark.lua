@@ -33,6 +33,14 @@ return {
     y = { fg = Colors.white, bg = Colors.none },
     z = { fg = Colors.white, bg = Colors.none },
   },
+  command = {
+    a = { fg = Colors.white, bg = Colors.purple, gui = 'bold' },
+    b = { fg = Colors.white, bg = Colors.none },
+    c = { fg = Colors.white, bg = Colors.none },
+    x = { fg = Colors.white, bg = Colors.none },
+    y = { fg = Colors.white, bg = Colors.none },
+    z = { fg = Colors.white, bg = Colors.none },
+  },
   inactive = {
     a = { fg = Colors.base7, bg = Colors.base4, gui = 'bold' },
     b = { fg = Colors.base7, bg = Colors.none },
