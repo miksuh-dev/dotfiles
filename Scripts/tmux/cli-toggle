@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+count=$(tmux list-panes | wc -l)
+
+fullscreen_height=$(tmux display -p '#{pane_height}')
+
+if [ $count == 1 ]; then
+  tmux split-window
+fi
+
+if [ $count == 2 ]; then
+  pane_height_1=$(tmux display -p -t 1 '#{pane_height}')
+  pane_height_2=$(tmux display -p -t 2 '#{pane_height}')
+
+  if [ $pane_height_1 == $pane_height_2 ]; then
+    tmux resize-pane -t 1 -Z
+  else
+    tmux resize-pane -t 1 -Z
+    tmux select-pane -t 2
+  fi
+
+fi
