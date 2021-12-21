@@ -34,7 +34,7 @@ return {
     z = { fg = Colors.white, bg = Colors.none },
   },
   command = {
-    a = { fg = Colors.white, bg = Colors.purple, gui = 'bold' },
+    a = { fg = Colors.white, bg = Colors.pink, gui = 'bold' },
     b = { fg = Colors.white, bg = Colors.none },
     c = { fg = Colors.white, bg = Colors.none },
     x = { fg = Colors.white, bg = Colors.none },
