@@ -1,5 +1,3 @@
-vim.cmd('syntax on')
-
 vim.g.mapleader = ','
 
 vim.o.expandtab = true

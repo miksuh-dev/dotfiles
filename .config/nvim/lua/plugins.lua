@@ -22,6 +22,13 @@ return require('packer').startup({
     })
 
     use({
+      'nathom/filetype.nvim',
+      config = function()
+        require('plugin.filetype.load')
+      end,
+    })
+
+    use({
       'eggbean/vim-tmux-navigator-no-wrapping',
       config = function()
         require('plugin/vim-tmux-navigator.load')
@@ -369,7 +376,6 @@ return require('packer').startup({
     use({
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
-      event = 'BufRead',
       module = 'nvim-treesitter',
       config = function()
         require('plugin.nvim-treesitter.load')
