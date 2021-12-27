@@ -28,7 +28,7 @@ return require('packer').startup({
         { 'n', '<C-J>' },
         { 'n', '<C-K>' },
         { 'n', '<C-L>' },
-        { 'n', '<C-Spaceh>' },
+        { 'n', '<C-Space>' },
       },
     })
 
@@ -195,6 +195,19 @@ return require('packer').startup({
       end,
       keys = {
         { 'n', '<leader>dd' },
+      },
+      cmd = {
+        'VimspectorAbortInstall',
+        'VimspectorDebugInfo',
+        'VimspectorEval',
+        'VimspectorInstall',
+        'VimspectorLoadSession',
+        'VimspectorMkSession',
+        'VimspectorReset',
+        'VimspectorShowOutput',
+        'VimspectorToggleLog',
+        'VimspectorUpdate',
+        'VimspectorWatchk',
       },
     })
 
