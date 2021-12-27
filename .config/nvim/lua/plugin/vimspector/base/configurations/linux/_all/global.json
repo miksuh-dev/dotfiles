@@ -2,7 +2,7 @@
   "$schema": "https://puremourning.github.io/vimspector/schema/vimspector.schema.json#",
   "configurations": {
     "Common - Node": {
-      "filetypes": ["javascript"],
+      "filetypes": ["javascript", "typescript"],
       "adapter": "vscode-node",
       "configuration": {
         "name": "Attaching to a process ID",
@@ -19,7 +19,12 @@
       }
     },
     "Common - Chrome": {
-      "filetypes": ["javascript"],
+      "filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+      ],
       "adapter": "chrome",
       "configuration": {
         "request": "launch",
@@ -32,6 +37,21 @@
           "all": "N",
           "uncaught": "N"
         }
+      }
+    },
+    "Common - Firefox": {
+      "adapter": "firefox",
+      "filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+      ],
+      "configuration": {
+        "request": "launch",
+        "url": "${url:port}",
+        "webRoot": "",
+        "reAttach": true
       }
     },
     "Common - Jest": {
