@@ -226,9 +226,20 @@ local function setup_servers()
         end
 
         if server == 'eslint' then
-          config.settings = {
-            format = { enable = false },
+          config.autostart = false
+          config.handlers = {
+            ['eslint/noLibrary'] = function()
+              vim.notify('ESLint missing from project', vim.log.levels.INFO)
+              return {}
+            end,
           }
+          config.settings = {
+            format = {
+              enable = true,
+            },
+            -- quiet = true,
+          }
+          -- config.root_dir = nvim_lsp.util.root_pattern('package.json')
         end
 
         if server == 'typescript' then

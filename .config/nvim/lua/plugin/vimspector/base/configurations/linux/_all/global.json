@@ -1,0 +1,60 @@
+{
+  "$schema": "https://puremourning.github.io/vimspector/schema/vimspector.schema.json#",
+  "configurations": {
+    "Common - Node": {
+      "filetypes": ["javascript"],
+      "adapter": "vscode-node",
+      "configuration": {
+        "name": "Attaching to a process ID",
+        "type": "node",
+        "request": "attach",
+        "skipFiles": ["node_modules/**/*.js", "<node_internals>/**/*.js"],
+        "processId": "${processId}"
+      },
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      }
+    },
+    "Common - Chrome": {
+      "filetypes": ["javascript"],
+      "adapter": "chrome",
+      "configuration": {
+        "request": "launch",
+        "url": "${url:port}",
+        "webRoot": ""
+      },
+      "skipFiles": ["node_modules/**/*.js", "<node_internals>/**/*.js"],
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      }
+    },
+    "Common - Jest": {
+      "adapter": "vscode-node",
+      "filetypes": ["javascript"],
+      "name": "Debug Jest",
+      "type": "node",
+      "runTtimeArgs": [
+        "--inspect-brk",
+        "jest",
+        "--no-coverage",
+        "-t",
+        "'${testName}'",
+        "--",
+        "${file}"
+      ],
+      "skipFiles": ["<node_internals>/**/*.js"],
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      }
+    }
+  }
+}
