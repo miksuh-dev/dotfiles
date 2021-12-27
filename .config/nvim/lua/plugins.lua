@@ -10,6 +10,9 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
+    --TODO: check these
+    -- https://github.com/nathom/filetype.nvim
+
     use({
       'wbthomason/packer.nvim',
     })
@@ -139,6 +142,14 @@ return require('packer').startup({
     use({
       'David-Kunz/jester',
       module = { 'jester' },
+    })
+
+    use({
+      'rmagatti/auto-session',
+      event = 'VimEnter',
+      config = function()
+        require('plugin.auto-session.load')
+      end,
     })
 
     ------------------------------------------------------------------------------------------------
