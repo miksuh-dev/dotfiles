@@ -5,7 +5,8 @@ count=$(tmux list-panes | wc -l)
 fullscreen_height=$(tmux display -p '#{pane_height}')
 
 if [ $count == 1 ]; then
-  tmux split-window
+  current_path=$(tmux display -p '#{pane_current_path}')
+  tmux split-window -c $current_path
 fi
 
 if [ $count == 2 ]; then
