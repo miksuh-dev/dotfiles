@@ -1,6 +1,6 @@
 vim.g.vimspector_enable_mappings = 'HUMAN'
 vim.g.vimspector_install_gadgets = { 'vscode-firefox-debug', 'vscode-node-debug2', 'debugger-for-chrome' }
-vim.g.vimspector_base_dir = vim.fn.expand('$HOME/.config/nvim/lua/plugin/vimspector/base')
+vim.g.vimspector_base_dir = vim.fn.expand('$HOME/.config/nvim/vimspector-base')
 
 local nnoremap = vim.keymap.nnoremap
 local nmap = vim.keymap.nmap

@@ -315,7 +315,7 @@ M.load_syntax = function(palette)
       bg = palette.base2,
     },
     EndOfBuffer = {
-      fg = palette.base2,
+      fg = palette.base5,
       bg = palette.none,
     },
     Conceal = {
