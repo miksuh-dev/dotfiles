@@ -2,22 +2,34 @@
 
 count=$(tmux list-panes | wc -l)
 
-fullscreen_height=$(tmux display -p '#{pane_height}')
-
 if [ $count == 1 ]; then
   current_path=$(tmux display -p '#{pane_current_path}')
-  tmux split-window -c $current_path
+
+
+  if [[ $1 == 'right' ]]; then
+    tmux split-window -h -c $current_path
+  else
+    tmux split-window -v -c $current_path
+  fi
+  exit 0
 fi
 
-if [ $count == 2 ]; then
-  pane_height_1=$(tmux display -p -t 1 '#{pane_height}')
-  pane_height_2=$(tmux display -p -t 2 '#{pane_height}')
+current_pane_index=$(tmux display -p "#{pane_index}")
 
-  if [ $pane_height_1 == $pane_height_2 ]; then
-    tmux resize-pane -t 1 -Z
-  else
-    tmux resize-pane -t 1 -Z
-    tmux select-pane -t 2
+if [[ $current_pane_index = 1 ]]; then
+  window_dimensions=$(tmux display -p '#{window_width}x#{window_height}')
+  pane_dimensions=$(tmux display -p '#{pane_width}x#{pane_height}')
+
+  if [[ $window_dimensions == $pane_dimensions ]]; then
+    move=true
   fi
 
+  tmux resize-pane -t 1 -Z
+
+  if [[ $move ]]; then
+    tmux select-pane -R
+    tmux select-pane -D
+  fi
+else
+  tmux resize-pane -t 1 -Z
 fi
