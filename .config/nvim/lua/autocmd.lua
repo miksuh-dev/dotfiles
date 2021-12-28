@@ -12,7 +12,7 @@ vim.cmd([[
 -- TODO FIX THIS
 -- vim.cmd([[
 -- augroup vimrc
--- "   autocmd!
--- "   autocmd FileType netrw if !empty(maparg('<c-l>', 'n')) | unmap <buffer> <C-l>
--- " augroup END
+--   autocmd!
+--   autocmd filetype netrw if !empty(maparg('<c-l>', 'n')) | unmap <buffer> <C-l>
+-- augroup END
 -- ]])
