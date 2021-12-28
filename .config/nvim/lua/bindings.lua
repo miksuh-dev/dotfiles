@@ -81,6 +81,20 @@ nnoremap({
   silent = true,
 })
 
+nnoremap({
+  '<leader>n',
+  function()
+    if vim.bo.filetype ~= 'netrw' then
+      local cmd = ':Explore' .. vim.fn.getcwd()
+      vim.cmd(cmd)
+
+      return
+    end
+    vim.cmd(':Rexplore')
+  end,
+  silent = true,
+})
+
 -- Auto center after mark jump
 map('n', "'", '"\'" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
 map('n', '`', '"`" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })

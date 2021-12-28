@@ -10,9 +10,6 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    --TODO: check these
-    -- https://github.com/nathom/filetype.nvim
-
     use({
       'wbthomason/packer.nvim',
     })
@@ -57,6 +54,11 @@ return require('packer').startup({
         { 'n', 'cs' },
         { 'n', 'ds' },
       },
+    })
+
+    use({
+      'tpope/vim-vinegar',
+      ft = 'netrw',
     })
 
     use({
@@ -233,14 +235,6 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Navigation -------------------------------------------
     ------------------------------------------------------------------------------------------------
-
-    use({
-      'kyazdani42/nvim-tree.lua',
-      module = { 'nvim-tree' },
-      config = function()
-        require('plugin.nvim-tree.load')
-      end,
-    })
 
     use({
       'nvim-telescope/telescope.nvim',

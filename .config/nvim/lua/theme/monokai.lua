@@ -813,6 +813,21 @@ M.load_plugin_syntax = function(palette)
     BqfPreviewBorder = {
       fg = palette.border,
     },
+    netrwDir = {
+      fg = palette.aqua,
+      style = 'bold',
+    },
+    netrwClassify = {
+      fg = palette.white,
+    },
+    netrwTreeBar = {
+      fg = palette.base6,
+    },
+
+    netrwMarkFile = {
+      bg = palette.pink,
+      fg = palette.white,
+    },
   }
 end
 

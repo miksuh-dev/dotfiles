@@ -47,8 +47,15 @@ vim.wo.signcolumn = 'yes'
 -- vim.wo.relativenumber = true
 vim.wo.cursorline = true
 
-vim.g.netrw_browse_split = 2
-vim.g.netrw_winsize = 2
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+
+vim.g.netrw_preview = 1
+vim.g.netrw_alto = 0
+
+vim.g.netrw_winsize = -30
+
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
