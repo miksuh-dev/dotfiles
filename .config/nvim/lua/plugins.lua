@@ -23,6 +23,7 @@ return require('packer').startup({
 
     use({
       'nathom/filetype.nvim',
+      branch = 'dev',
       config = function()
         require('plugin.filetype.load')
       end,
