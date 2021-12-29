@@ -1,35 +1,52 @@
 #!/usr/bin/bash
 
-count=$(tmux list-panes | wc -l)
+direction=$1
+current_path=$(tmux display -p '#{pane_current_path}')
 
-if [ $count == 1 ]; then
-  current_path=$(tmux display -p '#{pane_current_path}')
+if [ -z $1 ]; then
+  direction='down'
+fi
 
+function new_split_pane() {
+  local direction=$1
+  local path=$2
 
   if [[ $1 == 'right' ]]; then
-    tmux split-window -h -c $current_path
+    tmux split-window -h -c $path
   else
-    tmux split-window -v -c $current_path
+    tmux split-window -v -c $path
   fi
+}
+
+function is_in_main() {
+  current_pane_index=$(tmux display -p "#{pane_index}")
+
+  if [[ $current_pane_index == 1 ]]; then
+    echo 1
+  fi
+} 
+
+pane_count=$(tmux list-panes | wc -l)
+if [ $pane_count == 1 ]; then
+  new_split_pane $direction $current_path
   exit 0
 fi
 
-current_pane_index=$(tmux display -p "#{pane_index}")
+is_main=$(is_in_main)
+if [[ $is_main ]]; then
+  main_path=$(tmux display -p -t 1 '#{pane_current_path}')
+  sub_path=$(tmux display -p -t 2 '#{pane_current_path}')
 
-if [[ $current_pane_index = 1 ]]; then
-  window_dimensions=$(tmux display -p '#{window_width}x#{window_height}')
-  pane_dimensions=$(tmux display -p '#{pane_width}x#{pane_height}')
-
-  if [[ $window_dimensions == $pane_dimensions ]]; then
-    move=true
+  if [[ $main_path != $sub_path ]]; then
+    # clear line and send cd to updated path
+    tmux send-keys -t 2 c-u "cd $current_path" Enter
   fi
-
-  tmux resize-pane -t 1 -Z
-
-  if [[ $move ]]; then
-    tmux select-pane -R
-    tmux select-pane -D
-  fi
-else
-  tmux resize-pane -t 1 -Z
 fi
+
+tmux resize-pane -t 1 -Z
+
+if [[ $is_main ]]; then
+  tmux select-pane -R
+  tmux select-pane -D
+fi
+
