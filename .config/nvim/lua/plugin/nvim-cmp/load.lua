@@ -39,9 +39,7 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      -- For `ultisnips` user.
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- vim.fn['UltiSnips#Anon'](args.body)
     end,
   },
   mapping = {
@@ -85,7 +83,6 @@ cmp.setup({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[NvimLua]',
-        ultisnips = '[UltiSnips]',
         luasnip = '[LuaSnip]',
         cmp_tabnine = '[Tabnine]',
         calc = '[Calc]',
@@ -100,8 +97,8 @@ cmp.setup({
   sources = {
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
-    { name = 'buffer' },
     { name = 'cmp_tabnine' },
+    { name = 'buffer' },
     { name = 'tmux' },
     { name = 'calc' },
     { name = 'path' },
