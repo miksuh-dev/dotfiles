@@ -245,6 +245,17 @@ return require('packer').startup({
       end,
     })
 
+    use({
+      'nvim-telescope/telescope-file-browser.nvim',
+      requires = 'telescope.nvim',
+      config = function()
+        require('plugin.telescope-file-browser.load')
+      end,
+      keys = {
+        { 'n', '<leader>n' },
+      },
+    })
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Lsp --------------------------------------------------
     ------------------------------------------------------------------------------------------------
