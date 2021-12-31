@@ -1,4 +1,13 @@
-local fb_actions = require('telescope').extensions.file_browser.actions
+local function lazy_file_browser(mapping)
+  local telescope = require('telescope')
+  if telescope.extensions.file_browser == nil then
+    telescope.load_extension('file_browser')
+    return
+  end
+
+  local fb_actions = telescope.extensions.file_browser.actions
+  return fb_actions[mapping]
+end
 
 require('telescope').setup({
   defaults = {
@@ -18,28 +27,28 @@ require('telescope').setup({
       file_browser = {
         mappings = {
           ['i'] = {
-            ['<A-e>'] = fb_actions.toggle_all,
-            ['<C-d>'] = fb_actions.remove_file,
-            ['<C-e>'] = fb_actions.create_file,
-            ['<C-f>'] = fb_actions.toggle_browser,
-            ['<C-g>'] = fb_actions.goto_parent_dir,
-            ['<C-h>'] = fb_actions.toggle_hidden,
-            ['<C-o>'] = fb_actions.open_file,
-            ['<C-r>'] = fb_actions.rename_file,
-            ['<C-w>'] = fb_actions.goto_cwd,
-            ['<C-y>'] = fb_actions.copy_file,
+            ['<A-e>'] = lazy_file_browser('toggle_all'),
+            ['<C-d>'] = lazy_file_browser('remove_file'),
+            ['<C-e>'] = lazy_file_browser('create_file'),
+            ['<C-f>'] = lazy_file_browser('toggle_browser'),
+            ['<C-g>'] = lazy_file_browser('goto_parent_dir'),
+            ['<C-h>'] = lazy_file_browser('toggle_hidden'),
+            ['<C-o>'] = lazy_file_browser('open_file'),
+            ['<C-r>'] = lazy_file_browser('rename_file'),
+            ['<C-w>'] = lazy_file_browser('goto_cwd'),
+            ['<C-y>'] = lazy_file_browser('copy_file'),
           },
           ['n'] = {
-            ['dd'] = fb_actions.remove_file,
-            ['e'] = fb_actions.create_file,
-            ['f'] = fb_actions.toggle_browser,
-            ['g'] = fb_actions.goto_parent_dir,
-            ['h'] = fb_actions.toggle_hidden,
-            ['m'] = fb_actions.move_file,
-            ['o'] = fb_actions.open_file,
-            ['r'] = fb_actions.rename_file,
-            ['w'] = fb_actions.goto_cwd,
-            ['y'] = fb_actions.copy_file,
+            ['dd'] = lazy_file_browser('remove_file'),
+            ['e'] = lazy_file_browser('create_file'),
+            ['f'] = lazy_file_browser('toggle_browser'),
+            ['g'] = lazy_file_browser('goto_parent_dir'),
+            ['h'] = lazy_file_browser('toggle_hidden'),
+            ['m'] = lazy_file_browser('move_file'),
+            ['o'] = lazy_file_browser('open_file'),
+            ['r'] = lazy_file_browser('rename_file'),
+            ['w'] = lazy_file_browser('goto_cwd'),
+            ['y'] = lazy_file_browser('copy_file'),
           },
         },
       },
