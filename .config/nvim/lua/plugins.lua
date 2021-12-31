@@ -357,8 +357,7 @@ return require('packer').startup({
     })
 
     use({
-      'andersevenrud/compe-tmux',
-      branch = 'cmp',
+      'andersevenrud/cmp-tmux',
       after = 'nvim-cmp',
       requires = 'nvim-cmp',
     })
