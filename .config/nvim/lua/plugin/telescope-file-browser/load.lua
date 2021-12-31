@@ -5,7 +5,7 @@ local nnoremap = vim.keymap.nnoremap
 nnoremap({
   '<leader>n',
   function()
-    require('telescope').extensions.file_browser.file_browser()
+    require('telescope').extensions.file_browser.file_browser(opts)
   end,
   silent = true,
 })
