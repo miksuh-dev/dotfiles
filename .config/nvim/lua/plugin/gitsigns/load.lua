@@ -20,6 +20,8 @@ local function get_buffer_info(buffnr)
   end
 end
 
+-- TODO: change this so that instead of checking single buffer check window all buffers and then disable
+-- in all window buffers if in diff. (currently gitsigns are only disabled in one buffer, fugivitve:/// one)
 local function in_fugitive_diff(bufnr)
   local buffer = get_buffer_info(bufnr)
   local variables = buffer.variables
