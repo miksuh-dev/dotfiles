@@ -1,14 +1,3 @@
-local function lazy_file_browser(mapping)
-  local telescope = require('telescope')
-  if telescope.extensions.file_browser == nil then
-    telescope.load_extension('file_browser')
-    return
-  end
-
-  local fb_actions = telescope.extensions.file_browser.actions
-  return fb_actions[mapping]
-end
-
 require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
@@ -23,37 +12,6 @@ require('telescope').setup({
         ['<c-q>'] = require('telescope.actions').send_to_qflist,
       },
     },
-    extensions = {
-      file_browser = {
-        mappings = {
-          ['i'] = {
-            ['<A-e>'] = lazy_file_browser('toggle_all'),
-            ['<C-d>'] = lazy_file_browser('remove_file'),
-            ['<C-e>'] = lazy_file_browser('create_file'),
-            ['<C-f>'] = lazy_file_browser('toggle_browser'),
-            ['<C-g>'] = lazy_file_browser('goto_parent_dir'),
-            ['<C-h>'] = lazy_file_browser('toggle_hidden'),
-            ['<C-o>'] = lazy_file_browser('open_file'),
-            ['<C-r>'] = lazy_file_browser('rename_file'),
-            ['<C-w>'] = lazy_file_browser('goto_cwd'),
-            ['<C-y>'] = lazy_file_browser('copy_file'),
-          },
-          ['n'] = {
-            ['dd'] = lazy_file_browser('remove_file'),
-            ['e'] = lazy_file_browser('create_file'),
-            ['f'] = lazy_file_browser('toggle_browser'),
-            ['g'] = lazy_file_browser('goto_parent_dir'),
-            ['h'] = lazy_file_browser('toggle_hidden'),
-            ['m'] = lazy_file_browser('move_file'),
-            ['o'] = lazy_file_browser('open_file'),
-            ['r'] = lazy_file_browser('rename_file'),
-            ['w'] = lazy_file_browser('goto_cwd'),
-            ['y'] = lazy_file_browser('copy_file'),
-          },
-        },
-      },
-    },
-
     vimgrep_arguments = {
       'rg',
       '--color=never',

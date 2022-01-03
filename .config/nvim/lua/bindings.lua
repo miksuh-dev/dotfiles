@@ -81,6 +81,8 @@ nnoremap({
   silent = true,
 })
 
+map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', opts)
+
 -- nnoremap({
 --   '<leader>n',
 --   function()

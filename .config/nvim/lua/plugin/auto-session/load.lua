@@ -9,7 +9,7 @@ local opts = {
   auto_session_create_enabled = true,
   auto_save_enabled = nil,
   auto_restore_enabled = nil,
-  auto_session_suppress_dirs = { '~/' },
+  auto_session_suppress_dirs = { '~/', '.git/', 'fugitive:///' },
 }
 
 require('auto-session').setup(opts)

@@ -57,11 +57,6 @@ return require('packer').startup({
     })
 
     use({
-      'tpope/vim-vinegar',
-      ft = 'netrw',
-    })
-
-    use({
       'numToStr/Comment.nvim',
       keys = {
         'gc',
@@ -245,17 +240,24 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'nvim-telescope/telescope-file-browser.nvim',
-      requires = 'telescope.nvim',
-      config = function()
-        require('plugin.telescope-file-browser.load')
-      end,
-      keys = {
-        { 'n', '<leader>n' },
-      },
-    })
+    -- use({
+    --   'nvim-telescope/telescope-file-browser.nvim',
+    --   requires = 'telescope.nvim',
+    --   config = function()
+    --     require('plugin.telescope-file-browser.load')
+    --   end,
+    --   -- keys = {
+    --   --   { 'n', '<leader>n' },
+    --   -- },
+    -- })
 
+    use({
+      'kyazdani42/nvim-tree.lua',
+      module = { 'nvim-tree' },
+      config = function()
+        require('plugin.nvim-tree.load')
+      end,
+    })
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Lsp --------------------------------------------------
     ------------------------------------------------------------------------------------------------
