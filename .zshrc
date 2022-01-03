@@ -121,9 +121,26 @@ LANGUAGE=en_US.UTF-8
 LANG=en_US.UTF-8
 
 export PATH="$PATH:$HOME/.npm-global:$HOME/.npm-global/bin/:/snap/bin:/usr/sbin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin"
+
 export NODE_OPTIONS=--max_old_space_size=4096
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
-export MANPAGER='nvim +Man!'
 
 [ -f $HOME/.secrets ] && source $HOME/.secrets
 
+# NVM stuff:
+#
+# export PATH="$PATH:/snap/bin:/usr/sbin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin"
+# export NVM_DIR="$HOME/.nvm"
+#
+# NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+# NODE_GLOBALS+=(node nvm yarn)
+#
+# _load_nvm() {
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# }
+#
+# for cmd in "${NODE_GLOBALS[@]}"; do
+#   eval "function ${cmd}(){ unset -f ${NODE_GLOBALS[*]}; _load_nvm; unset -f _load_nvm; ${cmd} \$@; }"
+# done
+# unset cmd NODE_GLOBALS
