@@ -589,6 +589,9 @@ M.load_plugin_syntax = function(palette)
     NvimTreeFolderIcon = {
       fg = palette.blue,
     },
+    NvimTreeIndentMarker = {
+      fg = palette.blue,
+    },
     NvimTreeFolderName = {
       fg = palette.white,
     },
