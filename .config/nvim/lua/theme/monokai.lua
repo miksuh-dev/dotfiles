@@ -101,7 +101,8 @@ M.load_syntax = function(palette)
       bg = palette.base3,
     },
     YankVisual = {
-      bg = palette.base6,
+      bg = palette.aqua,
+      fg = palette.black,
     },
     Search = {
       fg = palette.base2,
