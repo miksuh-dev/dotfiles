@@ -29,17 +29,11 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = false,
 })
 
-local function show_diagnostics()
-  vim.lsp.diagnostic.show_line_diagnostics({
-    border = require('common.border'),
-  })
-end
-
 -- wrapper function to set go_to_prev
 local function go_to_prev()
   vim.lsp.diagnostic.goto_prev({
     wrap = false,
-    popup_opts = {
+    float = {
       border = require('common.border'),
     },
   })
@@ -49,7 +43,7 @@ end
 local function go_to_next()
   vim.lsp.diagnostic.goto_next({
     wrap = false,
-    popup_opts = {
+    float = {
       border = require('common.border'),
     },
   })
@@ -110,7 +104,7 @@ local on_attach = function(client, bufnr)
   nnoremap({ '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', silent = true, buffer = true })
   nnoremap({
     '<leader>?',
-    show_diagnostics,
+    ':lua vim.diagnostic.open_float(0, { scope = "line" })<CR>',
     silent = true,
     buffer = true,
   })
@@ -122,7 +116,7 @@ local on_attach = function(client, bufnr)
     buffer = true,
   })
   nnoremap({ '<leader>j', go_to_next, silent = true, buffer = true })
-  nnoremap({ '<leader>J', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent = true, buffer = true })
+  nnoremap({ '<leader>J', '<cmd>lua vim.diagnostic.setloclist()<CR>', silent = true, buffer = true })
 
   nnoremap({
     '<leader>a',
