@@ -503,7 +503,7 @@ myManageHook = composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "Firefox" <&&> resource =? "Toolkit" --> doFloat -- firefox pip
-    , className =? "Microsoft Teams - Preview" <&&> stringProperty "WM_NAME" =? "Microsoft Teams Notification" --> doFloat
+    , title =? "Microsoft Teams Notification" --> doSideFloat NE <+> doF W.focusDown
     , className =? "MainThrd"       --> doFloat
     , title =? "plasma-desktop"     --> doIgnore
     , className =? "stalonetray"    --> doIgnore
