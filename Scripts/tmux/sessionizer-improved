@@ -1,0 +1,78 @@
+#!/usr/bin/bash
+
+# TODO: add prefix to custom entries and cut ~/Projects from project paths.
+declare -A custom
+custom[default]=~/
+custom[vimconfig]=~/.config/nvim/lua
+
+function get_custom_keys() {
+  for key in "${!custom[@]}"; do
+    echo $key
+  done
+}
+
+function in_custom() {
+  local val=$1
+
+  for key in "${!custom[@]}"; do
+    if [ "$val" == "$key" ]; then
+      echo 1
+    fi
+  done
+}
+
+function get_custom_value() {
+  local val=$1
+
+  for key in "${!custom[@]}"; do
+    if [ "$val" == "$key" ]; then
+      echo ${custom[$key]}
+    fi
+  done
+}
+
+function travel() {
+  find $1 -mindepth 1 -maxdepth 1 -type d | while read dir; do
+
+    # Is leaf node (contains files)
+    if [[ -n $(find $dir -mindepth 1 -maxdepth 1 -not -type d) ]]; then
+      # echo "($dir - leaf)"
+      echo $dir
+      continue
+    fi
+
+    # Contains .git directory
+    if [[ -d "$dir/.git" ]]; then
+      echo $dir
+      continue
+    fi
+
+    echo $(travel $dir)
+  done
+}
+
+selected=$(echo "$(travel ~/Projects) $(get_custom_keys)" | tr " " "\n" | fzf)
+
+if [[ $(in_custom $selected) ]]; then
+  selected_name=$selected
+  selected=$(get_custom_value $selected)
+else
+  selected_name=$(basename "$selected" | tr . _)
+fi
+
+tmux_running=$(pgrep tmux)
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t=$selected_name
+else
+    tmux switch-client -t=$selected_name
+fi
+
