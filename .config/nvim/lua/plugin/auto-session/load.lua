@@ -1,7 +1,7 @@
 -- recommended session options for auto-session
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
-local opts = {
+require('auto-session').setup({
   log_level = 'error',
   auto_session_enable_last_session = false,
   auto_session_root_dir = vim.fn.stdpath('data') .. '/sessions/',
@@ -9,7 +9,5 @@ local opts = {
   auto_session_create_enabled = true,
   auto_save_enabled = nil,
   auto_restore_enabled = nil,
-  auto_session_suppress_dirs = { '~/', '.git/', 'fugitive:///' },
-}
-
-require('auto-session').setup(opts)
+  auto_session_suppress_dirs = { '~/' },
+})
