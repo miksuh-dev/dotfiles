@@ -226,7 +226,6 @@ local function setup_servers()
         end
 
         if server == 'eslint' then
-          config.autostart = false
           config.handlers = {
             ['eslint/noLibrary'] = function()
               vim.notify('ESLint missing from project', vim.log.levels.INFO)
