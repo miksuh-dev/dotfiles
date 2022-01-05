@@ -34,6 +34,12 @@ function get_custom_value() {
 function travel() {
   find $1 -mindepth 1 -maxdepth 1 -type d | while read dir; do
 
+    # Contains .git directory
+    if [[ -d "$dir/.git" ]]; then
+      echo $dir
+      continue
+    fi
+
     # Is leaf node (contains files)
     if [[ -n $(find $dir -mindepth 1 -maxdepth 1 -not -type d) ]]; then
       # echo "($dir - leaf)"
@@ -41,12 +47,7 @@ function travel() {
       continue
     fi
 
-    # Contains .git directory
-    if [[ -d "$dir/.git" ]]; then
-      echo $dir
-      continue
-    fi
-
+    # Is middle folder (no files, just folders)
     echo $(travel $dir)
   done
 }
@@ -58,6 +59,10 @@ if [[ $(in_custom $selected) ]]; then
   selected=$(get_custom_value $selected)
 else
   selected_name=$(basename "$selected" | tr . _)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
 fi
 
 tmux_running=$(pgrep tmux)
