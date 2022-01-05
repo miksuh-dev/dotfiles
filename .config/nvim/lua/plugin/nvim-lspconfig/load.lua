@@ -12,6 +12,7 @@ require('nvim-lsp-installer').settings({
   },
 })
 
+-- TODO: Fix this (not showing border)
 -- Globally set border for hover
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = require('common.border'),
