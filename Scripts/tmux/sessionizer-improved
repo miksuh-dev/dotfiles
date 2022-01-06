@@ -31,18 +31,26 @@ function get_custom_value() {
   done
 }
 
+function is_leaf_dir () {
+  local dir=$1
+
+    # Contains .git directory
+  if [[ -d "$dir/.git" ]]; then
+    echo 1
+    return 0
+  fi
+
+  # (contains files)
+  if [[ -n $(find $dir -mindepth 1 -maxdepth 1 -not -type d) ]]; then
+    echo 1
+    return 0
+  fi
+}
+
 function travel() {
   find $1 -mindepth 1 -maxdepth 1 -type d | while read dir; do
 
-    # Contains .git directory
-    if [[ -d "$dir/.git" ]]; then
-      echo $dir
-      continue
-    fi
-
-    # Is leaf node (contains files)
-    if [[ -n $(find $dir -mindepth 1 -maxdepth 1 -not -type d) ]]; then
-      # echo "($dir - leaf)"
+    if [[ $(is_leaf_dir $dir) ]]; then
       echo $dir
       continue
     fi
@@ -80,4 +88,3 @@ if [[ -z $TMUX ]]; then
 else
     tmux switch-client -t=$selected_name
 fi
-
