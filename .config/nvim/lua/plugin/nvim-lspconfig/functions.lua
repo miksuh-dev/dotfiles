@@ -12,15 +12,15 @@ M.hover = function()
   vim.lsp.buf.hover()
 end
 
-M.implementations = function()
+M.implementation = function()
   require('telescope.builtin').lsp_implementations({ file_ignore_patterns = {} })
 end
 
-M.type_definitions = function()
+M.type_definition = function()
   require('telescope.builtin').lsp_type_definitions({ file_ignore_patterns = {} })
 end
 
-M.references = function()
+M.reference = function()
   require('telescope.builtin').lsp_references({ file_ignore_patterns = {} })
 end
 
@@ -52,19 +52,19 @@ M.set_loc_list = function()
   vim.diagnostic.setloclist()
 end
 
-M.code_actions = function()
+M.code_action = function()
   require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))
 end
 
-M.range_code_actions = function()
+M.range_code_action = function()
   require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))
 end
 
-M.formatting = function()
+M.format = function()
   vim.lsp.buf.formatting({ timeout_ms = 5000 })
 end
 
-M.range_formatting = function()
+M.range_format = function()
   vim.lsp.buf.range_formatting({ timeout_ms = 5000 })
 end
 
