@@ -19,6 +19,5 @@ nmap({ '<Leader>dh', '<Plug>VimspectorStepOut' })
 nmap({ '<Leader>dl', '<Plug>VimspectorStepInto' })
 nmap({ '<Leader>dj', '<Plug>VimspectorStepOver' })
 
--- TODO Change this to lsp hover override if inside vimspector
 nmap({ '<Leader>di', '<Plug>VimspectorBalloonEval' })
 xmap({ '<Leader>di', '<Plug>VimspectorBalloonEval' })
