@@ -1,33 +1,29 @@
-local nnoremap = vim.keymap.nnoremap
+local set = vim.keymap.set
 
-nnoremap({ '<leader>gf', ':diffget //2<CR>' })
-nnoremap({ '<leader>gj', ':diffget //3<CR>' })
-nnoremap({ '<leader>gd', ':Gvdiffsplit<CR>', silent = true })
-nnoremap({ '<leader>gs', ':G<CR>', silent = true })
+set('n', '<leader>gf', ':diffget //2<CR>')
+set('n', '<leader>gj', ':diffget //3<CR>')
+set('n', '<leader>gd', ':Gvdiffsplit<CR>', { silent = true })
+set('n', '<leader>gs', ':G<CR>', { silent = true })
 
-nnoremap({ '<leader>gb', ':Git blame<CR>', silent = true })
-nnoremap({ '<leader>ge', ':Gedit<CR>', silent = true })
+set('n', '<leader>gb', ':Git blame<CR>', { silent = true })
+set('n', '<leader>ge', ':Gedit<CR>', { silent = true })
 
-nnoremap({
-  '<leader>gs',
-  function()
-    if vim.bo.filetype ~= 'fugitive' then
-      vim.cmd(':G')
-    else
-      vim.cmd(':q')
-    end
-  end,
+set('n', '<leader>gs', function()
+  if vim.bo.filetype ~= 'fugitive' then
+    vim.cmd(':G')
+  else
+    vim.cmd(':q')
+  end
+end, {
   silent = true,
 })
-nnoremap({
-  '<leader>gb',
-  function()
-    if vim.bo.filetype ~= 'fugitiveblame' then
-      vim.cmd(':Git blame')
-    else
-      vim.cmd(':q')
-    end
-  end,
 
+set('n', '<leader>gb', function()
+  if vim.bo.filetype ~= 'fugitiveblame' then
+    vim.cmd(':Git blame')
+  else
+    vim.cmd(':q')
+  end
+end, {
   silent = true,
 })

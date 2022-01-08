@@ -1,102 +1,85 @@
-local map = vim.api.nvim_set_keymap
-local nnoremap = vim.keymap.nnoremap
+local set = vim.keymap.set
 
 local opts = { noremap = true }
 local optsSilent = { noremap = true, silent = true }
 
 -- Clear search on space
-map('n', '<CR>', ':noh<CR><CR>', optsSilent)
+set('n', '<CR>', ':noh<CR><CR>', optsSilent)
 
 -- Keep selection after indent
-map('v', '>', '>gv', opts)
-map('v', '<', '<gv', opts)
+set('v', '>', '>gv', opts)
+set('v', '<', '<gv', opts)
 
 -- Consist y
-map('n', 'Y', 'y$', opts)
+set('n', 'Y', 'y$', opts)
 
 -- Window resize
-map('n', '<C-Left>', ':vertical resize +3<Cr>', optsSilent)
-map('n', '<C-Right>', ':vertical resize -3<CR>', optsSilent)
-map('n', '<C-Up>', ':resize +3<CR>', optsSilent)
-map('n', '<C-Down>', ':resize -3<CR>', optsSilent)
+set('n', '<C-Left>', ':vertical resize +3<Cr>', optsSilent)
+set('n', '<C-Right>', ':vertical resize -3<CR>', optsSilent)
+set('n', '<C-Up>', ':resize +3<CR>', optsSilent)
+set('n', '<C-Down>', ':resize -3<CR>', optsSilent)
 
 -- Ignore register
-map('n', '<leader>d', '"_d', opts)
-map('v', '<leader>d', '"_d', opts)
+set('n', '<leader>d', '"_d', opts)
+set('v', '<leader>d', '"_d', opts)
 
-map('n', '<leader>D', '"_D', opts)
-map('v', '<leader>D', '"_D', opts)
+set('n', '<leader>D', '"_D', opts)
+set('v', '<leader>D', '"_D', opts)
 
-map('n', '<leader>c', '"_c', opts)
-map('v', '<leader>c', '"_c', opts)
+set('n', '<leader>c', '"_c', opts)
+set('v', '<leader>c', '"_c', opts)
 
-map('n', '<leader>C', '"_C', opts)
-map('v', '<leader>C', '"_C', opts)
+set('n', '<leader>C', '"_C', opts)
+set('v', '<leader>C', '"_C', opts)
 
-map('n', '<leader>x', '"_x', opts)
-map('v', '<leader>x', '"_x', opts)
+set('n', '<leader>x', '"_x', opts)
+set('v', '<leader>x', '"_x', opts)
 
-map('n', '<leader>X', '"_X', opts)
-map('v', '<leader>X', '"_X', opts)
+set('n', '<leader>X', '"_X', opts)
+set('v', '<leader>X', '"_X', opts)
 
 -- Keeping it centered
-map('n', 'n', 'nzzzv', opts)
-map('n', 'N', 'Nzzzv', opts)
-map('n', 'J', 'mzJ`z', opts)
+set('n', 'n', 'nzzzv', opts)
+set('n', 'N', 'Nzzzv', opts)
+set('n', 'J', 'mzJ`z', opts)
 
 -- Quick macro
-map('n', '<BS>', '@q', opts)
+set('n', '<BS>', '@q', opts)
 
 -- Alternate file
-map('n', '<Space>', '<C-^>', opts)
+set('n', '<Space>', '<C-^>', opts)
 
 -- Jump longer
-map('n', '<Up>', '5k', opts)
-map('v', '<Up>', '5k', opts)
+set('n', '<Up>', '5k', opts)
+set('v', '<Up>', '5k', opts)
 
-map('n', '<Down>', '5j', opts)
-map('v', '<Down>', '5j', opts)
+set('n', '<Down>', '5j', opts)
+set('v', '<Down>', '5j', opts)
 
 -- Quick increase/decrease
-map('n', '-', '<C-x>', opts)
-map('n', '+', '<C-a>', opts)
+set('n', '-', '<C-x>', opts)
+set('n', '+', '<C-a>', opts)
 
 -- Move visual selection
-map('v', '<C-k>', ":m '<-2<CR>gv=gv", opts)
-map('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)
+set('v', '<C-k>', ":m '<-2<CR>gv=gv", opts)
+set('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)
 
 -- Quickfix and location list toggle
-map('n', '<leader>q', ":lua require('common.list').toggle_quickfix_list()<CR>", optsSilent)
-map('n', '<leader>l', ":lua require('common.list').toggle_location_list()<CR>", optsSilent)
+set('n', '<leader>q', ":lua require('common.list').toggle_quickfix_list()<CR>", optsSilent)
+set('n', '<leader>l', ":lua require('common.list').toggle_location_list()<CR>", optsSilent)
 
 -- Source lua file
-nnoremap({
-  '<leader>so',
-  function()
-    if vim.bo.filetype == 'lua' then
-      vim.cmd(':luafile %')
-      print('Sourced ' .. vim.fn.bufname())
-    end
-  end,
+set('n', '<leader>so', function()
+  if vim.bo.filetype == 'lua' then
+    vim.cmd(':luafile %')
+    print('Sourced ' .. vim.fn.bufname())
+  end
+end, {
   silent = true,
 })
 
-map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', opts)
-
--- nnoremap({
---   '<leader>n',
---   function()
---     if vim.bo.filetype ~= 'netrw' then
---       local cmd = ':Explore' .. vim.fn.getcwd()
---       vim.cmd(cmd)
---
---       return
---     end
---     vim.cmd(':Rexplore')
---   end,
---   silent = true,
--- })
+set('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', opts)
 
 -- Auto center after mark jump
-map('n', "'", '"\'" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
-map('n', '`', '"`" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
+set('n', "'", '"\'" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
+set('n', '`', '"`" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })

@@ -1,4 +1,4 @@
-local nnoremap = vim.keymap.nnoremap
+local set = vim.keymap.set
 
 vim.g.db_ui_use_nerd_fonts = true
 vim.g.db_ui_winwidth = 35
@@ -31,7 +31,7 @@ vim.g.db_ui_icons = {
   connection_error = '✕',
 }
 
-nnoremap({ '<leader>du', ':DBUI<CR>', silent = true })
+set('n', '<leader>du', ':DBUI<CR>', { silent = true })
 
 vim.cmd([[
   autocmd FileType dbui nmap <buffer> X <Plug>(DBUI_DeleteLine)

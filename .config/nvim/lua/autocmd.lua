@@ -1,6 +1,3 @@
--- allow binding functions
-vim.cmd([[runtime plugin/astronauta.vim]])
-
 -- Highlight yanked text
 vim.cmd([[
   augroup highlight_yank

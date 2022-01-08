@@ -1,92 +1,65 @@
 local util = require('common.util')
-local nnoremap = vim.keymap.nnoremap
+local set = vim.keymap.set
 
-nnoremap({
-  '<leader>ff',
-  function()
-    require('telescope.builtin').find_files({
-      hidden = true,
-    })
-  end,
+set('n', '<leader>ff', function()
+  require('telescope.builtin').find_files({
+    hidden = true,
+  })
+end, {
   silent = true,
 })
 
-nnoremap({
-  '<leader>fd',
-  function()
-    require('telescope.builtin').lsp_workspace_diagnostics()
-  end,
+set('n', '<leader>fd', function()
+  require('telescope.builtin').lsp_workspace_diagnostics()
+end, { silent = true })
+
+set('n', '<leader>fs', function()
+  if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
+    require('telescope.builtin').git_status()
+  else
+    print('Not a git directory')
+  end
+end, {
   silent = true,
 })
 
-nnoremap({
-  '<leader>fs',
-  function()
-    if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
-      require('telescope.builtin').git_status()
-    else
-      print('Not a git directory')
-    end
-  end,
+set('n', '<leader>fg', function()
+  require('telescope.builtin').live_grep()
+end, { silent = true })
+
+set('n', '<leader>fb', function()
+  require('telescope.builtin').buffers()
+end, { silent = true })
+
+set('n', '<leader>fh', function()
+  require('telescope.builtin').help_tags()
+end, { silent = true })
+
+set('n', '<c-p>', function()
+  if util.is_directory(vim.fn.getcwd() .. '/.git') then
+    require('telescope.builtin').git_files()
+  else
+    require('telescope.builtin').find_files()
+  end
+end, {
   silent = true,
 })
 
-nnoremap({
-  '<leader>fg',
-  function()
-    require('telescope.builtin').live_grep()
-  end,
+set('n', '<leader>fw', function()
+  require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })
+end, {
   silent = true,
 })
 
-nnoremap({
-  '<leader>fb',
-  function()
-    require('telescope.builtin').buffers()
-  end,
+set('n', '<leader>fW', function()
+  require('telescope.builtin').grep_string({ search = vim.fn.expand('<cWORD>') })
+end, {
   silent = true,
 })
 
-nnoremap({
-  '<leader>fh',
-  function()
-    require('telescope.builtin').help_tags()
-  end,
-  silent = true,
-})
 
-nnoremap({
-  '<c-p>',
-  function()
-    if util.is_directory(vim.fn.getcwd() .. '/.git') then
-      require('telescope.builtin').git_files()
-    else
-      require('telescope.builtin').find_files()
-    end
-  end,
-  silent = true,
-})
+set('n', '<leader>hl', function()
 
-nnoremap({
-  '<leader>fw',
-  function()
-    require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })
-  end,
-  silent = true,
-})
+  require('telescope.builtin').highlights()
 
-nnoremap({
-  '<leader>fW',
-  function()
-    require('telescope.builtin').grep_string({ search = vim.fn.expand('<cWORD>') })
-  end,
-  silent = true,
-})
-
-nnoremap({
-  '<leader>hl',
-  function()
-    require('telescope.builtin').highlights()
-  end,
-  silent = true,
-})
+end, { silent = true })

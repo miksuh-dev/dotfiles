@@ -1,4 +1,4 @@
-local nnoremap = vim.keymap.nnoremap
+local set = vim.keymap.set
 
 local config = {
   cmd = "jest -t '$result' -- $file", -- run command
@@ -21,28 +21,16 @@ local config = {
 }
 
 -- Run nearest test(s) under the cursor
-nnoremap({
-  '<leader>tt',
-  function()
-    require('jester').run(config)
-  end,
-  silent = true,
-})
+set('n', '<leader>tt', function()
+  require('jester').run(config)
+end, { silent = true })
 
 -- Run current file
-nnoremap({
-  '<leader>tf',
-  function()
-    require('jester').run_file(config)
-  end,
-  silent = true,
-})
+set('n', '<leader>tf', function()
+  require('jester').run_file(config)
+end, { silent = true })
 
 -- Run last test(s)
-nnoremap({
-  '<leader>tl',
-  function()
-    require('jester').run_last(config)
-  end,
-  silent = true,
-})
+set('n', '<leader>tl', function()
+  require('jester').run_last(config)
+end, { silent = true })

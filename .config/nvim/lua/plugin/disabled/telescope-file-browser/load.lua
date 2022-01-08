@@ -1,11 +1,7 @@
 require('telescope').load_extension('file_browser')
 
-local nnoremap = vim.keymap.nnoremap
+local set = vim.keymap.set
 
-nnoremap({
-  '<leader>n',
-  function()
-    require('telescope').extensions.file_browser.file_browser(opts)
-  end,
-  silent = true,
-})
+set('n', '<leader>n', function()
+  require('telescope').extensions.file_browser.file_browser()
+end, { silent = true })

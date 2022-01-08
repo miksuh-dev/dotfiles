@@ -15,10 +15,6 @@ return require('packer').startup({
     })
 
     use({
-      'tjdevries/astronauta.nvim',
-    })
-
-    use({
       'nathom/filetype.nvim',
       branch = 'dev',
       config = function()
