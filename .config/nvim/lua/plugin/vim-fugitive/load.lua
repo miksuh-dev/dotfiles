@@ -1,14 +1,14 @@
-local set = vim.keymap.set
+local map = vim.keymap.set
 
-set('n', '<leader>gf', ':diffget //2<CR>')
-set('n', '<leader>gj', ':diffget //3<CR>')
-set('n', '<leader>gd', ':Gvdiffsplit<CR>', { silent = true })
-set('n', '<leader>gs', ':G<CR>', { silent = true })
+map('n', '<leader>gf', ':diffget //2<CR>')
+map('n', '<leader>gj', ':diffget //3<CR>')
+map('n', '<leader>gd', ':Gvdiffsplit<CR>', { silent = true })
+map('n', '<leader>gs', ':G<CR>', { silent = true })
 
-set('n', '<leader>gb', ':Git blame<CR>', { silent = true })
-set('n', '<leader>ge', ':Gedit<CR>', { silent = true })
+map('n', '<leader>gb', ':Git blame<CR>', { silent = true })
+map('n', '<leader>ge', ':Gedit<CR>', { silent = true })
 
-set('n', '<leader>gs', function()
+map('n', '<leader>gs', function()
   if vim.bo.filetype ~= 'fugitive' then
     vim.cmd(':G')
   else
@@ -18,7 +18,7 @@ end, {
   silent = true,
 })
 
-set('n', '<leader>gb', function()
+map('n', '<leader>gb', function()
   if vim.bo.filetype ~= 'fugitiveblame' then
     vim.cmd(':Git blame')
   else

@@ -4,9 +4,9 @@ local function in_db_ui(filetype)
   return filetype == 'sql' or filetype == 'dbout'
 end
 
-local set = vim.keymap.set
+local map = vim.keymap.set
 
-set('n', '<leader>n', function()
+map('n', '<leader>n', function()
   if vim.bo.filetype == 'NvimTree' then
     return require('nvim-tree').close()
   end
@@ -26,7 +26,7 @@ set('n', '<leader>n', function()
   return require('nvim-tree').focus()
 end)
 
-set('n', '<leader>N', function()
+map('n', '<leader>N', function()
   if vim.bo.filetype == 'NvimTree' then
     return require('nvim-tree').close()
   end

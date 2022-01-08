@@ -1,7 +1,7 @@
 local util = require('common.util')
-local set = vim.keymap.set
+local map = vim.keymap.set
 
-set('n', '<leader>ff', function()
+map('n', '<leader>ff', function()
   require('telescope.builtin').find_files({
     hidden = true,
   })
@@ -9,11 +9,11 @@ end, {
   silent = true,
 })
 
-set('n', '<leader>fd', function()
+map('n', '<leader>fd', function()
   require('telescope.builtin').lsp_workspace_diagnostics()
 end, { silent = true })
 
-set('n', '<leader>fs', function()
+map('n', '<leader>fs', function()
   if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0 then
     require('telescope.builtin').git_status()
   else
@@ -23,19 +23,19 @@ end, {
   silent = true,
 })
 
-set('n', '<leader>fg', function()
+map('n', '<leader>fg', function()
   require('telescope.builtin').live_grep()
 end, { silent = true })
 
-set('n', '<leader>fb', function()
+map('n', '<leader>fb', function()
   require('telescope.builtin').buffers()
 end, { silent = true })
 
-set('n', '<leader>fh', function()
+map('n', '<leader>fh', function()
   require('telescope.builtin').help_tags()
 end, { silent = true })
 
-set('n', '<c-p>', function()
+map('n', '<c-p>', function()
   if util.is_directory(vim.fn.getcwd() .. '/.git') then
     require('telescope.builtin').git_files()
   else
@@ -45,21 +45,18 @@ end, {
   silent = true,
 })
 
-set('n', '<leader>fw', function()
+map('n', '<leader>fw', function()
   require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })
 end, {
   silent = true,
 })
 
-set('n', '<leader>fW', function()
+map('n', '<leader>fW', function()
   require('telescope.builtin').grep_string({ search = vim.fn.expand('<cWORD>') })
 end, {
   silent = true,
 })
 
-
-set('n', '<leader>hl', function()
-
+map('n', '<leader>hl', function()
   require('telescope.builtin').highlights()
-
 end, { silent = true })

@@ -1,4 +1,4 @@
-local set = vim.keymap.set
+local map = vim.keymap.set
 
 local config = {
   cmd = "jest -t '$result' -- $file", -- run command
@@ -21,16 +21,16 @@ local config = {
 }
 
 -- Run nearest test(s) under the cursor
-set('n', '<leader>tt', function()
+map('n', '<leader>tt', function()
   require('jester').run(config)
 end, { silent = true })
 
 -- Run current file
-set('n', '<leader>tf', function()
+map('n', '<leader>tf', function()
   require('jester').run_file(config)
 end, { silent = true })
 
 -- Run last test(s)
-set('n', '<leader>tl', function()
+map('n', '<leader>tl', function()
   require('jester').run_last(config)
 end, { silent = true })
