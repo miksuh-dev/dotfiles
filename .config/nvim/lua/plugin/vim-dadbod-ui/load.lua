@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 vim.g.db_ui_use_nerd_fonts = true
-vim.g.db_ui_winwidth = 35
+vim.g.db_ui_winwidth = 40
 
 vim.g.db_ui_icons = {
   expanded = {
