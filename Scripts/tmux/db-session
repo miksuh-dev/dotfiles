@@ -6,6 +6,7 @@ window_name='DBUI'
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+# TODO  create window first and then send message (prevent closing of terminal when exit nvim DBUI)
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $HOME
     tmux new-window -n $window_name -t $session_name: 'nvim -c DBUI /tmp'
