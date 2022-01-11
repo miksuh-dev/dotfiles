@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 # TODO: add prefix to custom entries and cut ~/Projects from project paths.
+# TODO: Add caching: Script to save directories (crontab @reboot?) and then just look for cached folders
 declare -A custom
 custom[default]=~/
 custom[vimconfig]=~/.config/nvim/lua
