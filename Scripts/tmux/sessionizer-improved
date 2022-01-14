@@ -1,10 +1,18 @@
 #!/usr/bin/bash
 
-# TODO: add prefix to custom entries and cut ~/Projects from project paths.
-# TODO: Add caching: Script to save directories (crontab @reboot?) and then just look for cached folders
+#TODO: add prefix to custom entries and cut ~/Projects from project paths.
+cache_location='/tmp/sessionizer-cache'
+cache_duration=3600 # Time until refresh (seconds)
+project_folder=~/Projects
+
 declare -A custom
 custom[default]=~/
 custom[vimconfig]=~/.config/nvim/lua
+
+function refresh_cache () {
+  touch $cache_location
+  echo "$(travel $project_folder)" | tr " " "\n" > $cache_location
+}
 
 function get_custom_keys() {
   for key in "${!custom[@]}"; do
@@ -61,7 +69,22 @@ function travel() {
   done
 }
 
-selected=$(echo "$(travel ~/Projects) $(get_custom_keys)" | tr " " "\n" | fzf)
+
+if [ "$1" == "refresh" ]; then
+  echo 'Refreshed!'
+  refresh_cache
+fi
+
+if [[ ! -e $cache_location ]]; then
+  refresh_cache
+fi
+
+
+if (( ( $(date +%s) - $(date -r $cache_location "+%s") ) )); then
+  refresh_cache
+fi
+
+selected=$(echo "$(cat $cache_location) $(get_custom_keys)" | tr " " "\n" | fzf)
 
 if [[ $(in_custom $selected) ]]; then
   selected_name=$selected
