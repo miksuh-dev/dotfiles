@@ -64,6 +64,7 @@ M.load_syntax = function(palette)
     Pmenu = {
       fg = palette.white,
       bg = palette.base2,
+      style = 'NONE',
     },
     PmenuSel = {
       fg = palette.white,
@@ -76,7 +77,7 @@ M.load_syntax = function(palette)
       style = 'bold',
     },
     PmenuThumb = {
-      fg = palette.purple,
+      fg = palette.base7,
       bg = palette.base7,
     },
     PmenuSbar = {
@@ -827,7 +828,6 @@ M.load_plugin_syntax = function(palette)
     netrwTreeBar = {
       fg = palette.base6,
     },
-
     netrwMarkFile = {
       bg = palette.pink,
       fg = palette.white,
