@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# TODO: If trying to close non active toggle cli, two presses are required
 direction=$1
 current_path=$(tmux display -p '#{pane_current_path}')
 
