@@ -196,13 +196,13 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'gelguy/wilder.nvim',
-      event = 'CmdlineEnter',
-      config = function()
-        require('plugin.wilder.load')
-      end,
-    })
+    -- use({
+    --   'gelguy/wilder.nvim',
+    --   event = 'CmdlineEnter',
+    --   config = function()
+    --     require('plugin.wilder.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- DEBUG ------------------------------------------------
@@ -369,15 +369,15 @@ return require('packer').startup({
       requires = 'nvim-cmp',
     })
 
-    use({
-      'tzachar/cmp-tabnine',
-      run = './install.sh',
-      after = 'nvim-cmp',
-      requires = 'hrsh7th/nvim-cmp',
-      config = function()
-        require('plugin.tabnine.load')
-      end,
-    })
+    --    use({
+    --      'tzachar/cmp-tabnine',
+    --      run = './install.sh',
+    --      after = 'nvim-cmp',
+    --      requires = 'hrsh7th/nvim-cmp',
+    --      config = function()
+    --        require('plugin.tabnine.load')
+    --      end,
+    --    })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
@@ -385,7 +385,7 @@ return require('packer').startup({
 
     use({
       'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
+      run = ':TSUpdateSync',
       module = 'nvim-treesitter',
       config = function()
         require('plugin.nvim-treesitter.load')
