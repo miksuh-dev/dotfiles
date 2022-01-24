@@ -50,12 +50,12 @@ require('gitsigns').setup({
   linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   keymaps = {
-    -- Default keymap options
-    noremap = true,
-
-    ['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'" },
-    ['n [h'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'" },
-
+    -- -- Default keymap options
+    -- noremap = true,
+    --
+    -- ['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'" },
+    -- ['n [h'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'" },
+    --
     -- ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
     -- ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
     -- ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
@@ -68,8 +68,8 @@ require('gitsigns').setup({
     -- ['n <leader>hU'] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
 
     -- Text objects
-    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+    -- ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+    -- ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
   },
   on_attach = function(bufnr)
     return not is_ignored_file(bufnr)
