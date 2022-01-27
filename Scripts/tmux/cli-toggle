@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-# TODO: If trying to close non active toggle cli, two presses are required
 direction=$1
 current_path=$(tmux display -p '#{pane_current_path}')
 
@@ -27,13 +26,21 @@ function is_in_main() {
   fi
 } 
 
+function is_maximized() {
+  if [[ $(tmux display -p "#{window_height}x#{window_width}") == $(tmux display -p "#{pane_height}x#{pane_width}") ]]; then
+    echo 1
+  fi
+} 
+
 pane_count=$(tmux list-panes | wc -l)
+# create new cli toggle 
 if [ $pane_count == 1 ]; then
   new_split_pane $direction $current_path
   exit 0
 fi
 
 is_main=$(is_in_main)
+# in main panel
 if [[ $is_main ]]; then
   main_path=$(tmux display -p -t 1 '#{pane_current_path}')
   sub_path=$(tmux display -p -t 2 '#{pane_current_path}')
@@ -46,7 +53,7 @@ fi
 
 tmux resize-pane -t 1 -Z
 
-if [[ $is_main ]]; then
+if [[ $is_main && ! $(is_maximized) ]]; then
   tmux select-pane -R
   tmux select-pane -D
 fi
