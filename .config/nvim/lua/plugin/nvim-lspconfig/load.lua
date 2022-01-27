@@ -162,6 +162,14 @@ for _, server in pairs(required_servers) do
         config.root_dir = nvim_lsp.util.root_pattern('tsconfig.json', 'package.json')
       end
 
+      if server == 'grammarly' then
+        config.filetypes = { 'txt', 'markdown' }
+        config.root_dir = function(fname)
+          return nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname)
+            or vim.fn.getcwd()
+        end
+      end
+
       if server == 'graphql' then
         config.autostart = false
 
