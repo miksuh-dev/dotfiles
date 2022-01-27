@@ -9,5 +9,5 @@ require('auto-session').setup({
   auto_session_create_enabled = true,
   auto_save_enabled = nil,
   auto_restore_enabled = nil,
-  auto_session_suppress_dirs = { '~/', '/tmp' },
+  auto_session_suppress_dirs = { '~/', '/tmp', 'man://' },
 })
