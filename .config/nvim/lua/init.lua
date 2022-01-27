@@ -8,6 +8,7 @@ require('disabled')
 require('plugin.telescope')
 require('plugin.jester')
 require('plugin.nvim-tree')
+require('plugin.harpoon')
 
 require('theme.monokai').setup()
 require('bindings')
