@@ -1,0 +1,12 @@
+# youtube-dl
+alias ytdl-aac="youtube-dl --extract-audio --audio-format aac "
+alias ytdl-best="youtube-dl --extract-audio --audio-format best "
+alias ytdl-flac="youtube-dl --extract-audio --audio-format flac "
+alias ytdl-m4a="youtube-dl --extract-audio --audio-format m4a "
+alias ytdl-mp3="youtube-dl --extract-audio --audio-format mp3 "
+alias ytdl-opus="youtube-dl --extract-audio --audio-format opus "
+alias ytdl-vorbis="youtube-dl --extract-audio --audio-format vorbis "
+alias ytdl-wav="youtube-dl --extract-audio --audio-format wav "
+alias ytdl-best="youtube-dl -f bestvideo+bestaudio "
+
+
