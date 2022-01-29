@@ -55,8 +55,6 @@ for _, server in pairs(required_servers) do
 
       if exists then
         config = lsp_create_config(config)
-        -- else -- TODO Setup rest of the active language server's config
-        --   print('not found ' .. server)
       end
 
       requested_server:setup(config)
