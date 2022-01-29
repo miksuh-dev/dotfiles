@@ -2,5 +2,9 @@
   "console.log": {
     "prefix": "clv",
     "body": "console.log('${1}', ${2})"
+  },
+  "conditional-spread": {
+    "prefix": "cds",
+    "body": "  ...${1} && { ...${2} }"
   }
 }
