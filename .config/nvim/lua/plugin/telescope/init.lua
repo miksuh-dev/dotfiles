@@ -2,9 +2,7 @@ local util = require('common.util')
 local map = vim.keymap.set
 
 map('n', '<leader>ff', function()
-  require('telescope.builtin').find_files({
-    hidden = true,
-  })
+  require('telescope.builtin').current_buffer_fuzzy_find()
 end, {
   silent = true,
 })
@@ -39,7 +37,7 @@ map('n', '<c-p>', function()
   if util.is_directory(vim.fn.getcwd() .. '/.git') then
     require('telescope.builtin').git_files()
   else
-    require('telescope.builtin').find_files()
+    require('telescope.builtin').find_files({ hidden = true })
   end
 end, {
   silent = true,
