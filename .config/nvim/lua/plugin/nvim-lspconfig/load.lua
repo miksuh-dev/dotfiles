@@ -51,9 +51,9 @@ for _, server in pairs(required_servers) do
 
   if server_available then
     requested_server:on_ready(function()
-      local exists, lsp_create_config = pcall(require, 'plugin.nvim-lspconfig.language-server.' .. server)
+      local success, lsp_create_config = pcall(require, 'plugin.nvim-lspconfig.language-server.' .. server)
 
-      if exists then
+      if success then
         config = lsp_create_config(config)
       end
 
