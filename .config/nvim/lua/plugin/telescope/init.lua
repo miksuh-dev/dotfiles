@@ -2,6 +2,14 @@ local util = require('common.util')
 local map = vim.keymap.set
 
 map('n', '<leader>ff', function()
+  require('telescope.builtin').find_files({
+    hidden = true,
+  })
+end, {
+  silent = true,
+})
+
+map('n', '<leader>/', function()
   require('telescope.builtin').current_buffer_fuzzy_find()
 end, {
   silent = true,
