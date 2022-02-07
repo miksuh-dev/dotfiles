@@ -8,7 +8,7 @@ local map = vim.keymap.set
 
 map('n', '<leader>n', function()
   if vim.bo.filetype == 'NvimTree' then
-    return require('nvim-tree').close()
+    return require('nvim-tree.view').close()
   end
 
   if vim.bo.filetype == 'dbui' then
@@ -28,7 +28,7 @@ end)
 
 map('n', '<leader>N', function()
   if vim.bo.filetype == 'NvimTree' then
-    return require('nvim-tree').close()
+    return require('nvim-tree.view').close()
   end
   return require('nvim-tree').focus()
 end)
