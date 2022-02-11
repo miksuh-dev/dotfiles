@@ -237,10 +237,33 @@ return require('packer').startup({
     })
 
     use({
-      'kyazdani42/nvim-tree.lua',
-      module = { 'nvim-tree' },
+      'MunifTanjim/nui.nvim',
+      module = 'nui',
+    })
+
+    use({
+      'nvim-neo-tree/neo-tree.nvim',
+      branch = 'main',
+      cmd = {
+        'NeoTreeClose',
+        'NeoTreeFloat',
+        'NeoTreeFloatToggle',
+        'NeoTreeFocus',
+        'NeoTreeFocusToggle',
+        'NeoTreeLogs',
+        'NeoTreePasteConfig',
+        'NeoTreeReveal',
+        'NeoTreeRevealInSplit',
+        'NeoTreeRevealInSplitToggle',
+        'NeoTreeRevealToggle',
+        'NeoTreeSetLogLevel',
+        'NeoTreeShow',
+        'NeoTreeShowInSplitD',
+        'NeoTreeShowInSplitToggle',
+        'NeoTreeShowToggle',
+      },
       config = function()
-        require('plugin.nvim-tree.load')
+        require('plugin.neo-tree.load')
       end,
     })
 

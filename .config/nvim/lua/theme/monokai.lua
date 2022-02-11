@@ -580,6 +580,18 @@ M.load_plugin_syntax = function(palette)
       style = 'undercurl',
       sp = palette.aqua,
     },
+    LspDiagnosticsSignError = {
+      fg = palette.red,
+    },
+    LspDiagnosticsSignWarning = {
+      fg = palette.yellow,
+    },
+    LspDiagnosticsSignInformation = {
+      fg = palette.white,
+    },
+    LspDiagnosticsSignHint = {
+      fg = palette.aqua,
+    },
     CursorWord0 = {
       bg = palette.white,
       fg = palette.black,
@@ -606,6 +618,19 @@ M.load_plugin_syntax = function(palette)
     },
     NvimTreeOpenedFile = {
       fg = palette.aqua,
+    },
+    NeoTreeDirectoryIcon = {
+      fg = palette.blue,
+      style = 'bold',
+    },
+    NeoTreeRootName = {
+      fg = palette.pink,
+    },
+    NeoTreeFileNameOpened = {
+      fg = palette.aqua,
+    },
+    NeoTreeDimText = {
+      fg = palette.pink,
     },
     TelescopeSelection = {
       fg = palette.white,
