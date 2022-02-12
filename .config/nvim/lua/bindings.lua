@@ -56,10 +56,6 @@ map('v', '<Up>', '5k', opts)
 map('n', '<Down>', '5j', opts)
 map('v', '<Down>', '5j', opts)
 
--- Quick increase/decrease
-map('n', '-', '<C-x>', opts)
-map('n', '+', '<C-a>', opts)
-
 -- Move visual selection
 map('v', '<C-k>', ":m '<-2<CR>gv=gv", opts)
 map('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)
