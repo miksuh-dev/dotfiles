@@ -1,6 +1,19 @@
 -- recommended session options for auto-session
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
+local ignored_filetypes = {
+  'neo-tree',
+  'fugitive',
+  'dbui',
+  'help',
+}
+
+local ignored_directories = {
+  '~/',
+  '/tmp',
+  'man://',
+}
+
 require('auto-session').setup({
   log_level = 'error',
   auto_session_enable_last_session = false,
@@ -9,5 +22,6 @@ require('auto-session').setup({
   auto_session_create_enabled = true,
   auto_save_enabled = nil,
   auto_restore_enabled = nil,
-  auto_session_suppress_dirs = { '~/', '/tmp', 'man://' },
+  auto_session_suppress_dirs = ignored_directories,
+  bypass_session_save_file_types = ignored_filetypes,
 })
