@@ -4,7 +4,7 @@ local root_dir_files = {
   'jsconfig.json',
   '.git',
 }
-local filetypes = { 'txt', 'markdown' }
+local filetypes = { 'markdown' }
 
 return function(config)
   config.filetypes = filetypes
