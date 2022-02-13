@@ -38,7 +38,7 @@ require('neo-tree').setup({
         local succuss, index = pcall(Marked.get_index_of, path)
         if succuss and index and index > 0 then
           return {
-            text = string.format('  %d', index),
+            text = string.format(' -> %d', index),
             highlight = config.highlight or 'NeoTreeDirectoryIcon',
           }
         else
@@ -158,7 +158,6 @@ require('neo-tree').setup({
         ['p'] = 'paste_from_clipboard',
         ['q'] = 'close_window',
         ['<leader>n'] = 'close_window',
-        ['?'] = 'open_only',
       },
     },
   },
@@ -177,8 +176,8 @@ require('neo-tree').setup({
         ['.'] = 'none',
         ['r'] = 'none',
 
-        ['l'] = 'expand_folder',
-        ['h'] = 'collapse_folder',
+        -- ['l'] = 'expand_folder',
+        -- ['h'] = 'collapse_folder',
         ['<cr>'] = 'open',
         ['s'] = 'open_split',
         ['v'] = 'open_vsplit',
@@ -190,7 +189,7 @@ require('neo-tree').setup({
         ['rn'] = 'rename',
         ['yy'] = 'copy_to_clipboard',
         ['dd'] = 'cut_to_clipboard',
-        ['p'] = 'paste_from_clipbord',
+        -- ['p'] = 'paste_from_clipbord',
         ['bd'] = 'buffer_delete',
         ['<leader>n'] = 'close_window',
       },
@@ -225,11 +224,11 @@ require('neo-tree').setup({
         -- ['gp'] = 'git_push',
         -- ['gg'] = 'git_commit_and_push',
 
-        ['<cr>'] = 'open_without_folder_collapse',
+        -- ['<cr>'] = 'open_without_folder_collapse',
         ['s'] = 'open_split',
         ['v'] = 'open_vsplit',
-        ['l'] = 'expand_folder',
-        ['h'] = 'collapse_folder',
+        -- ['l'] = 'expand_folder',
+        -- ['h'] = 'collapse_folder',
         ['R'] = 'refresh',
         ['X'] = 'delete',
         ['rn'] = 'rename',
