@@ -31,6 +31,57 @@ require('neo-tree').setup({
     },
   },
   filesystem = {
+    components = {
+      harpoon_index = function(config, node)
+        local Marked = require('harpoon.mark')
+        local path = node:get_id()
+        local succuss, index = pcall(Marked.get_index_of, path)
+        if succuss and index and index > 0 then
+          return {
+            text = string.format(' => %d', index),
+            highlight = config.highlight or 'NeoTreeDirectoryIcon',
+          }
+        else
+          return {}
+        end
+      end,
+    },
+    commands = {
+      expand_folder = function(state)
+        local node = state.tree:get_node()
+
+        if node.type == 'directory' then
+          if not node:is_expanded() then
+            local cmds = require('neo-tree.sources.filesystem.commands')
+            return cmds.open(state)
+          end
+        end
+      end,
+      collapse_folder = function(state)
+        local node = state.tree:get_node()
+
+        if node.type == 'directory' then
+          if node:is_expanded() then
+            local cmds = require('neo-tree.sources.filesystem.commands')
+            return cmds.close_node(state)
+          end
+        end
+      end,
+      open_without_folder_collapse = function(state)
+        local node = state.tree:get_node()
+        local cmds = require('neo-tree.sources.filesystem.commands')
+
+        if node.type == 'file' then
+          return cmds.open(state)
+        end
+
+        if node.type == 'directory' then
+          if not node:is_expanded() then
+            return cmds.open(state)
+          end
+        end
+      end,
+    },
     filters = { --These filters are applied to both browsing and searching
       show_hidden = true,
       respect_gitignore = false,
@@ -63,6 +114,7 @@ require('neo-tree').setup({
           'name',
           use_git_status_colors = true,
         },
+        { 'harpoon_index' },
         { 'clipboard' },
         { 'diagnostics' },
         { 'git_status' },
@@ -84,11 +136,11 @@ require('neo-tree').setup({
         ['.'] = 'none',
         ['r'] = 'none',
 
-        ['<cr>'] = 'open',
+        ['<cr>'] = 'open_without_folder_collapse',
         ['s'] = 'open_split',
         ['v'] = 'open_vsplit',
-        ['l'] = 'open',
-        ['h'] = 'close_node',
+        ['l'] = 'expand_folder',
+        ['h'] = 'collapse_folder',
         ['U'] = 'navigate_up',
         ['cd'] = 'set_root',
         ['H'] = 'toggle_hidden',
@@ -106,6 +158,7 @@ require('neo-tree').setup({
         ['p'] = 'paste_from_clipboard',
         ['q'] = 'close_window',
         ['<leader>n'] = 'close_window',
+        ['?'] = 'open_only',
       },
     },
   },
@@ -124,7 +177,8 @@ require('neo-tree').setup({
         ['.'] = 'none',
         ['r'] = 'none',
 
-        ['l'] = 'open',
+        ['l'] = 'expand_folder',
+        ['h'] = 'collapse_folder',
         ['<cr>'] = 'open',
         ['s'] = 'open_split',
         ['v'] = 'open_vsplit',
@@ -171,10 +225,11 @@ require('neo-tree').setup({
         -- ['gp'] = 'git_push',
         -- ['gg'] = 'git_commit_and_push',
 
-        ['<cr>'] = 'open',
+        ['<cr>'] = 'open_without_folder_collapse',
         ['s'] = 'open_split',
         ['v'] = 'open_vsplit',
-        ['h'] = 'close_node',
+        ['l'] = 'expand_folder',
+        ['h'] = 'collapse_folder',
         ['R'] = 'refresh',
         ['X'] = 'delete',
         ['rn'] = 'rename',
