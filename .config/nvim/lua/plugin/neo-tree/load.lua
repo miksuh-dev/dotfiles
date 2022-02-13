@@ -17,8 +17,8 @@ require('neo-tree').setup({
       highlight = 'NeoTreeIndentMarker',
     },
     icon = {
-      folder_closed = '',
-      folder_open = '',
+      folder_closed = '',
+      folder_open = '',
       folder_empty = 'ﰊ',
       default = '*',
     },
@@ -38,7 +38,7 @@ require('neo-tree').setup({
         local succuss, index = pcall(Marked.get_index_of, path)
         if succuss and index and index > 0 then
           return {
-            text = string.format(' => %d', index),
+            text = string.format('  %d', index),
             highlight = config.highlight or 'NeoTreeDirectoryIcon',
           }
         else
