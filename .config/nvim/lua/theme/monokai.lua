@@ -600,25 +600,25 @@ M.load_plugin_syntax = function(palette)
       bg = palette.white,
       fg = palette.black,
     },
-    NvimTreeFolderIcon = {
-      fg = palette.blue,
-    },
-    NvimTreeIndentMarker = {
-      fg = palette.blue,
-    },
-    NvimTreeFolderName = {
-      fg = palette.white,
-    },
-    NvimTreeRootFolder = {
-      fg = palette.pink,
-    },
-    NvimTreeSpecialFile = {
-      fg = palette.white,
-      style = 'NONE',
-    },
-    NvimTreeOpenedFile = {
-      fg = palette.aqua,
-    },
+    -- NvimTreeFolderIcon = {
+    --   fg = palette.blue,
+    -- },
+    -- NvimTreeIndentMarker = {
+    --   fg = palette.blue,
+    -- },
+    -- NvimTreeFolderName = {
+    --   fg = palette.white,
+    -- },
+    -- NvimTreeRootFolder = {
+    --   fg = palette.pink,
+    -- },
+    -- NvimTreeSpecialFile = {
+    --   fg = palette.white,
+    --   style = 'NONE',
+    -- },
+    -- NvimTreeOpenedFile = {
+    --   fg = palette.aqua,
+    -- },
     NeoTreeDirectoryIcon = {
       fg = palette.blue,
       style = 'bold',
@@ -631,6 +631,15 @@ M.load_plugin_syntax = function(palette)
     },
     NeoTreeDimText = {
       fg = palette.pink,
+    },
+    NeoTreeDirectoryName = {
+      fg = palette.white,
+    },
+    NeoTreeFileName = {
+      fg = palette.white,
+    },
+    NeoTreeIndentMarker = {
+      fg = palette.base4,
     },
     TelescopeSelection = {
       fg = palette.white,

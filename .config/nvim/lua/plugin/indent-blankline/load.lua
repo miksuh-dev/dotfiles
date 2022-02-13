@@ -1,4 +1,4 @@
-vim.g.indent_blankline_filetype_exclude = { 'help' }
+vim.g.indent_blankline_filetype_exclude = { 'help', 'neo-tree' }
 
 require('indent_blankline').setup({
   show_end_of_line = false,

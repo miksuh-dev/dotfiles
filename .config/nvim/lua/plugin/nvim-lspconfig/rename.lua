@@ -1,70 +1,4 @@
-local M = {}
-
-M.declaration = function()
-  vim.lsp.buf.declaration()
-end
-
-M.definition = function()
-  require('telescope.builtin').lsp_definitions({ file_ignore_patterns = {} })
-end
-
-M.hover = function()
-  vim.lsp.buf.hover()
-end
-
-M.implementation = function()
-  require('telescope.builtin').lsp_implementations({ file_ignore_patterns = {} })
-end
-
-M.type_definition = function()
-  require('telescope.builtin').lsp_type_definitions({ file_ignore_patterns = {} })
-end
-
-M.reference = function()
-  require('telescope.builtin').lsp_references({ file_ignore_patterns = {} })
-end
-
-M.signature_help = function()
-  vim.lsp.buf.signature_help()
-end
-
-M.diagnostics_line = function()
-  vim.diagnostic.open_float(0, { scope = 'line' })
-end
-
-M.goto_prev = function()
-  vim.lsp.diagnostic.goto_prev({
-    wrap = false,
-  })
-end
-
-M.goto_next = function()
-  vim.lsp.diagnostic.goto_next({
-    wrap = false,
-  })
-end
-
-M.set_loc_list = function()
-  vim.diagnostic.setloclist()
-end
-
-M.code_action = function()
-  require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))
-end
-
-M.range_code_action = function()
-  require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))
-end
-
-M.format = function()
-  vim.lsp.buf.formatting({ timeout_ms = 5000 })
-end
-
-M.range_format = function()
-  vim.lsp.buf.range_formatting({ timeout_ms = 5000 })
-end
-
-M.rename = function()
+local function nui_lsp_rename()
   local Input = require('nui.input')
   local event = require('nui.utils.autocmd').event
 
@@ -103,16 +37,15 @@ M.rename = function()
 
   local popup_options = {
     -- border for the window
-    -- asd
     border = {
-      style = require('common.border'),
+      style = 'rounded',
       text = {
-        top = ' New name: ',
+        top = '[Rename]',
         top_align = 'left',
       },
     },
     -- highlight for the window.
-    -- highlight = 'PmenuSel:PmenuSen',
+    highlight = 'Normal:Normal',
     -- place the popup window relative to the
     -- buffer position of the identifier
     relative = {
@@ -138,7 +71,7 @@ M.rename = function()
   local input = Input(popup_options, {
     -- set the default value to current name
     default_value = curr_name,
-    -- pass the `on,submit` callback function we wrote earlier
+    -- pass the `on_submit` callback function we wrote earlier
     on_submit = on_submit,
     prompt = '',
   })
@@ -152,4 +85,6 @@ M.rename = function()
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
-return M
+return {
+  lsp_rename = nui_lsp_rename,
+}
