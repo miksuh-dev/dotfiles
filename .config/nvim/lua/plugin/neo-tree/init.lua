@@ -13,7 +13,7 @@ map('n', '-', function()
     return vim.cmd(':DBUI')
   end
 
-  vim.cmd(':NeoTreeRevealInSplitToggle')
+  vim.cmd(':NeoTreeRevealInSplit')
 end)
 
 map('n', '<leader>-', function()
