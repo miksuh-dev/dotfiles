@@ -135,6 +135,8 @@ require('neo-tree').setup({
         ['<bs>'] = 'none',
         ['.'] = 'none',
         ['r'] = 'none',
+        ['f'] = 'none',
+        ['<c-x>'] = 'none',
 
         ['<cr>'] = 'open_without_folder_collapse',
         ['s'] = 'open_split',
