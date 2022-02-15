@@ -32,6 +32,26 @@ map('n', '<leader>5', function()
   require('harpoon.ui').nav_file(5)
 end, { silent = true })
 
+map('n', '<leader>6', function()
+  require('harpoon.ui').nav_file(6)
+end, { silent = true })
+
+map('n', '<leader>7', function()
+  require('harpoon.ui').nav_file(7)
+end, { silent = true })
+
+map('n', '<leader>8', function()
+  require('harpoon.ui').nav_file(8)
+end, { silent = true })
+
+map('n', '<leader>9', function()
+  require('harpoon.ui').nav_file(9)
+end, { silent = true })
+
+map('n', '<leader>0', function()
+  require('harpoon.ui').nav_file(10)
+end, { silent = true })
+
 map('n', '<leader>fW', function()
   require('telescope.builtin').grep_string({ search = vim.fn.expand('<cWORD>') })
 end, {
