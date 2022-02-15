@@ -14,6 +14,7 @@ map('n', '-', function()
   end
 
   vim.cmd(':NeoTreeRevealInSplit')
+  -- vim.cmd(':NeoTreeRevealInSplitToggle')
 end)
 
 map('n', '<leader>-', function()
