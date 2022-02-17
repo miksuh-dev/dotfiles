@@ -6,6 +6,8 @@ $HOME/Scripts/autorun/start-programs.sh
 
 # Increase key speed
 # xset r rate 400 50
+xset r rate 500 33
+#xset r rate 660 25 # default
 
 # Computer specific custom startup
 [ -f $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh ] && bash $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh
