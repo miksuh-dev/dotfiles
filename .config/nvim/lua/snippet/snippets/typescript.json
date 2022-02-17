@@ -1,6 +1,6 @@
 {
   "console.log": {
     "prefix": "clv",
-    "body": "console.log('${1}', ${2})"
+    "body": "console.log('${1}', ${1})"
   }
 }
