@@ -59,6 +59,7 @@ vim.g.netrw_winsize = -30
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
-vim.g.lazyredraw = true
+vim.g.lazyredraw = false
+vim.g.netrw_altfile = 1
 
 vim.cmd('set guicursor=')
