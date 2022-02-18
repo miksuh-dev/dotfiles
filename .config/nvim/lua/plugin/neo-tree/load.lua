@@ -121,8 +121,14 @@ require('neo-tree').setup({
       },
     },
     window = {
+      popup = {
+        size = {
+          width = '100%',
+          height = '100%',
+        },
+        border = { '' },
+      },
       position = 'left',
-      width = 40,
       mappings = {
         -- Disable default
         ['<2-LeftMouse>'] = 'none',

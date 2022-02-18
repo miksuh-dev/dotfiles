@@ -13,13 +13,16 @@ map('n', '-', function()
     return vim.cmd(':DBUI')
   end
 
-  vim.cmd(':NeoTreeRevealInSplit')
+  if vim.bo.filetype ~= 'neo-tree' then
+    vim.cmd(':NeoTreeFloat')
+  end
+
   -- vim.cmd(':NeoTreeRevealInSplitToggle')
 end)
 
-map('n', '<leader>-', function()
-  vim.cmd(':NeoTreeShowInSplitToggle')
-end)
+-- map('n', '<leader>-', function()
+--   vim.cmd(':NeoTreeShowInSplitToggle')
+-- end)
 
 -- map('n', '<leader>n', function()
 --   if vim.bo.filetype == 'dbui' then
