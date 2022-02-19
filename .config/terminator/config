@@ -9,7 +9,7 @@
   title_inactive_bg_color = "#111111"
   inactive_color_offset = 1.0
   title_use_system_font = False
-  title_font = Monospace 12
+  title_font = JetBrainsMono Nerd Font Mono Bold 16
 [keybindings]
   copy = <Primary>c
   paste = <Primary>v
@@ -19,7 +19,7 @@
     background_darkness = 0.91
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = JetBrainsMono Nerd Font Mono 12
+    font = JetBrainsMono Nerd Font Mono 16
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden
