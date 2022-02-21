@@ -1,5 +1,5 @@
 local ls = require('luasnip')
-local types = require('luasnip.util.types')
+-- local types = require('luasnip.util.types')
 
 local function get_snippet_paths()
   local util = require('common.util')
@@ -48,6 +48,11 @@ end, {
 })
 
 vim.keymap.set({ 'i', 's' }, '<c-k>', function()
+  local neogen = require('neogen')
+  if neogen.jumpable() then
+    neogen.jump_prev()
+    return
+  end
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
@@ -56,6 +61,13 @@ end, {
 })
 
 vim.keymap.set({ 'i', 's' }, '<c-j>', function()
+  -- TODO see if neogen is loaded and only call if neogen is loaded
+  local neogen = require('neogen')
+  if neogen.jumpable() then
+    neogen.jump_next()
+    return
+  end
+
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
   end
