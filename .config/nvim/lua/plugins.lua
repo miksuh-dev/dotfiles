@@ -91,15 +91,15 @@ return require('packer').startup({
       module = 'plenary',
     })
 
-    use({
-      'mattn/emmet-vim',
-      config = function()
-        require('plugin.emmet-vim.load')
-      end,
-      keys = {
-        { 'i', '<C-Y>,' },
-      },
-    })
+    -- use({
+    --   'mattn/emmet-vim',
+    --   config = function()
+    --     require('plugin.emmet-vim.load')
+    --   end,
+    --   keys = {
+    --     { 'i', '<C-Y>,' },
+    --   },
+    -- })
 
     use({
       'windwp/nvim-autopairs',
