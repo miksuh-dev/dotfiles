@@ -212,29 +212,30 @@ return require('packer').startup({
     ----------------------------------------- DEBUG ------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    use({
-      'puremourning/vimspector',
-      config = function()
-        require('plugin.vimspector.load')
-      end,
-      keys = {
-        { 'n', '<leader>dd' },
-      },
-      cmd = {
-        'VimspectorAbortInstall',
-        'VimspectorDebugInfo',
-        'VimspectorEval',
-        'VimspectorInstall',
-        'VimspectorLoadSession',
-        'VimspectorMkSession',
-        'VimspectorReset',
-        'VimspectorShowOutput',
-        'VimspectorToggleLog',
-        'VimspectorUpdate',
-        'VimspectorWatchk',
-      },
-    })
-
+    -- TODO: Change this to dap instead
+    -- use({
+    --   'puremourning/vimspector',
+    --   config = function()
+    --     require('plugin.vimspector.load')
+    --   end,
+    --   keys = {
+    --     { 'n', '<leader>dd' },
+    --   },
+    --   cmd = {
+    --     'VimspectorAbortInstall',
+    --     'VimspectorDebugInfo',
+    --     'VimspectorEval',
+    --     'VimspectorInstall',
+    --     'VimspectorLoadSession',
+    --     'VimspectorMkSession',
+    --     'VimspectorReset',
+    --     'VimspectorShowOutput',
+    --     'VimspectorToggleLog',
+    --     'VimspectorUpdate',
+    --     'VimspectorWatchk',
+    --   },
+    -- })
+    --
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Navigation -------------------------------------------
     ------------------------------------------------------------------------------------------------
