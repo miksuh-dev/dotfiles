@@ -418,7 +418,10 @@ return require('packer').startup({
 
     use({
       'nvim-treesitter/playground',
-      cmd = 'TSPlaygroundToggle',
+      cmd = {
+        'TSPlaygroundToggle',
+        'TSHighlightCapturesUnderCursor',
+      },
       requires = 'nvim-treesitter',
     })
 
