@@ -30,13 +30,13 @@ end
 ls.config.set_config({
   history = true,
   updateevents = 'TextChanged,TextChangedI',
-  ext_opts = {
-    [types.choiceNode] = {
-      active = {
-        virt_text = { { '<-', 'Error' } },
-      },
-    },
-  },
+  -- ext_opts = {
+  --   [types.choiceNode] = {
+  --     active = {
+  --       virt_text = { { '<-', 'Error' } },
+  --     },
+  --   },
+  -- },
 })
 
 vim.keymap.set({ 'i', 's' }, '<c-l>', function()
