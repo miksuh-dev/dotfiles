@@ -88,7 +88,6 @@ cmp.setup({
         calc = '[Calc]',
         path = '[Path]',
         tmux = '[Tmux]',
-        conventionalcommits = '[Coco]',
         ['vim-dadbod-completion'] = '[DB]',
       })[entry.source.name]
       return vim_item
@@ -102,7 +101,6 @@ cmp.setup({
     { name = 'tmux' },
     { name = 'calc' },
     { name = 'path' },
-    { name = 'conventionalcommits' },
     { name = 'vim-dadbod-completion' },
   },
   documentation = {
@@ -111,4 +109,12 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
+})
+
+cmp.setup.cmdline('/', {
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' },
+  }, {
+    { name = 'buffer' },
+  }),
 })

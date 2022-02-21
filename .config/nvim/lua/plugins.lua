@@ -240,9 +240,15 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
 
     use({
-      'nvim-telescope/telescope.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
       cmd = { 'Telescope' },
       module = 'telescope',
+      run = 'make',
+    })
+
+    use({
+      'nvim-telescope/telescope.nvim',
+      after = 'telescope-fzf-native.nvim',
       config = function()
         require('plugin.telescope.load')
       end,
@@ -331,7 +337,7 @@ return require('packer').startup({
 
     use({
       'rafamadriz/friendly-snippets',
-      event = 'InsertEnter',
+      event = { 'InsertEnter', 'BufReadPre' },
     })
 
     use({
@@ -394,15 +400,15 @@ return require('packer').startup({
     })
 
     use({
-      'kristijanhusak/vim-dadbod-completion',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
       after = 'nvim-cmp',
-      requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+      requires = 'nvim-cmp',
     })
 
     use({
-      'davidsierradz/cmp-conventionalcommits',
+      'kristijanhusak/vim-dadbod-completion',
       after = 'nvim-cmp',
-      requires = 'nvim-cmp',
+      requires = { 'nvim-cmp', 'vim-dadbod-ui' },
     })
 
     --    use({
