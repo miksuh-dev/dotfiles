@@ -1,9 +1,6 @@
-vim.g.nvim_tree_ignore = {} -- empty by default
-vim.g.nvim_tree_gitignore = 0 -- 1 by default
 vim.g.nvim_tree_quit_on_open = 1 --0 by default, closes the tree when you open a file
 
 vim.g.nvim_tree_indent_markers = 0 -- 0 by default, this option shows indent markers when folders are open
-vim.g.nvim_tree_hide_dotfiles = 0 -- 0 by default, this option hides files and folders starting with a dot `.`
 vim.g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
 vim.g.nvim_tree_highlight_opened_files = 0 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
 vim.g.nvim_tree_root_folder_modifier = ':~' -- This is the default. See :help filename-modifiers for more options
@@ -81,6 +78,10 @@ local tree_cb = require('nvim-tree.config').nvim_tree_callback
 -- local collapse_check = ':lua require("plugin.barbar.util").nvim_tree_conditional_collapse()<CR>'
 
 require('nvim-tree').setup({
+  filters = {
+    dotfiles = true,
+    custom = {},
+  },
   -- disables netrw completely
   disable_netrw = true,
   -- hijack netrw window on startup
@@ -151,7 +152,7 @@ require('nvim-tree').setup({
       custom_only = true,
       -- list of mappings to set on the tree manually
       list = {
-        { key = { '<CR>', 'l' }, cb = tree_cb('edit') },
+        { key = { '<CR>', 'l' }, cb = tree_cb('edit_in_place') },
         { key = 'cd', cb = tree_cb('cd') },
         { key = 'v', cb = tree_cb('vsplit') },
         { key = 's', cb = tree_cb('split') },

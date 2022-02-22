@@ -9,15 +9,12 @@ require('nvim-treesitter.configs').setup({
     additional_vim_regex_highlighting = false,
   },
   indent = {
+    enable = false,
+  },
+  yati = {
     enable = true,
   },
   context_commentstring = {
     enable = true,
   },
 })
-
-vim.cmd([[
-  set foldlevel=20
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-]])

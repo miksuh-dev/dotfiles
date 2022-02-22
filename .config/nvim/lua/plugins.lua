@@ -425,6 +425,12 @@ return require('packer').startup({
     })
 
     use({
+      'hrsh7th/cmp-nvim-lua',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
       'kristijanhusak/vim-dadbod-completion',
       after = 'nvim-cmp',
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
@@ -478,6 +484,11 @@ return require('packer').startup({
       config = function()
         require('plugin.indent-blankline.load')
       end,
+    })
+
+    use({
+      'yioneko/nvim-yati',
+      requires = 'nvim-treesitter/nvim-treesitter',
     })
 
     ------------------------------------------------------------------------------------------------
