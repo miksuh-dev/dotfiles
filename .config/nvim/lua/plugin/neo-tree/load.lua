@@ -72,7 +72,16 @@ require('neo-tree').setup({
         local cmds = require('neo-tree.sources.filesystem.commands')
 
         if node.type == 'file' then
-          return cmds.open(state)
+          -- Close keeping alternate_file
+          local buffnr = vim.fn.bufnr()
+          local alternate_file = vim.fn.getreg('#')
+
+          cmds.open(state)
+
+          vim.api.nvim_buf_delete(buffnr, {})
+          vim.fn.setreg('#', alternate_file)
+
+          return
         end
 
         if node.type == 'directory' then
@@ -165,7 +174,6 @@ require('neo-tree').setup({
         ['dd'] = 'cut_to_clipboard',
         ['p'] = 'paste_from_clipboard',
         ['q'] = 'close_window',
-        ['<leader>n'] = 'close_window',
       },
     },
   },
@@ -199,7 +207,6 @@ require('neo-tree').setup({
         ['dd'] = 'cut_to_clipboard',
         -- ['p'] = 'paste_from_clipbord',
         ['bd'] = 'buffer_delete',
-        ['<leader>n'] = 'close_window',
       },
     },
   },
