@@ -489,6 +489,7 @@ return require('packer').startup({
     use({
       'yioneko/nvim-yati',
       requires = 'nvim-treesitter/nvim-treesitter',
+      after = 'nvim-treesitter',
     })
 
     ------------------------------------------------------------------------------------------------
