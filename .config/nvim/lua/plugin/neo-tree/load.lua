@@ -152,6 +152,7 @@ require('neo-tree').setup({
         ['r'] = 'none',
         ['f'] = 'none',
         ['<c-x>'] = 'none',
+        ['y'] = 'none',
 
         ['<cr>'] = 'open_without_folder_collapse',
         ['s'] = 'open_split',
@@ -191,6 +192,7 @@ require('neo-tree').setup({
         ['<bs>'] = 'none',
         ['.'] = 'none',
         ['r'] = 'none',
+        ['y'] = 'none',
 
         -- ['l'] = 'expand_folder',
         -- ['h'] = 'collapse_folder',
@@ -222,6 +224,7 @@ require('neo-tree').setup({
         ['r'] = 'none',
         ['c'] = 'none',
         ['x'] = 'none',
+        ['y'] = 'none',
 
         -- Disable git
         ['A'] = 'none',

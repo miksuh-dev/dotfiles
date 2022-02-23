@@ -9,6 +9,11 @@ $HOME/Scripts/autorun/start-programs.sh
 xset r rate 500 33
 #xset r rate 660 25 # default
 
+# debounce fix
+xkbset bo 50
+# xkbset bo 300 # default
+
+
 # Computer specific custom startup
 [ -f $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh ] && bash $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh
 

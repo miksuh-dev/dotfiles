@@ -9,6 +9,7 @@ return function(config)
     format = {
       enable = false, -- in case of eslint error change this to true
     },
+    run = 'onSave',
   }
 
   return config
