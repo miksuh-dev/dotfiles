@@ -90,6 +90,18 @@ require('neo-tree').setup({
           end
         end
       end,
+
+      close_and_restore_alternate_file = function(state)
+        local cmds = require('neo-tree.sources.filesystem.commands')
+
+        local alternate_file = vim.fn.getreg('a')
+
+        cmds.close_window(state)
+
+        if alternate_file ~= '' then
+          vim.fn.setreg('#', alternate_file)
+        end
+      end,
     },
     filters = { --These filters are applied to both browsing and searching
       show_hidden = true,
@@ -174,7 +186,7 @@ require('neo-tree').setup({
         ['yy'] = 'copy_to_clipboard',
         ['dd'] = 'cut_to_clipboard',
         ['p'] = 'paste_from_clipboard',
-        ['q'] = 'close_window',
+        ['q'] = 'close_and_restore_alternate_file',
       },
     },
   },
