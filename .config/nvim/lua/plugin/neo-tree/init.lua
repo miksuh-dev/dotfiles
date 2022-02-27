@@ -13,6 +13,8 @@ map('n', '-', function()
     return vim.cmd(':DBUI')
   end
 
+  vim.fn.setreg('a', vim.fn.getreg('#'))
+
   vim.cmd(':NeoTreeRevealInSplit')
   -- vim.cmd(':NeoTreeRevealInSplitToggle')
 end)

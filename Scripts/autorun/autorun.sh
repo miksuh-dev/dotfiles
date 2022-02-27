@@ -10,7 +10,7 @@ xset r rate 500 33
 #xset r rate 660 25 # default
 
 # debounce fix
-xkbset bo 50
+xkbset bo 35
 # xkbset bo 300 # default
 
 
