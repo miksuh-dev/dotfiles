@@ -6,6 +6,46 @@ end, {
   silent = true,
 })
 
+map('n', '<leader>h1', function()
+  require('harpoon.mark').set_current_at(1)
+end, { silent = true })
+
+map('n', '<leader>h2', function()
+  require('harpoon.mark').set_current_at(2)
+end, { silent = true })
+
+map('n', '<leader>h3', function()
+  require('harpoon.mark').set_current_at(3)
+end, { silent = true })
+
+map('n', '<leader>h4', function()
+  require('harpoon.mark').set_current_at(4)
+end, { silent = true })
+
+map('n', '<leader>h5', function()
+  require('harpoon.mark').set_current_at(5)
+end, { silent = true })
+
+map('n', '<leader>h6', function()
+  require('harpoon.mark').set_current_at(6)
+end, { silent = true })
+
+map('n', '<leader>h7', function()
+  require('harpoon.mark').set_current_at(7)
+end, { silent = true })
+
+map('n', '<leader>h8', function()
+  require('harpoon.mark').set_current_at(8)
+end, { silent = true })
+
+map('n', '<leader>h9', function()
+  require('harpoon.mark').set_current_at(9)
+end, { silent = true })
+
+map('n', '<leader>h0', function()
+  require('harpoon.mark').set_current_at(10)
+end, { silent = true })
+
 map('n', '<leader>hh', function()
   require('harpoon.ui').toggle_quick_menu()
 end, {
