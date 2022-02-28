@@ -171,7 +171,7 @@ return require('packer').startup({
     use({
       'AndrewRadev/splitjoin.vim',
       keys = {
-        { 'v', 'gS' },
+        { 'n', 'gS' },
         { 'n', 'gJ' },
       },
     })
