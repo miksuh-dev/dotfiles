@@ -10,29 +10,22 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
+    -- TODO Find if there is unused plugins (plenary for example, and place those plugins without configuration to requirements of other pluugins)
+
     use({
       'wbthomason/packer.nvim',
     })
 
     use({
-      'nathom/filetype.nvim',
-      branch = 'dev',
-      config = function()
-        require('plugin.filetype.load')
-      end,
-    })
-
-    use({
       'eggbean/vim-tmux-navigator-no-wrapping',
       config = function()
-        require('plugin/vim-tmux-navigator.load')
+        require('plugin.vim-tmux-navigator.load')
       end,
       keys = {
         { 'n', '<C-H>' },
         { 'n', '<C-J>' },
         { 'n', '<C-K>' },
         { 'n', '<C-L>' },
-        { 'n', '<C-Space>' },
       },
     })
 
@@ -81,10 +74,10 @@ return require('packer').startup({
       },
     })
 
-    use({
-      'nvim-lua/popup.nvim',
-      module = 'popup',
-    })
+    -- use({
+    --   'nvim-lua/popup.nvim',
+    --   module = 'popup',
+    -- })
 
     use({
       'nvim-lua/plenary.nvim',
@@ -128,17 +121,17 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'tversteeg/registers.nvim',
-      keys = {
-        { 'i', '<C-R>' },
-        { 'v', '"' },
-        { 'n', '"' },
-      },
-      config = function()
-        require('plugin.registers.load')
-      end,
-    })
+    -- use({
+    --   'tversteeg/registers.nvim',
+    --   keys = {
+    --     { 'i', '<C-R>' },
+    --     { 'v', '"' },
+    --     { 'n', '"' },
+    --   },
+    --   config = function()
+    --     require('plugin.registers.load')
+    --   end,
+    -- })
 
     use({
       'David-Kunz/jester',
@@ -201,13 +194,13 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'SmiteshP/nvim-gps',
-      module = { 'nvim-gps' },
-      config = function()
-        require('plugin.nvim-gps.load')
-      end,
-    })
+    -- use({
+    --   'SmiteshP/nvim-gps',
+    --   module = { 'nvim-gps' },
+    --   config = function()
+    --     require('plugin.nvim-gps.load')
+    --   end,
+    -- })
 
     use({
       'RRethy/vim-hexokinase',
@@ -218,13 +211,13 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'kevinhwang91/nvim-bqf',
-      ft = 'qf',
-      config = function()
-        require('plugin.nvim-bqf.load')
-      end,
-    })
+    -- use({
+    --   'kevinhwang91/nvim-bqf',
+    --   ft = 'qf',
+    --   config = function()
+    --     require('plugin.nvim-bqf.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- DEBUG ------------------------------------------------
@@ -325,11 +318,11 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'jose-elias-alvarez/nvim-lsp-ts-utils',
-      module = 'nvim-lsp-ts-utils',
-      requires = 'nvim-lspconfig',
-    })
+    -- use({
+    --   'jose-elias-alvarez/nvim-lsp-ts-utils',
+    --   module = 'nvim-lsp-ts-utils',
+    --   requires = 'nvim-lspconfig',
+    -- })
 
     use({
       'williamboman/nvim-lsp-installer',
@@ -418,11 +411,11 @@ return require('packer').startup({
       requires = 'nvim-cmp',
     })
 
-    use({
-      'hrsh7th/cmp-nvim-lsp-document-symbol',
-      after = 'nvim-cmp',
-      requires = 'nvim-cmp',
-    })
+    -- use({
+    --   'hrsh7th/cmp-nvim-lsp-document-symbol',
+    --   after = 'nvim-cmp',
+    --   requires = 'nvim-cmp',
+    -- })
 
     use({
       'hrsh7th/cmp-nvim-lua',
@@ -432,19 +425,19 @@ return require('packer').startup({
 
     use({
       'kristijanhusak/vim-dadbod-completion',
-      after = 'nvim-cmp',
+      after = { 'vim-dadbod-ui', 'nvim-cmp' },
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
     })
 
-    --    use({
-    --      'tzachar/cmp-tabnine',
-    --      run = './install.sh',
-    --      after = 'nvim-cmp',
-    --      requires = 'hrsh7th/nvim-cmp',
-    --      config = function()
-    --        require('plugin.tabnine.load')
-    --      end,
-    --    })
+    use({
+      'tzachar/cmp-tabnine',
+      run = './install.sh',
+      after = 'nvim-cmp',
+      requires = 'hrsh7th/nvim-cmp',
+      config = function()
+        require('plugin.tabnine.load')
+      end,
+    })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
@@ -484,12 +477,6 @@ return require('packer').startup({
       config = function()
         require('plugin.indent-blankline.load')
       end,
-    })
-
-    use({
-      'yioneko/nvim-yati',
-      requires = 'nvim-treesitter/nvim-treesitter',
-      after = 'nvim-treesitter',
     })
 
     ------------------------------------------------------------------------------------------------
@@ -564,12 +551,3 @@ return require('packer').startup({
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------- Disabled -------------------------------------------------
 ----------------------------------------------------------------------------------------------------
-
--- use({
---   'romgrk/barbar.nvim',
---   module = 'bufferline',
---   event = 'BufEnter',
---   config = function()
---     require('plugin.barbar.load')
---   end,
--- })

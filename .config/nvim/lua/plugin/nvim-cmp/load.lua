@@ -82,9 +82,9 @@ cmp.setup({
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
+        cmp_tabnine = '[Tabnine]',
         nvim_lua = '[NvimLua]',
         luasnip = '[LuaSnip]',
-        cmp_tabnine = '[Tabnine]',
         calc = '[Calc]',
         path = '[Path]',
         tmux = '[Tmux]',
@@ -110,12 +110,4 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
-})
-
-cmp.setup.cmdline('/', {
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp_document_symbol' },
-  }, {
-    { name = 'buffer' },
-  }),
 })

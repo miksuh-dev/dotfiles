@@ -1,15 +1,15 @@
 local theme = require('plugin.lualine.theme.dark')
-local gps = require('nvim-gps')
-
-local function get_gps()
-  if gps.is_available() then
-    local location = gps.get_location()
-    if location ~= '' then
-      return '> ' .. location
-    end
-  end
-  return ''
-end
+-- local gps = require('nvim-gps')
+--
+-- local function get_gps()
+--   if gps.is_available() then
+--     local location = gps.get_location()
+--     if location ~= '' then
+--       return '> ' .. location
+--     end
+--   end
+--   return ''
+-- end
 
 require('lualine').setup({
   options = {
@@ -36,9 +36,9 @@ require('lualine').setup({
           right = 0,
         },
       },
-      {
-        get_gps,
-      },
+      -- {
+      --   get_gps,
+      -- },
     },
     lualine_x = {
       -- 'encoding',
@@ -73,9 +73,9 @@ require('lualine').setup({
           right = 0,
         },
       },
-      {
-        get_gps,
-      },
+      -- {
+      --   get_gps,
+      -- },
     },
     lualine_x = {
       -- 'encoding',
