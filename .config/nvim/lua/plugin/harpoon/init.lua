@@ -58,6 +58,12 @@ end, {
   silent = true,
 })
 
+map('n', '<leader>+', function()
+  require('harpoon.ui').toggle_quick_menu()
+end, {
+  silent = true,
+})
+
 map('n', '<leader>1', function()
   require('harpoon.ui').nav_file(1)
 end, { silent = true })
