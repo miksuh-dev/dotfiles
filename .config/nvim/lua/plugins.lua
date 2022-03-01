@@ -146,18 +146,18 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'ThePrimeagen/refactoring.nvim',
-      config = function()
-        require('plugin.refactoring.load')
-      end,
-      keys = {
-        { 'v', '<leader>rr' },
-        { 'n', '<leader>rp' },
-        { 'v', '<leader>rv' },
-        { 'n', '<leader>rc' },
-      },
-    })
+    -- use({
+    --   'ThePrimeagen/refactoring.nvim',
+    --   config = function()
+    --     require('plugin.refactoring.load')
+    --   end,
+    --   keys = {
+    --     { 'v', '<leader>rr' },
+    --     { 'n', '<leader>rp' },
+    --     { 'v', '<leader>rv' },
+    --     { 'n', '<leader>rc' },
+    --   },
+    -- })
 
     use({
       'danymat/neogen',
