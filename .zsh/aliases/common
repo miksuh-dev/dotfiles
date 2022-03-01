@@ -1,10 +1,13 @@
 #!/bin/bash
 
 alias ssh="kitty +kitten ssh"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias fa='alias | grep'
 alias vimconfig='cd $HOME/.config/nvim/lua && nvim && cd - > /dev/null'
 alias dotconfig='cd $HOME/.dotedit && nvim && cd - > /dev/null'
 alias vim='nvim'
 alias cw='$HOME/Scripts/change-wallpaper.sh'
 alias c='xclip -o -sel clip'
+
+# To clone to new machine use:
+# git clone --separate-git-dir=~/.dotfiles https://github.com/$USERNAME/$REPOSITORY.git ~
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
