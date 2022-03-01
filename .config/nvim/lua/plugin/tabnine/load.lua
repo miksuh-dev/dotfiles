@@ -6,8 +6,5 @@ tabnine:setup({
   sort = true,
   run_on_every_keystroke = true,
   snippet_placeholder = '..',
-  ignored_file_types = {
-    -- default is not to ignore
-    -- example: lua = true
-  },
+  ignored_file_types = {},
 })
