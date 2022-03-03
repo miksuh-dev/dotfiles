@@ -29,7 +29,7 @@ end
 
 ls.config.set_config({
   history = true,
-  -- updateevents = 'TextChanged,TextChangedI',
+  updateevents = 'TextChanged,TextChangedI',
   -- ext_opts = {
   --   [types.choiceNode] = {
   --     active = {

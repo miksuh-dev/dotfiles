@@ -27,6 +27,7 @@ local languages = {
   vue = { prettier },
 }
 
+-- TODO Changee this to some formatting plugin (for example lsp-formatting).
 return function(config)
   config.init_options = { documentFormatting = true, codeAction = true }
 
