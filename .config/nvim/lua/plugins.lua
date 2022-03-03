@@ -194,13 +194,13 @@ return require('packer').startup({
       end,
     })
 
-    -- use({
-    --   'SmiteshP/nvim-gps',
-    --   module = { 'nvim-gps' },
-    --   config = function()
-    --     require('plugin.nvim-gps.load')
-    --   end,
-    -- })
+    use({
+      'SmiteshP/nvim-gps',
+      module = { 'nvim-gps' },
+      config = function()
+        require('plugin.nvim-gps.load')
+      end,
+    })
 
     use({
       'RRethy/vim-hexokinase',

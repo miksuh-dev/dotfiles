@@ -1,15 +1,15 @@
 local theme = require('plugin.lualine.theme.dark')
--- local gps = require('nvim-gps')
+local gps = require('nvim-gps')
 --
--- local function get_gps()
---   if gps.is_available() then
---     local location = gps.get_location()
---     if location ~= '' then
---       return '> ' .. location
---     end
---   end
---   return ''
--- end
+local function get_gps()
+  if gps.is_available() then
+    local location = gps.get_location()
+    if location ~= '' then
+      return '> ' .. location
+    end
+  end
+  return ''
+end
 
 require('lualine').setup({
   options = {
@@ -23,6 +23,9 @@ require('lualine').setup({
     lualine_a = {
       {
         'mode',
+        fmt = function(str)
+          return str:sub(1, 1) .. str:sub(2):lower()
+        end,
       },
     },
     lualine_b = { 'branch' },
@@ -36,9 +39,9 @@ require('lualine').setup({
           right = 0,
         },
       },
-      -- {
-      --   get_gps,
-      -- },
+      {
+        get_gps,
+      },
     },
     lualine_x = {
       -- 'encoding',
@@ -54,6 +57,12 @@ require('lualine').setup({
           error = 'E',
           info = 'I',
           hint = 'H',
+        },
+        diagnostics_color = {
+          error = 'DiagnosticError',
+          warn = 'DiagnosticWarn',
+          info = 'DiagnosticInfo',
+          hint = 'DiagnosticHint',
         },
         update_in_insert = false,
       },
@@ -61,7 +70,14 @@ require('lualine').setup({
     lualine_z = { 'location' },
   },
   inactive_sections = {
-    lualine_a = { 'mode' },
+    lualine_a = {
+      {
+        'mode',
+        fmt = function(str)
+          return str:sub(1, 1) .. str:sub(2):lower()
+        end,
+      },
+    },
     lualine_b = { 'branch' },
     lualine_c = {
       {
@@ -73,13 +89,16 @@ require('lualine').setup({
           right = 0,
         },
       },
-      -- {
-      --   get_gps,
-      -- },
+      {
+        get_gps,
+      },
     },
     lualine_x = {
       -- 'encoding',
-      'filetype',
+      {
+        'filetype',
+        colored = false,
+      },
     },
     lualine_y = {
       {
@@ -91,6 +110,12 @@ require('lualine').setup({
           error = 'E',
           info = 'I',
           hint = 'H',
+        },
+        diagnostics_color = {
+          error = 'DiagnosticError',
+          warn = 'DiagnosticWarn',
+          info = 'DiagnosticInfo',
+          hint = 'DiagnosticHint',
         },
         update_in_insert = false,
       },
