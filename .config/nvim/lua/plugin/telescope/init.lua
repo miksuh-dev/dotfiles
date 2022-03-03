@@ -16,7 +16,7 @@ end, {
 })
 
 map('n', '<leader>fd', function()
-  require('telescope.builtin').lsp_workspace_diagnostics()
+  require('telescope.builtin').diagnostics()
 end, { silent = true })
 
 map('n', '<leader>fs', function()
