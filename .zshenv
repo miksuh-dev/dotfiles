@@ -1,6 +1,7 @@
 source $HOME/.zsh/init
 . "$HOME/.cargo/env"
 export GO111MODULE=on
+export PATH=$PATH:/usr/local/go/bin
 
 export FZF_DEFAULT_OPTS='
   --color=fg:#f8f8f0,hl:#66d9ef
