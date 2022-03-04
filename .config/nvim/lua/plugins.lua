@@ -10,8 +10,6 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- TODO Find if there is unused plugins (plenary for example, and place those plugins without configuration to requirements of other pluugins)
-
     use({
       'wbthomason/packer.nvim',
     })
