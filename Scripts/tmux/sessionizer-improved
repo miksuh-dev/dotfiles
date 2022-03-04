@@ -91,6 +91,7 @@ if [[ $(in_custom $selected) ]]; then
   selected=$(get_custom_value $selected)
 else
   selected_name=$(basename "$selected" | tr . _)
+  selected=$(echo $selected | sed "s/\~/\/home\/$USER/")
 fi
 
 if [[ -z $selected ]]; then
