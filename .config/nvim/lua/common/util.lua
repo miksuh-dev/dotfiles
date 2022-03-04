@@ -34,6 +34,10 @@ M.has_value = function(table, value)
   return false
 end
 
+M.is_plugin_loaded = function(plugin_name)
+  return packer_plugins[plugin_name] and packer_plugins[plugin_name].loaded
+end
+
 M.read_file = function(path)
   local file = io.open(path, 'rb') -- r read mode and b binary mode
   if not file then

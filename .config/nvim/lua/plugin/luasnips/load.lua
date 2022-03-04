@@ -1,9 +1,9 @@
+local util = require('common.util')
+
 local ls = require('luasnip')
 -- local types = require('luasnip.util.types')
 
 local function get_snippet_paths()
-  local util = require('common.util')
-
   local packer_config = require('packer').config
   local package_root = packer_config.package_root
   local plugin_package = packer_config.plugin_package
@@ -48,11 +48,15 @@ end, {
 })
 
 vim.keymap.set({ 'i', 's' }, '<c-k>', function()
-  local neogen = require('neogen')
-  if neogen.jumpable() then
-    neogen.jump_prev()
-    return
+  if util.is_plugin_loaded('neogen') then
+    local neogen = require('neogen')
+
+    if neogen.jumpable() then
+      neogen.jump_prev()
+      return
+    end
   end
+
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
@@ -61,11 +65,13 @@ end, {
 })
 
 vim.keymap.set({ 'i', 's' }, '<c-j>', function()
-  -- TODO see if neogen is loaded and only call if neogen is loaded
-  local neogen = require('neogen')
-  if neogen.jumpable() then
-    neogen.jump_next()
-    return
+  if util.is_plugin_loaded('neogen') then
+    local neogen = require('neogen')
+
+    if neogen.jumpable() then
+      neogen.jump_next()
+      return
+    end
   end
 
   if ls.expand_or_jumpable() then
