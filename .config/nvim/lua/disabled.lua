@@ -20,3 +20,4 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = true
 
 vim.g.loaded_tutor_mode_plugin = true
+vim.g.loaded_matchit = 1

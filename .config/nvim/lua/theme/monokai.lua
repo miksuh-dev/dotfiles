@@ -140,7 +140,7 @@ M.load_syntax = function(palette)
       style = 'bold',
     },
     VertSplit = {
-      fg = palette.base3,
+      fg = palette.base5,
     },
     LineNr = {
       fg = palette.base7,
@@ -865,6 +865,14 @@ M.load_plugin_syntax = function(palette)
     netrwMarkFile = {
       bg = palette.pink,
       fg = palette.white,
+    },
+    TSDefinition = {
+      style = 'underline',
+      sp = palette.aqua,
+    },
+    TSDefinitionUsage = {},
+    MatchWord = {
+      style = 'underline',
     },
   }
 end
