@@ -72,25 +72,10 @@ return require('packer').startup({
       },
     })
 
-    -- use({
-    --   'nvim-lua/popup.nvim',
-    --   module = 'popup',
-    -- })
-
     use({
       'nvim-lua/plenary.nvim',
       module = 'plenary',
     })
-
-    -- use({
-    --   'mattn/emmet-vim',
-    --   config = function()
-    --     require('plugin.emmet-vim.load')
-    --   end,
-    --   keys = {
-    --     { 'i', '<C-Y>,' },
-    --   },
-    -- })
 
     use({
       'windwp/nvim-autopairs',
@@ -119,18 +104,6 @@ return require('packer').startup({
       end,
     })
 
-    -- use({
-    --   'tversteeg/registers.nvim',
-    --   keys = {
-    --     { 'i', '<C-R>' },
-    --     { 'v', '"' },
-    --     { 'n', '"' },
-    --   },
-    --   config = function()
-    --     require('plugin.registers.load')
-    --   end,
-    -- })
-
     use({
       'David-Kunz/jester',
       module = { 'jester' },
@@ -143,19 +116,6 @@ return require('packer').startup({
         require('plugin.auto-session.load')
       end,
     })
-
-    -- use({
-    --   'ThePrimeagen/refactoring.nvim',
-    --   config = function()
-    --     require('plugin.refactoring.load')
-    --   end,
-    --   keys = {
-    --     { 'v', '<leader>rr' },
-    --     { 'n', '<leader>rp' },
-    --     { 'v', '<leader>rv' },
-    --     { 'n', '<leader>rc' },
-    --   },
-    -- })
 
     use({
       'danymat/neogen',
@@ -208,14 +168,6 @@ return require('packer').startup({
         require('plugin.hexokinase.load')
       end,
     })
-
-    -- use({
-    --   'kevinhwang91/nvim-bqf',
-    --   ft = 'qf',
-    --   config = function()
-    --     require('plugin.nvim-bqf.load')
-    --   end,
-    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- DEBUG ------------------------------------------------
@@ -316,12 +268,6 @@ return require('packer').startup({
       end,
     })
 
-    -- use({
-    --   'jose-elias-alvarez/nvim-lsp-ts-utils',
-    --   module = 'nvim-lsp-ts-utils',
-    --   requires = 'nvim-lspconfig',
-    -- })
-
     use({
       'williamboman/nvim-lsp-installer',
       module = 'nvim-lsp-installer',
@@ -408,12 +354,6 @@ return require('packer').startup({
       after = 'nvim-cmp',
       requires = 'nvim-cmp',
     })
-
-    -- use({
-    --   'hrsh7th/cmp-nvim-lsp-document-symbol',
-    --   after = 'nvim-cmp',
-    --   requires = 'nvim-cmp',
-    -- })
 
     use({
       'hrsh7th/cmp-nvim-lua',
@@ -531,9 +471,6 @@ return require('packer').startup({
 
     use({
       'tpope/vim-fugitive',
-      -- cond = function()
-      --   return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
-      -- end,
       keys = {
         '<leader>gf',
         '<leader>gj',
@@ -554,7 +491,3 @@ return require('packer').startup({
     max_jobs = 5,
   },
 })
-
-----------------------------------------------------------------------------------------------------
------------------------------------------ Disabled -------------------------------------------------
-----------------------------------------------------------------------------------------------------
