@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
-#TODO: add prefix to custom entries and cut ~/Projects from project paths.
+# TODO: add prefix to custom entries and cut ~/Projects from project paths.
 cache_location='/tmp/sessionizer-cache'
 cache_duration=3600 # Time until refresh (seconds)
 project_folder=~/Projects
+ls_style='ls -lsA --color'
 
 declare -A custom
 custom[default]=~/
@@ -60,7 +61,7 @@ function travel() {
   find $1 -mindepth 1 -maxdepth 1 -type d | while read dir; do
 
     if [[ $(is_leaf_dir $dir) ]]; then
-      echo $dir | sed "s/\/home\/$USER/~/"
+      echo $dir
       continue
     fi
 
@@ -69,6 +70,19 @@ function travel() {
   done
 }
 
+# Create function string to resolve dirs and custom entries
+function get_preview_as_string() {
+  echo "
+    if [ -d {} ]; then
+      $ls_style {}
+    fi"
+
+  for i in "${!custom[@]}"; do
+    echo "if [[ '{}' = '$i' ]]; then
+      $ls_style ${custom[$i]}
+    fi"
+  done
+}
 
 if [ "$1" == "refresh" ]; then
   echo 'Refreshed!'
@@ -84,14 +98,14 @@ if (( ( $(date +%s) - $(date -r $cache_location "+%s") ) )); then
   refresh_cache
 fi
 
-selected=$(echo "$(cat $cache_location) $(get_custom_keys)" | tr " " "\n" | fzf)
+asd=$(get_preview_as_string)
+selected=$(echo "$(cat $cache_location) $(get_custom_keys)" | tr " " "\n" | fzf --preview "$(get_preview_as_string)")
 
 if [[ $(in_custom $selected) ]]; then
   selected_name=$selected
   selected=$(get_custom_value $selected)
 else
   selected_name=$(basename "$selected" | tr . _)
-  selected=$(echo $selected | sed "s/\~/\/home\/$USER/")
 fi
 
 if [[ -z $selected ]]; then
