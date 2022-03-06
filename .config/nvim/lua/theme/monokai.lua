@@ -847,11 +847,6 @@ M.load_plugin_syntax = function(palette)
       bg = palette.pink,
       fg = palette.white,
     },
-    TSDefinition = {
-      style = 'underline',
-      sp = palette.aqua,
-    },
-    TSDefinitionUsage = {},
     MatchWord = {
       style = 'underline',
     },

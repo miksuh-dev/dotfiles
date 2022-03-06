@@ -418,12 +418,8 @@ return require('packer').startup({
     })
 
     use({
-      'nvim-treesitter/nvim-treesitter-refactor',
-      after = 'nvim-treesitter',
-    })
-
-    use({
       'andymass/vim-matchup',
+      after = 'nvim-treesitter',
     })
 
     ------------------------------------------------------------------------------------------------
