@@ -10,6 +10,9 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
+    -- TODO chech these plugins
+    -- https://github.com/nvim-lua/lsp-status.nvim
+
     use({
       'wbthomason/packer.nvim',
     })
