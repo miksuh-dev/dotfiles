@@ -510,6 +510,7 @@ myManageHook = composeAll
 
     -- Moving windows
     , className =? "Rambox" --> doShift "1"
+    , className =? "rambox" --> doShift "1"
     , className =? "Microsoft Teams - Preview" --> doShift "1"
     , className =? "thunderbird" --> doShift "1"
     , className =? "Mattermost" --> doShift "1"
