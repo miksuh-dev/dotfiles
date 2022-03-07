@@ -2,7 +2,7 @@
 
 alias iOSremote='remotedebug_ios_webkit_adapter --port=9000'
 alias DBUI="tmux rename-window "DBUI" && nvim -c ':DBUI'"
-alias npms="npm run start"
-# alias npms="npm run start -- --host 172.19.0.1"
+# alias npms="npm run start"
+alias npms="npm run start -- --host 172.18.0.1"
 alias robo3t="QT_FONT_DPI=128 snap run robo3t-snap && exit"
 alias chrome-unsecure='google-chrome --disable-site-isolation-trials --disable-web-security --user-data-dir="/tmp/chrome'
