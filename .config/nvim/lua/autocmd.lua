@@ -6,11 +6,10 @@ vim.cmd([[
   augroup END
 ]])
 
--- Toggle word wrapping in markdown files
--- TODO Also put this on txt files
+-- Toggle word wrapping in txt/md files
 vim.cmd([[
-  augroup Markdown
+  augroup autowrap
     autocmd!
-    autocmd FileType markdown set wrap
+    autocmd FileType markdown,text set wrap
   augroup END
 ]])
