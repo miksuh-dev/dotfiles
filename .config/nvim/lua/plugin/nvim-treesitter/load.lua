@@ -1,3 +1,5 @@
+vim.g.matchup_matchparen_offscreen = { method = 'status_manual' }
+
 require('nvim-treesitter.configs').setup({
   ensure_installed = require('plugin.nvim-treesitter.languages'),
   highlight = {

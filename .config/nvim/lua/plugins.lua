@@ -436,14 +436,14 @@ return require('packer').startup({
       after = 'nvim-treesitter',
     })
 
-    use({
-      'm-demare/hlargs.nvim',
-      requires = { 'nvim-treesitter' },
-      after = 'nvim-treesitter',
-      config = function()
-        require('plugin.hlargs.load')
-      end,
-    })
+    -- use({
+    --   'm-demare/hlargs.nvim',
+    --   requires = { 'nvim-treesitter' },
+    --   after = 'nvim-treesitter',
+    --   config = function()
+    --     require('plugin.hlargs.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- DB ---------------------------------------------------
