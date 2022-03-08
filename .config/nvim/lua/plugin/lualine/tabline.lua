@@ -5,7 +5,7 @@ local function harpoon_mark_styled(index, filename)
     return '%#TablineSel# ' .. index .. ':' .. filename .. ' %#Tabline#'
   end
 
-  return ' ' .. index .. ':' .. filename .. ' '
+  return '%#Tabline# ' .. index .. ':' .. filename .. ' '
 end
 
 M.alt_file = function()
@@ -20,7 +20,7 @@ M.harpoon_marks = function()
   for key, value in ipairs(harpoon_marks) do
     t[#t + 1] = harpoon_mark_styled(key, tostring(value.filename))
   end
-  return table.concat(t, ' ')
+  return '%#TablineFill#' .. table.concat(t, ' ')
 end
 
 return M

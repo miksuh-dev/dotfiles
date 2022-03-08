@@ -161,7 +161,10 @@ M.load_syntax = function(palette)
     Tabline = {
       fg = palette.white,
     },
-    TabLineFill = {},
+    TabLineFill = {
+      fg = palette.none,
+      bg = palette.none,
+    },
     TabLineSel = {
       bg = palette.blue,
       style = 'bold',
