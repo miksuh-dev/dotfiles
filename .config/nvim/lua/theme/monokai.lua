@@ -158,10 +158,13 @@ M.load_syntax = function(palette)
       fg = palette.grey,
       bg = palette.none,
     },
-    Tabline = {},
+    Tabline = {
+      fg = palette.white,
+    },
     TabLineFill = {},
     TabLineSel = {
-      bg = palette.base4,
+      bg = palette.blue,
+      style = 'bold',
     },
     SpellBad = {
       fg = palette.red,
