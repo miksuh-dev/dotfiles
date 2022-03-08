@@ -72,16 +72,19 @@ function travel() {
 
 # Create function string to resolve dirs and custom entries
 function get_preview_as_string() {
-  echo "
-    if [ -d {} ]; then
-      $ls_style {}
-    fi"
+  if [[ $(tput cols) -ge 110 ]]; then
+    echo "
+      --preview 
+      if [ -d {} ]; then
+        $ls_style {}
+      fi"
 
-  for i in "${!custom[@]}"; do
-    echo "if [[ '{}' = '$i' ]]; then
-      $ls_style ${custom[$i]}
-    fi"
-  done
+    for i in "${!custom[@]}"; do
+      echo "if [[ '{}' = '$i' ]]; then
+        $ls_style ${custom[$i]}
+      fi"
+    done
+  fi
 }
 
 if [ "$1" == "refresh" ]; then
