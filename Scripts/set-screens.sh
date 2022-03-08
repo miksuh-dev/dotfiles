@@ -32,7 +32,7 @@ elif [[ $LVDS0 -eq 0 && $VGA0 -eq 0 && $HDMI0 -eq 0 ]]; then
   fi
 elif [[ $HDMI1 -eq 0 && $DP11 -eq 0 && $DP12 -eq 0 && $EDP1 -eq 0 ]]; then
   # Home screens - Work PC
-  if [ "$HOSTNAME" = "debian" ]; then
+  if [ "$HOSTNAME" = "miksuh-ThinkBook-14-G2-ITL" ]; then
     xrandr --output eDP-1 --off
     xrandr --output HDMI-1 --mode 2560x1440 --pos 0x0 --rate 60 --rotate left
     xrandr --output DP-1-1 --mode 2560x1440  --pos 1440x560 --rate 60 --primary
@@ -40,14 +40,14 @@ elif [[ $HDMI1 -eq 0 && $DP11 -eq 0 && $DP12 -eq 0 && $EDP1 -eq 0 ]]; then
   fi
 elif [[ $EDPI1 -eq 0 && $HDMI1 -eq 0 && $DP13 -eq 0 ]]; then
   # Work screens - Work PC
-  if [ "$HOSTNAME" = "debian" ]; then
+  if [ "$HOSTNAME" = "miksuh-ThinkBook-14-G2-ITL" ]; then
     xrandr --output eDP-1 --mode 1920x1080 --primary
     xrandr --output HDMI-1 --mode 1920x1080 --right-of eDP-1
     xrandr --output DP-1-3-1 --mode 1920x1080 --right-of HDMI-1
   fi
 elif [[ $EDPI1 -eq 0 ]]; then
   # Single screen - Work PC
-  if [ "$HOSTNAME" = "debian" ]; then
+  if [ "$HOSTNAME" = "miksuh-ThinkBook-14-G2-ITL" ]; then
     xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rate 60
   fi
 fi
