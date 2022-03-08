@@ -264,6 +264,7 @@ return require('packer').startup({
     use({
       'ThePrimeagen/harpoon',
       module = { 'harpoon', 'harpoon.ui', 'harpoon.mark' },
+      after = 'lualine.nvim',
       config = function()
         require('plugin.harpoon.load')
       end,

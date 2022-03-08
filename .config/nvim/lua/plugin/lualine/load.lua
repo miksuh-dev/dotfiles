@@ -1,4 +1,6 @@
 local theme = require('plugin.lualine.theme.dark')
+local tabline = require('plugin.lualine.tabline')
+
 local gps = require('nvim-gps')
 
 -- TODO Use this to make console.log to output require('nvim-gps').get_data()
@@ -123,6 +125,13 @@ require('lualine').setup({
     },
     lualine_z = { 'location' },
   },
-  tabline = {},
+  tabline = {
+    lualine_a = {},
+    lualine_b = { tabline.harpoon_marks },
+    -- lualine_c = { require('plugin.lualine.tabline_colors') },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
   extensions = {},
 })
