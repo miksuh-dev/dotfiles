@@ -1,11 +1,16 @@
 local M = {}
 local util = require('common.util')
 
+-- TODO Add too long tabline handling
 local function splitFilename(strFilename)
-  local table = util.split(strFilename, '/')
-  local length = util.tablelength(table)
+  if strFilename:match('/') then
+    local table = util.split(strFilename, '/')
+    local length = util.tablelength(table)
 
-  return table[length - 1] .. '/' .. table[length]
+    return table[length - 1] .. '/' .. table[length]
+  end
+
+  return strFilename
 end
 
 local function harpoon_mark_styled(index, filename)
