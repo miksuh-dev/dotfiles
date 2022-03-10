@@ -1,11 +1,19 @@
 local M = {}
+local util = require('common.util')
+
+local function splitFilename(strFilename)
+  local table = util.split(strFilename, '/')
+  local length = util.tablelength(table)
+
+  return table[length - 1] .. '/' .. table[length]
+end
 
 local function harpoon_mark_styled(index, filename)
   if vim.fn.expand('%') == filename then
-    return '%#TablineSel# ' .. index .. ':' .. filename .. ' %#Tabline#'
+    return '%#TablineSel# ' .. index .. ':' .. splitFilename(filename) .. ' %#Tabline#'
   end
 
-  return '%#Tabline# ' .. index .. ':' .. filename .. ' '
+  return '%#Tabline# ' .. index .. ':' .. splitFilename(filename) .. ' '
 end
 
 M.alt_file = function()

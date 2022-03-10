@@ -58,6 +58,22 @@ local function to_rgb(color)
   return tonumber(color:sub(2, 3), 16), tonumber(color:sub(4, 5), 16), tonumber(color:sub(6), 16)
 end
 
+M.split = function(s, delimiter)
+  local result = {}
+  for match in (s .. delimiter):gmatch('(.-)' .. delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+
+M.tablelength = function(T)
+  local count = 0
+  for _ in pairs(T) do
+    count = count + 1
+  end
+  return count
+end
+
 M.shade_color = function(color, percent)
   local r, g, b = to_rgb(color)
   if not r or not g or not b then
