@@ -87,7 +87,7 @@ M.load_syntax = function(palette)
       style = 'reverse',
     },
     ColorColumn = {
-      bg = palette.base3,
+      bg = palette.base4,
     },
     CursorLine = {
       bg = palette.base4,

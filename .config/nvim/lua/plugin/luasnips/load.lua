@@ -28,8 +28,8 @@ local function get_snippet_paths()
 end
 
 ls.config.set_config({
-  history = true,
-  updateevents = 'TextChanged,TextChangedI',
+  history = false,
+  updateevents = 'InsertLeave',
   -- ext_opts = {
   --   [types.choiceNode] = {
   --     active = {
