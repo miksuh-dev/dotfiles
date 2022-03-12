@@ -74,7 +74,6 @@ function travel() {
 function get_preview_as_string() {
   if [[ $(tput cols) -ge 110 ]]; then
     echo "
-      --preview 
       if [ -d {} ]; then
         $ls_style {}
       fi"
