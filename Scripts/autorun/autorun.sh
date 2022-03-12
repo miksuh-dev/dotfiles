@@ -13,6 +13,7 @@ xset r rate 500 33
 xkbset bo 35
 # xkbset bo 300 # default
 
+setxkbmap -option caps:escape
 
 # Computer specific custom startup
 [ -f $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh ] && bash $HOME/Scripts/autorun/custom-autorun/autorun_$(hostname).sh
