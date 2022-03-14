@@ -70,7 +70,7 @@ DISABLE_UPDATE_PROMPT="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autoupdate ssh-agent zsh-autosuggestions zsh-syntax-highlighting dirhistory)
+plugins=(autoupdate ssh-agent zsh-autosuggestions zsh-syntax-highlighting)
 # plugins=(ssh-agent git sudo zsh-autosuggestions zsh-vi-mode zsh-syntax-highlighting)
 
 # This speeds up pasting w/ autosuggest
