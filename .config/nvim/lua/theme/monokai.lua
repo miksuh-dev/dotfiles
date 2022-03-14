@@ -169,6 +169,10 @@ M.load_syntax = function(palette)
       bg = palette.blue,
       style = 'bold',
     },
+    TabLineAltFile = {
+      fg = palette.white,
+      style = 'underline',
+    },
     SpellBad = {
       fg = palette.red,
       style = 'undercurl',
