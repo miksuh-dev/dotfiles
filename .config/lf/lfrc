@@ -1,0 +1,61 @@
+# Basic vars
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+
+set incsearch on
+set hidden on
+
+# cmds/functions
+cmd open ${{
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        text/*|application/json|inode/x-empty) $EDITOR $fx;;
+	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
+	image/svg+xml) display -- $f ;;
+	audio/*) mpv --audio-display=no $f ;;
+	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+	application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+	application/pgp-encrypted) $EDITOR $fx ;;
+        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+    esac
+}}
+
+# Bindings
+map <c-p> $lf -remote "send $id select '$(fzf)'"
+map gh
+map gg top
+map X delete
+
+map R
+map R reload
+
+map H set hidden!
+
+map <enter> open
+
+map o &mimeopen $f
+map O $mimeopen --ask $f
+
+map a push :!mkdir<space>
+map A push :!touch<space>
+
+map c
+map cc clear
+map cd cd
+
+map d
+map dd cut
+
+map y
+map yy copy
+
+map cd cd
+
+map r
+map rn rename # at the very end
+

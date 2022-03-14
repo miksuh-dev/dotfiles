@@ -2,6 +2,7 @@
 
 for f in $HOME/.zsh/functions/*; do source $f; done
 for f in $HOME/.zsh/aliases/*; do source $f; done
+for f in $HOME/.zsh/export/*; do source $f; done
 
 source $HOME/Scripts/tmux/automatic-session
 
