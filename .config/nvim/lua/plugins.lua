@@ -516,5 +516,8 @@ return require('packer').startup({
       clone_timeout = 600,
     },
     max_jobs = 5,
+    display = {
+      prompt_border = require('common.border'),
+    },
   },
 })
