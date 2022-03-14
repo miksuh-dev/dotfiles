@@ -124,6 +124,7 @@ export NODE_OPTIONS=--max_old_space_size=4096
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 
 export MANPAGER='nvim --appimage-extract-and-run -c "+Man!"'
+export EDITOR='nvim'
 
 [ -f $HOME/.secrets ] && source $HOME/.secrets
 
