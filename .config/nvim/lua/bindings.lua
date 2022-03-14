@@ -64,6 +64,9 @@ map('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)
 map('n', '<leader>q', ":lua require('common.list').toggle_quickfix_list()<CR>", optsSilent)
 map('n', '<leader>l', ":lua require('common.list').toggle_location_list()<CR>", optsSilent)
 
+-- Reselect pasted text
+map('n', 'gp', '`[v`]', opts)
+
 -- Source lua file
 map('n', '<leader>so', function()
   if vim.bo.filetype == 'lua' then
