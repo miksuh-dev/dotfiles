@@ -127,7 +127,7 @@ require('lualine').setup({
   },
   tabline = {
     lualine_a = {},
-    lualine_b = { tabline.harpoon_marks },
+    lualine_b = { tabline },
     -- lualine_c = { require('plugin.lualine.tabline_colors') },
     lualine_x = {},
     lualine_y = {},
