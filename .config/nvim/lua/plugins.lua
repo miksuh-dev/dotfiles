@@ -389,15 +389,15 @@ return require('packer').startup({
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
     })
 
-    use({
-      'tzachar/cmp-tabnine',
-      run = './install.sh',
-      after = 'nvim-cmp',
-      requires = 'hrsh7th/nvim-cmp',
-      config = function()
-        require('plugin.tabnine.load')
-      end,
-    })
+    -- use({
+    --   'tzachar/cmp-tabnine',
+    --   run = './install.sh',
+    --   after = 'nvim-cmp',
+    --   requires = 'hrsh7th/nvim-cmp',
+    --   config = function()
+    --     require('plugin.tabnine.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
