@@ -81,6 +81,6 @@ return function()
 
     t[#t + 1] = get_styled_text(text, current_type)
   end
-  P(length)
+
   return '%#TablineFill#' .. table.concat(t, ' ')
 end
