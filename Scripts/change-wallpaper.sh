@@ -5,7 +5,7 @@
 declare -A months
 months[01]="january"
 months[02]="february"
-months[03]="march"
+months[03]="spring"
 months[04]="april"
 months[05]="may"
 months[06]="june"
