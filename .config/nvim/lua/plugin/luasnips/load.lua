@@ -29,7 +29,8 @@ end
 
 ls.config.set_config({
   history = false,
-  updateevents = 'InsertLeave',
+  updateevents = 'TextChanged,TextChangedI',
+  -- updateevents = 'InsertLeave',
   -- ext_opts = {
   --   [types.choiceNode] = {
   --     active = {
