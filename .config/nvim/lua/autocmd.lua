@@ -11,5 +11,6 @@ vim.cmd([[
   augroup autowrap
     autocmd!
     autocmd FileType markdown,text set wrap
+    autocmd FileType markdown,text set linebreak
   augroup END
 ]])
