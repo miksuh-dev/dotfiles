@@ -67,6 +67,12 @@ map('n', '<leader>l', ":lua require('common.list').toggle_location_list()<CR>", 
 -- Reselect pasted text
 map('n', 'gp', '`[v`]', opts)
 
+-- TODO Change this to lua
+vim.cmd([[
+ nnoremap <expr> k      v:count == 0 ? 'gk' : 'k'
+ nnoremap <expr> j      v:count == 0 ? 'gj' : 'j'
+]])
+
 -- Source lua file
 map('n', '<leader>so', function()
   if vim.bo.filetype == 'lua' then
