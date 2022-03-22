@@ -1,8 +1,3 @@
-vim.fn.sign_define('LspDiagnosticsSignError', { text = 'E ', texthl = 'LspDiagnosticsSignError' })
-vim.fn.sign_define('LspDiagnosticsSignWarning', { text = 'W ', texthl = 'LspDiagnosticsSignWarning' })
-vim.fn.sign_define('LspDiagnosticsSignInformation', { text = 'I ', texthl = 'LspDiagnosticsSignInformation' })
-vim.fn.sign_define('LspDiagnosticsSignHint', { text = 'H', texthl = 'LspDiagnosticsSignHint' })
-
 require('neo-tree').setup({
   popup_border_style = require('common.border'),
   enable_git_status = true,
@@ -28,6 +23,19 @@ require('neo-tree').setup({
     },
     git_status = {
       -- highlight = 'NeoTreeDimText', -- if you remove this the status will be colorful
+    },
+    symbols = {
+      added = '✚',
+      deleted = '',
+      -- modified = '',
+      modified = '',
+      renamed = '➜',
+      -- Status type
+      untracked = '★',
+      ignored = '◌',
+      unstaged = '✗',
+      staged = '✓',
+      conflict = '',
     },
   },
   filesystem = {
@@ -103,9 +111,9 @@ require('neo-tree').setup({
         end
       end,
     },
-    filters = { --These filters are applied to both browsing and searching
-      show_hidden = true,
-      respect_gitignore = false,
+    filtered_items = { --These filters are applied to both browsing and searching
+      hide_dotfiles = false,
+      hide_gitignored = false,
     },
     follow_current_file = false, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
