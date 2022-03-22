@@ -17,10 +17,12 @@ local function shorten_filename(path)
   return path
 end
 
+-- TODO Somtimes path is ~/Projects/asd/src/qwerty/index.js instead of src/qwerty/index.js. Show as selected in both ways.
 local function is_selected(filename)
   return vim.fn.expand('%') == filename
 end
 
+-- TODO Somtimes path is ~/Projects/asd/src/qwerty/index.js instead of src/qwerty/index.js. Show as alt in both ways.
 local function is_alt(filename)
   return vim.fn.getreg('#') == filename
 end
