@@ -23,19 +23,18 @@ require('neo-tree').setup({
     },
     git_status = {
       -- highlight = 'NeoTreeDimText', -- if you remove this the status will be colorful
-    },
-    symbols = {
-      added = '✚',
-      deleted = '',
-      -- modified = '',
-      modified = '',
-      renamed = '➜',
-      -- Status type
-      untracked = '★',
-      ignored = '◌',
-      unstaged = '✗',
-      staged = '✓',
-      conflict = '',
+      symbols = {
+        added = '+',
+        deleted = '✖',
+        modified = '',
+        renamed = '➜',
+        -- Status type
+        untracked = '★',
+        ignored = '◌',
+        unstaged = '',
+        staged = '',
+        conflict = '',
+      },
     },
   },
   filesystem = {
@@ -143,10 +142,10 @@ require('neo-tree').setup({
           'name',
           use_git_status_colors = true,
         },
-        { 'harpoon_index' },
         { 'clipboard' },
         { 'diagnostics' },
         { 'git_status' },
+        { 'harpoon_index' },
       },
     },
     window = {
