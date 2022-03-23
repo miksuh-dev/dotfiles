@@ -62,4 +62,9 @@ vim.g.loaded_python_provider = 0
 vim.g.lazyredraw = false
 vim.g.netrw_altfile = 1
 
+-- vim.opt.list = true
+vim.opt.listchars = {
+  eol = '↵',
+}
+
 vim.cmd('set guicursor=')
