@@ -632,6 +632,27 @@ M.load_plugin_syntax = function(palette)
     NeoTreeIndentMarker = {
       fg = palette.base4,
     },
+    NeoTreeGitModified = {
+      fg = palette.aqua,
+      bg = palette.none,
+    },
+    NeoTreeGitRenamed = {
+      fg = palette.aqua,
+      bg = palette.none,
+    },
+    NeoTreeGitIgnored = {
+      fg = palette.base5,
+      bg = palette.none,
+    },
+    NeoTreeGitUntracked = {
+      fg = palette.orange,
+      bg = palette.none,
+    },
+    NeoTreeGitConflict = {
+      fg = palette.purple,
+      bg = palette.none,
+      style = 'bold',
+    },
     TelescopeSelection = {
       fg = palette.white,
       bg = palette.blue,
