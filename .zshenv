@@ -1,7 +1,21 @@
 source $HOME/.zsh/init
-. "$HOME/.cargo/env"
 export GO111MODULE=on
-export PATH=$PATH:/usr/local/go/bin
+
+# Files
+[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
+
+# Paths
+export PATH="$PATH:/usr/sbin:$HOME/.local/bin"
+
+
+# TODO Make this loop
+[ -d $HOME/.cargo/bin ] && export PATH=$PATH:$HOME/.cargo/bin
+[ -d /usr/local/go/bin ] && export PATH=$PATH:/usr/local/go/bin
+
+[ -d $HOME/.npm-global ] && export PATH="$PATH:$HOME/.npm-global"
+[ -d $HOME/.npm-global/bin ] && export PATH="$PATH:$HOME/.npm-global/bin"
+[ -d /snap/bin ] && export PATH="$PATH:/snap/bin"
+[ -d $HOME/.local/share/gem/ruby/3.0.0/bin ] && export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 
 export FZF_DEFAULT_OPTS='
   --color=fg:#f8f8f0,hl:#66d9ef
