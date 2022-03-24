@@ -128,7 +128,15 @@ require('lualine').setup({
   },
   tabline = {
     lualine_a = {},
-    lualine_b = { tabline },
+    lualine_b = {
+      {
+        tabline,
+        padding = {
+          left = 0,
+          right = 0,
+        },
+      },
+    },
     -- lualine_c = { require('plugin.lualine.tabline_colors') },
     lualine_x = {},
     lualine_y = {},
