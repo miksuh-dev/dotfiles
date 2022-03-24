@@ -51,7 +51,7 @@ end
 
 local function get_text_content(index, text, text_type)
   if text_type == type.ALT then
-    return '' .. index .. ':' .. text .. ''
+    return index .. ':' .. text
   end
 
   return ' ' .. index .. ':' .. text .. ' '
