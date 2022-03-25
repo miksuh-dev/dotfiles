@@ -15,9 +15,9 @@ map('n', '-', function()
 
   vim.fn.setreg('a', vim.fn.getreg('#'))
 
-  vim.cmd(':NeoTreeRevealInSplit')
+  vim.cmd(':Neotree reveal filesystem current')
 end)
 
 map('n', '<leader>-', function()
-  vim.cmd(':NeoTreeShowInSplitToggle')
+  vim.cmd(':Neotree filesystem current')
 end)

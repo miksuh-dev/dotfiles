@@ -10,9 +10,6 @@ return require('packer').startup({
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- TODO chech these plugins
-    -- https://github.com/nvim-lua/lsp-status.nvim
-
     use({
       'wbthomason/packer.nvim',
     })
@@ -246,22 +243,7 @@ return require('packer').startup({
       'nvim-neo-tree/neo-tree.nvim',
       branch = 'main',
       cmd = {
-        'NeoTreeClose',
-        'NeoTreeFloat',
-        'NeoTreeFloatToggle',
-        'NeoTreeFocus',
-        'NeoTreeFocusToggle',
-        'NeoTreeLogs',
-        'NeoTreePasteConfig',
-        'NeoTreeReveal',
-        'NeoTreeRevealInSplit',
-        'NeoTreeRevealInSplitToggle',
-        'NeoTreeRevealToggle',
-        'NeoTreeSetLogLevel',
-        'NeoTreeShow',
-        'NeoTreeShowInSplitD',
-        'NeoTreeShowInSplitToggle',
-        'NeoTreeShowToggle',
+        'Neotree',
       },
       config = function()
         require('plugin.neo-tree.load')
