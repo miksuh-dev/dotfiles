@@ -57,30 +57,53 @@ local function get_text_content(index, text, text_type)
   return ' ' .. index .. ':' .. text .. ' '
 end
 
--- TODO Add counter of overflowed marks
+local function fill_space(count)
+  local text = ''
+  for _ = 0, count do
+    text = text .. ' '
+  end
+  return text
+end
+
+local function get_count_text(current, total)
+  local diff = total - current
+  if diff > 0 then
+    return total - current .. '+'
+  end
+
+  return ''
+end
+
 return function()
   local harpoon_marks = require('harpoon').get_mark_config().marks
-  -- local num_of_marks = util.tablelength(harpoon_marks)
+  local num_of_marks = util.tablelength(harpoon_marks)
 
   local t = {}
   local length = vim.api.nvim_list_uis()[1].width
 
+  local count_text = ''
   for key, value in ipairs(harpoon_marks) do
     local filename = value.filename
 
     local current_type = get_text_type(filename)
     local text = get_text_content(key, shorten_filename(filename), current_type)
+    local text_length = current_type == type.ALT and #text + 2 or #text
+    local local_count_text = get_count_text(key, num_of_marks)
 
     -- Prevent overflow
-    if length - #text <= 0 then
-      -- if (type == type.ALT and length - #text - 2 <= 0) or length - #text - 2 <= 0 then
+    if length - text_length - #count_text < key then
       break
-    else
-      length = length - #text - 2
     end
+
+    length = length - text_length
+    count_text = local_count_text
 
     t[#t + 1] = get_styled_text(text, current_type)
   end
 
-  return '%#TablineFill#' .. table.concat(t, ' ')
+  length = length - util.tablelength(t)
+
+  local fill_char_count = length - #count_text
+
+  return '%#TablineFill#' .. table.concat(t, ' ') .. fill_space(fill_char_count) .. count_text
 end
