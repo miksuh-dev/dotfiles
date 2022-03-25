@@ -18,11 +18,17 @@ local function shorten_filename(path)
 end
 
 local function is_selected(filename)
-  return string.find(vim.fn.expand('%'), filename)
+  local full_filename = vim.loop.cwd() .. '/' .. filename
+  local current_filename = vim.api.nvim_buf_get_name(0)
+
+  return full_filename == current_filename
 end
 
 local function is_alt(filename)
-  return string.find(vim.fn.getreg('#'), filename)
+  local full_filename = vim.loop.cwd() .. '/' .. filename
+  local alt_filename = vim.loop.cwd() .. '/' .. vim.fn.getreg('#')
+
+  return full_filename == alt_filename
 end
 
 local function get_text_type(filename)
@@ -77,6 +83,10 @@ end
 return function()
   local harpoon_marks = require('harpoon').get_mark_config().marks
   local num_of_marks = util.tablelength(harpoon_marks)
+
+  if num_of_marks == 0 then
+    return ''
+  end
 
   local t = {}
   local length = vim.api.nvim_list_uis()[1].width
