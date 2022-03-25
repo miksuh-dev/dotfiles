@@ -57,8 +57,8 @@ map('n', '<Down>', '5j', opts)
 map('v', '<Down>', '5j', opts)
 
 -- Move visual selection
-map('v', '<C-k>', ":m '<-2<CR>gv=gv", opts)
-map('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)
+map('v', '<C-k>', ":m '<-2<CR>gv=gv", optsSilent)
+map('v', '<C-j>', ":m '>+1<CR>gv=gv", optsSilent)
 
 -- Quickfix and location list toggle
 map('n', '<leader>q', ":lua require('common.list').toggle_quickfix_list()<CR>", optsSilent)
