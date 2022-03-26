@@ -511,6 +511,16 @@ M.load_plugin_syntax = function(palette)
     TSFloat = {
       fg = palette.purple,
     },
+    TSWarning = {
+      fg = palette.orange,
+      -- fg = palette.white,
+      style = 'bold',
+    },
+    TSDanger = {
+      fg = palette.red,
+      -- fg = palette.white,
+      style = 'bold',
+    },
     dbui_tables = {
       fg = palette.white,
     },
