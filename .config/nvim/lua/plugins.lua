@@ -413,6 +413,12 @@ return require('packer').startup({
     })
 
     use({
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      requires = 'nvim-treesitter',
+      after = 'nvim-treesitter',
+    })
+
+    use({
       'lukas-reineke/indent-blankline.nvim',
       requires = 'nvim-treesitter',
       after = 'nvim-treesitter',
