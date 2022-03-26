@@ -10,31 +10,29 @@ local function is_ignored_file_name(bufnr)
   return false
 end
 
--- local function get_buffer_info(buffnr)
---   local active_buffers = vim.fn.getwininfo()
---
---   for _, item in pairs(active_buffers) do
---     if item.bufnr == buffnr then
---       return item
---     end
---   end
--- end
+local function get_buffer_info(buffnr)
+  local active_buffers = vim.fn.getwininfo()
 
--- TODO: Fix this. change this so that instead of checking single buffer check window all buffers and then disable
--- in all window buffers if in diff. (currently gitsigns are only disabled in one buffer, fugivitve:/// one)
--- local function in_fugitive_diff(bufnr)
---   local buffer = get_buffer_info(bufnr)
---   local variables = buffer.variables
---
---   if variables.fugitive_diff_restore then
---     return variables.fugitive_diff_restore ~= ''
---   end
---
---   return false
--- end
+  for _, item in pairs(active_buffers) do
+    if item.bufnr == buffnr then
+      return item
+    end
+  end
+end
+
+local function in_fugitive_diff(bufnr)
+  local buffer = get_buffer_info(bufnr)
+  local variables = buffer.variables
+
+  if variables.fugitive_diff_restore then
+    return variables.fugitive_diff_restore ~= ''
+  end
+
+  return false
+end
 
 local function is_ignored_file(bufnr)
-  return  --[[ in_fugitive_diff(bufnr) or ]]is_ignored_file_name(bufnr)
+  return in_fugitive_diff(bufnr) or is_ignored_file_name(bufnr)
 end
 
 require('gitsigns').setup({
