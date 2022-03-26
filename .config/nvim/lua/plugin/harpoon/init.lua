@@ -2,6 +2,7 @@ local map = vim.keymap.set
 
 map('n', '<leader>H', function()
   require('harpoon.mark').add_file()
+  vim.cmd(':redrawtabline')
 end, {
   silent = true,
 })
