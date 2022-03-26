@@ -59,7 +59,7 @@ require('nvim-treesitter.configs').setup({
       enable = true,
       border = 'none',
       peek_definition_code = {
-        ['<leader>K'] = '@function.outer',
+        ['L'] = '@function.outer',
       },
     },
   },
