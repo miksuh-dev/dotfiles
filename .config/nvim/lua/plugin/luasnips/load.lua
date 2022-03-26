@@ -1,7 +1,6 @@
 local util = require('common.util')
 
 local ls = require('luasnip')
--- local types = require('luasnip.util.types')
 
 local function get_snippet_paths()
   local packer_config = require('packer').config
@@ -30,14 +29,7 @@ end
 ls.config.set_config({
   history = false,
   updateevents = 'TextChanged,TextChangedI',
-  -- updateevents = 'InsertLeave',
-  -- ext_opts = {
-  --   [types.choiceNode] = {
-  --     active = {
-  --       virt_text = { { '<-', 'Error' } },
-  --     },
-  --   },
-  -- },
+  delete_check_events = 'TextChanged,InsertLeave',
 })
 
 vim.keymap.set({ 'i', 's' }, '<c-l>', function()
