@@ -70,6 +70,10 @@ map('n', 'gp', '`[v`]', opts)
 -- Terminal leave insert instead of exit in terminal
 map('t', '<Esc>', '<C-\\><C-n>', optsSilent)
 
+-- Terminal Exit insert and scroll
+map('t', '<c-u>', '<C-\\><C-n><c-u>', optsSilent)
+map('t', '<c-d>', '<C-\\><C-n><c-d>', optsSilent)
+
 -- Make line jumping work when 'set wrap'
 map('n', 'j', function()
   return vim.v.count ~= 0 and 'j' or 'gj'
