@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 
+-- TODO Check if possible to make this so that if neotree is active and hovering some file calling this actually adds hovered file as mark instead of adding neotree window
 map('n', '<leader>H', function()
   require('harpoon.mark').add_file()
   vim.cmd(':redrawtabline')
