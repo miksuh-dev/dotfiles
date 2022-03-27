@@ -1,7 +1,6 @@
 local map = vim.keymap.set
 
--- TODO Change this to silent, when done with dap setup
-local optsSilent = { noremap = true }
+local optsSilent = { noremap = true, silent = true }
 
 map('n', '<Leader>dc', function()
   require('dap').continue()
