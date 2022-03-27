@@ -67,6 +67,9 @@ map('n', '<leader>l', ":lua require('common.list').toggle_location_list()<CR>", 
 -- Reselect pasted text
 map('n', 'gp', '`[v`]', opts)
 
+-- Terminal leave insert instead of exit in terminal
+map('t', '<Esc>', '<C-\\><C-n>', optsSilent)
+
 -- Make line jumping work when 'set wrap'
 map('n', 'j', function()
   return vim.v.count ~= 0 and 'j' or 'gj'
