@@ -54,12 +54,9 @@ M.load_syntax = function(palette)
       fg = palette.white,
       bg = palette.none,
     },
-    NormalFloat = {
-      bg = palette.base2,
-    },
+    NormalFloat = {},
     FloatBorder = {
       fg = palette.border,
-      bg = palette.base2,
     },
     Pmenu = {
       fg = palette.white,
