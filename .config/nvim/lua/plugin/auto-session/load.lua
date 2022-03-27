@@ -6,6 +6,12 @@ local ignored_filetypes = {
   'fugitive',
   'dbui',
   'help',
+  'dapui_scopes',
+  'dapui_breakpoints',
+  'dapui_stacks',
+  'dapui_watches',
+  'dap-repl',
+  'dap-float',
 }
 
 local ignored_directories = {

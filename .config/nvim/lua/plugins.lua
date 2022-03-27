@@ -6,6 +6,9 @@ end
 
 return require('packer').startup({
   function(use)
+    -- TODO Check these plugins:
+    -- https://github.com/stevearc/aerial.nvim
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -112,11 +115,6 @@ return require('packer').startup({
     })
 
     use({
-      'David-Kunz/jester',
-      module = { 'jester' },
-    })
-
-    use({
       'rmagatti/auto-session',
       event = 'VimEnter',
       config = function()
@@ -161,6 +159,11 @@ return require('packer').startup({
     })
 
     use({
+      'MunifTanjim/nui.nvim',
+      module = 'nui',
+    })
+
+    use({
       'hoob3rt/lualine.nvim',
       requires = 'kyazdani42/nvim-web-devicons',
       event = 'VimEnter',
@@ -187,33 +190,59 @@ return require('packer').startup({
     })
 
     ------------------------------------------------------------------------------------------------
-    ----------------------------------------- Tools ------------------------------------------------
+    ----------------------------------------- Debugging ------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- TODO: Change this to dap instead
-    -- use({
-    --   'puremourning/vimspector',
-    --   config = function()
-    --     require('plugin.vimspector.load')
-    --   end,
-    --   keys = {
-    --     { 'n', '<leader>dd' },
-    --   },
-    --   cmd = {
-    --     'VimspectorAbortInstall',
-    --     'VimspectorDebugInfo',
-    --     'VimspectorEval',
-    --     'VimspectorInstall',
-    --     'VimspectorLoadSession',
-    --     'VimspectorMkSession',
-    --     'VimspectorReset',
-    --     'VimspectorShowOutput',
-    --     'VimspectorToggleLog',
-    --     'VimspectorUpdate',
-    --     'VimspectorWatchk',
-    --   },
-    -- })
-    --
+    use({
+      'mfussenegger/nvim-dap',
+      module = { 'dap' },
+    })
+
+    use({
+      'Pocco81/DAPInstall.nvim',
+      after = { 'nvim-dap' },
+      cmd = {
+        'DIInstall',
+        'DIUninstall',
+        'DIList',
+      },
+      config = function()
+        require('plugin.dap.install.load')
+      end,
+    })
+
+    use({
+      'rcarriga/nvim-dap-ui',
+      after = { 'nvim-dap' },
+      requires = { 'nvim-dap' },
+      module = {
+        'dapui',
+      },
+      config = function()
+        require('plugin.dap.ui.load')
+      end,
+    })
+
+    use({
+      'theHamsta/nvim-dap-virtual-text',
+      requires = { 'nvim-dap' },
+      after = 'nvim-dap',
+      config = function()
+        require('plugin.dap.virtual-text.load')
+      end,
+    })
+
+    use({
+      'nvim-telescope/telescope-dap.nvim',
+      after = 'nvim-dap',
+      config = function()
+        require('plugin.dap.telescope-plugin.load')
+      end,
+    })
+
+    ------------------------------------------------------------------------------------------------
+    ----------------------------------------- Tools ------------------------------------------------
+    ------------------------------------------------------------------------------------------------
 
     use({
       'iamcco/markdown-preview.nvim',
@@ -223,6 +252,11 @@ return require('packer').startup({
       setup = function()
         require('plugin.markdown-preview.setup')
       end,
+    })
+
+    use({
+      'David-Kunz/jester',
+      module = { 'jester' },
     })
 
     ------------------------------------------------------------------------------------------------
@@ -242,11 +276,6 @@ return require('packer').startup({
       config = function()
         require('plugin.telescope.load')
       end,
-    })
-
-    use({
-      'MunifTanjim/nui.nvim',
-      module = 'nui',
     })
 
     use({
