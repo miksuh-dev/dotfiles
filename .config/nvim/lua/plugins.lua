@@ -255,8 +255,17 @@ return require('packer').startup({
     })
 
     use({
-      'David-Kunz/jester',
-      module = { 'jester' },
+      'vim-test/vim-test',
+      cmd = {
+        'TestSuite',
+        'TestNearest',
+        'TestFile',
+        'TestLast',
+        'TestVisit',
+      },
+      setup = function()
+        require('plugin.vim-test.setup')
+      end,
     })
 
     ------------------------------------------------------------------------------------------------

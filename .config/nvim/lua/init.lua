@@ -6,7 +6,7 @@ require('globals')
 require('disabled')
 
 require('plugin.telescope')
-require('plugin.jester')
+require('plugin.vim-test')
 require('plugin.neo-tree')
 require('plugin.harpoon')
 require('plugin.neogen')
