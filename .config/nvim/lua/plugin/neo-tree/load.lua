@@ -111,6 +111,17 @@ require('neo-tree').setup({
           vim.fn.setreg('#', alternate_file)
         end
       end,
+      harpoon_add = function(state)
+        local node = state.tree:get_node()
+        if node.type == 'file' then
+          local cwd = vim.loop.cwd() .. '/'
+          local file = string.gsub(node.path, cwd, '')
+
+          require('harpoon.mark').add_file(file)
+          vim.cmd(':redrawtabline')
+          require('neo-tree.sources.manager').redraw('filesystem')
+        end
+      end,
     },
     filtered_items = { --These filters are applied to both browsing and searching
       hide_dotfiles = false,
@@ -196,6 +207,7 @@ require('neo-tree').setup({
         ['dd'] = 'cut_to_clipboard',
         ['p'] = 'paste_from_clipboard',
         ['q'] = 'close_and_restore_alternate_file',
+        ['<leader>H'] = 'harpoon_add',
       },
     },
   },
