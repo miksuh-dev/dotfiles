@@ -290,6 +290,7 @@ return require('packer').startup({
     use({
       'nvim-neo-tree/neo-tree.nvim',
       branch = 'main',
+      module = 'neo-tree',
       cmd = {
         'Neotree',
       },

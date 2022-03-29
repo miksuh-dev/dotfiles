@@ -20,6 +20,12 @@ local ignored_directories = {
   'man://',
 }
 
+local function restore_neo_tree()
+  local manager = require('neo-tree.sources.manager')
+  manager.set_cwd(vim.fn.getcwd())
+  manager.redraw('filesystem')
+end
+
 require('auto-session').setup({
   log_level = 'error',
   auto_session_enable_last_session = false,
@@ -30,4 +36,5 @@ require('auto-session').setup({
   auto_restore_enabled = nil,
   auto_session_suppress_dirs = ignored_directories,
   bypass_session_save_file_types = ignored_filetypes,
+  post_restore_cmds = { restore_neo_tree },
 })
