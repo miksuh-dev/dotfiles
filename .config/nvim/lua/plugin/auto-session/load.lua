@@ -1,5 +1,5 @@
 -- recommended session options for auto-session
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+vim.o.sessionoptions = 'blank,buffers,curdir,help,tabpages,winsize,winpos,terminal'
 
 local ignored_filetypes = {
   'neo-tree',
