@@ -81,9 +81,25 @@ cmp.setup({
       end
     end),
     ['<Tab>'] = cmp.mapping(select_next, { 'i', 's' }),
-    ['<Down>'] = cmp.mapping(select_next, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(select_prev, { 'i', 's' }),
-    ['<Up>'] = cmp.mapping(select_prev, { 'i', 's' }),
+    ['<Up>'] = cmp.mapping(function()
+      local copilot_keys = vim.fn['copilot#Previous']()
+      if copilot_keys ~= '' and type(copilot_keys) == 'string' then
+        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+      end
+    end),
+    ['<Down>'] = cmp.mapping(function()
+      local copilot_keys = vim.fn['copilot#Next']()
+      if copilot_keys ~= '' and type(copilot_keys) == 'string' then
+        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+      end
+    end),
+    ['<Right>'] = cmp.mapping(function()
+      local copilot_keys = vim.fn['copilot#Accept']()
+      if copilot_keys ~= '' and type(copilot_keys) == 'string' then
+        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+      end
+    end),
   },
   formatting = {
     format = function(entry, vim_item)
