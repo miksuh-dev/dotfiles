@@ -80,20 +80,9 @@ cmp.setup({
         fallback()
       end
     end),
-    -- ['<Tab>'] = function(fallback)
-    --   -- if cmp.visible() then
-    --   --   cmp.mapping(select_next, { 'i', 's' })
-    --   -- else
-    --   local copilot_keys = vim.fn['copilot#Accept']()
-    --   if copilot_keys ~= '' then
-    --     vim.api.nvim_feedkeys(copilot_keys, 'i', true)
-    --   else
-    --     fallback()
-    --   end
-    --   -- end
-    -- end,
+    ['<Tab>'] = cmp.mapping(select_next, { 'i', 's' }),
     ['<Down>'] = cmp.mapping(select_next, { 'i', 's' }),
-    -- ['<S-Tab>'] = cmp.mapping(select_prev, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(select_prev, { 'i', 's' }),
     ['<Up>'] = cmp.mapping(select_prev, { 'i', 's' }),
   },
   formatting = {
