@@ -888,6 +888,9 @@ M.load_plugin_syntax = function(palette)
     MatchWord = {
       style = 'underline',
     },
+    CopilotSuggestion = {
+      fg = palette.aqua,
+    },
   }
 end
 

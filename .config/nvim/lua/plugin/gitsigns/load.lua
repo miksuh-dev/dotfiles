@@ -49,10 +49,10 @@ require('gitsigns').setup({
   word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   keymaps = {
     -- -- Default keymap options
-    -- noremap = true,
+    noremap = true,
     --
-    -- ['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'" },
-    -- ['n [h'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'" },
+    ['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'" },
+    ['n [h'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'" },
     --
     -- ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
     -- ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',

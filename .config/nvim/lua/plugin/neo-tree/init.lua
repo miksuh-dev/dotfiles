@@ -15,7 +15,7 @@ map('n', '-', function()
 
   vim.fn.setreg('a', vim.fn.getreg('#'))
 
-  vim.cmd(':Neotree reveal filesystem current')
+  vim.cmd(':Neotree reveal filesystem current reveal_force_cwd')
 end)
 
 map('n', '<leader>-', function()

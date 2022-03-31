@@ -268,6 +268,10 @@ return require('packer').startup({
       end,
     })
 
+    use({
+      'github/copilot.vim',
+    })
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Navigation -------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -418,6 +422,11 @@ return require('packer').startup({
       'kristijanhusak/vim-dadbod-completion',
       after = { 'vim-dadbod-ui', 'nvim-cmp' },
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+    })
+
+    use({
+      'hrsh7th/cmp-copilot',
+      after = { 'nvim-cmp' },
     })
 
     -- use({

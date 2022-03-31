@@ -80,9 +80,20 @@ cmp.setup({
         fallback()
       end
     end),
-    ['<Tab>'] = cmp.mapping(select_next, { 'i', 's' }),
+    -- ['<Tab>'] = function(fallback)
+    --   -- if cmp.visible() then
+    --   --   cmp.mapping(select_next, { 'i', 's' })
+    --   -- else
+    --   local copilot_keys = vim.fn['copilot#Accept']()
+    --   if copilot_keys ~= '' then
+    --     vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+    --   else
+    --     fallback()
+    --   end
+    --   -- end
+    -- end,
     ['<Down>'] = cmp.mapping(select_next, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(select_prev, { 'i', 's' }),
+    -- ['<S-Tab>'] = cmp.mapping(select_prev, { 'i', 's' }),
     ['<Up>'] = cmp.mapping(select_prev, { 'i', 's' }),
   },
   formatting = {
@@ -99,12 +110,14 @@ cmp.setup({
         path = '[Path]',
         tmux = '[Tmux]',
         ['vim-dadbod-completion'] = '[DB]',
+        copilot = '[Copilot]',
       })[entry.source.name]
       return vim_item
     end,
   },
   sources = {
     { name = 'luasnip' },
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'cmp_tabnine' },
     { name = 'nvim_lua' },
