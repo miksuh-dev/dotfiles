@@ -9,7 +9,7 @@ local type = {
 local function shorten_filename(path)
   if path:match('/') then
     local table = util.split(path, '/')
-    local length = util.tablelength(table)
+    local length = vim.fn.len(table)
 
     return table[length - 1] .. '/' .. table[length]
   end
@@ -82,7 +82,7 @@ end
 
 return function()
   local harpoon_marks = require('harpoon').get_mark_config().marks
-  local num_of_marks = util.tablelength(harpoon_marks)
+  local num_of_marks = vim.fn.len(harpoon_marks)
 
   if num_of_marks == 0 then
     return ''
@@ -111,7 +111,7 @@ return function()
     t[#t + 1] = get_styled_text(text, current_type)
   end
 
-  length = length - util.tablelength(t)
+  length = length - vim.fn.len(t)
 
   local fill_char_count = length - #count_text
 

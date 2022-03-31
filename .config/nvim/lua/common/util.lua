@@ -66,14 +66,6 @@ M.split = function(s, delimiter)
   return result
 end
 
-M.tablelength = function(T)
-  local count = 0
-  for _ in pairs(T) do
-    count = count + 1
-  end
-  return count
-end
-
 M.shade_color = function(color, percent)
   local r, g, b = to_rgb(color)
   if not r or not g or not b then
