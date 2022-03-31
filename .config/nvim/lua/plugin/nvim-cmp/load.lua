@@ -37,28 +37,6 @@ local function getKind(kind)
   return kind_icon .. kind
 end
 
-local select_prev = function(fallback)
-  if cmp.visible() then
-    cmp.select_prev_item()
-  elseif luasnip.jumpable(-1) then
-    luasnip.jump(-1)
-  else
-    fallback()
-  end
-end
-
-local select_next = function(fallback)
-  if cmp.visible() then
-    cmp.select_next_item()
-  elseif luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
-  elseif has_words_before() then
-    cmp.complete()
-  else
-    fallback()
-  end
-end
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -80,19 +58,39 @@ cmp.setup({
         fallback()
       end
     end),
-    ['<Tab>'] = cmp.mapping(select_next, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(select_prev, { 'i', 's' }),
-    ['<Up>'] = cmp.mapping(function()
-      local copilot_keys = vim.fn['copilot#Previous']()
-      if copilot_keys ~= '' and type(copilot_keys) == 'string' then
-        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
       end
+    end, {
+      'i',
+      's',
+    }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {
+      'i',
+      's',
+    }),
+    ['<Up>'] = cmp.mapping(function()
+      cmp.close()
+      vim.fn['copilot#Previous']()
     end),
     ['<Down>'] = cmp.mapping(function()
-      local copilot_keys = vim.fn['copilot#Next']()
-      if copilot_keys ~= '' and type(copilot_keys) == 'string' then
-        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
-      end
+      cmp.close()
+      vim.fn['copilot#Next']()
     end),
     ['<Right>'] = cmp.mapping(function()
       local copilot_keys = vim.fn['copilot#Accept']()
