@@ -270,6 +270,8 @@ return require('packer').startup({
 
     use({
       'github/copilot.vim',
+      event = { 'BufReadPre' },
+      cmd = { 'Copilot' },
     })
 
     ------------------------------------------------------------------------------------------------
@@ -423,21 +425,6 @@ return require('packer').startup({
       after = { 'vim-dadbod-ui', 'nvim-cmp' },
       requires = { 'nvim-cmp', 'vim-dadbod-ui' },
     })
-
-    use({
-      'hrsh7th/cmp-copilot',
-      after = { 'nvim-cmp' },
-    })
-
-    -- use({
-    --   'tzachar/cmp-tabnine',
-    --   run = './install.sh',
-    --   after = 'nvim-cmp',
-    --   requires = 'hrsh7th/nvim-cmp',
-    --   config = function()
-    --     require('plugin.tabnine.load')
-    --   end,
-    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------

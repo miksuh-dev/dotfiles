@@ -14,3 +14,9 @@ require('harpoon').setup({
   -- filetypes that you want to prevent from adding to the harpoon list menu.
   excluded_filetypes = { 'harpoon' },
 })
+
+-- require('harpoon.mark').on('changed', function()
+--   if vim.bo.filetype == 'neo-tree' then
+--     print('changed' .. os.time(os.date('!*t')))
+--   end
+-- end)

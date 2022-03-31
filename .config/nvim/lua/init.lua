@@ -11,6 +11,7 @@ require('plugin.neo-tree')
 require('plugin.harpoon')
 require('plugin.neogen')
 require('plugin.dap')
+require('plugin.copilot')
 
 require('theme.monokai').setup()
 require('bindings')

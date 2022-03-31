@@ -110,14 +110,12 @@ cmp.setup({
         path = '[Path]',
         tmux = '[Tmux]',
         ['vim-dadbod-completion'] = '[DB]',
-        copilot = '[Copilot]',
       })[entry.source.name]
       return vim_item
     end,
   },
   sources = {
     { name = 'luasnip' },
-    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'cmp_tabnine' },
     { name = 'nvim_lua' },
@@ -131,6 +129,6 @@ cmp.setup({
     border = require('common.border'),
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
   },
 })
