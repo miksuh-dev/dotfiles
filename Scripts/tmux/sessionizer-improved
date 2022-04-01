@@ -2,7 +2,7 @@
 
 # TODO: add prefix to custom entries and cut ~/Projects from project paths.
 cache_location='/tmp/sessionizer-cache'
-cache_duration=3600 # Time until refresh (seconds)
+cache_duration=60 # Time until refresh (seconds)
 project_folder=~/Projects
 ls_style='ls -lsA --color'
 
@@ -96,7 +96,7 @@ if [[ ! -e $cache_location ]]; then
 fi
 
 
-if (( ( $(date +%s) - $(date -r $cache_location "+%s") ) )); then
+if [ $(($(date +%s)-$(date -r $cache_location "+%s"))) -gt $cache_duration ]; then
   refresh_cache
 fi
 
