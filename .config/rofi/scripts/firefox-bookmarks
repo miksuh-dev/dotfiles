@@ -1,6 +1,19 @@
-#!/usr/bin/env bash
-
+# #!/usr/bin/env bash
 DB="/tmp/places.sqlite"
+CACHE_DURATION=3600
+TEMP_DIR="/tmp"
+FIREFOX_DIR=$HOME/.mozilla/firefox
+
+# Refresh firefox cache every CACH_DURATION seconds
+if [ $(($(date +%s)-$(date -r $DB "+%s"))) -gt $CACHE_DURATION ]; then
+  echo 'refresh'
+
+  PLACES_DB=$(find "$FIREFOX_DIR" -name "places.sqlite" ! -path "$FIREFOX_DIR/*.default$" ! -path "$FIREFOX_DIR/*default" | head -1)
+
+  rm -f "$TEMP_DIR/places.sqlite"
+  cp -f ${PLACES_DB} "$TEMP_DIR/places.sqlite"
+fi
+
 QUERY="select b.title, p.url from moz_places as p, moz_bookmarks as b where p.id == b.fk order by p.frecency desc"
 BOOKMARKS=$(sqlite3 "${DB}" "${QUERY}")
 

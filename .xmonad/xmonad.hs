@@ -257,6 +257,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- rofi (browser search)
     , ((modm,               xK_s), spawn "$HOME/.config/rofi/scripts/search")
+
+        -- rofi (bookmark search)
+    , ((modm,               xK_x), spawn "$HOME/.config/rofi/scripts/firefox-bookmarks")
+
     
     -- Firefox
     , ((modm .|. controlMask, xK_Return), spawn "$(which firefox-developer-edition) || $(which firefox-dev)")
