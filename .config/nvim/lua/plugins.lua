@@ -270,7 +270,7 @@ return require('packer').startup({
 
     use({
       'github/copilot.vim',
-      event = { 'BufReadPre' },
+      event = { 'InsertEnter', 'BufReadPre' },
       cmd = { 'Copilot' },
     })
 
