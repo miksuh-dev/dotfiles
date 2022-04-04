@@ -6,9 +6,6 @@ end
 
 return require('packer').startup({
   function(use)
-    -- TODO Check these plugins:
-    -- https://github.com/stevearc/aerial.nvim
-
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Common -----------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -246,9 +243,8 @@ return require('packer').startup({
 
     use({
       'iamcco/markdown-preview.nvim',
-      ft = 'markdown',
       run = 'cd app && yarn install',
-      -- cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
+      cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
       setup = function()
         require('plugin.markdown-preview.setup')
       end,
@@ -476,15 +472,6 @@ return require('packer').startup({
       'andymass/vim-matchup',
       after = 'nvim-treesitter',
     })
-
-    -- use({
-    --   'm-demare/hlargs.nvim',
-    --   requires = { 'nvim-treesitter' },
-    --   after = 'nvim-treesitter',
-    --   config = function()
-    --     require('plugin.hlargs.load')
-    --   end,
-    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- DB ---------------------------------------------------
