@@ -37,23 +37,29 @@ require('nvim-treesitter.configs').setup({
         ['if'] = '@function.inner',
         ['ia'] = '@parameter.inner',
         ['aa'] = '@parameter.outer',
+        ['ic'] = '@conditional.inner',
+        ['ac'] = '@conditional.outer',
+        ['il'] = '@loop.inner',
+        ['al'] = '@loop.outer',
       },
     },
     move = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
+      set_jumps = false, -- whether to set jumps in the jumplist
       goto_next_start = {
-        [']f'] = '@function.outer',
+        ['}'] = '@function.inner',
+        [')'] = '@conditional.inner',
       },
-      goto_next_end = {
-        [']F'] = '@function.outer',
-      },
+      -- goto_next_end = {
+      --   [']F'] = '@function.outer',
+      -- },
       goto_previous_start = {
-        ['[f'] = '@function.outer',
+        ['{'] = '@function.inner',
+        ['('] = '@conditional.inner',
       },
-      goto_previous_end = {
-        ['[F'] = '@function.outer',
-      },
+      -- goto_previous_end = {
+      --   ['[F'] = '@function.outer',
+      -- },
     },
     lsp_interop = {
       enable = true,
