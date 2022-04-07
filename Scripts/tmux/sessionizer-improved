@@ -100,7 +100,6 @@ if [ $(($(date +%s)-$(date -r $cache_location "+%s"))) -gt $cache_duration ]; th
   refresh_cache
 fi
 
-asd=$(get_preview_as_string)
 selected=$(echo "$(cat $cache_location) $(get_custom_keys)" | tr " " "\n" | fzf --preview "$(get_preview_as_string)")
 
 if [[ $(in_custom $selected) ]]; then
