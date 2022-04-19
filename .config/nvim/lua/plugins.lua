@@ -110,12 +110,20 @@ return require('packer').startup({
     })
 
     use({
-      'rmagatti/auto-session',
+      'Shatur/neovim-session-manager',
       event = 'VimEnter',
       config = function()
-        require('plugin.auto-session.load')
+        require('plugin.neovim-session-manager.load')
       end,
     })
+
+    -- use({
+    --   'rmagatti/auto-session',
+    --   event = 'VimEnter',
+    --   config = function()
+    --     require('plugin.auto-session.load')
+    --   end,
+    -- })
 
     use({
       'danymat/neogen',

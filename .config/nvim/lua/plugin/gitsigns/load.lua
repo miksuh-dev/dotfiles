@@ -1,5 +1,9 @@
 local function is_ignored_file_name(bufnr)
-  local buffname = vim.api.nvim_buf_get_name(bufnr)
+  local ok, buffname = pcall(vim.api.nvim_buf_get_name, bufnr)
+  if not ok then
+    return
+  end
+
   local ignored_files = require('plugin.gitsigns.ignored_files')
 
   for _, file in ipairs(ignored_files) do
@@ -10,29 +14,29 @@ local function is_ignored_file_name(bufnr)
   return false
 end
 
-local function get_buffer_info(buffnr)
-  local active_buffers = vim.fn.getwininfo()
+-- local function get_buffer_info(buffnr)
+--   local active_buffers = vim.fn.getwininfo()
+--
+--   for _, item in pairs(active_buffers) do
+--     if item.bufnr == buffnr then
+--       return item
+--     end
+--   end
+-- end
 
-  for _, item in pairs(active_buffers) do
-    if item.bufnr == buffnr then
-      return item
-    end
-  end
-end
-
-local function in_fugitive_diff(bufnr)
-  local buffer = get_buffer_info(bufnr)
-  local variables = buffer.variables
-
-  if variables.fugitive_diff_restore then
-    return variables.fugitive_diff_restore ~= ''
-  end
-
-  return false
-end
+-- local function in_fugitive_diff(bufnr)
+--   local buffer = get_buffer_info(bufnr)
+--   local variables = buffer.variables
+--
+--   if variables.fugitive_diff_restore then
+--     return variables.fugitive_diff_restore ~= ''
+--   end
+--
+--   return false
+-- end
 
 local function is_ignored_file(bufnr)
-  return in_fugitive_diff(bufnr) or is_ignored_file_name(bufnr)
+  return  --[[ in_fugitive_diff(bufnr) or ]]is_ignored_file_name(bufnr)
 end
 
 require('gitsigns').setup({
