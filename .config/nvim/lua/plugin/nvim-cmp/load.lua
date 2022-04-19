@@ -128,8 +128,10 @@ cmp.setup({
     { name = 'path' },
     { name = 'vim-dadbod-completion' },
   },
-  documentation = {
-    border = require('common.border'),
+  window = {
+    documentation = {
+      border = require('common.border'),
+    },
   },
   experimental = {
     ghost_text = false,
