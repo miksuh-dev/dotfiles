@@ -177,7 +177,8 @@ return require('packer').startup({
 
     use({
       'SmiteshP/nvim-gps',
-      module = { 'nvim-gps' },
+      -- module = { 'nvim-gps' },
+      after = 'nvim-treesitter',
       config = function()
         require('plugin.nvim-gps.load')
       end,
@@ -435,6 +436,7 @@ return require('packer').startup({
     use({
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdateSync',
+      event = { 'BufReadPre' },
       config = function()
         require('plugin.nvim-treesitter.load')
       end,
@@ -453,6 +455,7 @@ return require('packer').startup({
       'windwp/nvim-ts-autotag',
       ft = require('plugin.nvim-ts-autotag.filetypes'),
       requires = 'nvim-treesitter',
+      after = 'nvim-treesitter',
       config = function()
         require('plugin.nvim-ts-autotag.load')
       end,
