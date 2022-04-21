@@ -194,8 +194,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Xkill
     , ((modm .|. shiftMask, xK_d     ), spawn "xkill")
 
-     -- Rotate through the available layout algorithms
-    , ((modm,               xK_space ), sendMessage NextLayout)
+     -- Switch to last workspace
+    , ((modm,               xK_space ), toggleWS)
 
     -- ToggleStruts
     , ((modm .|. shiftMask,     xK_space ), sendMessage ToggleStruts)
