@@ -14,12 +14,12 @@ return require('packer').startup({
       'wbthomason/packer.nvim',
     })
 
-    use({
-      'nathom/filetype.nvim',
-      config = function()
-        require('plugin.filetype.load')
-      end,
-    })
+    -- use({
+    --   'nathom/filetype.nvim',
+    --   config = function()
+    --     require('plugin.filetype.load')
+    --   end,
+    -- })
 
     use({
       'eggbean/vim-tmux-navigator-no-wrapping',
@@ -435,7 +435,6 @@ return require('packer').startup({
     use({
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdateSync',
-      module = 'nvim-treesitter',
       config = function()
         require('plugin.nvim-treesitter.load')
       end,
