@@ -22,7 +22,7 @@ if [ -x "$(command -v playerctl)" ]; then
             output=$text
         fi
 
-        echo "Playing: ${output} |"
+        echo " ${output} |"
 
     fi
 fi

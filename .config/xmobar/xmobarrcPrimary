@@ -1,7 +1,7 @@
 Config {
 
    -- appearance
-      font =         "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"
+      font =         "xft:JetBrainsMono Nerd Font Mono:size=9:bold:antialias=true"
       , bgColor =      "#111111"
       , fgColor =      "#eeeeee"
       , position =     Top
