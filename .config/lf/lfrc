@@ -17,6 +17,9 @@ cmd open ${{
         text/*|application/json|inode/x-empty) $EDITOR $fx;;
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
+	image/jpeg) kolourpaint -- $f ;;
+	image/jpg) kolourpaint -- $f ;;
+	image/png) kolourpaint -- $f ;;
 	audio/*) mpv --audio-display=no $f ;;
 	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
 	application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
