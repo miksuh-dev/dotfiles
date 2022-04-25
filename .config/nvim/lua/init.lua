@@ -13,6 +13,7 @@ require('plugin.neogen')
 require('plugin.dap')
 require('plugin.copilot')
 require('plugin.react-extract')
+require('kanban')
 
 require('theme.monokai').setup()
 require('bindings')
