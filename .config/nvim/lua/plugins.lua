@@ -474,6 +474,14 @@ return require('packer').startup({
     })
 
     use({
+      'napmn/react-extract.nvim',
+      method = 'react-extract',
+      config = function()
+        require('plugin.react-extract.load')
+      end,
+    })
+
+    use({
       'andymass/vim-matchup',
       after = 'nvim-treesitter',
     })
