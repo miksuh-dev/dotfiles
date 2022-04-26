@@ -33,13 +33,13 @@ M.diagnostics_line = function()
 end
 
 M.goto_prev = function()
-  vim.lsp.diagnostic.goto_prev({
+  vim.diagnostic.goto_prev({
     wrap = false,
   })
 end
 
 M.goto_next = function()
-  vim.lsp.diagnostic.goto_next({
+  vim.diagnostic.goto_next({
     wrap = false,
   })
 end
@@ -49,11 +49,11 @@ M.set_loc_list = function()
 end
 
 M.code_action = function()
-  require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))
+  vim.lsp.buf.code_action()
 end
 
 M.range_code_action = function()
-  require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))
+  vim.lsp.buf.range_code_action()
 end
 
 M.format = function()
