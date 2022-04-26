@@ -282,14 +282,17 @@ return require('packer').startup({
 
     use({
       'nvim-telescope/telescope-fzf-native.nvim',
-      cmd = { 'Telescope' },
-      module = 'telescope',
       run = 'make',
     })
 
     use({
-      'nvim-telescope/telescope.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
       after = 'telescope-fzf-native.nvim',
+    })
+
+    use({
+      'nvim-telescope/telescope.nvim',
+      after = 'telescope-ui-select.nvim',
       config = function()
         require('plugin.telescope.load')
       end,
