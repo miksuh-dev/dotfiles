@@ -43,22 +43,22 @@ return function(client, bufnr)
   buf_set_keymap('v', '<leader>a', call_action('range_code_action'), opts)
 
   if client.name ~= 'efm' then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
   end
 
   -- Format on save is available
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({ timeout_ms = 5000 })]])
+  if client.server_capabilities.documentFormattingProvider then
+    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ timeout_ms = 5000 })]])
 
     buf_set_keymap('n', '<leader>fo', call_action('format'), opts)
   end
 
-  if client.resolved_capabilities.document_range_formatting then
+  if client.server_capabilities.documentRangeFormattingProvider then
     buf_set_keymap('v', '<leader>fo', call_action('range_format'), opts)
   end
 
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
       [[
         augroup lsp_document_highlight

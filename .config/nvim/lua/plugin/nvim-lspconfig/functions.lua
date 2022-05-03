@@ -57,7 +57,7 @@ M.range_code_action = function()
 end
 
 M.format = function()
-  vim.lsp.buf.formatting({ timeout_ms = 5000 })
+  vim.lsp.buf.format({ timeout_ms = 5000 })
 end
 
 M.range_format = function()
