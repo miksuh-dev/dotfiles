@@ -10,11 +10,11 @@
   file-style = omit
   zero-style = syntax
   syntax-theme = Monokai Extended
-  commit-decoration-style ="#11ce16" box
-  commit-style = "#ffd21a" bold italic
-  hunk-header-decoration-style = "#1688f0" box ul
-  hunk-header-file-style = "#f8f8f0" ul
-  hunk-header-line-number-style = "#66d9ef" box bold
+  commit-decoration-style ="#f92672" box
+  commit-style = "#f8f8f0"
+  hunk-header-decoration-style = "#66d9ef" box ul
+  hunk-header-file-style = "#f8f8f0"
+  hunk-header-line-number-style = "#66d9ef" box
   hunk-header-style = file line-number syntax bold italic
   line-numbers = true
   line-numbers-left-format = "{nm:>1}│"

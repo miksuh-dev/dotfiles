@@ -12,6 +12,7 @@
   features = monokai
   navigate = true
   side-by-side = false
+  colorMoved = default
 
 [merge]
   conflictstyle = diff3
