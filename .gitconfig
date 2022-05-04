@@ -1,5 +1,6 @@
 [include]
   path = ~/.gitconfig-secret
+  path = ~/.config/delta/themes.gitconfig
 
 [core]
   pager = delta
@@ -8,6 +9,7 @@
   diffFilter = delta --color-only
 
 [delta]
+  features = monokai
   navigate = true
   side-by-side = true
 
