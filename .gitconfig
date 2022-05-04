@@ -11,7 +11,7 @@
 [delta]
   features = monokai
   navigate = true
-  side-by-side = true
+  side-by-side = false
 
 [merge]
   conflictstyle = diff3
