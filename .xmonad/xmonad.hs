@@ -255,8 +255,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- rofi
     , ((modm,               xK_f), spawn "rofi -show run -m -4 -modi run,power-menu:'~/.config/rofi/scripts/rofi-power-menu --choices=lockscreen/shutdown/reboot --no-symbols'")
 
-    -- rofi (browser search)
-    , ((modm,               xK_s), spawn "$HOME/.config/rofi/scripts/search")
+    -- rofi (window search)
+    , ((modm,               xK_s), spawn "rofi -show window -m -4")
 
         -- rofi (bookmark search)
     , ((modm,               xK_x), spawn "$HOME/.config/rofi/scripts/firefox-bookmarks")
