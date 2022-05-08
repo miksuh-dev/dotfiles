@@ -5,13 +5,13 @@ end
 local map = vim.keymap.set
 
 map('n', '-', function()
-  if vim.bo.filetype == 'dbui' then
-    return vim.cmd(':DBUIToggle')
-  end
+  -- if vim.bo.filetype == 'dbui' then
+  --   return vim.cmd(':DBUIToggle')
+  -- end
 
-  if in_db_ui(vim.bo.filetype) then
-    return vim.cmd(':DBUI')
-  end
+  -- if in_db_ui(vim.bo.filetype) then
+  --   return vim.cmd(':DBUI')
+  -- end
 
   vim.fn.setreg('a', vim.fn.getreg('#'))
 
