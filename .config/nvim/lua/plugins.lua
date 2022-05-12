@@ -134,13 +134,13 @@ return require('packer').startup({
       requires = 'nvim-treesitter/nvim-treesitter',
     })
 
-    use({
-      'AndrewRadev/splitjoin.vim',
-      keys = {
-        { 'n', 'gS' },
-        { 'n', 'gJ' },
-      },
-    })
+    -- use({
+    --   'AndrewRadev/splitjoin.vim',
+    --   keys = {
+    --     { 'n', 'gS' },
+    --     { 'n', 'gJ' },
+    --   },
+    -- })
 
     use({
       'ThePrimeagen/refactoring.nvim',
@@ -453,7 +453,7 @@ return require('packer').startup({
     })
 
     use({
-      'windwp/nvim-ts-autotag',
+      'Sneikki/nvim-ts-autotag',
       requires = 'nvim-treesitter',
       after = 'nvim-treesitter',
       config = function()
