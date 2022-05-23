@@ -142,15 +142,15 @@ return require('packer').startup({
     --   },
     -- })
 
-    use({
-      'ThePrimeagen/refactoring.nvim',
-      keys = {
-        { 'v', '<leader>rr' },
-      },
-      config = function()
-        require('plugin.refactoring.load')
-      end,
-    })
+    -- use({
+    --   'ThePrimeagen/refactoring.nvim',
+    --   keys = {
+    --     { 'v', '<leader>rr' },
+    --   },
+    --   config = function()
+    --     require('plugin.refactoring.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
@@ -425,11 +425,11 @@ return require('packer').startup({
       requires = 'nvim-cmp',
     })
 
-    use({
-      'kristijanhusak/vim-dadbod-completion',
-      after = { 'vim-dadbod-ui', 'nvim-cmp' },
-      requires = { 'nvim-cmp', 'vim-dadbod-ui' },
-    })
+    -- use({
+    --   'kristijanhusak/vim-dadbod-completion',
+    --   after = { 'vim-dadbod-ui', 'nvim-cmp' },
+    --   requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
@@ -494,30 +494,30 @@ return require('packer').startup({
     ----------------------------------------- DB ---------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    use({
-      'tpope/vim-dadbod',
-      cmd = 'DB',
-      after = 'vim-dadbod-ui',
-    })
-
-    use({
-      'kristijanhusak/vim-dadbod-ui',
-      requires = 'vim-dadbod',
-      config = function()
-        require('plugin.vim-dadbod-ui.load')
-      end,
-      keys = {
-        '<leader>du',
-      },
-      cmd = {
-        'DBUI',
-        'DBUIAddConnection',
-        'DBUIFindBuffer',
-        'DBUILastQueryInfo',
-        'DBUIRenameBuffer',
-        'DBUIToggle',
-      },
-    })
+    -- use({
+    --   'tpope/vim-dadbod',
+    --   cmd = 'DB',
+    --   after = 'vim-dadbod-ui',
+    -- })
+    --
+    -- use({
+    --   'kristijanhusak/vim-dadbod-ui',
+    --   requires = 'vim-dadbod',
+    --   config = function()
+    --     require('plugin.vim-dadbod-ui.load')
+    --   end,
+    --   keys = {
+    --     '<leader>du',
+    --   },
+    --   cmd = {
+    --     'DBUI',
+    --     'DBUIAddConnection',
+    --     'DBUIFindBuffer',
+    --     'DBUILastQueryInfo',
+    --     'DBUIRenameBuffer',
+    --     'DBUIToggle',
+    --   },
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Git --------------------------------------------------
