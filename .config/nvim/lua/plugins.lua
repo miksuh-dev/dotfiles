@@ -175,13 +175,13 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'SmiteshP/nvim-gps',
-      after = 'nvim-treesitter',
-      config = function()
-        require('plugin.nvim-gps.load')
-      end,
-    })
+    -- use({
+    --   'SmiteshP/nvim-gps',
+    --   after = 'nvim-treesitter',
+    --   config = function()
+    --     require('plugin.nvim-gps.load')
+    --   end,
+    -- })
 
     use({
       'RRethy/vim-hexokinase',
@@ -474,6 +474,7 @@ return require('packer').startup({
       config = function()
         require('plugin.indent-blankline.load')
       end,
+      commit = '0722eabb2d11e239fe9c4dce313d5ae637130764',
     })
 
     use({
