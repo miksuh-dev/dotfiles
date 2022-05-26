@@ -14,13 +14,6 @@ return require('packer').startup({
       'wbthomason/packer.nvim',
     })
 
-    -- use({
-    --   'nathom/filetype.nvim',
-    --   config = function()
-    --     require('plugin.filetype.load')
-    --   end,
-    -- })
-
     use({
       'eggbean/vim-tmux-navigator-no-wrapping',
       config = function()
@@ -453,7 +446,7 @@ return require('packer').startup({
     })
 
     use({
-      'Sneikki/nvim-ts-autotag',
+      'miksuh-dev/nvim-ts-autotag',
       requires = 'nvim-treesitter',
       after = 'nvim-treesitter',
       config = function()
