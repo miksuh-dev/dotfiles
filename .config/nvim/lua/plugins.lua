@@ -521,6 +521,7 @@ return require('packer').startup({
       cond = function()
         return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
       end,
+      commit = 'ada01db9ddb31a124c52b8ea25191a0790da74e0',
       config = function()
         require('plugin.gitsigns.load')
       end,
