@@ -110,14 +110,6 @@ return require('packer').startup({
       end,
     })
 
-    -- use({
-    --   'rmagatti/auto-session',
-    --   event = 'VimEnter',
-    --   config = function()
-    --     require('plugin.auto-session.load')
-    --   end,
-    -- })
-
     use({
       'danymat/neogen',
       config = function()
@@ -126,24 +118,6 @@ return require('packer').startup({
       module = { 'neogen' },
       requires = 'nvim-treesitter/nvim-treesitter',
     })
-
-    -- use({
-    --   'AndrewRadev/splitjoin.vim',
-    --   keys = {
-    --     { 'n', 'gS' },
-    --     { 'n', 'gJ' },
-    --   },
-    -- })
-
-    -- use({
-    --   'ThePrimeagen/refactoring.nvim',
-    --   keys = {
-    --     { 'v', '<leader>rr' },
-    --   },
-    --   config = function()
-    --     require('plugin.refactoring.load')
-    --   end,
-    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
@@ -167,14 +141,6 @@ return require('packer').startup({
         require('plugin.lualine.load')
       end,
     })
-
-    -- use({
-    --   'SmiteshP/nvim-gps',
-    --   after = 'nvim-treesitter',
-    --   config = function()
-    --     require('plugin.nvim-gps.load')
-    --   end,
-    -- })
 
     use({
       'RRethy/vim-hexokinase',
@@ -240,14 +206,9 @@ return require('packer').startup({
     ----------------------------------------- Tools ------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    use({
-      'iamcco/markdown-preview.nvim',
-      run = 'cd app && yarn install',
-      cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
-      setup = function()
-        require('plugin.markdown-preview.setup')
-      end,
-    })
+    -- use({
+    --   '~/Projects/random/kanban.nvim',
+    -- })
 
     use({
       'vim-test/vim-test',
@@ -418,12 +379,6 @@ return require('packer').startup({
       requires = 'nvim-cmp',
     })
 
-    -- use({
-    --   'kristijanhusak/vim-dadbod-completion',
-    --   after = { 'vim-dadbod-ui', 'nvim-cmp' },
-    --   requires = { 'nvim-cmp', 'vim-dadbod-ui' },
-    -- })
-
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Treesitter -------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -482,35 +437,6 @@ return require('packer').startup({
       'andymass/vim-matchup',
       after = 'nvim-treesitter',
     })
-
-    ------------------------------------------------------------------------------------------------
-    ----------------------------------------- DB ---------------------------------------------------
-    ------------------------------------------------------------------------------------------------
-
-    -- use({
-    --   'tpope/vim-dadbod',
-    --   cmd = 'DB',
-    --   after = 'vim-dadbod-ui',
-    -- })
-    --
-    -- use({
-    --   'kristijanhusak/vim-dadbod-ui',
-    --   requires = 'vim-dadbod',
-    --   config = function()
-    --     require('plugin.vim-dadbod-ui.load')
-    --   end,
-    --   keys = {
-    --     '<leader>du',
-    --   },
-    --   cmd = {
-    --     'DBUI',
-    --     'DBUIAddConnection',
-    --     'DBUIFindBuffer',
-    --     'DBUILastQueryInfo',
-    --     'DBUIRenameBuffer',
-    --     'DBUIToggle',
-    --   },
-    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Git --------------------------------------------------
