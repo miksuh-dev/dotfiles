@@ -783,7 +783,7 @@ M.load_plugin_syntax = function(palette)
       bg = palette.none,
     },
     IndentBlanklineChar = {
-      fg = palette.base4,
+      fg = palette.base5,
     },
     IndentBlanklineSpaceChar = {
       fg = palette.white,
