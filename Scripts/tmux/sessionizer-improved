@@ -4,7 +4,7 @@
 cache_location='/tmp/sessionizer-cache'
 cache_duration=60 # Time until refresh (seconds)
 project_folder=~/Projects
-ls_style='ls -lsA --color'
+ls_style='ls --color'
 
 declare -A custom
 custom[default]=~/
