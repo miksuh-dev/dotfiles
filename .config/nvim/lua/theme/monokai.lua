@@ -510,12 +510,14 @@ M.load_plugin_syntax = function(palette)
     },
     TSWarning = {
       fg = palette.orange,
-      -- fg = palette.white,
       style = 'bold',
     },
     TSDanger = {
       fg = palette.red,
-      -- fg = palette.white,
+      style = 'bold',
+    },
+    TSNote = {
+      fg = palette.aqua,
       style = 'bold',
     },
     dbui_tables = {
