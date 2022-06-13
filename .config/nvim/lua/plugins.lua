@@ -104,7 +104,6 @@ return require('packer').startup({
 
     use({
       'Shatur/neovim-session-manager',
-      event = 'VimEnter',
       config = function()
         require('plugin.neovim-session-manager.load')
       end,
@@ -206,9 +205,10 @@ return require('packer').startup({
     ----------------------------------------- Tools ------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- use({
-    --   '~/Projects/random/kanban.nvim',
-    -- })
+    use({
+      '~/Projects/random/kanban.nvim',
+      cmd = { 'Kanban' },
+    })
 
     use({
       'vim-test/vim-test',
