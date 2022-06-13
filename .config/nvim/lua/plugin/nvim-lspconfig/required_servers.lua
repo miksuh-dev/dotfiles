@@ -14,5 +14,4 @@ return {
   'hls', --Haskell
   'vuels', --Vue
   'sqls', -- SQL
-  'grammarly', -- Grammarly
 }
