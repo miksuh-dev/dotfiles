@@ -1,3 +1,4 @@
+local util = require('common.util')
 local Path = require('plenary.path')
 
 require('session_manager').setup({
@@ -22,4 +23,32 @@ require('session_manager').setup({
   },
   autosave_only_in_session = false, -- Always autosaves session. If true, only autosaves after a session is active.
   max_path_length = 80, -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
+})
+
+local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {}) -- A global group for all your config autocommands
+
+vim.api.nvim_create_autocmd({ 'SessionLoadPost' }, {
+  group = config_group,
+  callback = function()
+    local path = vim.fn.expand('%')
+    local in_fugitive = path:match('fugitive://')
+
+    if in_fugitive then
+      local filetype = vim.bo.filetype
+
+      path = path:sub(#'fugitive://' + 1)
+      path = path:sub(#vim.fn.getcwd() + 1)
+      path = path:sub(#path:match('/.git//?../') + 1)
+
+      if not util.is_file(vim.fn.getcwd() .. '/' .. path) then
+        print('Could restore file ' .. path)
+        return
+      end
+
+      vim.cmd('edit ' .. path)
+
+      -- For some reason filetype is not set correctly on edit
+      vim.bo.filetype = filetype
+    end
+  end,
 })
