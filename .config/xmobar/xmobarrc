@@ -8,7 +8,7 @@ Config {
       -- layout
       , sepChar =  "%"   -- delineator between plugin names and straight text
       , alignSep = "}{"  -- separator between left-right alignment
-      , template = " %UnsafeStdinReader%} %date% {%music% %volume% | %cpu% | %memory%%battery%"
+      , template = " %UnsafeStdinReader%} %date% {%music% %volume% | %cpu% | %memory% | %swap%%battery%"
 
       -- general behavior
       , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -19,21 +19,22 @@ Config {
       , persistent =       True    -- enable/disable hiding (True = disabled)
 
       , commands = [
-      Run Date "<fc=#eeeeee>%A %d.%m.%Y %R</fc>" "date" 10,
-          Run Cpu [] 10,
-          Run Memory         [ "--template" ,"Mem: <usedratio>%" ] 10,
-          Run Battery [
-             "--template" , "<acstatus>"
-                , "--" -- battery specific options
-                -- discharging status
-                , "-o", " | Batt: <left>% (<timeleft>)"
-                -- AC "on" status
-                , "-O", ""
-                -- charged status
-                , "-i", ""
-          ] 10,
-          Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/playerctl.sh"] "music" 10,
-          Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/volume.sh"] "volume" 5,
-          Run UnsafeStdinReader
+        Run Date           "<fc=#eeeeee>%A %d.%m.%Y %R</fc>" "date" 10,
+        Run Cpu [] 10,
+        Run Memory         [ "--template" ,"Mem: <usedratio>%" ] 10,
+        Run Swap [ "--template" ,"Swap: <usedratio>%" ] 10,
+        Run Battery [
+           "--template" , "<acstatus>"
+              , "--" -- battery specific options
+              -- discharging status
+              , "-o", " | Batt: <left>% (<timeleft>)"
+              -- AC "on" status
+              , "-O", ""
+              -- charged status
+              , "-i", ""
+        ] 10,
+        Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/playerctl.sh"] "music" 10,
+        Run Com "/bin/sh" ["-c","~/.config/xmobar/scripts/volume.sh"] "volume" 5,
+        Run UnsafeStdinReader
       ]
 }

@@ -8,7 +8,7 @@ Config {
       -- layout
       , sepChar =  "%"   -- delineator between plugin names and straight text
       , alignSep = "}{"  -- separator between left-right alignment
-      , template = " %UnsafeStdinReader%} %date% {%music% %volume% | %cpu% | %memory%%battery%%trayerpad%"
+      , template = " %UnsafeStdinReader%} %date% {%music% %volume% | %cpu% | %memory% | %swap% |%battery%%trayerpad%"
 
       -- general behavior
       , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -21,7 +21,8 @@ Config {
       , commands = [
         Run Date           "<fc=#eeeeee>%A %d.%m.%Y %R</fc>" "date" 10,
         Run Cpu [] 10,
-        Run Memory         [ "--template" ,"Mem: <usedratio>% |" ] 10,
+        Run Memory         [ "--template" ,"Mem: <usedratio>%" ] 10,
+        Run Swap [ "--template" ,"Swp: <usedratio>%" ] 10,
         Run Battery [
            "--template" , "<acstatus>"
               , "--" -- battery specific options
