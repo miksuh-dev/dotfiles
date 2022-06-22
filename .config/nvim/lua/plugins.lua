@@ -162,6 +162,7 @@ return require('packer').startup({
     use({
       'Pocco81/DAPInstall.nvim',
       after = { 'nvim-dap' },
+      module = { 'dap-install' },
       cmd = {
         'DIInstall',
         'DIUninstall',
@@ -206,7 +207,7 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
 
     use({
-      '~/Projects/random/kanban.nvim',
+      '~/Projects/personal/kanban.nvim',
       cmd = { 'Kanban' },
     })
 
@@ -351,6 +352,12 @@ return require('packer').startup({
 
     use({
       'hrsh7th/cmp-buffer',
+      after = 'nvim-cmp',
+      requires = 'nvim-cmp',
+    })
+
+    use({
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       after = 'nvim-cmp',
       requires = 'nvim-cmp',
     })

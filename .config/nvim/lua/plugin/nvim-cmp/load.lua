@@ -113,11 +113,13 @@ cmp.setup({
         path = '[Path]',
         tmux = '[Tmux]',
         ['vim-dadbod-completion'] = '[DB]',
+        nvim_lsp_signature_help = '[SignatureHelp]',
       })[entry.source.name]
       return vim_item
     end,
   },
   sources = {
+    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'cmp_tabnine' },
