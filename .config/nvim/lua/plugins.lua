@@ -446,6 +446,52 @@ return require('packer').startup({
     })
 
     ------------------------------------------------------------------------------------------------
+    ----------------------------------------- DB ---------------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+    -- use({
+    --   'dinhhuy258/vim-database',
+    --   branch = 'master',
+    --   run = ':UpdateRemotePlugins',
+    --   cmd = {
+    --     'VDToggleDatabase',
+    --     'VDToggleQuery',
+    --     'VimDatabaseListTablesFzf',
+    --   },
+    -- })
+
+    use({
+      'tpope/vim-dadbod',
+      cmd = 'DB',
+      after = 'vim-dadbod-ui',
+    })
+
+    use({
+      'kristijanhusak/vim-dadbod-ui',
+      requires = 'vim-dadbod',
+      config = function()
+        require('plugin.vim-dadbod-ui.load')
+      end,
+      keys = {
+        '<leader>du',
+      },
+      cmd = {
+        'DBUI',
+        'DBUIAddConnection',
+        'DBUIFindBuffer',
+        'DBUILastQueryInfo',
+        'DBUIRenameBuffer',
+        'DBUIToggle',
+      },
+    })
+
+    use({
+      'kristijanhusak/vim-dadbod-completion',
+      after = { 'vim-dadbod-ui', 'nvim-cmp' },
+      requires = { 'nvim-cmp', 'vim-dadbod-ui' },
+    })
+
+    ------------------------------------------------------------------------------------------------
     ----------------------------------------- Git --------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
