@@ -92,10 +92,12 @@ cmp.setup({
       cmp.close()
       vim.fn['copilot#Next']()
     end),
-    ['<Right>'] = cmp.mapping(function()
+    ['<Right>'] = cmp.mapping(function(fallback)
       local copilot_keys = vim.fn['copilot#Accept']()
       if copilot_keys ~= '' and type(copilot_keys) == 'string' then
         vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+      else
+        fallback()
       end
     end),
   },
