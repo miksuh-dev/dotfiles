@@ -89,6 +89,12 @@ M.load_syntax = function(palette)
     CursorLine = {
       bg = palette.base4,
     },
+    CursorLineSign = {
+      bg = palette.base4,
+    },
+    CursorLineFold = {
+      bg = palette.base4,
+    },
     NonText = {
       fg = palette.base5,
     },
@@ -610,6 +616,14 @@ M.load_plugin_syntax = function(palette)
     },
     LspDiagnosticsSignHint = {
       fg = palette.aqua,
+    },
+    LspReferenceRead = {
+      style = 'underline',
+    },
+    LspReferenceText = {},
+    LspReferenceWrite = {
+      style = 'underline',
+      sp = palette.aqua,
     },
     CursorWord0 = {
       bg = palette.white,
