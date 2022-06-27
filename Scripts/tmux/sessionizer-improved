@@ -2,7 +2,7 @@
 
 # TODO: add prefix to custom entries and cut ~/Projects from project paths.
 cache_location='/tmp/sessionizer-cache'
-cache_duration=60 # Time until refresh (seconds)
+cache_duration=10 # Time until refresh (seconds)
 project_folder=~/Projects
 ls_style='ls --color'
 
