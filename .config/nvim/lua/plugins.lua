@@ -109,14 +109,14 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'danymat/neogen',
-      config = function()
-        require('plugin.neogen.load')
-      end,
-      module = { 'neogen' },
-      requires = 'nvim-treesitter/nvim-treesitter',
-    })
+    -- use({
+    --   'danymat/neogen',
+    --   config = function()
+    --     require('plugin.neogen.load')
+    --   end,
+    --   module = { 'neogen' },
+    --   requires = 'nvim-treesitter/nvim-treesitter',
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
@@ -154,53 +154,53 @@ return require('packer').startup({
     ----------------------------------------- Debugging ------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    use({
-      'mfussenegger/nvim-dap',
-      module = { 'dap' },
-    })
+    -- use({
+    --   'mfussenegger/nvim-dap',
+    --   module = { 'dap' },
+    -- })
+    --
+    -- use({
+    --   'Pocco81/DAPInstall.nvim',
+    --   after = { 'nvim-dap' },
+    --   module = { 'dap-install' },
+    --   cmd = {
+    --     'DIInstall',
+    --     'DIUninstall',
+    --     'DIList',
+    --   },
+    --   config = function()
+    --     require('plugin.dap.install.load')
+    --   end,
+    -- })
+    --
+    -- use({
+    --   'rcarriga/nvim-dap-ui',
+    --   after = { 'nvim-dap' },
+    --   requires = { 'nvim-dap' },
+    --   module = {
+    --     'dapui',
+    --   },
+    --   config = function()
+    --     require('plugin.dap.ui.load')
+    --   end,
+    -- })
+    --
+    -- use({
+    --   'theHamsta/nvim-dap-virtual-text',
+    --   requires = { 'nvim-dap' },
+    --   after = 'nvim-dap',
+    --   config = function()
+    --     require('plugin.dap.virtual-text.load')
+    --   end,
+    -- })
 
-    use({
-      'Pocco81/DAPInstall.nvim',
-      after = { 'nvim-dap' },
-      module = { 'dap-install' },
-      cmd = {
-        'DIInstall',
-        'DIUninstall',
-        'DIList',
-      },
-      config = function()
-        require('plugin.dap.install.load')
-      end,
-    })
-
-    use({
-      'rcarriga/nvim-dap-ui',
-      after = { 'nvim-dap' },
-      requires = { 'nvim-dap' },
-      module = {
-        'dapui',
-      },
-      config = function()
-        require('plugin.dap.ui.load')
-      end,
-    })
-
-    use({
-      'theHamsta/nvim-dap-virtual-text',
-      requires = { 'nvim-dap' },
-      after = 'nvim-dap',
-      config = function()
-        require('plugin.dap.virtual-text.load')
-      end,
-    })
-
-    use({
-      'nvim-telescope/telescope-dap.nvim',
-      after = 'nvim-dap',
-      config = function()
-        require('plugin.dap.telescope-plugin.load')
-      end,
-    })
+    -- use({
+    --   'nvim-telescope/telescope-dap.nvim',
+    --   after = 'nvim-dap',
+    --   config = function()
+    --     require('plugin.dap.telescope-plugin.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Tools ------------------------------------------------
@@ -211,19 +211,20 @@ return require('packer').startup({
       cmd = { 'Kanban' },
     })
 
-    use({
-      'vim-test/vim-test',
-      cmd = {
-        'TestSuite',
-        'TestNearest',
-        'TestFile',
-        'TestLast',
-        'TestVisit',
-      },
-      setup = function()
-        require('plugin.vim-test.setup')
-      end,
-    })
+    -- TODO Replace maybe with this https://github.com/nvim-neotest/neotest
+    -- use({
+    --   'vim-test/vim-test',
+    --   cmd = {
+    --     'TestSuite',
+    --     'TestNearest',
+    --     'TestFile',
+    --     'TestLast',
+    --     'TestVisit',
+    --   },
+    --   setup = function()
+    --     require('plugin.vim-test.setup')
+    --   end,
+    -- })
 
     use({
       'github/copilot.vim',
@@ -433,14 +434,6 @@ return require('packer').startup({
     })
 
     use({
-      'napmn/react-extract.nvim',
-      method = 'react-extract',
-      config = function()
-        require('plugin.react-extract.load')
-      end,
-    })
-
-    use({
       'andymass/vim-matchup',
       after = 'nvim-treesitter',
     })
@@ -448,17 +441,6 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- DB ---------------------------------------------------
     ------------------------------------------------------------------------------------------------
-
-    -- use({
-    --   'dinhhuy258/vim-database',
-    --   branch = 'master',
-    --   run = ':UpdateRemotePlugins',
-    --   cmd = {
-    --     'VDToggleDatabase',
-    --     'VDToggleQuery',
-    --     'VimDatabaseListTablesFzf',
-    --   },
-    -- })
 
     use({
       'tpope/vim-dadbod',
