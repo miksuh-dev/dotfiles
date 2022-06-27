@@ -5,6 +5,7 @@ require('plugins')
 require('globals')
 require('disabled')
 
+-- TODO Use for loop to source these automatically
 require('plugin.telescope')
 require('plugin.neo-tree')
 require('plugin.harpoon')
