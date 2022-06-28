@@ -211,20 +211,43 @@ return require('packer').startup({
       cmd = { 'Kanban' },
     })
 
-    -- TODO Replace maybe with this https://github.com/nvim-neotest/neotest
-    -- use({
-    --   'vim-test/vim-test',
-    --   cmd = {
-    --     'TestSuite',
-    --     'TestNearest',
-    --     'TestFile',
-    --     'TestLast',
-    --     'TestVisit',
-    --   },
-    --   setup = function()
-    --     require('plugin.vim-test.setup')
-    --   end,
-    -- })
+    use({
+      'vim-test/vim-test',
+      cmd = {
+        'TestSuite',
+        'TestNearest',
+        'TestFile',
+        'TestLast',
+        'TestVisit',
+      },
+      setup = function()
+        require('plugin.vim-test.setup')
+      end,
+    })
+
+    use({
+      'preservim/vimux',
+      after = { 'vim-test' },
+      requires = { 'vim-test' },
+      cmd = {
+        'VimuxRunCommand',
+        'VimuxSendText',
+        'VimuxSendKeys',
+        'VimuxOpenRunner',
+        'VimuxRunLastCommand',
+        'VimuxCloseRunner',
+        'VimuxInspectRunner',
+        'VimuxInterruptRunner',
+        'VimuxPromptCommand',
+        'VimuxClearTerminalScreen',
+        'VimuxClearRunnerHistory',
+        'VimuxZoomRunner',
+        'VimuxRunCommandInDir',
+      },
+      config = function()
+        require('plugin.vimux.setup')
+      end,
+    })
 
     use({
       'github/copilot.vim',
