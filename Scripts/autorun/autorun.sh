@@ -6,7 +6,7 @@ $HOME/Scripts/autorun/start-programs.sh
 
 # Increase key speed
 # xset r rate 400 50
-xset r rate 500 33
+xset r rate 350 30
 #xset r rate 660 25 # default
 
 # debounce fix
