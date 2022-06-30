@@ -6,3 +6,6 @@ map('n', '<leader>ta', ':TestSuite<CR>', optsSilent)
 map('n', '<leader>tf', ':TestFile<CR>', optsSilent)
 map('n', '<leader>tl', ':TestLast<CR>', optsSilent)
 map('n', '<leader>tv', ':TestVisit<CR>', optsSilent)
+
+map('n', '<Home>', ':VimuxScrollUpInspect<CR>', optsSilent)
+map('n', '<End>', ':VimuxScrollDownInspect<CR>', optsSilent)
