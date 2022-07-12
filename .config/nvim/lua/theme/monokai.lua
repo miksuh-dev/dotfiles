@@ -664,7 +664,7 @@ M.load_plugin_syntax = function(palette)
       bg = palette.none,
     },
     NeoTreeGitIgnored = {
-      fg = palette.base5,
+      fg = palette.base7,
       bg = palette.none,
     },
     NeoTreeGitUntracked = {
