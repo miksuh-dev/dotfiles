@@ -62,6 +62,11 @@ vim.g.loaded_python_provider = 0
 vim.g.lazyredraw = false
 vim.g.netrw_altfile = 1
 
+-- TODO Find lua alternative
+vim.cmd([[
+  set mouse=
+]])
+
 -- Disable folding as i don't use it and it ruins dadbod-ui result window
 vim.g.nofoldenable = true
 
