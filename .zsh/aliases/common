@@ -4,10 +4,12 @@ alias fa='alias | grep'
 alias vimconfig='cd $HOME/.config/nvim/lua && nvim && cd - > /dev/null'
 alias dotconfig='cd $HOME/.dotedit && nvim && cd - > /dev/null'
 alias vim='nvim'
-alias nv='nvim'
+alias v='nvim'
 alias cw='$HOME/Scripts/change-wallpaper.sh'
 alias c='xclip -o -sel clip'
 
 # To clone to new machine use:
-# git clone --separate-git-dir=~/.dotfiles https://github.com/$USERNAME/$REPOSITORY.git ~
+# 1. git clone --separate-git-dir=~/.dotfiles git@github.com:miksuh-dev/dotfiles.git
+# 2. dotfiles checkout
+# 3. dotfiles config --local status.showUntrackedFiles no
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
