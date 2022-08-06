@@ -907,6 +907,9 @@ M.load_plugin_syntax = function(palette)
     CopilotSuggestion = {
       fg = palette.aqua,
     },
+    NUIBorderText = {
+      fg = palette.white,
+    },
   }
 end
 

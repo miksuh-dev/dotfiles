@@ -103,9 +103,9 @@ M.rename = function()
 
   local popup_options = {
     -- border for the window
-    -- asd
     border = {
       style = require('common.border'),
+      highlight = 'NUIBorderText',
       text = {
         top = ' New name: ',
         top_align = 'left',
@@ -145,8 +145,8 @@ M.rename = function()
 
   input:mount()
 
-  -- close on <esc> in normal mode
-  input:map('n', '<esc>', input.input_props.on_close, { noremap = true })
+  -- close on <esc> in insert mode
+  input:map('i', '<esc>', input.input_props.on_close, { noremap = true })
 
   -- close when cursor leaves the buffer
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
