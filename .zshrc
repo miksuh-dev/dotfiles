@@ -91,6 +91,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Make z case-sensitive similar to vim's
+ZSHZ_CASE=smart
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
