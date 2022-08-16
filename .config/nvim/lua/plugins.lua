@@ -52,6 +52,7 @@ return require('packer').startup({
       config = function()
         require('plugin.comment.load')
       end,
+      commit = 'fe9bbdbcd2f1b85cc8fccead68122873d94f8397',
     })
 
     use({
