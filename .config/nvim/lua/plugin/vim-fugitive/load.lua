@@ -9,7 +9,7 @@ map('n', '<leader>ge', ':Gedit<CR>', { silent = true })
 
 map('n', '<leader>gs', function()
   if vim.bo.filetype ~= 'fugitive' then
-    local success = pcall(vim.cmd, ':G')
+    local success = pcall(vim.cmd, ':15split|0Git')
     if not success then
       print('File does not belong to a Git repository.')
     end
