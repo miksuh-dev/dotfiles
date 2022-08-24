@@ -110,14 +110,14 @@ return require('packer').startup({
       end,
     })
 
-    -- use({
-    --   'danymat/neogen',
-    --   config = function()
-    --     require('plugin.neogen.load')
-    --   end,
-    --   module = { 'neogen' },
-    --   requires = 'nvim-treesitter/nvim-treesitter',
-    -- })
+    use({
+      'danymat/neogen',
+      config = function()
+        require('plugin.neogen.load')
+      end,
+      module = { 'neogen' },
+      requires = 'nvim-treesitter/nvim-treesitter',
+    })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
