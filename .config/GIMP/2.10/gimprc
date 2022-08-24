@@ -24,7 +24,7 @@
 (monitor-yresolution 109)
 (toolbox-group-menu-mode hover)
 (icon-theme "Symbolic-High-Contrast")
-(layer-new-fill-type white)
+(layer-merge-type clip-to-image)
 (fill-options
     (style solid)
     (antialias yes)
@@ -36,7 +36,7 @@
     (feather no)
     (feather-radius 10)
     (method line)
-    (width 6)
+    (width 1)
     (unit pixels)
     (cap-style butt)
     (join-style miter)
