@@ -48,7 +48,7 @@ return function(client, bufnr)
 
   -- Format on save is available
   if client.server_capabilities.documentFormattingProvider then
-    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ timeout_ms = 5000 })]])
+    -- vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ timeout_ms = 5000 })]])
 
     buf_set_keymap('n', '<leader>fo', call_action('format'), opts)
   end

@@ -329,16 +329,29 @@ return require('packer').startup({
     })
 
     use({
-      'williamboman/nvim-lsp-installer',
-      module = 'nvim-lsp-installer',
-      requires = 'nvim-lspconfig',
+      'williamboman/mason.nvim',
+      module = 'mason',
+    })
+    use({
+      'williamboman/mason-lspconfig.nvim',
+      module = 'mason-lspconfig',
+    })
+
+    use({
+      'jose-elias-alvarez/null-ls.nvim',
+      after = 'mason-lspconfig.nvim',
+      config = function()
+        require('plugin.null-ls.load')
+      end,
+    })
+
+    use({
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      module = 'mason-tool-installer',
+      run = ':MasonToolsInstall',
       cmd = {
-        'LspInstallInfo',
-        'LspInstall',
-        'LspUninstall',
-        'LspUninstallAll',
-        'LspInstallLog',
-        'LspPrintInstalled',
+        'MasonToolsInstall',
+        'MasonToolsUpdate',
       },
     })
 
@@ -518,15 +531,27 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
 
     use({
-      'lewis6991/gitsigns.nvim',
+      'tanvirtin/vgit.nvim',
       cond = function()
         return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
       end,
-      commit = 'ada01db9ddb31a124c52b8ea25191a0790da74e0',
       config = function()
-        require('plugin.gitsigns.load')
+        require('plugin.vgit.load')
       end,
     })
+
+    -- TODO: Maybe return using this when this is fixed
+    -- use({
+    --   'lewis6991/gitsigns.nvim',
+    --   branch = 'main',
+    --   -- commit = '0f6599720da853a8731fb29e809dd9bab837ba5b',
+    --   -- cond = function()
+    --   --   return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
+    --   -- end,
+    --   config = function()
+    --     require('plugin.gitsigns.load')
+    --   end,
+    -- })
 
     use({
       'tpope/vim-fugitive',

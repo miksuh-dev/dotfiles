@@ -1,6 +1,6 @@
 return {
-  'eslint', -- eslint
-  'efm', -- EFM
+  'eslint_d', -- eslint
+  -- 'efm', -- EFM
   'html', -- HTML
   'dockerls', --Docker
   'cssls', --CSS

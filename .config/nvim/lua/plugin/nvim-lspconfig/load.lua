@@ -1,4 +1,4 @@
-require('nvim-lsp-installer').settings({
+require('mason').setup({
   ui = {
     icons = {
       server_installed = '✓',
@@ -6,6 +6,14 @@ require('nvim-lsp-installer').settings({
       server_uninstalled = '✗',
     },
   },
+})
+
+require('mason-lspconfig').setup({
+  ensure_installed = require('plugin.nvim-lspconfig.required_servers'),
+})
+
+require('mason-tool-installer').setup({
+  ensure_installed = require('plugin.nvim-lspconfig.required_tools'),
 })
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -43,25 +51,13 @@ local function make_config()
   }
 end
 
-local lsp_installer_servers = require('nvim-lsp-installer')
-local required_servers = require('plugin.nvim-lspconfig.required_servers')
+local lsp_installed_servers = require('mason-lspconfig').get_installed_servers()
+for _, server_name in pairs(lsp_installed_servers) do
+  local initial_config = make_config()
 
-for _, server in pairs(required_servers) do
-  local server_available, requested_server = lsp_installer_servers.get_server(server)
-  local config = make_config()
+  local exists, lsp_create_config = pcall(require, 'plugin.nvim-lspconfig.language-server.' .. server_name)
 
-  if server_available then
-    requested_server:on_ready(function()
-      local success, lsp_create_config = pcall(require, 'plugin.nvim-lspconfig.language-server.' .. server)
+  local config = exists and lsp_create_config(initial_config) or initial_config
 
-      if success then
-        config = lsp_create_config(config)
-      end
-
-      requested_server:setup(config)
-    end)
-    if not requested_server:is_installed() then
-      requested_server:install()
-    end
-  end
+  require('lspconfig')[server_name].setup(config)
 end
