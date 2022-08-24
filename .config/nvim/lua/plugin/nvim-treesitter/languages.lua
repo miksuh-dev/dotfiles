@@ -21,4 +21,5 @@ return {
   'yaml',
   'vue',
   'markdown',
+  'sql',
 }
