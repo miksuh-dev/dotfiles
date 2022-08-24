@@ -8,16 +8,19 @@ map('n', '<leader>gb', ':Git blame<CR>', { silent = true })
 map('n', '<leader>ge', ':Gedit<CR>', { silent = true })
 
 map('n', '<leader>gs', function()
-  if vim.bo.filetype ~= 'fugitive' then
-    if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') == 0 then
-      print('File does not belong to a Git repository.')
-      return
-    end
-
-    vim.cmd(':15split|0Git')
-  else
+  -- Close if fugitive window
+  if vim.bo.filetype == 'fugitive' then
     vim.cmd(':q')
+    return
   end
+
+  -- Do not open on non-git dirs
+  if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') == 0 then
+    print('File does not belong to a Git repository.')
+    return
+  end
+
+  vim.cmd(':15split|0Git')
 end, {
   silent = true,
 })
