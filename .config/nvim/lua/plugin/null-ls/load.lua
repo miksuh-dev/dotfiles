@@ -27,7 +27,19 @@ local sources = {
   }),
 
   -- Code actions
-  null_ls.builtins.code_actions.eslint_d.with({
+  -- null_ls.builtins.code_actions.eslint_d.with({
+  --   filetypes = {
+  --     'javascript',
+  --     'javascript.jsx',
+  --     'javascriptreact',
+  --     'typescript',
+  --     'typescript.jsx',
+  --     'typescriptreact',
+  --   },
+  -- }),
+
+  -- Diagnostics
+  null_ls.builtins.diagnostics.eslint_d.with({
     filetypes = {
       'javascript',
       'javascript.jsx',
@@ -36,18 +48,6 @@ local sources = {
       'typescript.jsx',
       'typescriptreact',
     },
-
-    -- Diagnostics
-    null_ls.builtins.diagnostics.eslint_d.with({
-      filetypes = {
-        'javascript',
-        'javascript.jsx',
-        'javascriptreact',
-        'typescript',
-        'typescript.jsx',
-        'typescriptreact',
-      },
-    }),
   }),
 }
 
