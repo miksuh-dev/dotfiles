@@ -34,7 +34,7 @@ require('vgit').setup({
       },
       GitSignsChange = {
         gui = nil,
-        fg = palette.blue,
+        fg = palette.aqua,
         bg = nil,
         sp = nil,
         override = false,
@@ -51,14 +51,14 @@ require('vgit').setup({
       GitWordAdd = {
         gui = nil,
         fg = nil,
-        bg = '#5d7a22',
+        bg = palette.diff_add,
         sp = nil,
         override = false,
       },
       GitWordDelete = {
         gui = nil,
         fg = nil,
-        bg = '#960f3d',
+        bg = palette.diff_remove,
         sp = nil,
         override = false,
       },
