@@ -48,13 +48,15 @@ return function(client, bufnr)
 
   -- Format on save is available
   if client.server_capabilities.documentFormattingProvider then
-    -- vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ timeout_ms = 5000 })]])
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = vim.api.nvim_create_augroup('Format', { clear = true }),
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+    })
 
     buf_set_keymap('n', '<leader>fo', call_action('format'), opts)
-  end
-
-  if client.server_capabilities.documentRangeFormattingProvider then
-    buf_set_keymap('v', '<leader>fo', call_action('range_format'), opts)
   end
 
   -- Set autocommands conditional on server_capabilities

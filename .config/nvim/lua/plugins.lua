@@ -338,14 +338,6 @@ return require('packer').startup({
     })
 
     use({
-      'jose-elias-alvarez/null-ls.nvim',
-      after = 'mason-lspconfig.nvim',
-      config = function()
-        require('plugin.null-ls.load')
-      end,
-    })
-
-    use({
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       module = 'mason-tool-installer',
       run = ':MasonToolsInstall',
