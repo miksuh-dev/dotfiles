@@ -60,7 +60,6 @@ M.load_syntax = function(palette)
     },
     Pmenu = {
       fg = palette.white,
-      bg = palette.base2,
       style = 'NONE',
     },
     PmenuSel = {
