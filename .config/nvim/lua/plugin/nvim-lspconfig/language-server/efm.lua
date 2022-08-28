@@ -5,7 +5,6 @@ local root_dir_files = {
   '.git',
 }
 
--- local eslint = require('plugin.nvim-lspconfig.efm.formatter.eslint')
 local prettier = require('plugin.nvim-lspconfig.formatter.prettier')
 local stylua = require('plugin.nvim-lspconfig.formatter.stylua')
 
