@@ -4,22 +4,7 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local sources = {
   -- Formatting
   null_ls.builtins.formatting.prettierd.with({
-    filetypes = {
-      'css',
-      'scss',
-      'graphql',
-      'html',
-      'javascript',
-      'javascript.jsx',
-      'javascriptreact',
-      'typescript',
-      'typescript.jsx',
-      'typescriptreact',
-      'json',
-      'markdown',
-      'vue',
-      'yaml',
-    },
+    filetypes = require('plugin.null-ls.filetypes.prettierd'),
   }),
   null_ls.builtins.formatting.stylua.with({
     filetypes = { 'lua' },
@@ -28,27 +13,13 @@ local sources = {
 
   -- Code actions
   null_ls.builtins.code_actions.eslint_d.with({
-    filetypes = {
-      'javascript',
-      'javascript.jsx',
-      'javascriptreact',
-      'typescript',
-      'typescript.jsx',
-      'typescriptreact',
-    },
+    filetypes = require('plugin.null-ls.filetypes.eslint_d'),
   }),
 
-  -- Diagnostics
-  null_ls.builtins.diagnostics.eslint_d.with({
-    filetypes = {
-      'javascript',
-      'javascript.jsx',
-      'javascriptreact',
-      'typescript',
-      'typescript.jsx',
-      'typescriptreact',
-    },
-  }),
+  -- -- Diagnostics
+  -- null_ls.builtins.diagnostics.eslint_d.with({
+  --   filetypes = require('plugin.null-ls.filetypes.eslint_d'),
+  -- }),
 }
 
 null_ls.setup({
@@ -59,7 +30,7 @@ null_ls.setup({
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
+          vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 2000 })
         end,
       })
     end

@@ -1,5 +1,5 @@
 return {
-  'eslint_d', -- eslint
+  'eslint', -- eslint
   -- 'efm', -- EFM
   'html', -- HTML
   'dockerls', --Docker

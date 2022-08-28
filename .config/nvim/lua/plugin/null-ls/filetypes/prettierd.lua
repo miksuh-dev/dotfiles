@@ -1,0 +1,16 @@
+return {
+  'css',
+  'scss',
+  'graphql',
+  'html',
+  'javascript',
+  'javascript.jsx',
+  'javascriptreact',
+  'typescript',
+  'typescript.jsx',
+  'typescriptreact',
+  'json',
+  'markdown',
+  'vue',
+  'yaml',
+}
