@@ -1,5 +1,5 @@
 return {
-  'eslint_d',
+  -- 'eslint_d',
   'stylua',
   'prettierd',
 }
