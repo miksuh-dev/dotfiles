@@ -531,27 +531,13 @@ return require('packer').startup({
     ------------------------------------------------------------------------------------------------
 
     use({
-      'tanvirtin/vgit.nvim',
-      cond = function()
-        return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
-      end,
+      'lewis6991/gitsigns.nvim',
+      branch = 'main',
+      event = { 'BufReadPre' },
       config = function()
-        require('plugin.vgit.load')
+        require('plugin.gitsigns.load')
       end,
     })
-
-    -- TODO: Maybe return using this when this is fixed
-    -- use({
-    --   'lewis6991/gitsigns.nvim',
-    --   branch = 'main',
-    --   -- commit = '0f6599720da853a8731fb29e809dd9bab837ba5b',
-    --   -- cond = function()
-    --   --   return vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') ~= 0
-    --   -- end,
-    --   config = function()
-    --     require('plugin.gitsigns.load')
-    --   end,
-    -- })
 
     use({
       'tpope/vim-fugitive',
