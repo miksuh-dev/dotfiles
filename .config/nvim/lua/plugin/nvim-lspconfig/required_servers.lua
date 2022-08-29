@@ -14,4 +14,5 @@ return {
   'hls', --Haskell
   'vuels', --Vue
   'sqls', -- SQL
+  'marksman', -- Markdown
 }
