@@ -15,4 +15,5 @@ return {
   'vuels', --Vue
   'sqls', -- SQL
   'marksman', -- Markdown
+  'tailwindcss', -- Taildind css
 }
