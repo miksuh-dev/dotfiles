@@ -1,12 +1,12 @@
-local dbg_path = require('dap-install.config.settings').options['installation_path'] .. 'chrome/'
+local dbg_path = vim.fn.stdpath('data') .. '/mason/packages'
 
-local adapters = {
+local adapter = {
   type = 'executable',
   command = 'node',
-  args = { dbg_path .. 'vscode-chrome-debug/out/src/chromeDebug.js' },
+  args = { dbg_path .. '/chrome-debug-adapter/out/src/chromeDebug.js' },
 }
 
-local configurations = {
+local configuration = {
   javascript = {
     type = 'chrome',
     reqest = 'attach',
@@ -30,6 +30,6 @@ local configurations = {
 }
 
 return {
-  adapters,
-  configurations,
+  adapter = adapter,
+  configuration = configuration,
 }
