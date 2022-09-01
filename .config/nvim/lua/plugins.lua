@@ -162,62 +162,43 @@ return require('packer').startup({
     ----------------------------------------- Debugging ------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- use({
-    --   'mfussenegger/nvim-dap',
-    --   module = { 'dap' },
-    -- })
-    --
-    -- use({
-    --   'Pocco81/DAPInstall.nvim',
-    --   after = { 'nvim-dap' },
-    --   module = { 'dap-install' },
-    --   cmd = {
-    --     'DIInstall',
-    --     'DIUninstall',
-    --     'DIList',
-    --   },
-    --   config = function()
-    --     require('plugin.dap.install.load')
-    --   end,
-    -- })
-    --
-    -- use({
-    --   'rcarriga/nvim-dap-ui',
-    --   after = { 'nvim-dap' },
-    --   requires = { 'nvim-dap' },
-    --   module = {
-    --     'dapui',
-    --   },
-    --   config = function()
-    --     require('plugin.dap.ui.load')
-    --   end,
-    -- })
-    --
-    -- use({
-    --   'theHamsta/nvim-dap-virtual-text',
-    --   requires = { 'nvim-dap' },
-    --   after = 'nvim-dap',
-    --   config = function()
-    --     require('plugin.dap.virtual-text.load')
-    --   end,
-    -- })
+    use({
+      'mfussenegger/nvim-dap',
+      module = { 'dap' },
+      config = function()
+        require('plugin.dap.load')
+      end,
+    })
 
-    -- use({
-    --   'nvim-telescope/telescope-dap.nvim',
-    --   after = 'nvim-dap',
-    --   config = function()
-    --     require('plugin.dap.telescope-plugin.load')
-    --   end,
-    -- })
+    use({
+      'rcarriga/nvim-dap-ui',
+      after = { 'nvim-dap' },
+      requires = { 'nvim-dap' },
+      module = {
+        'dapui',
+      },
+      config = function()
+        require('plugin.dap.ui.load')
+      end,
+    })
+
+    use({
+      'theHamsta/nvim-dap-virtual-text',
+      requires = { 'nvim-dap' },
+      after = 'nvim-dap',
+      config = function()
+        require('plugin.dap.virtual-text.load')
+      end,
+    })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Tools ------------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    use({
-      '~/Projects/personal/kanban.nvim',
-      cmd = { 'Kanban' },
-    })
+    -- use({
+    --   '~/Projects/personal/kanban.nvim',
+    --   cmd = { 'Kanban' },
+    -- })
 
     use({
       'vim-test/vim-test',
