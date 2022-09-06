@@ -152,6 +152,14 @@ return require('packer').startup({
     })
 
     use({
+      'mrshmllow/document-color.nvim',
+      module = 'document-color',
+      config = function()
+        require('plugin.document-color.load')
+      end,
+    })
+
+    use({
       'tversteeg/registers.nvim',
       config = function()
         require('plugin.registers.load')

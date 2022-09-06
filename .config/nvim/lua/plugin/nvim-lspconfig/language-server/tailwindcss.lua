@@ -24,5 +24,8 @@ return function(config)
   end
   config.filetypes = filetypes
 
+  -- Add color highlighting to classes
+  config.capabilities.textDocument.colorProvider = true
+
   return config
 end
