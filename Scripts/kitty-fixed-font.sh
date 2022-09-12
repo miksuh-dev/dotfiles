@@ -8,8 +8,6 @@ function checkIsWQHD() {
       return 0;
     fi
   done
-
-  echo 0
 }
 
 if [ $(checkIsWQHD) = 1 ]; then
