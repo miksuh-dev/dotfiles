@@ -22,4 +22,5 @@ return {
   'vue',
   'markdown',
   'sql',
+  'prisma',
 }

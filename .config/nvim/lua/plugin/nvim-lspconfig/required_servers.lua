@@ -15,5 +15,6 @@ return {
   'vuels', --Vue
   'sqls', -- SQL
   'marksman', -- Markdown
-  'tailwindcss', -- Taildind css
+  'tailwindcss', -- Tailwind css
+  'prisma-language-server', -- prisma
 }
