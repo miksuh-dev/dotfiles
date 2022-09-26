@@ -79,7 +79,7 @@ myTabConfig = def { activeColor = "#556064"
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "kitty"
+myTerminal      = "$HOME/Scripts/kitty-fixed-font.sh"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
