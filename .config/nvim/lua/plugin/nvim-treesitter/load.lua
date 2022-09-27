@@ -50,16 +50,10 @@ require('nvim-treesitter.configs').setup({
         ['}'] = '@function.inner',
         [')'] = '@conditional.inner',
       },
-      -- goto_next_end = {
-      --   [']F'] = '@function.outer',
-      -- },
       goto_previous_start = {
         ['{'] = '@function.inner',
         ['('] = '@conditional.inner',
       },
-      -- goto_previous_end = {
-      --   ['[F'] = '@function.outer',
-      -- },
     },
     lsp_interop = {
       enable = true,

@@ -5,6 +5,7 @@ if not files then
   return
 end
 
+-- TODO: Refactor this to make this cleaner
 for file_path in files:lines() do
   local file = file_path
     :sub(

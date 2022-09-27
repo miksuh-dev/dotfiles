@@ -1,16 +1,5 @@
 local theme = require('plugin.lualine.theme.dark')
 local tabline = require('plugin.lualine.tabline')
--- local util = require('common.util')
-
--- local function get_gps()
---   if util.is_plugin_loaded('nvim-treesitter') then
---     local gps = require('nvim-gps')
---
---     if gps.is_available() then
---       return gps.get_location()
---     end
---   end
--- end
 
 require('lualine').setup({
   options = {
@@ -41,15 +30,8 @@ require('lualine').setup({
           right = 0,
         },
       },
-      -- {
-      --   -- get_gps,
-      --   fmt = function(str)
-      --     return str ~= '' and '> ' .. str or ''
-      --   end,
-      -- },
     },
     lualine_x = {
-      -- 'encoding',
       'filetype',
     },
     lualine_y = {
@@ -86,7 +68,6 @@ require('lualine').setup({
         },
       },
     },
-    -- lualine_c = { require('plugin.lualine.tabline_colors') },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},

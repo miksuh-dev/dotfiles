@@ -262,7 +262,6 @@ M.load_syntax = function(palette)
     },
     Function = {
       fg = palette.green,
-      -- style = 'italic',
       style = 'bold',
     },
     Statement = {
@@ -276,7 +275,6 @@ M.load_syntax = function(palette)
     },
     Keyword = {
       fg = palette.pink,
-      -- style = 'italic',
       style = 'bold',
     },
     PreProc = {
@@ -421,7 +419,6 @@ M.load_plugin_syntax = function(palette)
     },
     TSFunction = {
       fg = palette.green,
-      -- style = 'italic',
       style = 'bold',
     },
     TSFuncBuiltin = {
@@ -429,17 +426,14 @@ M.load_plugin_syntax = function(palette)
     },
     TSFuncMacro = {
       fg = palette.green,
-      -- style = 'italic',
       style = 'bold',
     },
     TSKeyword = {
       fg = palette.pink,
-      -- style = 'italic',
       style = 'bold',
     },
     TSKeywordFunction = {
       fg = palette.pink,
-      -- style = 'italic',
       style = 'bold',
     },
     TSKeywordOperator = {
@@ -450,7 +444,6 @@ M.load_plugin_syntax = function(palette)
     },
     TSMethod = {
       fg = palette.green,
-      -- style = 'italic',
       style = 'bold',
     },
     TSNamespace = {
