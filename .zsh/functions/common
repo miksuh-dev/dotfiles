@@ -25,21 +25,6 @@ function cheat() {
   curl -m 10 "http://cheat.sh/${1}" 2>/dev/null || printf '%s\n' "[ERROR] Something broke"
 }
 
-function encrypt() {
-  local MIKSUH_GPG='A4687FA1E3B2A145248933CFA7D35B275BBFD045'
-
-  output="${1}".$(date +%s).enc
-  gpg --encrypt --armor --output ${output} -r $MIKSUH_GPG "${1}" && echo "${1} -> ${output}"
-}
-
-function decrypt() {
-  local MIKSUH_GPG='A4687FA1E3B2A145248933CFA7D35B275BBFD045'
-
-  output=$(echo "${1}" | rev | cut -c16- | rev)
-  gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
-}
-
-
 function qrcode() {curl qrenco.de/"$1"}
 
 # Use lf to switch directories and bind it to ctrl-o
