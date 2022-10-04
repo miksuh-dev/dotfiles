@@ -119,6 +119,12 @@ return require('packer').startup({
       requires = 'nvim-treesitter/nvim-treesitter',
     })
 
+    use({
+      'ja-ford/delaytrain.nvim',
+      config = function()
+        require('plugin.delaytrain.load')
+      end,
+    })
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -159,12 +165,12 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'tversteeg/registers.nvim',
-      config = function()
-        require('plugin.registers.load')
-      end,
-    })
+    -- use({
+    --   'tversteeg/registers.nvim',
+    --   config = function()
+    --     require('plugin.registers.load')
+    --   end,
+    -- })
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Debugging ------------------------------------------------
