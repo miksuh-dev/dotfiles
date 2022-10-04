@@ -4,6 +4,7 @@ local util = require('common.util')
 local ts_context_languages = {
   'javascript',
   'typescript',
+  'typescriptreact',
   'tsx',
   'css',
   'scss',
