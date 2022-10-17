@@ -11,7 +11,7 @@ require('neo-tree').setup({
       with_markers = true,
       indent_marker = '│',
       last_indent_marker = '└',
-      highlight = 'NeoTreeIndentMarker',
+      highlight = 'IndentBlanklineChar',
     },
     icon = {
       folder_closed = '',
@@ -182,7 +182,7 @@ require('neo-tree').setup({
         ['<bs>'] = 'none',
         ['.'] = 'none',
         ['r'] = 'none',
-        ['f'] = 'none',
+        -- ['f'] = 'none',
         ['<c-x>'] = 'none',
         ['y'] = 'none',
 
@@ -197,9 +197,9 @@ require('neo-tree').setup({
         ['I'] = 'toggle_gitignore',
         ['R'] = 'refresh',
         -- ['/'] = 'fuzzy_finder',
-        -- ['/'] = 'filter_as_you_type', -- this was the default until v1.28
+        ['f'] = 'filter_as_you_type', -- this was the default until v1.28
         -- ['f'] = 'filter_on_submit',
-        -- ['<c-x>'] = 'clear_filter',
+        ['F'] = 'clear_filter',
         ['a'] = 'add',
         ['X'] = 'delete',
         ['rn'] = 'rename',
