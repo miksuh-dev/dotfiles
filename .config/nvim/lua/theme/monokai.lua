@@ -380,141 +380,141 @@ end
 
 M.load_plugin_syntax = function(palette)
   return {
-    TSString = {
+    ['@string'] = {
       fg = palette.yellow,
     },
-    TSInclude = {
+    ['@include'] = {
       fg = palette.pink,
     },
-    TSVariable = {
+    ['@variable'] = {
       fg = palette.white,
     },
-    TSVariableBuiltin = {
+    ['@variable.builtin'] = {
       fg = palette.orange,
     },
     TSAnnotation = {
       fg = palette.green,
     },
-    TSComment = {
+    ['@comment'] = {
       fg = palette.base7,
       style = 'italic',
     },
-    TSConstant = {
+    ['@constant'] = {
       fg = palette.aqua,
     },
-    TSConstructor = {
+    ['@constructor'] = {
       fg = palette.aqua,
     },
-    TSConstBuiltin = {
+    ['@contant.builtin'] = {
       fg = palette.purple,
     },
-    TSConstMacro = {
+    ['@contant.macro'] = {
       fg = palette.purple,
     },
-    TSConditional = {
+    ['@conditional'] = {
       fg = palette.pink,
     },
-    TSCharacter = {
+    ['@character'] = {
       fg = palette.yellow,
     },
-    TSFunction = {
+    ['@function.call'] = {
       fg = palette.green,
       style = 'bold',
     },
-    TSFuncBuiltin = {
+    ['@function.builtin'] = {
       fg = palette.aqua,
     },
-    TSFuncMacro = {
+    ['@function.macro'] = {
       fg = palette.green,
       style = 'bold',
     },
-    TSKeyword = {
+    ['@keyword'] = {
       fg = palette.pink,
       style = 'bold',
     },
-    TSKeywordFunction = {
+    ['@keyword.function'] = {
       fg = palette.pink,
       style = 'bold',
     },
-    TSKeywordOperator = {
+    ['@keyword.operator'] = {
       fg = palette.pink,
     },
-    TSKeywordReturn = {
+    ['@keyword.return'] = {
       fg = palette.pink,
     },
-    TSMethod = {
+    ['@method'] = {
       fg = palette.green,
       style = 'bold',
     },
-    TSNamespace = {
+    ['@namespace'] = {
       fg = palette.purple,
     },
-    TSNumber = {
+    ['@number'] = {
       fg = palette.purple,
     },
-    TSOperator = {
+    ['@operator'] = {
       fg = palette.pink,
     },
-    TSParameter = {
+    ['@parameter'] = {
       fg = palette.white,
     },
-    TSParameterReference = {
+    ['@parameter.reference'] = {
       fg = palette.white,
     },
-    TSProperty = {
+    ['@property'] = {
       fg = palette.white,
     },
-    TSPunctDelimiter = {
+    ['@punctuation.delimiter'] = {
       fg = palette.white,
     },
-    TSPunctBracket = {
+    ['@punctuation.bracket'] = {
       fg = palette.white,
     },
-    TSPunctSpecial = {
+    ['@punctuation.special'] = {
       fg = palette.pink,
     },
-    TSRepeat = {
+    ['@repeat'] = {
       fg = palette.pink,
     },
-    TSStringRegex = {
+    ['@string.regex'] = {
       fg = palette.purple,
     },
-    TSStringEscape = {
+    ['@string.escape'] = {
       fg = palette.purple,
     },
-    TSTag = {
+    ['@tag'] = {
       fg = palette.pink,
     },
-    TSTagDelimiter = {
+    ['@tag.delimiter'] = {
       fg = palette.white,
     },
-    TSTagAttribute = {
+    ['@tag.attribute'] = {
       fg = palette.green,
     },
-    TSLabel = {
+    ['@label'] = {
       fg = palette.pink,
     },
-    TSType = {
+    ['@type'] = {
       fg = palette.aqua,
     },
-    TSException = {
+    ['@exception'] = {
       fg = palette.pink,
     },
-    TSField = {
+    ['@field'] = {
       fg = palette.white,
     },
-    TSFloat = {
+    ['@float'] = {
       fg = palette.purple,
     },
-    TSWarning = {
+    ['@text.warning'] = {
       fg = palette.orange,
       style = 'bold',
     },
-    TSDanger = {
+    ['@text.danger'] = {
       fg = palette.red,
       style = 'bold',
     },
-    TSNote = {
+    ['@text.note'] = {
       fg = palette.aqua,
       style = 'bold',
     },
