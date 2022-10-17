@@ -105,6 +105,7 @@ cmp.setup({
       vim_item.kind = getKind(vim_item.kind)
 
       vim_item.menu = ({
+        conventionalcommits = '[CC]',
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
         cmp_tabnine = '[Tabnine]',
@@ -121,6 +122,7 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp_signature_help' },
+    { name = 'conventionalcommits' },
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'cmp_tabnine' },
