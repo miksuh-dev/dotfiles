@@ -1,6 +1,6 @@
-local function in_db_ui(filetype)
-  return filetype == 'sql' or filetype == 'dbout'
-end
+-- local function in_db_ui(filetype)
+--   return filetype == 'sql' or filetype == 'dbout'
+-- end
 
 local map = vim.keymap.set
 
@@ -22,3 +22,5 @@ end)
 map('n', '<leader>-', function()
   vim.cmd(':Neotree filesystem current')
 end)
+
+vim.opt.neo_tree_remove_legacy_commands = 1
