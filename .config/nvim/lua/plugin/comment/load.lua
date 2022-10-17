@@ -5,6 +5,7 @@ local ts_context_languages = {
   'javascript',
   'typescript',
   'typescriptreact',
+  'react',
   'tsx',
   'css',
   'scss',
