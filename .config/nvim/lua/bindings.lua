@@ -101,3 +101,6 @@ map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', opts)
 -- Auto center after mark jump
 map('n', "'", '"\'" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
 map('n', '`', '"`" . nr2char(getchar()) . "zz"', { noremap = true, expr = true })
+
+-- map
+map('i', '<C-p>', '<C-R>"', { noremap = true, silent = true })
