@@ -9,8 +9,11 @@ $HOME/Scripts/autorun/start-programs.sh
 xset r rate 350 30
 #xset r rate 660 25 # default
 
-# debounce fix
-xkbset bo 1
+# Disable debounce expire
+xkbset exp "=bo"
+
+# Prevent debounce
+xkbset bo 50
 # xkbset bo 300 # default
 
 setxkbmap -option caps:escape
