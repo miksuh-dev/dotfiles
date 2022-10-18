@@ -402,6 +402,9 @@ M.load_plugin_syntax = function(palette)
     ['@constant'] = {
       fg = palette.aqua,
     },
+    ['@constant.builtin'] = {
+      fg = palette.purple,
+    },
     ['@constructor'] = {
       fg = palette.aqua,
     },
