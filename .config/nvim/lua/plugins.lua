@@ -441,6 +441,7 @@ return require('packer').startup({
 
     use({
       'nvim-treesitter/nvim-treesitter',
+      event = { 'BufWinEnter' },
       run = ':TSUpdateSync',
       config = function()
         require('plugin.nvim-treesitter.load')
