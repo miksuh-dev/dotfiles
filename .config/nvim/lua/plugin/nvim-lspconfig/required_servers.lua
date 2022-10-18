@@ -16,5 +16,5 @@ return {
   'sqls', -- SQL
   'marksman', -- Markdown
   'tailwindcss', -- Tailwind css
-  'prisma-language-server', -- prisma
+  'prismals', -- prisma
 }
