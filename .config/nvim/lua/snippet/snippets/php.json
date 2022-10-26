@@ -1,0 +1,6 @@
+{
+  "var_dump": {
+    "prefix": "vd",
+    "body": "var_dump(${1})"
+  }
+}
