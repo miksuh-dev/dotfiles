@@ -176,7 +176,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     [
     -- close focused window
-    , ((modm,                          xK_d     ), kill)
+    ((modm,                          xK_d     ), kill)
 
     -- Xkill
     , ((modm .|. shiftMask, xK_d     ), spawn "xkill")
