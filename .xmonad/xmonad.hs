@@ -174,20 +174,7 @@ hiddenEmptyWS = do em <- return (isNothing . W.stack)                      -- em
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
-    [ ((modm, xK_p), goToSelected defaultGSConfig {
-      gs_cellheight = 100,
-      gs_cellwidth = 300,
-      gs_navigate = myNavigation,
-      gs_font = "xft:Bitstream Vera Sans Mono:size=16:bold:antialias=true"
-    })
-
-    , ((modm  .|. shiftMask, xK_p), bringSelected defaultGSConfig {
-      gs_cellheight = 100,
-      gs_cellwidth = 300,
-      gs_navigate = myNavigation,
-      gs_font = "xft:Bitstream Vera Sans Mono:size=16:bold:antialias=true"
-    })
-
+    [
     -- close focused window
     , ((modm,                          xK_d     ), kill)
 
@@ -258,8 +245,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- rofi (window search)
     , ((modm,               xK_s), spawn "rofi -show window -m -4")
 
-        -- rofi (bookmark search)
+    -- rofi (bookmark search)
     , ((modm,               xK_x), spawn "$HOME/.config/rofi/scripts/firefox-bookmarks")
+
+
+    -- rofi pass
+    , ((modm,               xK_p), spawn "$HOME/.config/rofi/scripts/passmenu")
 
     
     -- Firefox
