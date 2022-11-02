@@ -344,6 +344,11 @@ return require('packer').startup({
       module = 'schemastore',
     })
 
+    use({
+      'ray-x/lsp_signature.nvim',
+      module = 'lsp_signature',
+    })
+
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Snippets ---------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -390,12 +395,6 @@ return require('packer').startup({
 
     use({
       'hrsh7th/cmp-buffer',
-      after = 'nvim-cmp',
-      requires = 'nvim-cmp',
-    })
-
-    use({
-      'hrsh7th/cmp-nvim-lsp-signature-help',
       after = 'nvim-cmp',
       requires = 'nvim-cmp',
     })

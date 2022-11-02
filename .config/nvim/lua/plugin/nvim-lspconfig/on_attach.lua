@@ -1,3 +1,5 @@
+local lsp_signature_config = require('plugin.lsp_signature.config')
+
 return function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -57,6 +59,8 @@ return function(client, bufnr)
   if client.server_capabilities.colorProvider then
     require('document-color').buf_attach(bufnr)
   end
+
+  require('lsp_signature').on_attach(lsp_signature_config, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
