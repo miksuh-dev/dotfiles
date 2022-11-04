@@ -13,7 +13,7 @@ xset r rate 350 30
 xkbset exp "=bo"
 
 # Prevent debounce
-xkbset bo 50
+xkbset bo 40
 # xkbset bo 300 # default
 
 setxkbmap -option caps:escape
