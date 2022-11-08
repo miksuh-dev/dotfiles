@@ -13,6 +13,7 @@ xset r rate 350 30
 xkbset exp "=bo"
 
 xkbset bo 1
+# xkbset bo 50 # default
 
 setxkbmap -option caps:escape
 

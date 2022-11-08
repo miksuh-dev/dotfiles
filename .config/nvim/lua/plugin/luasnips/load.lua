@@ -74,9 +74,6 @@ end, {
   silent = true,
 })
 
--- use javascriptreact on javascript files
-ls.filetype_set('javascript', { 'javascriptreact' })
-
 require('luasnip/loaders/from_vscode').lazy_load({
   paths = get_snippet_paths(),
 })
