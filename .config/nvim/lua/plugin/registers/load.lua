@@ -1,7 +1,7 @@
 local registers = require('registers')
 
 registers.setup({
-  show = '*+"-/_=#%.0123456789abcdefghijklmnopqrstuvwxyz:',
+  show = '0123456789*:',
   show_empty = true,
   register_user_command = true,
   system_clipboard = true,
@@ -13,7 +13,7 @@ registers.setup({
     normal = registers.show_window({ mode = 'motion' }),
     visual = registers.show_window({ mode = 'motion' }),
     insert = registers.show_window({ mode = 'insert' }),
-    registers = registers.apply_register({ delay = 0.1 }),
+    registers = registers.apply_register({ delay = 0 }),
     return_key = registers.apply_register(),
     escape = registers.close_window(),
     ctrl_n = registers.move_cursor_down(),
@@ -32,8 +32,8 @@ registers.setup({
   },
 
   window = {
-    max_width = 150,
-    highlight_cursorline = true,
+    max_width = 50,
+    highlight_cursorline = false,
     border = 'none',
     transparency = 0,
   },
