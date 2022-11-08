@@ -7,14 +7,12 @@ $HOME/Scripts/autorun/start-programs.sh
 # Increase key speed
 # xset r rate 400 50
 xset r rate 350 30
-#xset r rate 660 25 # default
+# xset r rate 660 25 # default
 
 # Disable debounce expire
 xkbset exp "=bo"
 
-# Prevent debounce
-xkbset bo 50
-# xkbset bo 300 # default
+xkbset bo 1
 
 setxkbmap -option caps:escape
 
