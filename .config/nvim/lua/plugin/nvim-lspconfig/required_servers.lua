@@ -11,7 +11,7 @@ return {
   'bashls', --Bash
   'yamlls', --Yaml
   'sumneko_lua', --Lua
-  'hls', --Haskell
+  -- 'hls', --Haskell
   'vuels', --Vue
   'sqls', -- SQL
   'marksman', -- Markdown
