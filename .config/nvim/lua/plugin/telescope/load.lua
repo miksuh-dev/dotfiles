@@ -57,6 +57,15 @@ require('telescope').setup({
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
   },
+  pickers = {
+    live_grep = {
+      mappings = {
+        i = {
+          ['<c-f>'] = require('telescope.actions').to_fuzzy_refine,
+        },
+      },
+    },
+  },
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
