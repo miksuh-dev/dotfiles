@@ -111,15 +111,6 @@ return require('packer').startup({
       end,
     })
 
-    use({
-      'danymat/neogen',
-      config = function()
-        require('plugin.neogen.load')
-      end,
-      module = { 'neogen' },
-      requires = 'nvim-treesitter/nvim-treesitter',
-    })
-
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- UI ---------------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -127,11 +118,6 @@ return require('packer').startup({
     use({
       'kyazdani42/nvim-web-devicons',
       module = 'nvim-web-devicons',
-    })
-
-    use({
-      'MunifTanjim/nui.nvim',
-      module = 'nui',
     })
 
     use({
@@ -255,13 +241,6 @@ return require('packer').startup({
         vim.g.mkdp_filetypes = { 'markdown' }
       end,
       ft = { 'markdown' },
-    })
-
-    use({
-      'mattn/emmet-vim',
-      keys = {
-        { 'i', '<C-Y>,' },
-      },
     })
 
     ------------------------------------------------------------------------------------------------
