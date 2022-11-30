@@ -17,4 +17,5 @@ return {
   'marksman', -- Markdown
   'tailwindcss', -- Tailwind css
   'prismals', -- prisma
+  'rust_analyzer', -- Rust
 }

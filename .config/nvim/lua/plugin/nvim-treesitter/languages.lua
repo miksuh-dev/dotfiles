@@ -23,4 +23,5 @@ return {
   'markdown',
   'sql',
   'prisma',
+  'rust',
 }
