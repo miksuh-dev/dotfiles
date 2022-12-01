@@ -7,6 +7,7 @@ local root_dir_files = {
 
 local prettier = require('plugin.nvim-lspconfig.formatter.prettier')
 local stylua = require('plugin.nvim-lspconfig.formatter.stylua')
+local rustfmt = require('plugin.nvim-lspconfig.formatter.rustfmt')
 
 local languages = {
   css = { prettier },
@@ -24,6 +25,7 @@ local languages = {
   markdown = { prettier },
   yaml = { prettier },
   vue = { prettier },
+  rust = { rustfmt },
 }
 
 return function(config)
