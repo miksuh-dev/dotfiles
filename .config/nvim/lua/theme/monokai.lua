@@ -906,7 +906,8 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     LspInlayHint = {
-      fg = palette.base6,
+      fg = palette.grey,
+      style = 'italic',
     },
   }
 end
