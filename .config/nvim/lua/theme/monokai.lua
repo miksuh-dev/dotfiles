@@ -905,6 +905,9 @@ M.load_plugin_syntax = function(palette)
     NUIBorderText = {
       fg = palette.white,
     },
+    LspInlayHint = {
+      fg = palette.base6,
+    },
   }
 end
 

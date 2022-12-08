@@ -1,6 +1,16 @@
 return function(config)
   config.settings = {
     Lua = {
+      hint = {
+        enable = true,
+        showGlobalFunctions = true,
+        showGlobalMethods = true,
+        showGlobalVariables = true,
+        showMetaMethods = true,
+        showStaticMethods = true,
+        showStaticVariables = true,
+        showVariables = true,
+      },
       diagnostics = {
         globals = { 'vim' },
       },

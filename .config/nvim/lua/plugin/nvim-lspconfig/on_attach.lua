@@ -58,6 +58,8 @@ return function(client, bufnr)
     require('document-color').buf_attach(bufnr)
   end
 
+  require('lsp-inlayhints').on_attach(client, bufnr)
+
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
