@@ -104,3 +104,7 @@ map('n', '`', '"`" . nr2char(getchar()) . "zz"', { noremap = true, expr = true }
 
 -- map
 map('i', '<C-p>', '<C-R>"', { noremap = true, silent = true })
+
+vim.cmd([[
+  command! -nargs=* Wrap set wrap linebreak nolist
+]])
