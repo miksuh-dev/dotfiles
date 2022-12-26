@@ -9,9 +9,6 @@ VGA0=$(echo $XRANDR_OUTPUT | grep -q "VGA-0 connected" ; echo $?)
 LVDS0=$(echo $XRANDR_OUTPUT | grep -q "LVDS-0 connected" ; echo $?)
 DP1=$(echo $XRANDR_OUTPUT | grep -q "DP-1 connected" ; echo $?)
 DP11=$(echo $XRANDR_OUTPUT | grep -q "DP-1-1 connected" ; echo $?)
-DP13=$(echo $XRANDR_OUTPUT | grep -q "DP-1-3 connected" ; echo $?)
-DP131=$(echo $XRANDR_OUTPUT | grep -q "DP-1-3-1 connected" ; echo $?)
-DP132=$(echo $XRANDR_OUTPUT | grep -q "DP-1-3-2 connected" ; echo $?)
 DP12=$(echo $XRANDR_OUTPUT | grep -q "DP-1-2 connected" ; echo $?)
 HDMI1=$(echo $XRANDR_OUTPUT | grep -q "HDMI-1 connected" ; echo $?)
 EDPI1=$(echo $XRANDR_OUTPUT | grep -q "eDP-1 connected" ; echo $?)
@@ -38,11 +35,11 @@ elif [[ $HDMI1 -eq 0 && $DP11 -eq 0 && $DP12 -eq 0 && $EDP1 -eq 0 ]]; then
     xrandr --output DP-1-1 --mode 2560x1440  --pos 1440x560 --rate 60 --primary
     xrandr --output DP-1-2 --mode 2560x1440 --pos 4000x560 --rate 60
   fi
-elif [[ $EDPI1 -eq 0 && $HDMI1 -eq 0 && $DP1 -eq 0 ]]; then
+elif [[ $EDPI1 -eq 0 && $DP1 -eq 0 && $HDMI1 -eq 0 ]]; then
   # Work screens - Work PC
   if [ "$HOSTNAME" = "miksuh-ThinkBook-14-G2-ITL" ]; then
     xrandr --output eDP-1 --mode 1920x1080 --primary
-    xrandr --output HDMI-1 --mode 1920x1080 --right-of eDP-1
+    xrandr --output HDMI-1 --mode 2560x1440 --right-of eDP-1
     xrandr --output DP-1 --mode 1920x1080 --right-of HDMI-1
   fi
 elif [[ $EDPI1 -eq 0 ]]; then

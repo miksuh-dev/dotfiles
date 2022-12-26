@@ -21,6 +21,5 @@ month_string=${months[$current_month]}
 
 $HOME/Scripts/styli.sh -w 2560 -h 2560 -b bg-fill -s ${month_string} -m 3 && exit 0
 
-nitrogen --set-zoom-fill --random $HOME/Pictures/taustakuvat/7680x1400/ && exit 0
-nitrogen --set-zoom-fill --random $HOME/Pictures/taustakuvat/ && exit 0
+feh --bg-fill --randomize $HOME/Pictures/taustakuvat
 
