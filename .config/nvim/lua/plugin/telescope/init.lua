@@ -9,6 +9,14 @@ end, {
   silent = true,
 })
 
+map('n', '<leader>fr', function()
+  require('telescope.builtin').resume({
+    hidden = true,
+  })
+end, {
+  silent = true,
+})
+
 map('n', '<leader>/', function()
   require('telescope.builtin').current_buffer_fuzzy_find()
 end, {
