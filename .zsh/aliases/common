@@ -4,7 +4,7 @@ alias fa='alias | grep'
 alias vimconfig='cd $HOME/.config/nvim/lua && nvim && cd - > /dev/null'
 alias dotconfig='cd $HOME/.dotedit && nvim && cd - > /dev/null'
 alias vim='nvim'
-alias v='nvim'
+alias nv='nvim'
 alias cw='$HOME/Scripts/change-wallpaper.sh'
 alias c='xclip -o -sel clip'
 
