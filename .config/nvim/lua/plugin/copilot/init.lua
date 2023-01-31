@@ -5,4 +5,5 @@ vim.g.copilot_hide_during_completion = false
 
 vim.g.copilot_filetypes = {
   ['*'] = true,
+  TelescopePrompt = false,
 }
