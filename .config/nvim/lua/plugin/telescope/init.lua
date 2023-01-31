@@ -2,9 +2,7 @@ local util = require('common.util')
 local map = vim.keymap.set
 
 map('n', '<leader>ff', function()
-  require('telescope.builtin').find_files({
-    hidden = true,
-  })
+  require('telescope').extensions.frecency.frecency()
 end, {
   silent = true,
 })

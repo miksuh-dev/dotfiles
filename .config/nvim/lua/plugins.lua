@@ -273,6 +273,7 @@ return require('packer').startup({
     use({
       'nvim-telescope/telescope-fzf-native.nvim',
       run = 'make',
+      module = 'telescope',
     })
 
     use({
@@ -281,8 +282,23 @@ return require('packer').startup({
     })
 
     use({
+      'tami5/sqlite.lua',
+      after = 'telescope-fzf-native.nvim',
+      module = 'sqlite',
+    })
+
+    use({
+      'nvim-telescope/telescope-frecency.nvim',
+      after = 'telescope-fzf-native.nvim',
+      requires = 'tami5/sqlite.lua',
+    })
+
+    use({
       'nvim-telescope/telescope.nvim',
-      after = 'telescope-ui-select.nvim',
+      after = {
+        'telescope-ui-select.nvim',
+        'telescope-frecency.nvim',
+      },
       config = function()
         require('plugin.telescope.load')
       end,
