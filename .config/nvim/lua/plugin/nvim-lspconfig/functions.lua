@@ -5,7 +5,7 @@ M.declaration = function()
 end
 
 M.definition = function()
-  require('telescope.builtin').lsp_definitions({ file_ignore_patterns = {} })
+  vim.lsp.buf.definition()
 end
 
 M.hover = function()

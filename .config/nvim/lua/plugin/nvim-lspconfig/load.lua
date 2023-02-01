@@ -1,3 +1,5 @@
+require('plugin.nvim-lspconfig.handlers')
+
 require('mason').setup({
   ui = {
     icons = {
@@ -14,21 +16,6 @@ require('mason-lspconfig').setup({
 
 require('mason-tool-installer').setup({
   ensure_installed = require('plugin.nvim-lspconfig.required_tools'),
-})
-
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or require('common.border')
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
-
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    source = 'always',
-    spacing = 2,
-  },
-  update_in_insert = false,
 })
 
 -- config that activates keymaps and enables snippet support
