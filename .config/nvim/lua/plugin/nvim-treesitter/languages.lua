@@ -24,4 +24,5 @@ return {
   'sql',
   'prisma',
   'rust',
+  'c_sharp',
 }

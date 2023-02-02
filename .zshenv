@@ -12,6 +12,7 @@ export PATH="$PATH:/usr/sbin:$HOME/.local/bin"
 [ -d $HOME/.cargo/bin ] && export PATH=$PATH:$HOME/.cargo/bin
 [ -d /usr/local/go/bin ] && export PATH=$PATH:/usr/local/go/bin
 
+[ -d $HOME/.dotnet ] && export PATH="$PATH:$HOME/.dotnet"
 [ -d $HOME/.npm-global ] && export PATH="$PATH:$HOME/.npm-global"
 [ -d $HOME/.npm-global/bin ] && export PATH="$PATH:$HOME/.npm-global/bin"
 [ -d /snap/bin ] && export PATH="$PATH:/snap/bin"

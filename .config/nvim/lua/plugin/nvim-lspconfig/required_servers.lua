@@ -18,4 +18,5 @@ return {
   'tailwindcss', -- Tailwind css
   'prismals', -- prisma
   'rust_analyzer', -- Rust
+  'omnisharp_mono',
 }
