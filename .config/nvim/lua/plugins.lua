@@ -362,9 +362,8 @@ return require('packer').startup({
       module = 'schemastore',
     })
 
-    -- Use fork, until merged
     use({
-      'miksuh-dev/omnisharp-extended-lsp.nvim',
+      'Hoffs/omnisharp-extended-lsp.nvim',
       module = 'omnisharp_extended',
     })
 
