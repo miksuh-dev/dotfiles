@@ -10,7 +10,7 @@ return {
   'jsonls', --Json
   'bashls', --Bash
   'yamlls', --Yaml
-  'sumneko_lua', --Lua
+  'lua_ls', --Lua
   -- 'hls', --Haskell
   'vuels', --Vue
   'sqls', -- SQL
