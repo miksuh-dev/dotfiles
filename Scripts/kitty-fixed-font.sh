@@ -2,18 +2,33 @@
 
 function checkIsWQHD() {
   read -ra screens -d '' <<<"$(xrandr | grep '*' | cut -d'*' -f1 | cut -d ' ' -f4)"
+
   for a in "${screens[@]}"; do
-    if [ "$a" = "2560x1440" ]; then
+    if [[ "$a" = "3440x1440" ]]; then
       echo 1
+      return 0;
+    fi
+
+    if [[ "$a" = "2560x1440" ]]; then
+      echo 2
       return 0;
     fi
   done
 }
 
-if [ $(checkIsWQHD) = 1 ]; then
-  kitty --config $HOME/.config/kitty/kitty.conf --config $HOME/.config/kitty/kitty-wqhd.conf
-else
-  kitty --config $HOME/.config/kitty/kitty.conf --config $HOME/.config/kitty/kitty-hd.conf
-fi
+case $(checkIsWQHD) in
+  # Ultra wide wqhd
+  1)
+    kitty --config $HOME/.config/kitty/kitty.conf --config $HOME/.config/kitty/kitty-wideqhd.conf
+    ;;
 
+  # wqhd
+  2)
+    kitty --config $HOME/.config/kitty/kitty.conf --config $HOME/.config/kitty/kitty-wqhd.conf
+    ;;
 
+  # default
+  *)
+    kitty --config $HOME/.config/kitty/kitty.conf --config $HOME/.config/kitty/kitty-hd.conf
+    ;;
+esac
