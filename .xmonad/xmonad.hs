@@ -21,7 +21,7 @@ import System.Posix.Unistd
 import XMonad.Layout.TwoPane
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
-import XMonad.Layout.ThreeColumns
+import XMonad.Layout.MultiColumns
 import XMonad.Layout.Grid
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.LayoutCombinators
@@ -298,8 +298,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Grid layout
     , ((modm,               xK_g), sendMessage $ JumpToLayout "Grid")
 
-    -- Three column layout
-    , ((modm,               xK_c), sendMessage $ JumpToLayout "ThreeColumn")
+    -- Multi-column layout
+    , ((modm,               xK_c), sendMessage $ JumpToLayout "MultiColumn")
 
      -- Two pane layout
     , ((modm,               xK_n), sendMessage $ JumpToLayout "TwoPane")
@@ -420,7 +420,7 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
             -- smartBorders $ (
                 tiled |||
                 grid ||| 
-                three |||
+                multicol |||
                 two |||
                 tabs |||
                 full
@@ -438,10 +438,10 @@ myLayout =  -- avoidStruts -- . mkToggle (NOBORDERS ?? FULL ?? EOT)
                Grid
 
 
-     three =  renamed [Replace "ThreeColumn"]
+     multicol =  renamed [Replace "MultiColumn"]
               $ avoidStruts
               -- $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True
-              $ ThreeCol 1 (3/100) (1/2)
+              $ multiCol [1] 1 0.01 (-0.5)
 
 
      two =    renamed [Replace "TwoPane"]
