@@ -19,4 +19,5 @@ return {
   'prismals', -- prisma
   'rust_analyzer', -- Rust
   'omnisharp_mono',
+  'terraformls',
 }

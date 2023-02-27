@@ -25,4 +25,5 @@ return {
   'prisma',
   'rust',
   'c_sharp',
+  'terraform',
 }
