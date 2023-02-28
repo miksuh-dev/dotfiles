@@ -3,11 +3,9 @@ local util = require('common.util')
 local ls = require('luasnip')
 
 local function get_snippet_paths()
-  local packer_config = require('packer').config
-  local package_root = packer_config.package_root
-  local plugin_package = packer_config.plugin_package
+  -- TODO: See if this can be retrieved from lazy
+  local friendly_snippets_path = vim.fn.stdpath('data') .. '/lazy/friendly-snippets'
 
-  local friendly_snippets_path = package_root .. '/' .. plugin_package .. '/opt/friendly-snippets/'
   local customer_snippets_path = vim.fn.stdpath('config') .. '/lua/snippet/'
 
   local paths = {}

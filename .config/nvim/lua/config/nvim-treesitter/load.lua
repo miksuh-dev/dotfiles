@@ -1,7 +1,7 @@
 vim.g.matchup_matchparen_offscreen = { method = 'status_manual' }
 
 require('nvim-treesitter.configs').setup({
-  ensure_installed = require('plugin.nvim-treesitter.languages'),
+  ensure_installed = require('config.nvim-treesitter.languages'),
   highlight = {
     enable = true, -- false will disable the whole extension
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.

@@ -1,4 +1,4 @@
-local on_attach = require('plugin.nvim-lspconfig.on_attach')
+local on_attach = require('config.nvim-lspconfig.on_attach')
 
 local root_dir_files = {
   'package.json',

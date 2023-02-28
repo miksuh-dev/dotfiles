@@ -5,9 +5,9 @@ local root_dir_files = {
   '.git',
 }
 
-local prettier = require('plugin.nvim-lspconfig.formatter.prettier')
-local stylua = require('plugin.nvim-lspconfig.formatter.stylua')
-local rustfmt = require('plugin.nvim-lspconfig.formatter.rustfmt')
+local prettier = require('config.nvim-lspconfig.formatter.prettier')
+local stylua = require('config.nvim-lspconfig.formatter.stylua')
+local rustfmt = require('config.nvim-lspconfig.formatter.rustfmt')
 
 local languages = {
   css = { prettier },

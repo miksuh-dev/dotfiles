@@ -1,11 +1,11 @@
 require('autocmd')
 require('opts')
 
-require('plugins')
+-- require('plugins')
 require('globals')
 require('disabled')
 
-require('plugin')
+require('lazy-load')
 
 require('theme.monokai').setup()
 require('bindings')

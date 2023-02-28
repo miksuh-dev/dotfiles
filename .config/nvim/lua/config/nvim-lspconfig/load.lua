@@ -1,4 +1,4 @@
-require('plugin.nvim-lspconfig.handlers')
+require('config.nvim-lspconfig.handlers')
 
 require('mason').setup({
   ui = {
@@ -11,11 +11,11 @@ require('mason').setup({
 })
 
 require('mason-lspconfig').setup({
-  ensure_installed = require('plugin.nvim-lspconfig.required_servers'),
+  ensure_installed = require('config.nvim-lspconfig.required_servers'),
 })
 
 require('mason-tool-installer').setup({
-  ensure_installed = require('plugin.nvim-lspconfig.required_tools'),
+  ensure_installed = require('config.nvim-lspconfig.required_tools'),
 })
 
 -- config that activates keymaps and enables snippet support
@@ -30,7 +30,7 @@ local function make_config()
 
   return {
     capabilities = capabilities,
-    on_attach = require('plugin.nvim-lspconfig.on_attach'),
+    on_attach = require('config.nvim-lspconfig.on_attach'),
     root_dir = root_dir,
     flags = {
       debounce_text_changes = 150,
@@ -42,7 +42,7 @@ local lsp_installed_servers = require('mason-lspconfig').get_installed_servers()
 for _, server_name in pairs(lsp_installed_servers) do
   local initial_config = make_config()
 
-  local exists, lsp_create_config = pcall(require, 'plugin.nvim-lspconfig.language-server.' .. server_name)
+  local exists, lsp_create_config = pcall(require, 'config.nvim-lspconfig.language-server.' .. server_name)
 
   local config = exists and lsp_create_config(initial_config) or initial_config
 

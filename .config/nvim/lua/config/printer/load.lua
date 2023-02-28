@@ -1,4 +1,4 @@
-local formatters = require('plugin.printer.formatters')
+local formatters = require('config.printer.formatters')
 
 require('printer').setup({
   keymap = 'gp',

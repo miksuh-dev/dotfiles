@@ -1,5 +1,5 @@
-local theme = require('plugin.lualine.theme.dark')
-local tabline = require('plugin.lualine.tabline')
+local theme = require('config.lualine.theme.dark')
+local tabline = require('config.lualine.tabline')
 
 require('lualine').setup({
   options = {

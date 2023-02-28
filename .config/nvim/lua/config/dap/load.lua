@@ -1,7 +1,7 @@
 local dap = require('dap')
-local jsnode = require('plugin.dap.debuggers.jsnode')
-local firefox = require('plugin.dap.debuggers.firefox')
--- local chrome = require('plugin.dap.debuggers.chrome')
+local jsnode = require('config.dap.debuggers.jsnode')
+local firefox = require('config.dap.debuggers.firefox')
+-- local chrome = require('config.dap.debuggers.chrome')
 
 dap.configurations.javascript = { firefox.configuration }
 dap.configurations.typescript = { jsnode.configuration }

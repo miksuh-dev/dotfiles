@@ -4,7 +4,7 @@ local function is_ignored_file_name(bufnr)
     return
   end
 
-  local ignored_files = require('plugin.gitsigns.ignored_files')
+  local ignored_files = require('config.gitsigns.ignored_files')
 
   for _, file in ipairs(ignored_files) do
     if string.match(buffname, file) then

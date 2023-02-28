@@ -1,5 +1,5 @@
 local path = vim.fn.stdpath('config') .. '/lua'
-local files = io.popen('find ' .. path .. '/plugin/*/init.lua -type f')
+local files = io.popen('find ' .. path .. '/config/*/init.lua -type f')
 
 if not files then
   return
