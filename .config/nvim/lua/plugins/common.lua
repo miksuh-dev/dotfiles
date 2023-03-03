@@ -85,13 +85,4 @@ return {
       require('config.neovim-session-manager.load')
     end,
   },
-  {
-    'rareitems/printer.nvim',
-    config = function()
-      require('config.printer.load')
-    end,
-    keys = {
-      { 'gp' },
-    },
-  },
 }
