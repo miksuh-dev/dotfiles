@@ -1,6 +1,3 @@
--- Preload some plugin bindings
-require('config')
-
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
