@@ -7,12 +7,8 @@ return {
       require('config.nvim-lspconfig.load')
     end,
   },
-  {
-    'williamboman/mason.nvim',
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-  },
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     build = ':MasonToolsInstall',
@@ -21,10 +17,6 @@ return {
       'MasonToolsUpdate',
     },
   },
-  {
-    'b0o/schemastore.nvim',
-  },
-  {
-    'Hoffs/omnisharp-extended-lsp.nvim',
-  },
+  'Hoffs/omnisharp-extended-lsp.nvim',
+  'b0o/schemastore.nvim',
 }
