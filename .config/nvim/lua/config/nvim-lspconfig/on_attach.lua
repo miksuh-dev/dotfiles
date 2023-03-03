@@ -1,3 +1,6 @@
+local util = require('common.util')
+local inlay_hint_languages = require('config.lsp-inlayhints.languages')
+
 return function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -58,7 +61,9 @@ return function(client, bufnr)
     require('document-color').buf_attach(bufnr)
   end
 
-  require('lsp-inlayhints').on_attach(client, bufnr)
+  if util.has_value(inlay_hint_languages, client.name) then
+    require('lsp-inlayhints').on_attach(client, bufnr)
+  end
 
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
