@@ -49,4 +49,11 @@ return {
     end,
     ft = { 'markdown' },
   },
+  {
+    'mechatroner/rainbow_csv',
+    ft = 'csv',
+    init = function()
+      require('config.rainbow_csv.setup')
+    end,
+  },
 }

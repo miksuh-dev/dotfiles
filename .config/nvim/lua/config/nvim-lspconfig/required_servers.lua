@@ -20,4 +20,6 @@ return {
   'rust_analyzer', -- Rust
   'omnisharp_mono',
   'terraformls',
+  'robotframework_ls',
+  'pylsp',
 }
