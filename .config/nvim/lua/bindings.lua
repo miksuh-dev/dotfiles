@@ -67,9 +67,6 @@ map('v', '<C-j>', ":m '>+1<CR>gv=gv", optsSilent)
 map('n', '<leader>q', ":lua require('common.list').toggle_quickfix_list()<CR>", optsSilent)
 map('n', '<leader>l', ":lua require('common.list').toggle_location_list()<CR>", optsSilent)
 
--- Reselect pasted text
-map('n', 'gp', '`[v`]', opts)
-
 -- Terminal leave insert instead of exit in terminal
 map('t', '<Esc>', '<C-\\><C-n>', optsSilent)
 
