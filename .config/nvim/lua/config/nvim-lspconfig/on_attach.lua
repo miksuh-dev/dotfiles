@@ -11,7 +11,7 @@ return function(client, bufnr)
   end
 
   local function call_action(command)
-    return '<cmd>lua require("plugin.nvim-lspconfig.functions").' .. command .. '()<CR>'
+    return '<cmd>lua require("config.nvim-lspconfig.functions").' .. command .. '()<CR>'
   end
 
   local opts = { noremap = true, silent = true }
