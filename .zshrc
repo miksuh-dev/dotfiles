@@ -130,6 +130,11 @@ export EDITOR='nvim'
 
 [ -f $HOME/.secrets ] && source $HOME/.secrets
 
+zstyle ':completion:*:*:git:*' script ~/.zsh/scripts/git-completion.bash
+fpath=(~/.zsh/scripts $fpath)
+
+autoload -Uz compinit && compinit
+
 # NVM stuff:
 #
 # export PATH="$PATH:/snap/bin:/usr/sbin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin"
