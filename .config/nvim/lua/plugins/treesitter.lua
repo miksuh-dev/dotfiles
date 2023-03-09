@@ -6,6 +6,17 @@ return {
     config = function()
       require('config.nvim-treesitter.load')
     end,
+    dependencies = {
+      {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function()
+          require('config.indent-blankline.load')
+        end,
+        commit = '0722eabb2d11e239fe9c4dce313d5ae637130764',
+      },
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'andymass/vim-matchup',
+    },
   },
   {
     'nvim-treesitter/playground',
@@ -17,24 +28,9 @@ return {
   },
   {
     'miksuh-dev/nvim-ts-autotag',
-    dependencies = 'nvim-treesitter',
+    ft = require('config.nvim-ts-autotag.filetypes'),
     config = function()
       require('config.nvim-ts-autotag.load')
     end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = 'nvim-treesitter',
-  },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    dependencies = 'nvim-treesitter',
-    config = function()
-      require('config.indent-blankline.load')
-    end,
-    commit = '0722eabb2d11e239fe9c4dce313d5ae637130764',
-  },
-  {
-    'andymass/vim-matchup',
   },
 }
