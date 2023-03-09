@@ -297,7 +297,7 @@ M.load_plugin_syntax = function(palette)
     ['@field'] = { fg = palette.white },
     ['@float'] = { fg = palette.purple },
     ['@function'] = { fg = palette.green, style = 'bold' },
-    ['@function.builtin'] = { fg = palette.red, style = 'bold' },
+    ['@function.builtin'] = { fg = palette.pink, style = 'bold' },
     ['@function.call'] = { fg = palette.green, style = 'bold' },
     ['@function.macro'] = { fg = palette.green, style = 'bold' },
     ['@identifier'] = { fg = palette.white },
@@ -307,15 +307,30 @@ M.load_plugin_syntax = function(palette)
     ['@keyword.operator'] = { fg = palette.pink },
     ['@keyword.return'] = { fg = palette.pink },
     ['@label'] = { fg = palette.pink },
-    ['@lsp.type.enum'] = { link = '@type' },
-    ['@lsp.type.interface'] = { link = 'Identifier' },
+    -- ['@lsp.type.enum'] = { link = '@type' },
+    -- ['@lsp.type.interface'] = { link = 'Identifier' },
     ['@lsp.type.keyword'] = { link = '@keyword' },
-    ['@lsp.type.namespace'] = { link = '@namespace' },
+    -- ['@lsp.type.namespace'] = { link = '@namespace' },
     ['@lsp.type.parameter'] = { link = '@parameter' },
     ['@lsp.type.property'] = { link = '@property' },
     ['@lsp.type.variable'] = {}, -- use treesitter styles for regular variables
     ['@lsp.typemod.function.defaultLibrary'] = { link = 'Special' },
     ['@lsp.typemod.variable.defaultLibrary'] = { link = '@variable.builtin' },
+    ['@lsp.type.class'] = { link = 'Structure' },
+    ['@lsp.type.decorator'] = { link = 'Function' },
+    ['@lsp.type.enum'] = { link = '@type' },
+    ['@lsp.type.enumMember'] = { link = 'Constant' },
+    ['@lsp.type.function'] = { link = 'Function' },
+    ['@lsp.type.interface'] = { link = 'Structure' },
+    ['@lsp.type.macro'] = { link = 'Macro' },
+    ['@lsp.type.method'] = { link = 'Function' },
+    ['@lsp.type.namespace'] = { link = 'Structure' },
+    -- ['@lsp.type.parameter'] = { link = 'Identifier' },
+    -- ['@lsp.type.property'] = { link = 'Identifier' },
+    ['@lsp.type.struct'] = { link = 'Structure' },
+    ['@lsp.type.type'] = { link = 'Type' },
+    ['@lsp.type.typeParameter'] = { link = 'TypeDef' },
+    -- ['@lsp.type.variable'] = { link = 'Identifier' },
     ['@math'] = math_group,
     ['@method'] = { fg = palette.green, style = 'bold' },
     ['@method.call'] = { fg = palette.green, style = 'bold' },
@@ -366,7 +381,7 @@ M.load_plugin_syntax = function(palette)
     ['@type.definition'] = { fg = palette.aqua },
     ['@type.qualifier'] = { fg = palette.pink },
     ['@uri'] = uri_group,
-    ['@variable'] = { fg = palette.white },
+    -- ['@variable'] = { fg = palette.white },
     ['@variable.builtin'] = { fg = palette.orange },
     dbui_tables = { fg = palette.white },
     lualine_y_diagnostics_error_0_normal = { fg = palette.red },
@@ -405,6 +420,10 @@ local function highlighter(config)
     local bg = color.bg and 'guibg = ' .. color.bg or 'guibg = NONE'
     local sp = color.sp and 'guisp = ' .. color.sp or ''
     vim.cmd('highlight ' .. group .. ' ' .. style .. ' ' .. fg .. ' ' .. bg .. ' ' .. sp)
+
+    if color.link then
+      vim.cmd('hi link ' .. group .. ' ' .. color.link)
+    end
   end
 end
 
