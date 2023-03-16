@@ -27,4 +27,5 @@ return {
   'rust',
   'c_sharp',
   'terraform',
+  'gitcommit',
 }
