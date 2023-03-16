@@ -1,11 +1,9 @@
-require('config.neo-tree.init')
-
 vim.g.neo_tree_remove_legacy_commands = 1
 
 require('neo-tree').setup({
   popup_border_style = require('common.border'),
   enable_git_status = true,
-  enable_diagnostics = true,
+  enable_diagnostics = false,
   default_component_configs = {
     indent = {
       indent_size = 2,
