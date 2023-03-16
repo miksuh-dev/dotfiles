@@ -268,6 +268,7 @@ M.load_plugin_syntax = function(palette)
     ['@comment.documentation'] = { fg = palette.base7, style = 'italic' },
     ['@conceal'] = { fg = palette.grey },
     ['@conceal.json'] = {},
+    ['@conceal.jsonc'] = {},
     ['@conditional'] = { fg = palette.pink },
     ['@conditional.ternary'] = { fg = palette.pink },
     ['@constant'] = { fg = palette.white },

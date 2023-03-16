@@ -9,6 +9,7 @@ return {
   'html',
   'javascript',
   'json',
+  'jsonc',
   'jsdoc',
   'lua',
   'php',

@@ -21,6 +21,7 @@ local languages = {
   ['typescript.jsx'] = { prettier },
   typescriptreact = { prettier },
   json = { prettier },
+  jsonc = { prettier },
   lua = { stylua },
   markdown = { prettier },
   yaml = { prettier },
