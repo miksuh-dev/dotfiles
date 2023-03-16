@@ -49,6 +49,10 @@ M.set_loc_list = function()
 end
 
 M.code_action = function()
+  -- Make sure telescope is loaded
+  -- TODO: Find a better way to do this
+  require('telescope')
+
   vim.lsp.buf.code_action()
 end
 
