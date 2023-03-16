@@ -3,6 +3,7 @@ local map = vim.keymap.set
 map('n', '<leader>gf', ':diffget //2<CR>')
 map('n', '<leader>gj', ':diffget //3<CR>')
 map('n', '<leader>gd', ':Gvdiffsplit<CR>', { silent = true })
+map('n', '<leader>gD', ':Ghdiffsplit<CR>', { silent = true })
 
 map('n', '<leader>gb', ':Git blame<CR>', { silent = true })
 map('n', '<leader>ge', ':Gedit<CR>', { silent = true })
