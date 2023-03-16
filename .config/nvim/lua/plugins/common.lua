@@ -67,17 +67,6 @@ return {
       require('config.nvim-autopairs.load')
     end,
   },
-
-  {
-    'editorconfig/editorconfig-vim',
-    config = function()
-      require('config.editorconfig.load')
-    end,
-    cond = function()
-      local stat = vim.loop.fs_stat(vim.fn.getcwd() .. '/.editorconfig')
-      return (stat and stat.type) or false
-    end,
-  },
   {
     'Shatur/neovim-session-manager',
     event = 'VimEnter',
