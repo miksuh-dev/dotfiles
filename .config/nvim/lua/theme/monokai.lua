@@ -317,7 +317,7 @@ M.load_plugin_syntax = function(palette)
     ['@lsp.type.macro'] = { link = 'Macro' },
     ['@lsp.type.method'] = { link = '@function' },
     ['@lsp.type.namespace'] = { link = '@namespace' },
-    ['@lsp.type.parameter'] = { link = '@parameter' },
+    ['@lsp.type.parameter'] = {},
     ['@lsp.type.property'] = { link = '@property' },
     ['@lsp.type.struct'] = { link = 'Structure' },
     ['@lsp.type.type'] = { link = 'Type' },
