@@ -36,6 +36,10 @@ local function getKind(kind)
   return kind_icon .. kind
 end
 
+local function copilot_enabled()
+  return pcall(vim.fn['copilot#Enabled'])
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -84,20 +88,28 @@ cmp.setup({
       's',
     }),
     ['<Up>'] = cmp.mapping(function()
-      cmp.close()
-      vim.fn['copilot#Previous']()
+      if copilot_enabled() then
+        cmp.close()
+        vim.fn['copilot#Previous']()
+      end
     end),
     ['<Down>'] = cmp.mapping(function()
-      cmp.close()
-      vim.fn['copilot#Next']()
+      if copilot_enabled() then
+        cmp.close()
+        vim.fn['copilot#Next']()
+      end
     end),
     ['<Right>'] = cmp.mapping(function(fallback)
-      local copilot_keys = vim.fn['copilot#Accept']()
-      if copilot_keys ~= '' and type(copilot_keys) == 'string' then
-        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
-      else
-        fallback()
+      if copilot_enabled() then
+        local copilot_keys = vim.fn['copilot#Accept']()
+
+        if copilot_keys ~= '' and type(copilot_keys) == 'string' then
+          vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+          return
+        end
       end
+
+      fallback()
     end),
   },
   formatting = {
