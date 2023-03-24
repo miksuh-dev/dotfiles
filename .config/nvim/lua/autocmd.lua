@@ -14,3 +14,9 @@ vim.cmd([[
     autocmd FileType markdown,text set linebreak
   augroup END
 ]])
+
+-- External formatters
+vim.cmd([[
+  autocmd FileType xml nmap <buffer> <leader>fo %! xmllint --format -<CR>
+  autocmd FileType xml vmap <buffer> <leader>fo ! xmllint --format -<CR>
+]])
