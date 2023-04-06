@@ -20,3 +20,12 @@ vim.cmd([[
   autocmd FileType xml nmap <buffer> <leader>fo %! xmllint --format -<CR>
   autocmd FileType xml vmap <buffer> <leader>fo ! xmllint --format -<CR>
 ]])
+
+-- Toggle tab size for robot framework files
+vim.cmd([[
+  augroup autowrap
+    autocmd!
+    autocmd FileType robot set tabstop=4
+    autocmd FileType robot set shiftwidth=4
+  augroup END
+]])
