@@ -22,7 +22,7 @@ return function(config)
     format = {
       enable = false,
     },
-    run = 'onType',
+    run = 'onSave',
   }
 
   return config
