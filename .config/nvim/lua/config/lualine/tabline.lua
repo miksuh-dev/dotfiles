@@ -18,10 +18,9 @@ local function shorten_filename(path)
 end
 
 local function is_selected(filename)
-  local full_filename = vim.loop.cwd() .. '/' .. filename
   local current_filename = vim.api.nvim_buf_get_name(0)
 
-  return full_filename == current_filename
+  return filename == current_filename or vim.loop.cwd() .. '/' .. filename == current_filename
 end
 
 local function is_alt(filename)
