@@ -15,8 +15,15 @@ map('n', '-', function()
 
   vim.fn.setreg('a', vim.fn.getreg('#'))
 
-  -- TODO try to make this so it won't even ask if wantn to move to cwd if current file is out of cwd
-  vim.cmd(':Neotree reveal filesystem current')
+  local current_file = vim.api.nvim_buf_get_name(0)
+  local cwd = vim.loop.cwd()
+
+  local is_file_in_cwd = current_file:sub(0, vim.fn.len(cwd)) == cwd
+  if is_file_in_cwd then
+    vim.cmd(':Neotree reveal filesystem current')
+  else
+    vim.cmd(':Neotree filesystem current')
+  end
 end)
 
 map('n', '<leader>-', function()
