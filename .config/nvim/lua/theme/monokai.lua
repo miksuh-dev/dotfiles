@@ -271,7 +271,7 @@ M.load_plugin_syntax = function(palette)
     ['@conceal.jsonc'] = {},
     ['@conditional'] = { fg = palette.pink },
     ['@conditional.ternary'] = { fg = palette.pink },
-    ['@constant'] = { fg = palette.white },
+    ['@constant'] = { fg = palette.aqua },
     ['@constant.builtin'] = { fg = palette.purple },
     ['@constant.macro'] = { fg = palette.purple },
     ['@constructor'] = { fg = palette.aqua },
