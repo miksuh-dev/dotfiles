@@ -1,12 +1,6 @@
 local util = require('common.util')
 local map = vim.keymap.set
 
-map('n', '<leader>ff', function()
-  require('telescope').extensions.frecency.frecency()
-end, {
-  silent = true,
-})
-
 map('n', '<leader>fr', function()
   require('telescope.builtin').resume({
     hidden = true,

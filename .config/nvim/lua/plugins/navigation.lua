@@ -5,14 +5,10 @@ return {
       require('config.telescope.load')
     end,
     dependencies = {
-      'nvim-telescope/telescope-frecency.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
-        dependencies = {
-          'tami5/sqlite.lua',
-        },
       },
     },
   },

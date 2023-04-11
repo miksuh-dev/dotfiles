@@ -81,17 +81,8 @@ require('telescope').setup({
         },
       }),
     },
-    frecency = {
-      show_scores = true,
-      show_unindexed = true,
-      default_workspace = 'CWD',
-      ignore_patterns = { '*.git/*', '*/tmp/*' },
-      disable_devicons = false,
-      show_filter_column = false,
-    },
   },
 })
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('ui-select')
-require('telescope').load_extension('frecency')

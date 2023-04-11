@@ -19,14 +19,6 @@ return {
     },
   },
   {
-    'nvim-treesitter/playground',
-    cmd = {
-      'TSPlaygroundToggle',
-      'TSHighlightCapturesUnderCursor',
-    },
-    dependencies = 'nvim-treesitter',
-  },
-  {
     'miksuh-dev/nvim-ts-autotag',
     ft = require('config.nvim-ts-autotag.filetypes'),
     config = function()
