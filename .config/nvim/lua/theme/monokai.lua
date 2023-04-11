@@ -10,6 +10,7 @@ local M = {}
 -- base5 = util.shade_color(base, 250),
 -- base6 = util.shade_color(base, 450),
 -- base7 = util.shade_color(base, 600),
+-- base8 = util.shade_color(base, 700)
 -- border = util.shade_color(base, 800),
 
 M.classic = {
@@ -20,6 +21,7 @@ M.classic = {
   base5 = '#505050',
   base6 = '#7e7e7e',
   base7 = '#a1a1a1',
+  base8 = '#b8b8b8',
   border = '#cfcfcf',
   brown = '#504945',
   white = '#f8f8f0',
@@ -224,6 +226,7 @@ M.load_plugin_syntax = function(palette)
     DiagnosticVirtualTextInfo = { fg = palette.white },
     DiagnosticVirtualTextWarn = { fg = palette.yellow },
     DiagnosticWarn = { fg = palette.yellow },
+    DiagnosticUnnecessary = { fg = palette.base8, style = 'underline' },
     IndentBlanklineChar = { fg = palette.base5 },
     IndentBlanklineSpaceChar = { fg = palette.white },
     LspDiagnosticsSignError = { fg = palette.red },
@@ -310,7 +313,7 @@ M.load_plugin_syntax = function(palette)
     ['@lsp.type.class'] = { link = 'Structure' },
     ['@lsp.type.decorator'] = { link = '@function' },
     ['@lsp.type.enum'] = { link = '@type' },
-    ['@lsp.type.enumMember'] = { link = 'Constant' },
+    ['@lsp.type.enumMember'] = { link = '@variable' },
     ['@lsp.type.function'] = {},
     ['@lsp.type.interface'] = { link = '@type' },
     ['@lsp.type.keyword'] = { link = '@keyword' },
