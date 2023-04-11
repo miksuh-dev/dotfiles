@@ -11,7 +11,7 @@ require('telescope').setup({
         ['<esc>'] = require('telescope.actions').close,
         ['<c-s>'] = require('telescope.actions').select_horizontal,
         ['<tab>'] = require('telescope.actions').select_vertical,
-        ['<c-q>'] = require('telescope.actions').send_to_qflist,
+        ['<c-q>'] = require('telescope.actions').send_to_qflist + require('telescope.actions').open_qflist,
       },
     },
     vimgrep_arguments = {
