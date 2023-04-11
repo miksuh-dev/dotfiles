@@ -1,6 +1,6 @@
 return {
   {
-    'eggbean/vim-tmux-navigator-no-wrapping',
+    'christoomey/vim-tmux-navigator',
     config = function()
       require('config.vim-tmux-navigator.load')
     end,
