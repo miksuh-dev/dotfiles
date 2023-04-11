@@ -13,7 +13,7 @@ return {
   'lua_ls', --Lua
   -- 'hls', --Haskell
   'vuels', --Vue
-  'sqls', -- SQL
+  'sqlls', -- SQL
   'marksman', -- Markdown
   'tailwindcss', -- Tailwind css
   'prismals', -- prisma
