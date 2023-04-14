@@ -15,6 +15,7 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
       'davidsierradz/cmp-conventionalcommits',
+      'js-everts/cmp-tailwind-colors',
     },
   },
 }
