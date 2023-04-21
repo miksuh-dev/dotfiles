@@ -337,6 +337,7 @@ M.load_plugin_syntax = function(palette)
     ['@lsp.type.variableOperator'] = { link = '@operator' },
     ['@lsp.type.control'] = { link = '@conditional' },
     ['@lsp.type.argumentValue'] = { link = 'variable' },
+    ['@lsp.typemod.variable'] = { link = '@variable' },
     ['@math'] = math_group,
     ['@method'] = { fg = palette.green, style = 'bold' },
     ['@method.call'] = { fg = palette.green, style = 'bold' },
