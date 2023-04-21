@@ -88,7 +88,9 @@ require('neo-tree').setup({
           cmds.open(state)
 
           vim.api.nvim_buf_delete(buffnr, {})
-          vim.fn.setreg('#', alternate_file)
+          if alternate_file ~= '' then
+            vim.fn.setreg('#', alternate_file)
+          end
 
           return
         end
