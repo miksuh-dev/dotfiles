@@ -11,7 +11,12 @@ require('telescope').setup({
         ['<esc>'] = require('telescope.actions').close,
         ['<c-s>'] = require('telescope.actions').select_horizontal,
         ['<tab>'] = require('telescope.actions').select_vertical,
-        ['<c-q>'] = require('telescope.actions').send_to_qflist + require('telescope.actions').open_qflist,
+        ['<C-q>'] = function(entries)
+          require('telescope.actions').send_to_qflist(entries)
+          local current_window = vim.fn.win_findbuf(vim.fn.bufnr())[1]
+          require('telescope.actions').open_qflist()
+          vim.api.nvim_set_current_win(current_window)
+        end,
       },
     },
     vimgrep_arguments = {
