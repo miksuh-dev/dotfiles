@@ -91,3 +91,8 @@ require('Comment').setup({
   ---@type function|nil
   post_hook = nil,
 })
+
+local ft = require('Comment.ft')
+
+-- Add comment support to specific languages
+ft.set('robot', '#%s')
