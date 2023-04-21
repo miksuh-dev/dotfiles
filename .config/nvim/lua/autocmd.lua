@@ -23,9 +23,12 @@ vim.cmd([[
 
 -- Toggle tab size for robot framework files
 vim.cmd([[
-  augroup autowrap
+  augroup autotabsize
     autocmd!
     autocmd FileType robot set tabstop=4
     autocmd FileType robot set shiftwidth=4
+
+    autocmd BufLeave *.robot set tabstop=4
+    autocmd BufLeave *.robot set shiftwidth=4
   augroup END
 ]])
