@@ -1,3 +1,5 @@
+local util = require('common.util')
+
 local M = {}
 
 M.declaration = function()
@@ -49,7 +51,7 @@ M.set_loc_list = function()
 end
 
 M.code_action = function()
-  if not package.loaded.telescope then
+  if not util.is_plugin_loaded('telescope') then
     require('telescope')
   end
 

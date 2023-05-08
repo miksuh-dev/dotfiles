@@ -35,7 +35,7 @@ M.has_value = function(table, value)
 end
 
 M.is_plugin_loaded = function(plugin_name)
-  return packer_plugins[plugin_name] and packer_plugins[plugin_name].loaded
+  return package.loaded[plugin_name]
 end
 
 M.read_file = function(path)
