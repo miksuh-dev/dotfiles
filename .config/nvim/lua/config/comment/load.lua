@@ -65,6 +65,11 @@ require('Comment').setup({
   ---Pre-hook, called before commenting the line
   ---@type function|nil
   pre_hook = function(ctx)
+    -- Unlink Luasnip so that it doesn't interfere with commenting
+    if util.is_plugin_loaded('luasnip') then
+      require('luasnip').unlink_current()
+    end
+
     -- Only calculate commentstring for ts_context supported filetypes
     if util.has_value(ts_context_languages, vim.bo.filetype) then
       local U = require('Comment.utils')
