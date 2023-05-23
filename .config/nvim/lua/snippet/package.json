@@ -21,6 +21,12 @@
           "php"
         ],
         "path": "./snippets/php.json"
+      },
+      {
+        "language": [
+          "robot"
+        ],
+        "path": "./snippets/robot.json"
       }
     ]
   }

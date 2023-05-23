@@ -1,0 +1,14 @@
+{
+  "Log To Console": {
+    "prefix": "ltc",
+    "body": "Log To Console    ${${1}}"
+  },
+  "Create List": {
+    "prefix": "cl",
+    "body": "${${1}}=    Create List"
+  },
+  "Create Dictionary": {
+    "prefix": "cd",
+    "body": "${${1}}=    Create Dictionary"
+  }
+}
