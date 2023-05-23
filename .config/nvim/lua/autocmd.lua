@@ -25,10 +25,10 @@ vim.cmd([[
 vim.cmd([[
   augroup autotabsize
     autocmd!
-    autocmd FileType robot set tabstop=4
-    autocmd FileType robot set shiftwidth=4
+    autocmd BufEnter *.robot set tabstop=4
+    autocmd BufEnter *.robot set shiftwidth=4
 
-    autocmd BufLeave *.robot set tabstop=4
-    autocmd BufLeave *.robot set shiftwidth=4
+    autocmd BufLeave *.robot set tabstop=2
+    autocmd BufLeave *.robot set shiftwidth=2
   augroup END
 ]])
