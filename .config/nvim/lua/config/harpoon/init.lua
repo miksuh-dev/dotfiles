@@ -122,11 +122,3 @@ end, { silent = true })
 map('n', "'p", function()
   require('harpoon.ui').nav_file(10)
 end, { silent = true })
-
-map('n', '<s-tab>', function()
-  require('harpoon.ui').nav_prev()
-end, { silent = true })
-
-map('n', '<tab>', function()
-  require('harpoon.ui').nav_next()
-end, { silent = true })

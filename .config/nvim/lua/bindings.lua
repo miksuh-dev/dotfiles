@@ -52,13 +52,6 @@ map('n', '<BS>', '@q', opts)
 -- Alternate file
 map('n', '<Space>', '<C-^>', opts)
 
--- Jump longer
--- map('n', '<Up>', '5k', opts)
--- map('v', '<Up>', '5k', opts)
-
--- map('n', '<Down>', '5j', opts)
--- map('v', '<Down>', '5j', opts)
-
 -- Move visual selection
 map('v', '<C-k>', ":m '<-2<CR>gv=gv", optsSilent)
 map('v', '<C-j>', ":m '>+1<CR>gv=gv", optsSilent)
