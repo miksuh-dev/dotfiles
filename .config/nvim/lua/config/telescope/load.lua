@@ -28,6 +28,7 @@ require('telescope').setup({
       '--column',
       '--smart-case',
       '--max-depth=99',
+      '--hidden',
     },
     prompt_prefix = '> ',
     selection_caret = '> ',
