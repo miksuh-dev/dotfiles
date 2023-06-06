@@ -38,6 +38,9 @@ map('v', '<leader>x', '"_x', opts)
 map('n', '<leader>X', '"_X', opts)
 map('v', '<leader>X', '"_X', opts)
 
+map('n', '<CR>', 'ciw')
+map('n', '<leader><CR>', '"_ciw', opts)
+
 -- Keeping it centered
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
