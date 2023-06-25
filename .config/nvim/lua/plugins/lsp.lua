@@ -7,6 +7,13 @@ return {
       require('config.nvim-lspconfig.load')
     end,
   },
+  {
+    'linrongbin16/lsp-progress.nvim',
+    event = { 'VimEnter' },
+    config = function()
+      require('config.lsp-progress.load')
+    end,
+  },
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   {
