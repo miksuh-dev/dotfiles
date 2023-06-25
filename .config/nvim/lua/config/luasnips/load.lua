@@ -4,7 +4,7 @@ local ls = require('luasnip')
 
 local function get_snippet_paths()
   -- TODO: See if this can be retrieved from lazy
-  local friendly_snippets_path = vim.fn.stdpath('data') .. '/lazy/friendly-snippets'
+  local friendly_snippets_path = package.loaded['lazy.core.config'].plugins['friendly-snippets'].dir
 
   local customer_snippets_path = vim.fn.stdpath('config') .. '/lua/snippet/'
 
