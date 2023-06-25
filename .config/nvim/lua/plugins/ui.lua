@@ -36,10 +36,4 @@ return {
   {
     'MunifTanjim/nui.nvim',
   },
-  {
-    'lvimuser/lsp-inlayhints.nvim',
-    config = function()
-      require('config.lsp-inlayhints.load')
-    end,
-  },
 }
