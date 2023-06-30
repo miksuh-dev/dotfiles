@@ -3,3 +3,6 @@
 nvidia-settings --load-config-only &
 
 $HOME/Programs/FreeFileSync/fileserver_sync.sh &
+
+/usr/bin/rambox &
+/usr/bin/mumble &
