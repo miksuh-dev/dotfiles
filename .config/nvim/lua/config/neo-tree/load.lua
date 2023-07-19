@@ -129,7 +129,6 @@ require('neo-tree').setup({
       hide_dotfiles = false,
       hide_gitignored = false,
     },
-    follow_current_file = false, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
     use_libuv_file_watcher = false, -- This will use the OS level file watchers
     -- to detect changes instead of relying on nvim autocmd events.
@@ -212,6 +211,7 @@ require('neo-tree').setup({
         ['<leader>H'] = 'harpoon_add',
       },
     },
+    follow_current_file = { enabled = false }, -- This will find and focus the file in the active buffer every
   },
   buffers = {
     show_unloaded = true,
