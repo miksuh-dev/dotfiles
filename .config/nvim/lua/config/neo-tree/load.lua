@@ -116,7 +116,7 @@ require('neo-tree').setup({
       harpoon_add = function(state)
         local node = state.tree:get_node()
         if node.type == 'file' then
-          local cwd = vim.loop.cwd() .. '/'
+          local cwd = vim.uv.cwd() .. '/'
           local file = string.gsub(node.path, cwd, '')
 
           require('harpoon.mark').add_file(file)

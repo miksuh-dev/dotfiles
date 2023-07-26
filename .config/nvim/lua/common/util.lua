@@ -13,8 +13,8 @@ end
 -- File exists
 -- Note: Remember to append path to filename e.x. is_file(vim.fn.getcwd() .. '/plugins.lua')
 M.is_file = function(path)
-  local stat = vim.loop.fs_stat(path)
-  return stat and stat.type == 'file' and vim.loop.fs_access(path, 'R')
+  local stat = vim.uv.fs_stat(path)
+  return stat and stat.type == 'file' and vim.uv.fs_access(path, 'R')
 end
 
 -- Directory exists

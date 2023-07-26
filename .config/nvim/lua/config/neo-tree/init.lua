@@ -6,7 +6,7 @@ local map = vim.keymap.set
 
 local function is_current_file_in_cwd()
   local current_file = vim.api.nvim_buf_get_name(0)
-  local current_cwd = vim.loop.cwd()
+  local current_cwd = vim.uv.cwd()
 
   return current_file:sub(0, vim.fn.len(current_cwd)) == current_cwd
 end
@@ -29,7 +29,7 @@ map('n', '-', function()
   end
 end)
 
-local original_cwd = vim.loop.cwd()
+local original_cwd = vim.uv.cwd()
 map('n', '_', function()
   if is_current_file_in_cwd() then
     vim.cmd(':Neotree reveal filesystem current dir=' .. original_cwd)

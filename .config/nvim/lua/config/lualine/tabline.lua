@@ -20,12 +20,12 @@ end
 local function is_selected(filename)
   local current_filename = vim.api.nvim_buf_get_name(0)
 
-  return filename == current_filename or vim.loop.cwd() .. '/' .. filename == current_filename
+  return filename == current_filename or vim.uv.cwd() .. '/' .. filename == current_filename
 end
 
 local function is_alt(filename)
-  local full_filename = vim.loop.cwd() .. '/' .. filename
-  local alt_filename = vim.loop.cwd() .. '/' .. vim.fn.getreg('#')
+  local full_filename = vim.uv.cwd() .. '/' .. filename
+  local alt_filename = vim.uv.cwd() .. '/' .. vim.fn.getreg('#')
 
   return full_filename == alt_filename
 end
