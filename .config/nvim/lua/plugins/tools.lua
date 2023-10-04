@@ -1,9 +1,9 @@
 return {
-  {
-    'github/copilot.vim',
-    event = { 'InsertEnter', 'BufReadPre' },
-    cmd = { 'Copilot' },
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   event = { 'InsertEnter', 'BufReadPre' },
+  --   cmd = { 'Copilot' },
+  -- },
   {
     'iamcco/markdown-preview.nvim',
     build = function()
