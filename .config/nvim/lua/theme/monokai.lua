@@ -151,6 +151,7 @@ M.load_syntax = function(palette)
     iCursor = { style = 'reverse' },
     lCursor = { style = 'reverse' },
     vCursor = { style = 'reverse' },
+    tsxTagName = { fg = palette.aqua },
   }
 end
 
