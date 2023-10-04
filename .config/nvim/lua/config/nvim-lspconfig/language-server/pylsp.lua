@@ -13,6 +13,12 @@ return function(config)
           maxLineLength = 100,
         },
       },
+      autoComplete = {
+        extraPaths = { '${workspaceFolder}' },
+      },
+      analysis = {
+        extraPaths = { '${workspaceFolder}' },
+      },
     },
   }
 
