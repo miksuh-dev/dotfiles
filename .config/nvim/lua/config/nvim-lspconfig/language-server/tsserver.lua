@@ -17,9 +17,9 @@ return function(config)
       includeInlayParameterNameHints = 'literals',
       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
       includeInlayFunctionParameterTypeHints = false,
-      includeInlayVariableTypeHints = true, -- maybe disable?
+      includeInlayVariableTypeHints = false, -- maybe disable?
       includeInlayPropertyDeclarationTypeHints = true,
-      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = false,
       includeInlayEnumMemberValueHints = true,
       importModuleSpecifierPreference = 'non-relative',
     },
