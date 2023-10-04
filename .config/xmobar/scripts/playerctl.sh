@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -x "$(command -v playerctl)" ]; then
-    metadata=$(playerctl metadata --format "{{ status }};{{ artist }};{{ title }}")
+    metadata=$(playerctl -p spotify metadata --format "{{ status }};{{ artist }};{{ title }}")
 
     IFS=';'
     read -a array <<< "$metadata"

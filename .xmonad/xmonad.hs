@@ -273,16 +273,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --------------------------------------------------------------------------------
 
     -- Media previous
-    , ((0, 0x1008ff16), spawn "playerctl previous")
+    , ((0, 0x1008ff16), spawn "playerctl -p spotify previous")
 
     -- Media play
-    , ((0, 0x1008ff14), spawn "playerctl play")
+    , ((0, 0x1008ff14), spawn "playerctl -p spotify play")
 
     -- Media stop
-    , ((0, 0x1008ff15), spawn "playerctl stop")
+    , ((0, 0x1008ff15), spawn "playerctl -p spotify stop")
 
     -- Media next
-    , ((0, 0x1008ff17), spawn "playerctl next")
+    , ((0, 0x1008ff17), spawn "playerctl -p spotify next")
 
     , ((0, 0x1008ff11  ), spawn "pactl set-sink-volume @DEFAULT_SINK@ -3%")
 
@@ -506,7 +506,6 @@ myManageHook = composeAll
     -- Moving windows
     , className =? "Rambox" --> doShift "1"
     , className =? "rambox" --> doShift "1"
-    , className =? "Microsoft Teams - Preview" --> doShift "1"
     , className =? "thunderbird" --> doShift "1"
     , className =? "Mattermost" --> doShift "1"
     , className =? "Rocket.Chat" --> doShift "1"
