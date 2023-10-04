@@ -23,7 +23,7 @@ M.type_definition = function()
 end
 
 M.reference = function()
-  require('telescope.builtin').lsp_references({ file_ignore_patterns = {} })
+  require('telescope.builtin').lsp_references({ file_ignore_patterns = {}, trim_text = true })
 end
 
 M.signature_help = function()
