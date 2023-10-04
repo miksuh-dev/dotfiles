@@ -101,7 +101,7 @@ require('neo-tree').setup({
           end
         end
       end,
-
+      do_nothing = function() end,
       close_and_restore_alternate_file = function(state)
         local cmds = require('neo-tree.sources.filesystem.commands')
 
@@ -186,6 +186,7 @@ require('neo-tree').setup({
         -- ['f'] = 'none',
         ['<c-x>'] = 'none',
         ['y'] = 'none',
+        ['q'] = 'do_nothing',
 
         ['<cr>'] = 'open_without_folder_collapse',
         ['s'] = 'open_split',
@@ -207,7 +208,7 @@ require('neo-tree').setup({
         ['yy'] = 'copy_to_clipboard',
         ['dd'] = 'cut_to_clipboard',
         ['p'] = 'paste_from_clipboard',
-        ['q'] = 'close_and_restore_alternate_file',
+        ['<esc>'] = 'close_and_restore_alternate_file',
         ['<leader>H'] = 'harpoon_add',
       },
     },
