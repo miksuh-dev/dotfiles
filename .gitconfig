@@ -2,6 +2,9 @@
   path = ~/.gitconfig-secret
   ; path = ~/.config/delta/themes.gitconfig
 
+[pull]
+  rebase = true
+
 ; [core]
 ;   pager = delta
 ;
