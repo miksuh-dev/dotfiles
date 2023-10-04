@@ -1,10 +1,17 @@
 local root_dir_files = {
-  'package.json',
-  'tsconfig.json',
-  'jsconfig.json',
-  'jsconfig.json',
+  '.eslintrc.js',
   '.eslintrc',
   '.git',
+}
+
+local filetypes = {
+  'javascript',
+  'javascriptreact',
+  'javascript.jsx',
+  'typescript',
+  'typescriptreact',
+  'typescript.tsx',
+  'graphql',
 }
 
 return function(config)
@@ -12,6 +19,7 @@ return function(config)
     return require('lspconfig').util.root_pattern(root_dir_files)(fname)
   end
 
+  config.filetypes = filetypes
   config.handlers = {
     ['eslint/noLibrary'] = function()
       vim.notify('ESLint missing from project', vim.log.levels.INFO)
