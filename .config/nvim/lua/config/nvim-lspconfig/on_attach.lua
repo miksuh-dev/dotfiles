@@ -42,9 +42,7 @@ return function(client, bufnr)
   buf_set_keymap('n', '<leader>a', call_action('code_action'), opts)
   buf_set_keymap('v', '<leader>a', call_action('range_code_action'), opts)
 
-  if client.name ~= 'efm' then
-    client.server_capabilities.documentFormattingProvider = false
-  end
+  client.server_capabilities.documentFormattingProvider = false
 
   -- Format on save is available
   if client.server_capabilities.documentFormattingProvider then

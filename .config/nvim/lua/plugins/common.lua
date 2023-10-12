@@ -74,4 +74,11 @@ return {
       require('config.neovim-session-manager.load')
     end,
   },
+  {
+    'stevearc/conform.nvim',
+    event = 'BufWritePre',
+    config = function()
+      require('config.conform.load')
+    end,
+  },
 }
