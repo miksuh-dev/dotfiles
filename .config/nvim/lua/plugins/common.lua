@@ -53,12 +53,18 @@ return {
   {
     'nvim-lua/plenary.nvim',
   },
+
   {
-    'altermo/ultimate-autopair.nvim',
-    event = { 'InsertEnter', 'CmdlineEnter' },
-    branch = 'v0.6',
+    'windwp/nvim-autopairs',
+    keys = {
+      { '"', mode = 'i' },
+      { "'", mode = 'i' },
+      { '`', mode = 'i' },
+      { '[', mode = 'i' },
+      { '{', mode = 'i' },
+    },
     config = function()
-      require('config.ultimate-autopair.load')
+      require('config.nvim-autopairs.load')
     end,
   },
   {
