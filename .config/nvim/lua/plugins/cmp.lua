@@ -16,6 +16,7 @@ return {
       'hrsh7th/cmp-nvim-lua',
       'davidsierradz/cmp-conventionalcommits',
       'js-everts/cmp-tailwind-colors',
+      'jcha0713/cmp-tw2css',
     },
   },
 }

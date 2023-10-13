@@ -136,6 +136,7 @@ cmp.setup({
         conventionalcommits = '[CC]',
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
+        ['cmp-tw2css'] = '[TW2CSS]',
         cmp_tabnine = '[Tabnine]',
         nvim_lua = '[NvimLua]',
         luasnip = '[LuaSnip]',
@@ -148,6 +149,7 @@ cmp.setup({
       return item
     end,
   },
+
   sources = {
     { name = 'nvim_lsp_signature_help' },
     { name = 'conventionalcommits' },
@@ -160,6 +162,7 @@ cmp.setup({
     { name = 'calc' },
     { name = 'path' },
     { name = 'vim-dadbod-completion' },
+    { name = 'cmp-tw2css' },
   },
   sorting = {
     comparators = {
