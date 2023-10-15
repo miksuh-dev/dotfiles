@@ -30,16 +30,50 @@ local function close_diff_buffers()
   end
 end
 
+-- TODO Refactor these at some point
+-- Temporary solution: prevents multiple diffs and cursor jumping
 map('n', '<leader>gd', function()
+  -- Do not open on non-git dirs
+  if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') == 0 then
+    print('File does not belong to a Git repository.')
+    return
+  end
+
+  local current_type = get_fugitive_buff_type(vim.fn.bufnr())
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local window = vim.api.nvim_get_current_win()
+
   close_diff_buffers()
 
   vim.cmd(':Gvdiffsplit')
+
+  if current_type == 'diff' then
+    vim.api.nvim_win_set_cursor(0, cursor)
+  else
+    vim.api.nvim_set_current_win(window)
+  end
 end, { silent = true })
 
 map('n', '<leader>gD', function()
+  -- Do not open on non-git dirs
+  if vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') == 0 then
+    print('File does not belong to a Git repository.')
+    return
+  end
+
+  local current_type = get_fugitive_buff_type(vim.fn.bufnr())
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local window = vim.api.nvim_get_current_win()
+
   close_diff_buffers()
 
   vim.cmd(':Ghdiffsplit')
+
+  if current_type == 'diff' then
+    vim.api.nvim_win_set_cursor(0, cursor)
+  else
+    vim.api.nvim_set_current_win(window)
+  end
 end, { silent = true })
 
 map('n', '<leader>gf', ':diffget //2<CR>')
