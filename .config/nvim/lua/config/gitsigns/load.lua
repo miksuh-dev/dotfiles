@@ -62,10 +62,16 @@ require('gitsigns').setup({
     end, { expr = true })
 
     -- Actions
-    map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-    map({ 'n', 'v' }, '<leader>hu', ':Gitsigns reset_hunk<CR>')
-    map('n', '<leader>hU', gs.undo_stage_hunk)
+    map('n', '<leader>hs', gs.stage_hunk)
+    map('n', '<leader>hu', gs.reset_hunk)
+    map('v', '<leader>hs', function()
+      gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end)
+    map('v', '<leader>hu', function()
+      gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end)
 
+    map('n', '<leader>hU', gs.undo_stage_hunk)
     map('n', '<leader>hp', gs.preview_hunk)
 
     return not is_ignored_file(bufnr)
