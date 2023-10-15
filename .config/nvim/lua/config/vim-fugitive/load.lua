@@ -1,9 +1,49 @@
 local map = vim.keymap.set
 
+local function get_fugitive_buff_type(bufnr)
+  local path = vim.fn.bufname(bufnr)
+  local filetype = vim.bo[bufnr].filetype
+
+  if filetype == 'fugitive' then
+    return 'status'
+  end
+
+  if filetype == 'fugitiveblame' then
+    return filetype
+  end
+
+  if path:find('fugitive://') ~= nil then
+    return 'diff'
+  end
+
+  return nil
+end
+
+local function close_diff_buffers()
+  local buffers = vim.fn.getwininfo()
+
+  for _, buffer in pairs(buffers) do
+    local type = get_fugitive_buff_type(buffer.bufnr)
+    if type == 'diff' then
+      vim.api.nvim_buf_delete(buffer.bufnr, {})
+    end
+  end
+end
+
+map('n', '<leader>gd', function()
+  close_diff_buffers()
+
+  vim.cmd(':Gvdiffsplit')
+end, { silent = true })
+
+map('n', '<leader>gD', function()
+  close_diff_buffers()
+
+  vim.cmd(':Ghdiffsplit')
+end, { silent = true })
+
 map('n', '<leader>gf', ':diffget //2<CR>')
 map('n', '<leader>gj', ':diffget //3<CR>')
-map('n', '<leader>gd', ':Gvdiffsplit<CR>', { silent = true })
-map('n', '<leader>gD', ':Ghdiffsplit<CR>', { silent = true })
 
 map('n', '<leader>gb', ':Git blame<CR>', { silent = true })
 map('n', '<leader>ge', ':Gedit<CR>', { silent = true })
