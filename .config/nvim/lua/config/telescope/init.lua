@@ -34,7 +34,7 @@ map('n', '<leader>fg', function()
 end, { silent = true })
 
 map('n', '<leader>fb', function()
-  require('telescope.builtin').buffers()
+  require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })
 end, { silent = true })
 
 map('n', '<leader>fh', function()
