@@ -1,10 +1,10 @@
 return {
   {
-    'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
   },
   {
     'hoob3rt/lualine.nvim',
-    dependencies = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     event = 'VimEnter',
     config = function()
       require('config.lualine.load')
