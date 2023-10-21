@@ -98,3 +98,7 @@ map('i', '<C-p>', '<C-R>"', { noremap = true, silent = true })
 vim.cmd([[
   command! -nargs=* Wrap set wrap linebreak nolist
 ]])
+
+vim.cmd([[
+  xnoremap / y/\V<C-R>=escape(@",'/\')<CR><CR>
+]])
