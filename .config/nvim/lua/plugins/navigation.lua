@@ -26,4 +26,14 @@ return {
       require('config.harpoon.load')
     end,
   },
+  {
+    'stevearc/oil.nvim',
+    config = function()
+      require('config.oil.load')
+    end,
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    cmd = {
+      'Oil',
+    },
+  },
 }
