@@ -11,17 +11,9 @@ return {
     end,
   },
   {
-    'RRethy/vim-hexokinase',
-    build = 'make hexokinase',
-    event = 'BufReadPre',
+    'NvChad/nvim-colorizer.lua',
     init = function()
-      require('config.hexokinase.load')
-    end,
-  },
-  {
-    'mrshmllow/document-color.nvim',
-    config = function()
-      require('config.document-color.load')
+      require('config.nvim-colorizer.load')
     end,
   },
   {

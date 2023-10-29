@@ -35,23 +35,6 @@ local function copilot_enabled()
   return pcall(vim.fn['copilot#Enabled'])
 end
 
-local formatForTailwindCSS = function(entry, item)
-  if item.kind == 'Color' and entry.completion_item.documentation then
-    local _, _, r, g, b = string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
-    if r then
-      local color = string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
-      local group = 'Tw_' .. color
-      if vim.fn.hlID(group) < 1 then
-        vim.api.nvim_set_hl(0, group, { fg = '#' .. color })
-      end
-      item.kind = getKind('Color')
-      item.kind_hl_group = group
-
-      return item
-    end
-  end
-end
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -124,13 +107,7 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, item)
-      local tailwindItem = formatForTailwindCSS(entry, item)
-
-      if tailwindItem then
-        item = tailwindItem
-      else
-        item.kind = getKind(item.kind)
-      end
+      item.kind = getKind(item.kind)
 
       item.menu = ({
         conventionalcommits = '[CC]',
