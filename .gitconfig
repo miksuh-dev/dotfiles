@@ -5,20 +5,12 @@
 [pull]
   rebase = true
 
-; [core]
-;   pager = delta
-;
-; [interactive]
-;   diffFilter = delta --color-only
-;
-; [delta]
-;   features = monokai
-;   navigate = true
-;   side-by-side = false
-;   colorMoved = default
-;
-; [merge]
-;   conflictstyle = diff3
-;
-; [diff]
-;   colorMoved = default
+[merge]
+	tool = "nvim"
+
+[mergetool]
+	keepBackup = false
+	prompt = false
+
+[mergetool "nvim"]
+	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
