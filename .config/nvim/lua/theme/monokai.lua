@@ -231,6 +231,7 @@ M.load_plugin_syntax = function(palette)
     DiagnosticWarn = { fg = palette.yellow },
     DiagnosticUnnecessary = { fg = palette.base9, style = 'underline' },
     IndentBlanklineChar = { fg = palette.base5 },
+    IndentBlanklineCharScope = { fg = palette.base6 },
     IndentBlanklineSpaceChar = { fg = palette.white },
     LspDiagnosticsSignError = { fg = palette.red },
     LspDiagnosticsSignHint = { fg = palette.aqua },

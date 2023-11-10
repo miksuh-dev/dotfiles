@@ -12,7 +12,7 @@ return {
         config = function()
           require('config.indent-blankline.load')
         end,
-        commit = '0722eabb2d11e239fe9c4dce313d5ae637130764',
+        main = 'ibl',
       },
       'nvim-treesitter/nvim-treesitter-textobjects',
       'andymass/vim-matchup',

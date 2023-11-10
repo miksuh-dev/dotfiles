@@ -1,7 +1,18 @@
 vim.g.indent_blankline_filetype_exclude = { 'help', 'neo-tree' }
 
-require('indent_blankline').setup({
-  show_end_of_line = false,
-  show_current_context = false,
-  show_current_context_start = false,
+local highlight = {
+  'IndentBlanklineChar',
+}
+
+local scope_highlight = {
+  'IndentBlanklineCharScope',
+}
+
+require('ibl').setup({
+  indent = { highlight = highlight, char = '│' },
+  whitespace = {
+    highlight = highlight,
+    remove_blankline_trail = false,
+  },
+  scope = { highlight = scope_highlight, enabled = true },
 })
