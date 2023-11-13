@@ -12,14 +12,14 @@ return {
       },
     },
   },
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'main',
-    cmd = { 'Neotree' },
-    config = function()
-      require('config.neo-tree.load')
-    end,
-  },
+  -- {
+  --   'nvim-neo-tree/neo-tree.nvim',
+  --   branch = 'main',
+  --   cmd = { 'Neotree' },
+  --   config = function()
+  --     require('config.neo-tree.load')
+  --   end,
+  -- },
   {
     'ThePrimeagen/harpoon',
     config = function()

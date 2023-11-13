@@ -25,7 +25,7 @@ return {
       { '<c-r>', mode = 'i' },
     },
   },
-  {
-    'MunifTanjim/nui.nvim',
-  },
+  -- {
+  --   'MunifTanjim/nui.nvim',
+  -- },
 }
