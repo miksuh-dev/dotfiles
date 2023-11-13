@@ -10,6 +10,10 @@ M.definition = function()
   vim.lsp.buf.definition()
 end
 
+M.definition_split = function()
+  require('telescope.builtin').lsp_definitions({ jump_type = 'vsplit' })
+end
+
 M.hover = function()
   vim.lsp.buf.hover()
 end
