@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 require('autocmd')
 require('opts')
 
