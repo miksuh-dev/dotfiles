@@ -20,9 +20,15 @@ require('mason-tool-installer').setup({
 
 -- config that activates keymaps and enables snippet support
 local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+  local capabilities = vim.tbl_deep_extend(
+    'force',
+    vim.lsp.protocol.make_client_capabilities(),
+    require('cmp_nvim_lsp').default_capabilities()
+  )
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  -- https://github.com/neovim/neovim/issues/23291
+  capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
   local root_dir = function(fname)
     return require('lspconfig').util.root_pattern('.git')(fname) or vim.fn.getcwd()
