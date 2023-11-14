@@ -16,9 +16,8 @@ return function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Goto
-  buf_set_keymap('n', 'gD', call_action('declaration'), opts)
+  buf_set_keymap('n', 'gD', call_action('definition_split'), opts)
   buf_set_keymap('n', 'gd', call_action('definition'), opts)
-  buf_set_keymap('n', '<leader>gd', call_action('definition_split'), opts)
   buf_set_keymap('n', 'K', call_action('hover'), opts)
   buf_set_keymap('n', 'gi', call_action('implementation'), opts)
   buf_set_keymap('n', 'gt', call_action('type_definition'), opts)
