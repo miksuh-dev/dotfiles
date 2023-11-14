@@ -81,4 +81,9 @@ return {
       require('config.conform.load')
     end,
   },
+  {
+    'zeioth/garbage-day.nvim',
+    dependencies = 'neovim/nvim-lspconfig',
+    event = 'VeryLazy',
+  },
 }
