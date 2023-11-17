@@ -73,6 +73,7 @@ require('gitsigns').setup({
 
     map('n', '<leader>hU', gs.undo_stage_hunk)
     map('n', '<leader>hp', gs.preview_hunk)
+    map('n', 'gK', gs.blame_line)
 
     return not is_ignored_file(bufnr)
   end,
