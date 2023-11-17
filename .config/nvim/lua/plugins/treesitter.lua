@@ -7,7 +7,6 @@ return {
       require('config.nvim-treesitter.load')
     end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
       'andymass/vim-matchup',
     },
   },
