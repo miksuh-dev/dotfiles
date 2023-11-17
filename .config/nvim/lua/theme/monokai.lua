@@ -142,7 +142,7 @@ M.load_syntax = function(palette)
     Visual = { bg = palette.base5 },
     VisualNOS = { bg = palette.base3 },
     WarningMsg = { fg = palette.yellow, style = 'bold' },
-    Whitespace = { fg = palette.base3 },
+    Whitespace = { fg = palette.base5 },
     WildMenu = { fg = palette.white, bg = palette.orange },
     YankVisual = { bg = palette.aqua, fg = palette.black },
     debugBreakpoint = { fg = palette.base2, bg = palette.red },

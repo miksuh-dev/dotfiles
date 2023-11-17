@@ -12,3 +12,4 @@ require('config')
 require('lazy-load')
 
 require('bindings')
+require('common.indent-line')

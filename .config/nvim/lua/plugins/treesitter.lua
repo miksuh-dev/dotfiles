@@ -7,13 +7,6 @@ return {
       require('config.nvim-treesitter.load')
     end,
     dependencies = {
-      {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-          require('config.indent-blankline.load')
-        end,
-        main = 'ibl',
-      },
       'nvim-treesitter/nvim-treesitter-textobjects',
       'andymass/vim-matchup',
     },
