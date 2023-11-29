@@ -29,7 +29,7 @@ pkill xbindkeys; xbindkeys
 xmodmap ~/.Xmodmap
 
 # Mouse speed
-for id in $(xinput list | grep 'Logitech G Pro' | grep pointer | cut -d '=' -f 2 | cut -f 1);do xinput set-prop $id "Coordinate Transformation Matrix" 1, 0, 0, 0, 1, 0, 0, 0, 1;xinput set-prop $id 'libinput Accel Profile Enabled' 0, 1;done
+for id in $(xinput list | grep 'Logitech' | grep pointer | cut -d '=' -f 2 | cut -f 1);do xinput set-prop $id "Coordinate Transformation Matrix" 1, 0, 0, 0, 1, 0, 0, 0, 1;xinput set-prop $id 'libinput Accel Profile Enabled' 0, 1;done
 
 # Set screens to correct order
 $HOME/Scripts/set-screens.sh
