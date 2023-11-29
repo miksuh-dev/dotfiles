@@ -51,6 +51,10 @@ return function(client, bufnr)
     buf_set_keymap('n', '<leader>fo', call_action('format'), opts)
   end
 
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint(bufnr, true)
+  end
+
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })

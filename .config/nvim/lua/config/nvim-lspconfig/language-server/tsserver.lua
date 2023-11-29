@@ -14,13 +14,13 @@ return function(config)
 
   config.init_options = {
     preferences = {
-      includeInlayParameterNameHints = 'literals',
-      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-      includeInlayFunctionParameterTypeHints = false,
-      includeInlayVariableTypeHints = false, -- maybe disable?
-      includeInlayPropertyDeclarationTypeHints = true,
-      includeInlayFunctionLikeReturnTypeHints = false,
-      includeInlayEnumMemberValueHints = true,
+      -- includeInlayParameterNameHints = 'literals',
+      -- includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      -- includeInlayFunctionParameterTypeHints = false,
+      -- includeInlayVariableTypeHints = false,
+      -- includeInlayPropertyDeclarationTypeHints = true,
+      -- includeInlayFunctionLikeReturnTypeHints = false,
+      -- includeInlayEnumMemberValueHints = true,
       importModuleSpecifierPreference = 'non-relative',
     },
   }
@@ -28,6 +28,7 @@ return function(config)
   config.on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
+    client.server_capabilities.inlayHintProvider = false
 
     on_attach(client, bufnr)
   end
