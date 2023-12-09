@@ -8,11 +8,11 @@ return {
     end,
   },
   {
-    'linrongbin16/lsp-progress.nvim',
-    event = { 'VimEnter' },
+    'j-hui/fidget.nvim',
     config = function()
-      require('config.lsp-progress.load')
+      require('config.fidget.load')
     end,
+    event = 'BufReadPre',
   },
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',

@@ -30,7 +30,6 @@ require('lualine').setup({
           right = 0,
         },
       },
-      require('lsp-progress').progress,
     },
     lualine_x = {
       'filetype',
