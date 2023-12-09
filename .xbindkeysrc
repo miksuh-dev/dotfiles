@@ -68,15 +68,17 @@
 ##################################
 # End of xbindkeys configuration #
 ##################################
-"xte 'keydown Scroll_Lock'"
+"mumble-lts rpc stoptalking"
 	b:9
 
-"xte 'keyup Scroll_Lock'"
-      b:9 + Release
-
-"xte 'keydown Scroll_Lock'"
+"mumble-lts rpc starttalking"
       b:8 
 
-"xte 'keyup Scroll_Lock'"
+"mumble-lts rpc stoptalking"
       b:8 + Release
 
+"mumble-lts rpc starttalking"
+      Insert
+
+"mumble-lts rpc stoptalking"
+      Insert + Release
