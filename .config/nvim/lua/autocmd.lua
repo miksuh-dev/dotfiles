@@ -32,3 +32,12 @@ vim.cmd([[
     autocmd BufLeave *.robot set shiftwidth=2
   augroup END
 ]])
+
+vim.cmd('cnoreabbrev Q  q')
+vim.cmd('cnoreabbrev q1  q!')
+vim.cmd('cnoreabbrev Q1  q!')
+vim.cmd('cnoreabbrev Qa1 qa!')
+vim.cmd('cnoreabbrev Qa qa')
+vim.cmd('cnoreabbrev W  w')
+vim.cmd('cnoreabbrev Wq wq')
+vim.cmd('cnoreabbrev WQ wq')
