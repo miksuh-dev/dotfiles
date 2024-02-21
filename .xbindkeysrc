@@ -68,17 +68,3 @@
 ##################################
 # End of xbindkeys configuration #
 ##################################
-"mumble-lts rpc stoptalking"
-	b:9
-
-"mumble-lts rpc starttalking"
-      b:8 
-
-"mumble-lts rpc stoptalking"
-      b:8 + Release
-
-"mumble-lts rpc starttalking"
-      Insert
-
-"mumble-lts rpc stoptalking"
-      Insert + Release
