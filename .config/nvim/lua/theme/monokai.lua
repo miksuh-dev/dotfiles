@@ -41,6 +41,10 @@ M.classic = {
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
+  red_sign = '#cc241d',
+  yellow_sign = '#e6db74',
+  green_sign = '#a6e22e',
+  blue_sign = '#66d9ef',
   none = 'NONE',
 }
 
@@ -393,7 +397,9 @@ M.load_plugin_syntax = function(palette)
     ['@type.definition'] = { fg = palette.aqua },
     ['@type.qualifier'] = { fg = palette.pink },
     ['@uri'] = uri_group,
+    ['@variable'] = { fg = palette.white },
     ['@variable.builtin'] = { fg = palette.orange },
+    -- ['@variable.graphql'] = { link = '@function' },
     -- New groups after treesitter > v0.9.1.
     ['@variable.parameter'] = { link = '@parameter' },
     ['@variable.member'] = { link = '@field' },
@@ -450,6 +456,10 @@ M.load_plugin_syntax = function(palette)
     netrwDir = { fg = palette.aqua, style = 'bold' },
     netrwMarkFile = { bg = palette.pink, fg = palette.white },
     netrwTreeBar = { fg = palette.base6 },
+    RedSign = { fg = palette.red_sign },
+    YellowSign = { fg = palette.yellow },
+    GreenSign = { fg = palette.green_sign },
+    BlueSign = { fg = palette.blue_sign },
   }
 end
 
