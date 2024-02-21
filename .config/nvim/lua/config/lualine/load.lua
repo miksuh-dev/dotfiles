@@ -7,7 +7,7 @@ require('lualine').setup({
     theme = theme,
     component_separators = '',
     section_separators = '',
-    disabled_filetypes = { 'NvimTree' },
+    disabled_filetypes = { 'TelescopePrompt' },
     globalstatus = true,
   },
   sections = {
