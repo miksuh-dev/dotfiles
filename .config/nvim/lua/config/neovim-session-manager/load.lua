@@ -27,6 +27,25 @@ require('session_manager').setup({
 
 local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {}) -- A global group for all your config autocommands
 
+vim.api.nvim_create_autocmd({ 'User' }, {
+  pattern = 'SessionSavePre',
+  group = config_group,
+  callback = function()
+    local buffers = vim.api.nvim_list_bufs()
+
+    local cwd = vim.fn.getcwd()
+    local cwd_len = #cwd
+
+    for _, bufnr in ipairs(buffers) do
+      local path = vim.api.nvim_buf_get_name(bufnr)
+
+      if path:sub(0, cwd_len) ~= cwd then
+        vim.api.nvim_buf_delete(bufnr, {})
+      end
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd({ 'SessionLoadPost' }, {
   group = config_group,
   callback = function()
