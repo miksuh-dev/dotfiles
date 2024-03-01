@@ -5,12 +5,11 @@ TEMP_DIR="/tmp"
 FIREFOX_DIR=$HOME/.mozilla/firefox
 
 # Refresh firefox cache every CACH_DURATION seconds
-if [ $(($(date +%s)-$(date -r $DB "+%s"))) -gt $CACHE_DURATION ]; then
+if [ ! -f "$DB" ] || [ $(($(date +%s)-$(date -r $DB "+%s"))) -gt $CACHE_DURATION ]; then
   echo 'refresh'
 
   PLACES_DB=$(find "$FIREFOX_DIR" -name "places.sqlite" ! -path "$FIREFOX_DIR/*.default$" ! -path "$FIREFOX_DIR/*default" | head -1)
 
-  rm -f "$TEMP_DIR/places.sqlite"
   cp -f ${PLACES_DB} "$TEMP_DIR/places.sqlite"
 fi
 
@@ -25,7 +24,7 @@ if [ -n "$BOOKMARKS" ] ; then
         echo $SELECTED;
         URL=$( echo "$SELECTED" | awk '{ print $NF }' FS='|')
         if [ ! -z "$URL" ] ; then
-            firefox "${URL}" 2> /dev/null
+            xdg-open "${URL}" 2> /dev/null
         fi
     fi
 fi
