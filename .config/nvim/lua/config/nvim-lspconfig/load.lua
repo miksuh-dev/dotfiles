@@ -27,9 +27,6 @@ local function make_config()
   )
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-  -- https://github.com/neovim/neovim/issues/23291
-  capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-
   local root_dir = function(fname)
     return require('lspconfig').util.root_pattern('.git')(fname) or vim.fn.getcwd()
   end
