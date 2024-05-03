@@ -18,6 +18,10 @@ local function is_ignored_file(bufnr)
   return is_ignored_file_name(bufnr)
 end
 
+local function refresh_fugive_status()
+  vim.cmd([[call fugitive#ReloadStatus()]])
+end
+
 require('gitsigns').setup({
   signs = {
     add = { hl = 'GreenSign', text = '│', numhl = 'GitSignsAddNr' },
@@ -62,16 +66,27 @@ require('gitsigns').setup({
     end, { expr = true })
 
     -- Actions
-    map('n', '<leader>hs', gs.stage_hunk)
-    map('n', '<leader>hu', gs.reset_hunk)
+    map('n', '<leader>hs', function()
+      gs.stage_hunk()
+      refresh_fugive_status()
+    end)
+    map('n', '<leader>hu', function()
+      gs.reset_hunk()
+      refresh_fugive_status()
+    end)
     map('v', '<leader>hs', function()
       gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+      refresh_fugive_status()
     end)
     map('v', '<leader>hu', function()
       gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+      refresh_fugive_status()
     end)
 
-    map('n', '<leader>hU', gs.undo_stage_hunk)
+    map('n', '<leader>hU', function()
+      gs.undo_stage_hunk()
+      refresh_fugive_status()
+    end)
     map('n', '<leader>hp', gs.preview_hunk)
     map('n', 'gK', gs.blame_line)
 
