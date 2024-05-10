@@ -12,6 +12,12 @@ return function(config)
     return require('lspconfig').util.root_pattern(root_dir_files)(fname) or vim.fn.getcwd()
   end
 
+  config.settings = {
+    completions = {
+      completeFunctionCalls = true,
+    },
+  }
+
   config.init_options = {
     preferences = {
       -- includeInlayParameterNameHints = 'literals',
