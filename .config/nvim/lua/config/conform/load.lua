@@ -1,6 +1,6 @@
 local prettier = { 'prettierd', 'prettier' }
 
-local slow_format_filetypes = { 'json', 'jsonc' }
+local slow_format_filetypes = { 'json', 'jsonc', 'robot' }
 
 require('conform').setup({
   formatters_by_ft = {
@@ -27,6 +27,10 @@ require('conform').setup({
     stylua = {
       command = 'stylua',
       args = { '-s', '--indent-type', 'Spaces', '--indent-width', '2', '--quote-style', 'AutoPreferSingle', '-' },
+    },
+    robotidy = {
+      command = 'robotidy',
+      args = { '-' },
     },
   },
   format_on_save = function(bufnr)
