@@ -29,4 +29,8 @@ return {
   'c_sharp',
   'terraform',
   'gitcommit',
+  'xml',
+  'styled',
+  'gitignore',
+  'git_config',
 }
