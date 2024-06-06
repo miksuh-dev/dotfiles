@@ -13,6 +13,11 @@ function checkIsWQHD() {
       echo 2
       return 0;
     fi
+
+    if [[ "$a" = "3840x2160" ]]; then
+      echo 3
+      return 0;
+    fi
   done
 }
 
@@ -25,6 +30,11 @@ case $(checkIsWQHD) in
   # wqhd
   2)
     kitty --config $HOME/.config/kitty/kitty.conf --config $HOME/.config/kitty/kitty-wqhd.conf
+    ;;
+
+  # 4k
+  3)
+    kitty --config $HOME/.config/kitty/kitty.conf --config $HOME/.config/kitty/kitty-4k.conf
     ;;
 
   # default
