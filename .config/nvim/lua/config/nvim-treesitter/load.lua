@@ -12,9 +12,6 @@ require('nvim-treesitter.configs').setup({
   indent = {
     enable = true,
   },
-  context_commentstring = {
-    enable = true,
-  },
   matchup = {
     enable = true,
     disable_virtual_text = true,

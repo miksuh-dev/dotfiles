@@ -38,6 +38,9 @@ return {
   },
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
+    config = function()
+      require('config.ts-context-commentstring.load')
+    end,
   },
   {
     'tpope/vim-unimpaired',
