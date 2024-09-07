@@ -45,6 +45,8 @@ local lsp_installed_servers = require('mason-lspconfig').get_installed_servers()
 for _, server_name in pairs(lsp_installed_servers) do
   local initial_config = make_config()
 
+  server_name = server_name == 'tsserver' and 'ts_ls' or server_name
+
   local exists, lsp_create_config = pcall(require, 'config.nvim-lspconfig.language-server.' .. server_name)
 
   local config = exists and lsp_create_config(initial_config) or initial_config
