@@ -5,7 +5,7 @@ return {
   'cssls', --CSS
   'graphql', --GraphQL
   'intelephense', --PHP
-  'tsserver', --Typescript
+  'ts_ls', --Typescript
   'jsonls', --Json
   'bashls', --Bash
   'yamlls', --Yaml
