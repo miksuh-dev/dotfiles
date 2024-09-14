@@ -23,14 +23,6 @@ local function refresh_fugive_status()
 end
 
 require('gitsigns').setup({
-  signs = {
-    add = { hl = 'GreenSign', text = '│', numhl = 'GitSignsAddNr' },
-    change = { hl = 'BlueSign', text = '│', numhl = 'GitSignsChangeNr' },
-    delete = { hl = 'RedSign', text = '-', numhl = 'GitSignsDeleteNr' },
-    topdelete = { hl = 'RedSign', text = '│', numhl = 'GitSignsDeleteNr' },
-    changedelete = { hl = 'BlueSign', text = '│', numhl = 'GitSignsChangeNr' },
-    untracked = { hl = 'YellowSign', text = '┆' },
-  },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -102,9 +94,6 @@ require('gitsigns').setup({
     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
     delay = 1000,
   },
-  current_line_blame_formatter_opts = {
-    relative_time = false,
-  },
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
@@ -119,8 +108,5 @@ require('gitsigns').setup({
   },
   diff_opts = {
     internal = true, -- If vim.diff or luajit is present
-  },
-  yadm = {
-    enable = false,
   },
 })

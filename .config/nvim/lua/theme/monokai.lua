@@ -460,6 +460,12 @@ M.load_plugin_syntax = function(palette)
     YellowSign = { fg = palette.yellow },
     GreenSign = { fg = palette.green_sign },
     BlueSign = { fg = palette.blue_sign },
+    GitSignsAdd = { link = 'GreenSign' },
+    GitSignsChange = { link = 'BlueSign' },
+    GitSignsChangedelete = { link = 'BlueSign' },
+    GitSignsDelete = { link = 'RedSign' },
+    GitSignsTopdelete = { link = 'RedSign' },
+    GitSignsUntracked = { link = 'YellowSign' },
   }
 end
 
