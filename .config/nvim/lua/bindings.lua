@@ -105,3 +105,37 @@ vim.cmd([[
 
 -- Quick search and replace
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+local function send_to_tmux_by_layout(target_position)
+  vim.cmd('normal! "ty')
+  local text = vim.fn.getreg('t')
+
+  if not text or text == '' then
+    return
+  end
+
+  local target_token = '{top-right}'
+  if target_position == 'bottom' then
+    target_token = '{bottom-right}'
+  end
+
+  local p = io.popen('tmux load-buffer -b nvim_send -', 'w')
+  if p then
+    p:write(text)
+    p:close()
+
+    vim.fn.system(string.format("tmux send-keys -t '%s' 'C-[' '[200~'", target_token))
+    vim.fn.system(string.format("tmux paste-buffer -b nvim_send -t '%s'", target_token))
+    vim.fn.system(string.format("tmux send-keys -t '%s' 'C-[' '[201~'", target_token))
+
+    vim.fn.system(string.format("tmux select-pane -t '%s'", target_token))
+  end
+end
+
+vim.keymap.set('v', 'se', function()
+  send_to_tmux_by_layout('top')
+end, { desc = 'Send selected code to top right pane' })
+
+vim.keymap.set('v', 'sd', function()
+  send_to_tmux_by_layout('bottom')
+end, { desc = 'Send selected code to bottom right pane' })
