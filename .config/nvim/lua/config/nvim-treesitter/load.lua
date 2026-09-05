@@ -1,19 +1,7 @@
-vim.g.matchup_matchparen_offscreen = { method = 'status_manual' }
+local ts = require('nvim-treesitter')
 
-require('nvim-treesitter.configs').setup({
-  ensure_installed = require('config.nvim-treesitter.languages'),
-  highlight = {
-    enable = true, -- false will disable the whole extension
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-  },
-  indent = {
-    enable = true,
-  },
-  matchup = {
-    enable = true,
-    disable_virtual_text = true,
-  },
-})
+vim.g.matchup_matchparen_enabled = 1
+vim.g.matchup_matchparen_offscreen = { method = 'popup' }
+
+ts.setup({})
+ts.install(require('config.nvim-treesitter.languages'))

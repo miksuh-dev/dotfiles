@@ -1,4 +1,5 @@
 require('config.nvim-lspconfig.handlers')
+local lspconfig = require('lspconfig')
 
 require('mason').setup({
   ui = {
@@ -49,5 +50,8 @@ for _, server_name in pairs(lsp_installed_servers) do
 
   local config = exists and lsp_create_config(initial_config) or initial_config
 
-  require('lspconfig')[server_name].setup(config)
+  lspconfig[server_name].setup(config)
+
+  vim.lsp.config(server_name, config)
+  vim.lsp.enable(server_name)
 end

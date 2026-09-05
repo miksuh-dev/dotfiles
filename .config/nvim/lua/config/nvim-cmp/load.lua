@@ -35,6 +35,34 @@ local function copilot_enabled()
   return pcall(vim.fn['copilot#Enabled'])
 end
 
+local function trim_detail(detail)
+  if detail then
+    detail = vim.trim(detail)
+    if vim.startswith(detail, '(use') then
+      detail = string.sub(detail, 6, #detail)
+      detail = '(' .. detail
+    end
+  end
+  return detail
+end
+
+local function tsserver_fmt(entry, _item)
+  local completion_item = entry:get_completion_item()
+  -- print(vim.inspect(item))
+  -- function
+  if completion_item.kind == 6 then
+    print(vim.inspect(completion_item))
+    if completion_item.detail ~= nil then
+      local detail = completion_item.detail
+
+      local start_index, _ = string.find(detail, '(', nil, true)
+      return detail:sub(start_index, #detail)
+    end
+  end
+
+  return nil
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -107,13 +135,25 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, item)
-      item.kind = getKind(item.kind)
+      -- if vim.bo.filetype == 'typescriptreact' then
+      --   local result = tsserver_fmt(entry, item)
+      --
+      --   print(vim.inspect(result))
+      --   if result ~= nil then
+      --     item.abbr = result
+      --   end
+      -- end
+
+      -- print(vim.inspect(entry:get_completion_item()))
+
+      -- if item.kind == nil then
+      --   item.kind = getKind(item.kind)
+      -- end
 
       item.menu = ({
         conventionalcommits = '[CC]',
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
-        ['cmp-tw2css'] = '[TW2CSS]',
         cmp_tabnine = '[Tabnine]',
         nvim_lua = '[NvimLua]',
         luasnip = '[LuaSnip]',
@@ -139,7 +179,6 @@ cmp.setup({
     { name = 'calc' },
     { name = 'path' },
     { name = 'vim-dadbod-completion' },
-    { name = 'cmp-tw2css' },
   },
   sorting = {
     comparators = {

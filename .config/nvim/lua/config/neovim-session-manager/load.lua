@@ -66,8 +66,27 @@ vim.api.nvim_create_autocmd({ 'SessionLoadPost' }, {
 
       vim.cmd('edit ' .. path)
 
-      -- For some reason filetype is not set correctly on edit
       vim.bo.filetype = filetype
     end
+
+    vim.schedule(function()
+      for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_loaded(bufnr) then
+          local buf_name = vim.api.nvim_buf_get_name(bufnr)
+
+          if buf_name ~= '' and vim.api.nvim_get_option_value('buftype', { buf = bufnr }) == '' then
+            vim.api.nvim_buf_call(bufnr, function()
+              vim.cmd('filetype detect')
+            end)
+
+            local ft = vim.api.nvim_get_option_value('filetype', { buf = bufnr })
+
+            if ft ~= '' then
+              pcall(vim.treesitter.start, bufnr, ft)
+            end
+          end
+        end
+      end
+    end)
   end,
 })

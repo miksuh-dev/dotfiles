@@ -77,3 +77,4 @@ vim.opt.listchars = {
 vim.opt.guicursor = {}
 
 vim.g.python3_host_prog = '/usr/bin/python3'
+vim.opt.sessionoptions:append('localoptions')

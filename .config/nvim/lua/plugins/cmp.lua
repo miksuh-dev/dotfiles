@@ -15,7 +15,6 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
       'davidsierradz/cmp-conventionalcommits',
-      'jcha0713/cmp-tw2css',
     },
   },
 }

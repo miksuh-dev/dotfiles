@@ -12,12 +12,12 @@ return {
   'lua_ls', --Lua
   -- 'hls', --Haskell
   'vuels', --Vue
-  'sqlls', -- SQL
+  'sqls', -- SQL
   'marksman', -- Markdown
   'tailwindcss', -- Tailwind css
   'prismals', -- prisma
   'rust_analyzer', -- Rust
-  'omnisharp_mono',
+  -- 'omnisharp_mono',
   'terraformls',
   'robotframework_ls',
   'pylsp',
